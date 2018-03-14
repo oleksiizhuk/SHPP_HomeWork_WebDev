@@ -62,6 +62,10 @@ content {
         padding: 10px;
         margin-top: 10px;
         border-radius: 8px; }
+    content .content .thirdForm {
+      margin-top: 20px; }
+    content .content .fourthForm {
+      margin-top: 20px; }
   content .leftMenu {
     background-color: #f39c12; }
     content .leftMenu ul {
