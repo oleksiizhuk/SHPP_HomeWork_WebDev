@@ -1,4 +1,5 @@
 function first_task() {
+<<<<<<< HEAD
 	var firstNumber = document.getElementsByClassName('firstNumber')[0].value + "";
 	alert(secondNumber);
 		if(firstNumber != number){
@@ -65,3 +66,14 @@ function third_task(){
 		i++;
 	}
 }
+=======
+	var firstNumber;
+	var secondNumber;
+	alert (firstNumber);
+	var result = 0;
+	for(var i = firstNumber; firstNumber < secondNumber;i++){
+		result = result + firstNumber
+	}
+	document.getElementById('ceazerRessult').value = result;
+}
+>>>>>>> 028129396d1e16e91fb53457b8883b4546d82188
