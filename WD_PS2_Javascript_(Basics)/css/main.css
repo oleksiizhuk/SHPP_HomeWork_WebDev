@@ -1,2 +1,30 @@
-body{margin:0;padding:0}ul{margin:0;padding:0}ul li{margin:0;padding:0}.container{width:1200px;margin:0 auto}header{background-color:#530FAD}header h2{margin:0;padding:10px;display:inline-block}main{background-color:#8854d0}
+body {
+  margin: 0;
+  padding: 0; }
+
+ul {
+  margin: 0;
+  padding: 0; }
+  ul li {
+    margin: 0;
+    padding: 0; }
+
+.container {
+  width: 1200px;
+  margin: 0 auto; }
+
+header {
+  background-color: #530FAD; }
+  header h2 {
+    margin: 0;
+    padding: 10px;
+    display: inline-block; }
+
+main {
+  background-color: #8854d0; }
+
+.third_task ul li {
+  font-size: 16px;
+  color: red; }
+
 /*# sourceMappingURL=main.css.map */

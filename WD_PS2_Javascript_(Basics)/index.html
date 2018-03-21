@@ -1,6 +1,8 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -36,6 +38,76 @@
 				<h2>third_task</h2>
 				<input type="text" placeholder="введите число" class="third_Num">
 				<button onclick="third_task()">Кнопка</button>
+				<div id="list">
+					
+				</div>
+			</div>
+			<div class="fourth_task">
+				<h2>fourth_task</h2>
+				<p>введите сколько сейчас времени</p>
+				<input type="text" class="fourth_Number">
+				<input type="text" id="clock">
+				<button onclick="fourth_task()">кнопка</button>
+			</div>
+
+			<div class="fifth_task">
+				<h2>fifth_task</h2>
+				<input type="text" class="fifth_task_year" placeholder="22">
+				<button onclick="fifth_task()">Кнопка</button>
+			</div>
+
+			<div class="sixth_task">
+				<h2>sixth_task</h2>
+				<div class="months_number_time_first">
+					<input type="text" placeholder="change year" class="firstYear" value="2014">
+					<input list="months" placeholder="change months" class="mounths" value="February">
+						<datalist id="months">
+							<option value="January">
+							<option value="February">
+							<option value="March">
+							<option value="April">
+							<option value="May">
+							<option value="June">
+							<option value="July">
+							<option value="August">
+							<option value="September">
+							<option value="October">
+							<option value="November">
+							<option value="December">
+	 				 	</datalist> 
+	 				 <input type="text" placeholder="change date" class="firstDate" value="10">
+	 			 	
+					<input type="text" placeholder="23:59:59" class="firstTime" value="10 10 10">
+				</div>
+
+				<div class="months_number_time_second">
+					<input list="months" placeholder="change months">
+						<datalist id="months">
+							<option value="January">
+							<option value="February">
+							<option value="March">
+							<option value="April">
+							<option value="May">
+							<option value="June">
+							<option value="July">
+							<option value="August">
+							<option value="September">
+							<option value="October">
+							<option value="November">
+							<option value="December">
+	 				 	</datalist>
+	 				 <input type="text" placeholder="change date">
+	 			 	<input type="text" placeholder="change year">
+					<input type="text" placeholder="23:59:59">
+				</div>
+				<button onclick="sexth_task()">Кнопка</button>
+			</div>
+
+			<div class="seven_task">
+				<h2>seven_task</h2>
+				<input type="date">
+				<button onclick="seven_task()">Кнопка</button>
+				<img src="" alt="">
 			</div>
 		</div>	
 	</main>
