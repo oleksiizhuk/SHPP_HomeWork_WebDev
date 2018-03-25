@@ -16,17 +16,16 @@
 
 	<main>
 		<div class="container">
-
 			<div class="first_task">
-					<h2>First task</h2>
-					<p>1) посчитать сумму чисел от -1000 до 1000</p>
-					<input type="text" placeholder="Первое число" class="firstNumber">
-					<input type="text" placeholder="Второе число" class="secondNumber">
-					<input type="text" placeholder="Результат (read only)" id="result" readonly>
-					<button onclick="first_task()">Кнопка</button>
-				
+				<h2>First task</h2>
+				<p>1) посчитать сумму чисел от -1000 до 1000</p>
+				<input type="text" placeholder="Первое число" class="firstNumber">
+				<input type="text" placeholder="Второе число" class="secondNumber">
+				<input type="text" placeholder="Результат (read only)" id="result" readonly>
+				<button onclick="first_task()">Кнопка</button>	
 			</div>
 
+			<!-- -->
 			<div class="second_task">
 				<h2>second task</h2>
 				<p>2) посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
@@ -36,15 +35,17 @@
 				<button onclick="second_task()">кнопка</button>
 			</div>
 
+			<!-- -->
 			<div class="third_task">
 				<h2>third_task</h2>
 				<p>3) вывести на страницу список из 50 элементов вида</p>
 				<input type="text" placeholder="введите число" class="third_Num" placeholder="введите число">
 				<button onclick="third_task()">Кнопка</button>
 				<div id="list">
-					
 				</div>
 			</div>
+
+			<!-- -->
 			<div class="fourth_task">
 				<h2>fourth_task</h2>
 				<p>4) Пользователь вводит время в секундах. Вывести в формате: hh:mm:ss (01:05:20)</p>
@@ -53,6 +54,7 @@
 				<button onclick="fourth_task()">кнопка</button>
 			</div>
 
+			<!-- -->
 			<div class="fifth_task">
 				<h2>fifth_task</h2>
 				<p>5) Для указанного возраста студента вывести фразу вида "22 года" ( 1 год, 20 лет....)</p>
@@ -60,11 +62,12 @@
 				<button onclick="fifth_task()">Кнопка</button>
 			</div>
 
+			<!-- -->
 			<div class="sixth_task">
 				<h2>sixth_task</h2>
 				<div class="months_number_time_first">
-					<input type="number" placeholder="change year" class="firstYear" min="1970" value="1970">
-					<input list="months" placeholder="change months" class="mounths" value="">
+					<input type="number" placeholder="change year" class="fYear" min="1970" value="1970">
+					<input list="months" placeholder="change months" class="fMounths" value="">
 						<datalist id="months">
 							<option value="January">
 							<option value="February">
@@ -79,13 +82,13 @@
 							<option value="November">
 							<option value="December">
 	 				 	</datalist> 
-	 				 <input type="number" placeholder="change date" min="1" max="31" class="firstDate" value="01">
-	 			 	
-					<input type="text" placeholder="23:59:59" class="firstTime" value="02:00:00">
+	 				 <input type="number" placeholder="change date" min="1" max="31" class="fDate" value="01">
+					<input type="text" placeholder="23:59:59" class="fTime" value="02:00:00">
 				</div>
 
 				<div class="months_number_time_second">
-					<input list="months" placeholder="change months">
+					<input type="text" placeholder="change year" min="1970" max="999" class="sYear" value="1970">
+					<input list="months" placeholder="change months" class="sMounths">
 						<datalist id="months">
 							<option value="January">
 							<option value="February">
@@ -100,14 +103,20 @@
 							<option value="November">
 							<option value="December">
 	 				 	</datalist>
-	 				 <input type="text" placeholder="change date">
-	 			 	<input type="text" placeholder="change year">
-					<input type="text" placeholder="23:59:59">
+	 				 <input type="number" placeholder="change date" min="1" max="31" class="sDate" value="01">
+					<input type="text" placeholder="23:59:59" class="sTime" value="02:00:00">
 				</div>
-				<input type="text" class="testdata" placeholder="2014 February 10  10 10 10">
+				<div class="six_task_result">
+					<input type="text" id="six_task_result_year">
+					<input type="text" id="six_task_result_mounths">
+					<input type="text" id="six_task_result_day">
+					<input type="text" id="six_task_result_time">
+				</div>
+
 				<button onclick="sexth_task()">Кнопка</button>
 			</div>
 
+			<!-- -->
 			<div class="seven_task">
 				<h2>seven_task</h2>
 				<input type="date" class="seven_task_data">
@@ -116,6 +125,11 @@
 			</div>
 			<div class="eighth_task">
 				<h2>eighth_task</h2>
+				<input type="text" class="eight_task_getValue">
+				<button onclick="eight_tast()">кнопка</button>
+				<div class="eight_task_div">
+					
+				</div>
 			</div>
 		</div>	
 	</main>

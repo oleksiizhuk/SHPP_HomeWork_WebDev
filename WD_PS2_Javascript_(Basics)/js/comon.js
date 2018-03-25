@@ -83,7 +83,7 @@ function fourth_task(){
 		alert('seconds ' + seconds);
 		result = hour+' : '+minutes+' : '+seconds;
 		alert(result);
-	document.getElementById('clock').value = result;
+		document.getElementById('clock').value = result;
 }
 
 function fifth_task(){
@@ -114,20 +114,92 @@ function fifth_task(){
 function sexth_task(){
 	var monthsNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	var testMonthsNumber = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
-	var mounths = document.getElementsByClassName('mounths')[0].value + "";
-	var date = document.getElementsByClassName('firstDate')[0].value + "";
-	var year =  document.getElementsByClassName('firstYear')[0].value + "";
-	var time = document.getElementsByClassName('firstTime')[0].value + "";
-	//alert(mounths); alert("date " + date); alert("year " + year); alert(time);
-	var test = mounths +" " + date+ ", " + year +" "+ time;
-	alert("test = " + test);
 
-    var n = Date.parse(test);
+	var fYear =  document.getElementsByClassName('fYear')[0].value + "";
+	var fMounths = document.getElementsByClassName('fMounths')[0].value + "";
+	var fDate = document.getElementsByClassName('fDate')[0].value + "";
+	var fTime = document.getElementsByClassName('fTime')[0].value + "";
+	
+	var SYear =  document.getElementsByClassName('sYear')[0].value + "";
+	var SMounths = document.getElementsByClassName('sMounths')[0].value + "";
+	var SDate = document.getElementsByClassName('sDate')[0].value + "";
+	var STime = document.getElementsByClassName('sTime')[0].value + "";
+
+
+	var firstDate = fMounths +" " + fDate+ ", " + fYear +" "+ fTime;
+	var secondDate = SMounths +" " + SDate + ", " + SYear + " " + STime;
+	alert("firstDate = " + firstDate);
+	alert("secondDate = " + secondDate);
+
+    var fDataParse = Date.parse(firstDate);
+    var sDataParse = Date.parse(secondDate);
     var sec = 1000;
-    n = n / sec;
-    console.log(n);
+    fDataParse = fDataParse / sec;
+    sDataParse = sDataParse / sec;
 
+    console.log(fDataParse);
+    console.log(sDataParse);
+
+    if(fDataParse >= sDataParse){
+    	fDataParse-= sDataParse;
+    	dateTransform(fDataParse);
+    }
+    else {
+    	sDataParse -= fDataParse;
+    	dateTransform(sDataParse);
+    }
 }
+
+function dateTransform(dataParse){
+
+	var year = 0;
+	var mounths = 0;
+	var day = 0;
+	var hour = 0;
+	var minutes = 0;
+	var seconds = 0;
+	var time = "";
+	if(dataParse >= 31536000){
+		year = dataParse / 31536000;
+		year = Math.trunc(year);
+		dataParse = dataParse - (31536000 * year);
+	}
+	if(dataParse >= 2592000){
+		mounths = dataParse / 2592000;
+		mounths = Math.trunc(mounths);
+		dataParse = dataParse - (2592000 * mounths);
+	}
+	if(dataParse >= 86400){
+		day = dataParse / 86400;
+		day = Math.trunc(day);
+		dataParse = dataParse - (86400 * day);
+	}
+	if(dataParse >= 3600){
+		hour = dataParse / 3600;
+		hour =  Math.trunc(hour);
+		dataParse = dataParse - (3600 * hour);
+		alert('hour '+ hour);
+		alert('dataParse '+ dataParse);
+	}
+	if(dataParse >= 60){
+		minutes = dataParse / 60
+		minutes =  Math.trunc(minutes);
+		dataParse = dataParse - (60 * minutes);
+		alert('minutes ' + minutes);
+		alert('dataParse ' + dataParse);
+	}
+		seconds = dataParse;
+		//alert('seconds ' + seconds);
+		result = year + ' ' + mounths + ' ' + day +' '+ hour+':'+minutes+':'+seconds;
+		console.log(result);
+		result = hour+':'+minutes+':'+seconds;
+		document.getElementById('six_task_result_year').value += year;
+		document.getElementById('six_task_result_mounths').value += mounths;
+		document.getElementById('six_task_result_day').value += day;
+		document.getElementById('six_task_result_time').value += result;		
+}
+
+
 // 1000 ms 60000 sec 1440000 min 3600000 hour 86400000 day 31536000000 year
 
 function seven_task(){
@@ -148,5 +220,26 @@ function seven_task(){
 	alert(y);
 
 
+}
+
+function eight_tast(){
+	var getValue = document.getElementsByClassName('eight_task_getValue')[0].value + "";
+	getValue = parseInt(getValue);
+
+	var ul = document.createElement("ul");
+	ul.setAttribute('id', 'myUl');
+	document.getElementById("eight_task_div").appendChild(ul);
+
+	for(var i = 1; i <= getValue; i++){
+		var li = document.createElement("li");
+		id  = "myLi" + i;
+		li.setAttribute('id', id);
+
+		document.getElementById('myUl').appendChild(li);
+
+		for(var k = 1; k <= getValue; k++){
+			document.getElementById('myLi'+i).innerHTML +='*';
+		}	
+	}
 }
 
