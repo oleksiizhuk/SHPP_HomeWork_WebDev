@@ -1,12 +1,12 @@
 function first_task() {
 	var firstNumber = document.getElementsByClassName('firstNumber')[0].value + "";
-		if(firstNumber == null){
-			alert ("lol");
-			return 0;
-		}
 	var secondNumber = document.getElementsByClassName('secondNumber')[0].value + "";
 	firstNumber = parseInt(firstNumber);
 	secondNumber = parseInt(secondNumber);
+	if(firstNumber <= 0 || !Number.isInteger(firstNumber)){
+		alert('Введите число в формату 1234567890');
+		return 0;
+	}
 	var result = 0;
 	for(var i = firstNumber; i <= secondNumber;i++){
 		result = result + i;
@@ -89,30 +89,64 @@ function fourth_task(){
 function fifth_task(){
 	var year = document.getElementsByClassName('fifth_task_year')[0].value + "";
 	year = parseInt(year);
-	var lineLenght = 
+	if(firstNumber <= 0 || !Number.isInteger(firstNumber)){
+		alert('Введите число в формату 1234567890');
+		return 0;
+	}
+	var number = year.toString();
+	var numberLenght = number.length;
+	if(number[numberLenght -1] == 1){
+		alert(year + "год");
+	}
+	if(number[numberLenght -1] == 2 || number[numberLenght -1] == 3 || number[numberLenght -1] == 4){
+		if(year >11 && year < 20){
+		 	alert(year + " лет");
+		}
+		else{
+			alert(year + " года");
+		}
+	}
+	if(number[numberLenght -1] == 0){
+		alert(year + "лет");
+	}
 }
 
 function sexth_task(){
 	var monthsNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var testMonthsNumber = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
 	var mounths = document.getElementsByClassName('mounths')[0].value + "";
 	var date = document.getElementsByClassName('firstDate')[0].value + "";
 	var year =  document.getElementsByClassName('firstYear')[0].value + "";
 	var time = document.getElementsByClassName('firstTime')[0].value + "";
-	alert(mounths); alert("date "+date); alert("year " + year); alert(time);
-	//var hour =  document.getElementsByClassName('')[0].value + "";
-	//var minutes = document.getElementsByClassName('')[0].value + "";
-	//var seconds = document.getElementsByClassName('')[0].value + "";
-	
-	
-	var test = mounths + date + year + time;
-	alert(test);
-	//var d = new Date(year, month, day, hours, minutes, seconds);
-	var d = new Date(mounths, date, year, time);
-	var n = d.getFullYear(test);
-	alert(n);
+	//alert(mounths); alert("date " + date); alert("year " + year); alert(time);
+	var test = mounths +" " + date+ ", " + year +" "+ time;
+	alert("test = " + test);
+
+    var n = Date.parse(test);
+    var sec = 1000;
+    n = n / sec;
+    console.log(n);
 
 }
+// 1000 ms 60000 sec 1440000 min 3600000 hour 86400000 day 31536000000 year
+
 function seven_task(){
+	var date = document.getElementsByClassName('seven_task_data')[0].value + "";
+	//alert(date);
+	
+	var t = Date.now();// 1000 ms 60000 sec 1440000 min 3600000 hour 86400000 day 31536000000 year
+	var y = Math.round(t / 86400000);
+
+	var minutes = 1000 * 60;
+	var hours = minutes * 60;
+	var days = hours * 24;
+	var years = days * 365;
+	var t = Date.now();
+	alert("t " + t);
+
+	var y = Math.round(t / days);
+	alert(y);
+
 
 }
 
