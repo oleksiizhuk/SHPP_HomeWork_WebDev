@@ -225,21 +225,89 @@ function seven_task(){
 function eight_tast(){
 	var getValue = document.getElementsByClassName('eight_task_getValue')[0].value + "";
 	getValue = parseInt(getValue);
-
-	var ul = document.createElement("ul");
-	ul.setAttribute('id', 'myUl');
-	document.getElementById("eight_task_div").appendChild(ul);
-
-	for(var i = 1; i <= getValue; i++){
-		var li = document.createElement("li");
-		id  = "myLi" + i;
-		li.setAttribute('id', id);
-
-		document.getElementById('myUl').appendChild(li);
+	
+	for(var i = 1; i <= getValue; i++){		
+		var ul = document.createElement("ul");
+		document.getElementById("eight_task_div").appendChild(ul);
+		var attrUl = 'E_Ul' + i;
+		ul.setAttribute('id', attrUl);
 
 		for(var k = 1; k <= getValue; k++){
-			document.getElementById('myLi'+i).innerHTML +='*';
+			if(k == getValue){
+				var li = document.createElement("li");
+				var attr  = "last_li";
+				li.setAttribute('class', attr);
+				document.getElementById(attrUl).appendChild(li);
+			}else{
+				var li = document.createElement("li");
+				var attr  = "myLi" + k;
+				li.setAttribute('class', attr);
+				document.getElementById(attrUl).appendChild(li);
+			}
 		}	
 	}
 }
 
+function nine_task(){
+
+	var under = document.getElementsByClassName('under')[0].value + "";
+	var flats = document.getElementsByClassName('flats')[0].value + "";
+	var numberOfFloors = document.getElementsByClassName('numberOfFloors')[0].value + "";
+	var apartmentNumber = document.getElementsByClassName('apartmentNumber')[0].value + "";
+	var result = "";
+	var numberOfFlats = 0;
+	var countUnder = 1;
+	var countFlors = 1;
+
+	under = parseInt(under);
+	flats = parseInt(flats);
+	numberOfFloors = parseInt(numberOfFloors);
+	apartmentNumber = parseInt(apartmentNumber);
+	numberOfFlats = under * flats * numberOfFloors;
+	alert(numberOfFlats);
+
+	if(apartmentNumber > numberOfFlats){
+		alert("такой квартиры не существует");
+		return 0;
+	}
+	for (var i = 1; i < apartmentNumber;i++){
+		if(i % flats == 0){
+			countFlors++;
+		}
+		if(i % (numberOfFloors * flats) == 0){
+			countUnder++;
+			countFlors -= numberOfFloors;
+		}
+	}
+	result = 'подьездн № ' + countUnder + ' этаж № ' + countUnder;
+	alert(result);
+	document.getElementById('nine_task_result').value = result;
+}
+
+function ten_task(){
+	var ten_task_number = document.getElementsByClassName('ten_getNumber')[0].value + "";
+	var lenghtNumber = ten_task_number.length;
+	var result = 0;
+	for(var i = 1; i <= lenghtNumber;i++){
+		var temp = parseInt(ten_task_number[i-1]);
+		result += temp;
+	}
+	document.getElementById('ten_result').value = result;
+	alert(result);
+}
+
+function eleven_task(){
+	var a = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
+	var check = a.replace(/https\:\/\//gi,'');
+	var check = check.replace(/http\:\/\//gi,'');
+	//alert(check); 
+	var arr = check.split(', ');
+	//alert(arr); 
+	for(var i = 0; i < arr.length; i++){
+		alert(arr[i]);
+	}
+	arr.sort();
+	//alert(arr);
+	document.getElementById('eleven_task_textarea_rezult').innerHTML += arr;
+
+}

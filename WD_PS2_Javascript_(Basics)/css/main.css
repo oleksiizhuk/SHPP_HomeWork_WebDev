@@ -25,6 +25,34 @@ main {
 
 .third_task ul li {
   font-size: 16px;
-  color: red; }
+  color: red;
+  background-color: #ffffff; }
+
+#eight_task_div {
+  margin: 30px; }
+  #eight_task_div ul:nth-child(even) li {
+    font-size: 16;
+    background-color: #e6cdab;
+    display: inline;
+    padding: 2px 10px; }
+    #eight_task_div ul:nth-child(even) li:nth-child(even) {
+      background-color: #9f571b; }
+  #eight_task_div ul:nth-child(odd) li {
+    font-size: 16;
+    background-color: #9f571b;
+    display: inline;
+    padding: 2px 10px; }
+    #eight_task_div ul:nth-child(odd) li:nth-child(even) {
+      background-color: #e6cdab; }
+
+.eleven_task_sample {
+  padding: 20px;
+  width: 700px;
+  height: 300px; }
+
+footer {
+  background-color: #0c909d; }
+  footer h2 {
+    margin: 0px; }
 
 /*# sourceMappingURL=main.css.map */

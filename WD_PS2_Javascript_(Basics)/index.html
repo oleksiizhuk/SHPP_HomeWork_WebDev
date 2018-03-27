@@ -119,24 +119,60 @@
 			<!-- -->
 			<div class="seven_task">
 				<h2>seven_task</h2>
+				<p>Пользователь вводит дату в формате 2014-12-31, а получает знак зодиака в этот день (с картинкой).</p>
 				<input type="date" class="seven_task_data">
 				<button onclick="seven_task()">Кнопка</button>
 				<img src="" alt="">
 			</div>
-			<div class="eighth_task">
+
+			<!-- -->
+			<div class="eight_task">
 				<h2>eighth_task</h2>
+				<p>Пользователь вводит габариты доски (в формате ‘8x8’). Вывести шахматную доску.</p>
 				<input type="text" class="eight_task_getValue">
 				<button onclick="eight_tast()">кнопка</button>
-				<div class="eight_task_div">
+				<div id="eight_task_div">
 					
 				</div>
 			</div>
+
+			<!-- -->
+			<div class="nine_task">
+				<h2>nine_task</h2>
+				<p>Количество подъездов, квартир на пролете, количество этажей дома также задает пользователь в инпутах.</p>
+				<input type="text" placeholder="количество подьездов" class="under">
+				<input type="text" placeholder="квартир на пролете" class="flats">
+				<input type="text" placeholder="количество этажей" class="numberOfFloors">
+				<input type="text" placeholder="номер квартиры" class="apartmentNumber">
+				<input type="text" placeholder="результат" id="nine_task_result">
+				<button onclick="nine_task()">кнопка</button>
+			</div>
+
+			<!-- -->
+			<div class="ten_task">
+				<h2>ten_task</h2>
+					<input type="text" placeholder="111" class="ten_getNumber">
+					<input type="text" id="ten_result">
+				<button onclick="ten_task()">Кнопка</button>
+			</div>
+
+			<!-- -->
+			<div class="eleven_task">
+				<h2>eleven_task</h2>
+				<p>11) Дан некий textarea, в который пользователь вводит ссылки через запятую. Когда textarea станет неактивным удалить http:// и https:// из ссылок и вывести их отсортированным по алфавиту списком ссылок.</p>
+				<textarea name="" class="eleven_task_textarea" cols="30" rows="10" onchange="eleven_task()"></textarea>
+				<textarea name="" id="eleven_task_textarea_rezult" cols="30" rows="10"></textarea>
+				<h3>сылки для теста</h3>
+				<p>https://photos.google.com, https://www.youtube.com, https://www.twitch.tv, https://www.facebook.com/</p>
+			</div>
+			<!-- -->
+		
 		</div>	
 	</main>
 
 	<footer>
 		<div class="container">
-			
+			<h2>Footer</h2>
 		</div>
 		
 	</footer>
