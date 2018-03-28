@@ -1,26 +1,52 @@
 function first_task() {
-	var firstNumber = document.getElementsByClassName('firstNumber')[0].value + "";
-	var secondNumber = document.getElementsByClassName('secondNumber')[0].value + "";
+	var firstNumber = document.getElementsByClassName('ft_firstNumber')[0].value + "";
+	var secondNumber = document.getElementsByClassName('ft_secondNumber')[0].value + "";
 	firstNumber = parseInt(firstNumber);
 	secondNumber = parseInt(secondNumber);
-	if(firstNumber <= 0 || !Number.isInteger(firstNumber)){
+	if(firstNumber > secondNumber){
+		alert("первое число не может быть больше второго");
+		document.getElementsByClassName('ft_firstNumber')[0].style.borderColor = "#e84118";
+		document.getElementsByClassName('ft_secondNumber')[0].style.borderColor = "#e84118";
+		document.getElementById('ft_result').style.borderColor = "#c2b6b6";
+		return 0;
+	}
+	if(!Number.isInteger(firstNumber) || !Number.isInteger(secondNumber)){
 		alert('Введите число в формату 1234567890');
+		document.getElementsByClassName('ft_firstNumber')[0].style.borderColor = "#e84118";
+		document.getElementsByClassName('ft_secondNumber')[0].style.borderColor = "#e84118";
+		document.getElementById('ft_result').style.borderColor = "#c2b6b6";
 		return 0;
 	}
 	var result = 0;
 	for(var i = firstNumber; i <= secondNumber;i++){
 		result = result + i;
 	}
-	document.getElementById('result').value = result;
+	document.getElementsByClassName('ft_firstNumber')[0].style.borderColor = "#c2b6b6";
+	document.getElementsByClassName('ft_secondNumber')[0].style.borderColor = "#c2b6b6";
+	document.getElementById('ft_result').style.borderColor = "#4cd137";
+	document.getElementById('ft_result').value = result;
 }
 
 function second_task() {
-	var firstNumber = document.getElementsByClassName('sec_First_Num')[0].value + "";
-	var secondNumber = document.getElementsByClassName('sec_Second_Num')[0].value + "";
+	var firstNumber = document.getElementsByClassName('st_firstNumber')[0].value + "";
+	var secondNumber = document.getElementsByClassName('st_secondNumber')[0].value + "";
 	var result = 0;
 	firstNumber = parseInt(firstNumber);
 	secondNumber = parseInt(secondNumber);
-
+	if(firstNumber > secondNumber){
+		alert("первое число должно быть меньше второго");
+		document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#e84118";
+		document.getElementsByClassName('st_secondNumber')[0].style.borderColor = "#e84118";
+		document.getElementById('st_result').style.borderColor = "#c2b6b6";
+		return 0;
+	}
+	if(!Number.isInteger(firstNumber) || !Number.isInteger(secondNumber)){
+		alert('Введите число в формату 1234567890');
+		document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#e84118";
+		document.getElementsByClassName('st_secondNumber')[0].style.borderColor = "#e84118";
+		document.getElementById('st_result').style.borderColor = "#c2b6b6";
+		return 0;
+	}
 	for(var i = firstNumber; i <= secondNumber; i++){
 		var number = i.toString();
 		var lengthNumber = number.length;
@@ -29,35 +55,51 @@ function second_task() {
 			result = result + i;	
 		}
 	}
-	document.getElementById('sec_Id').value = result;
+	document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#c2b6b6";
+	document.getElementsByClassName('st_secondNumber')[0].style.borderColor = "#c2b6b6";
+	document.getElementById('st_result').style.borderColor = "#4cd137";
+	document.getElementById('st_result').value = result;
 }
 
 function third_task(){
-	var firstNumber = document.getElementsByClassName('third_Num')[0].value + "";
+	var container = document.getElementById('tt_list');
+	while (container.firstChild) {
+		container.removeChild(container.firstChild);
+	}
+	var firstNumber = document.getElementsByClassName('tt_firstNumber')[0].value + "";
 	firstNumber = parseInt(firstNumber);
-
+	if(!Number.isInteger(firstNumber)){
+		alert('Введите число в формату 1234567890');
+		document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#e84118";
+		return 0;
+	}
+	if(firstNumber > 500 || firstNumber <= 0){
+		alert("введите число меньше от 1 до 500!!!");
+		document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#e84118";
+		return 0;
+	}
 	var ul = document.createElement("ul");
 	ul.setAttribute('id', 'myUl');
-	document.getElementById("list").appendChild(ul);
-
+	document.getElementById("tt_list").appendChild(ul);
 	for(var i = 1; i <= firstNumber; i++){
 		var li = document.createElement("li");
 		id  = "myLi" + i;
 		li.setAttribute('id', id);
-
 		document.getElementById('myUl').appendChild(li);
-
 		for(var k = 0; k < i; k++){
 			document.getElementById('myLi'+i).innerHTML +='*';
 		}	
 	}
+	document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#4cd137";
 }
 
 function fourth_task(){
-	var firstNumber = document.getElementsByClassName('fourth_Number')[0].value +"";
+	var firstNumber = document.getElementsByClassName('fourT_Number')[0].value +"";
 	firstNumber = parseInt(firstNumber);
 	if(firstNumber <= 0 || !Number.isInteger(firstNumber)){
 		alert('Введите число в формату 1234567890');
+		document.getElementsByClassName('fourT_Number')[0].style.borderColor = "#e84118";
+
 		return 0;
 	}
 	var hour = 0;
@@ -83,32 +125,45 @@ function fourth_task(){
 		alert('seconds ' + seconds);
 		result = hour+' : '+minutes+' : '+seconds;
 		alert(result);
-		document.getElementById('clock').value = result;
+		document.getElementById('fourT_clock').value = result;
+		document.getElementsByClassName('fourT_Number')[0].style.borderColor = "#4cd137";
 }
 
 function fifth_task(){
 	var year = document.getElementsByClassName('fifth_task_year')[0].value + "";
 	year = parseInt(year);
-	if(firstNumber <= 0 || !Number.isInteger(firstNumber)){
+	var result = "";
+	if(year <= 0 || !Number.isInteger(year)){//#e84118
 		alert('Введите число в формату 1234567890');
+		document.getElementsByClassName('fifth_task_year')[0].style.borderColor = "#e84118";
 		return 0;
 	}
 	var number = year.toString();
 	var numberLenght = number.length;
 	if(number[numberLenght -1] == 1){
 		alert(year + "год");
+		result = year + " год";
+		document.getElementById('fiftT_result').value = result;
 	}
 	if(number[numberLenght -1] == 2 || number[numberLenght -1] == 3 || number[numberLenght -1] == 4){
-		if(year >11 && year < 20){
+		if(year >= 11 && year < 20){
 		 	alert(year + " лет");
+		 	result = year + " лет";
+			document.getElementById('fiftT_result').value = result;
 		}
 		else{
 			alert(year + " года");
+			result = year + " года";
+			document.getElementById('fiftT_result').value = result;
 		}
 	}
 	if(number[numberLenght -1] == 0){
 		alert(year + "лет");
+		result = year + " лет";
+		document.getElementById('fiftT_result').value = result;
 	}
+	document.getElementsByClassName('fifth_task_year')[0].style.borderColor = "#c2b6b6";
+	document.getElementById('fiftT_result').style.borderColor = "#4cd137";
 }
 
 function sexth_task(){
@@ -128,8 +183,8 @@ function sexth_task(){
 
 	var firstDate = fMounths +" " + fDate+ ", " + fYear +" "+ fTime;
 	var secondDate = SMounths +" " + SDate + ", " + SYear + " " + STime;
-	alert("firstDate = " + firstDate);
-	alert("secondDate = " + secondDate);
+	console.log("firstDate = " + firstDate);
+	console.log("secondDate = " + secondDate);
 
     var fDataParse = Date.parse(firstDate);
     var sDataParse = Date.parse(secondDate);
@@ -151,7 +206,6 @@ function sexth_task(){
 }
 
 function dateTransform(dataParse){
-
 	var year = 0;
 	var mounths = 0;
 	var day = 0;
@@ -189,7 +243,6 @@ function dateTransform(dataParse){
 		alert('dataParse ' + dataParse);
 	}
 		seconds = dataParse;
-		//alert('seconds ' + seconds);
 		result = year + ' ' + mounths + ' ' + day +' '+ hour+':'+minutes+':'+seconds;
 		console.log(result);
 		result = hour+':'+minutes+':'+seconds;
@@ -199,33 +252,63 @@ function dateTransform(dataParse){
 		document.getElementById('six_task_result_time').value += result;		
 }
 
-
-// 1000 ms 60000 sec 1440000 min 3600000 hour 86400000 day 31536000000 year
-
 function seven_task(){
 	var date = document.getElementsByClassName('seven_task_data')[0].value + "";
-	//alert(date);
-	
-	var t = Date.now();// 1000 ms 60000 sec 1440000 min 3600000 hour 86400000 day 31536000000 year
-	var y = Math.round(t / 86400000);
-
-	var minutes = 1000 * 60;
-	var hours = minutes * 60;
-	var days = hours * 24;
-	var years = days * 365;
-	var t = Date.now();
-	alert("t " + t);
-
-	var y = Math.round(t / days);
-	alert(y);
-
-
+	var arr = date.split('-');
+	var day = parseInt(arr[2]);
+	var mounths = parseInt(arr[1]);
+	if (mounths==1 && day>=20 || mounths==2 && day<=18){  
+		document.getElementById("znak").src="img/водолей.png";
+	}
+	else if (mounths==2 && day>=19 || mounths==3 && day<=20){
+		document.getElementById("znak").src="img/рыбы.png";
+	} 
+	else if (mounths==3 && day>=21 || mounths==4 && day<=19){
+		document.getElementById("znak").src="img/Оввен.png";
+	} 
+	else if (mounths==4 && day>=20 || mounths==5 && day<=20){
+		document.getElementById("znak").src="img/телец.png";
+	}
+	else if (mounths==5 && day>=21 || mounths==6 && day<=21){
+		document.getElementById("znak").src="img/близнецы.png";
+	}
+	else if (mounths==6 && day>=22 || mounths==7 && day<=22){
+		document.getElementById("znak").src="img/рак.png";
+	}
+	else if (mounths==7 && day>=23 || mounths==8 && day<=22){
+		document.getElementById("znak").src="img/Лев.png";
+	}
+	else if (mounths==8 && day>=23 || mounths==9 && day<=22){
+		document.getElementById("znak").src="img/дева.png";
+	}
+	else if (mounths==9 && day>=23 || mounths==10 && day<=22){
+		document.getElementById("znak").src="img/весы.png";
+	}
+	else if (mounths==10 && day>=23 || mounths==11 && day<=21){
+		document.getElementById("znak").src="img/скорпион.png";
+	}
+	else if (mounths==11 && day>=22 || mounths==12 && day<=21){
+		document.getElementById("znak").src="img/стрелец.png";
+	}
+	else if (mounths==12 && day>=22 || mounths==1 && day<=19){
+		document.getElementById("znak").src="img/козерог.png";
+	} 
 }
 
 function eight_tast(){
+
 	var getValue = document.getElementsByClassName('eight_task_getValue')[0].value + "";
 	getValue = parseInt(getValue);
-	
+
+	if(getValue > 50 || getValue <= 4){
+		alert("введите число меньше от 4 до 50!!!");
+		document.getElementsByClassName('eight_task_getValue')[0].style.borderColor = "#e84118";
+		return 0;
+	}
+	var container = document.getElementById('eight_task_div');
+	while (container.firstChild) {
+		container.removeChild(container.firstChild);
+	}
 	for(var i = 1; i <= getValue; i++){		
 		var ul = document.createElement("ul");
 		document.getElementById("eight_task_div").appendChild(ul);
@@ -246,6 +329,7 @@ function eight_tast(){
 			}
 		}	
 	}
+	document.getElementsByClassName('eight_task_getValue')[0].style.borderColor = "#4cd137";
 }
 
 function nine_task(){
@@ -263,10 +347,18 @@ function nine_task(){
 	flats = parseInt(flats);
 	numberOfFloors = parseInt(numberOfFloors);
 	apartmentNumber = parseInt(apartmentNumber);
+	if(!Number.isInteger(under) || !Number.isInteger(flats) ||!Number.isInteger(numberOfFloors) || !Number.isInteger(apartmentNumber)){
+		alert('Введите число в формату 1234567890');
+		document.getElementsByClassName('under')[0].style.borderColor = "#e84118";
+		document.getElementsByClassName('flats')[0].style.borderColor = "#e84118";
+		document.getElementsByClassName('numberOfFloors')[0].style.borderColor = "#e84118";
+		return 0;
+	}
 	numberOfFlats = under * flats * numberOfFloors;
 	alert(numberOfFlats);
 
-	if(apartmentNumber > numberOfFlats){
+
+	if(apartmentNumber > numberOfFlats || apartmentNumber <= 0 ||!Number.isInteger(apartmentNumber)){
 		alert("такой квартиры не существует");
 		return 0;
 	}
@@ -279,35 +371,47 @@ function nine_task(){
 			countFlors -= numberOfFloors;
 		}
 	}
-	result = 'подьездн № ' + countUnder + ' этаж № ' + countUnder;
+	result = 'подьездн № ' + countUnder + ' этаж № ' + countFlors;
 	alert(result);
 	document.getElementById('nine_task_result').value = result;
+
+	document.getElementsByClassName('under')[0].style.borderColor = "#c2b6b6";
+	document.getElementsByClassName('flats')[0].style.borderColor = "#c2b6b6";
+	document.getElementsByClassName('numberOfFloors')[0].style.borderColor = "#c2b6b6";
+	document.getElementById('nine_task_result').style.borderColor = "#4cd137";
 }
 
 function ten_task(){
 	var ten_task_number = document.getElementsByClassName('ten_getNumber')[0].value + "";
+	var check = 0;
 	var lenghtNumber = ten_task_number.length;
 	var result = 0;
+	var check = parseInt(ten_task_number);
+	if(!Number.isInteger(check)){
+		alert("вводите только цыфры!");
+		document.getElementsByClassName('ten_getNumber')[0].style.borderColor = "#e84118";
+		return 0;
+	}
 	for(var i = 1; i <= lenghtNumber;i++){
 		var temp = parseInt(ten_task_number[i-1]);
 		result += temp;
 	}
 	document.getElementById('ten_result').value = result;
-	alert(result);
+	document.getElementsByClassName('ten_getNumber')[0].style.borderColor = "#c2b6b6";
+	document.getElementById('ten_result').style.borderColor = "#4cd137";
 }
 
 function eleven_task(){
+	
+	var clear = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
+	clear.value = "";
 	var a = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
 	var check = a.replace(/https\:\/\//gi,'');
 	var check = check.replace(/http\:\/\//gi,'');
-	//alert(check); 
 	var arr = check.split(', ');
-	//alert(arr); 
-	for(var i = 0; i < arr.length; i++){
-		alert(arr[i]);
-	}
+	//for(var i = 0; i < arr.length; i++){
+	//	alert(arr[i]);
+	//}
 	arr.sort();
-	//alert(arr);
-	document.getElementById('eleven_task_textarea_rezult').innerHTML += arr;
-
+	document.getElementById('eleven_task_textarea_rezult').innerHTML = arr + "\n\r";
 }

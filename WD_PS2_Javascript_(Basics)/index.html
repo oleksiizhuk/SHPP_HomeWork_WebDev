@@ -16,51 +16,59 @@
 
 	<main>
 		<div class="container">
+			
+			<!-- -->
 			<div class="first_task">
-				<h2>First task</h2>
+				<h2 class="first-h2">First task + </h2>
 				<p>1) посчитать сумму чисел от -1000 до 1000</p>
-				<input type="text" placeholder="Первое число" class="firstNumber">
-				<input type="text" placeholder="Второе число" class="secondNumber">
-				<input type="text" placeholder="Результат (read only)" id="result" readonly>
+				<input type="text" placeholder="Первое число" class="ft_firstNumber">
+				<input type="text" placeholder="Второе число" class="ft_secondNumber">
+				<input type="text" placeholder="Результат (read only)" id="ft_result" readonly>
 				<button onclick="first_task()">Кнопка</button>	
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="second_task">
-				<h2>second task</h2>
+				<h2>second task + </h2>
 				<p>2) посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
-				<input type="text" class="sec_First_Num" placeholder="первое число">
-				<input type="text" class="sec_Second_Num" placeholder="второе число ">
-				<input type="text" id="sec_Id" placeholder="результат" readonly>
+				<input type="text" class="st_firstNumber" placeholder="первое число">
+				<input type="text" class="st_secondNumber" placeholder="второе число ">
+				<input type="text" id="st_result" placeholder="результат" readonly>
 				<button onclick="second_task()">кнопка</button>
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="third_task">
-				<h2>third_task</h2>
+				<h2>third_task +</h2>
 				<p>3) вывести на страницу список из 50 элементов вида</p>
-				<input type="text" placeholder="введите число" class="third_Num" placeholder="введите число">
+				<input type="text" placeholder="введите число" class="tt_firstNumber" placeholder="введите число" max="200">
 				<button onclick="third_task()">Кнопка</button>
-				<div id="list">
+				<div id="tt_list">
 				</div>
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="fourth_task">
 				<h2>fourth_task</h2>
 				<p>4) Пользователь вводит время в секундах. Вывести в формате: hh:mm:ss (01:05:20)</p>
-				<input type="text" class="fourth_Number" placeholder="Введите число">
-				<input type="text" id="clock" placeholder="результат" readonly>
+				<input type="text" class="fourT_Number" placeholder="Введите число">
+				<input type="text" id="fourT_clock" placeholder="результат" readonly>
 				<button onclick="fourth_task()">кнопка</button>
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="fifth_task">
 				<h2>fifth_task</h2>
 				<p>5) Для указанного возраста студента вывести фразу вида "22 года" ( 1 год, 20 лет....)</p>
 				<input type="text" class="fifth_task_year" placeholder="22">
+				<input type="text" id="fiftT_result" readonly>
 				<button onclick="fifth_task()">Кнопка</button>
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="sixth_task">
@@ -115,15 +123,17 @@
 
 				<button onclick="sexth_task()">Кнопка</button>
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="seven_task">
 				<h2>seven_task</h2>
 				<p>Пользователь вводит дату в формате 2014-12-31, а получает знак зодиака в этот день (с картинкой).</p>
+				<img src="" alt="" id="znak">
 				<input type="date" class="seven_task_data">
 				<button onclick="seven_task()">Кнопка</button>
-				<img src="" alt="">
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="eight_task">
@@ -135,6 +145,7 @@
 					
 				</div>
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="nine_task">
@@ -147,6 +158,7 @@
 				<input type="text" placeholder="результат" id="nine_task_result">
 				<button onclick="nine_task()">кнопка</button>
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="ten_task">
@@ -155,6 +167,7 @@
 					<input type="text" id="ten_result">
 				<button onclick="ten_task()">Кнопка</button>
 			</div>
+			<hr> 
 
 			<!-- -->
 			<div class="eleven_task">
@@ -163,10 +176,10 @@
 				<textarea name="" class="eleven_task_textarea" cols="30" rows="10" onchange="eleven_task()"></textarea>
 				<textarea name="" id="eleven_task_textarea_rezult" cols="30" rows="10"></textarea>
 				<h3>сылки для теста</h3>
-				<p>https://photos.google.com, https://www.youtube.com, https://www.twitch.tv, https://www.facebook.com/</p>
+				<p class="last-p">https://photos.google.com, https://www.youtube.com, https://www.twitch.tv, https://www.facebook.com/</p>
 			</div>
+
 			<!-- -->
-		
 		</div>	
 	</main>
 
