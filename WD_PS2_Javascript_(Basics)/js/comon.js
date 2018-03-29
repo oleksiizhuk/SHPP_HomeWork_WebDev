@@ -382,36 +382,39 @@ function nine_task(){
 }
 
 function ten_task(){
-	var ten_task_number = document.getElementsByClassName('ten_getNumber')[0].value + "";
-	var check = 0;
-	var lenghtNumber = ten_task_number.length;
-	var result = 0;
-	var check = parseInt(ten_task_number);
+	let ten_task_number = document.getElementsByClassName('ten_getNumber')[0].value + "";
+	let arr = ten_task_number.split('');
+	let check = 0;
+	let lenghtNumber = ten_task_number.length;
+	check = parseInt(ten_task_number);
 	if(!Number.isInteger(check)){
 		alert("вводите только цыфры!");
 		document.getElementsByClassName('ten_getNumber')[0].style.borderColor = "#e84118";
 		return 0;
 	}
-	for(var i = 1; i <= lenghtNumber;i++){
-		var temp = parseInt(ten_task_number[i-1]);
-		result += temp;
-	}
-	document.getElementById('ten_result').value = result;
+	let ress = 0;
+	 ress = arr.reduce(function(acc, item){
+		return acc + item * 1;
+	}, 0);
+	document.getElementById('ten_result').value = ress;
 	document.getElementsByClassName('ten_getNumber')[0].style.borderColor = "#c2b6b6";
 	document.getElementById('ten_result').style.borderColor = "#4cd137";
 }
 
 function eleven_task(){
-	
 	var clear = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
-	clear.value = "";
+	clear.innerHTML = "";
 	var a = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
-	var check = a.replace(/https\:\/\//gi,'');
-	var check = check.replace(/http\:\/\//gi,'');
+	var check = a.replace(/https?\:\/\//gi,'');
 	var arr = check.split(', ');
-	//for(var i = 0; i < arr.length; i++){
-	//	alert(arr[i]);
-	//}
 	arr.sort();
-	document.getElementById('eleven_task_textarea_rezult').innerHTML = arr + "\n\r";
+	document.getElementById('eleven_task_textarea_rezult').innerHTML = arr.join('\n');
+}
+
+function test(){
+	let arr = ["1","1","1","1"];
+	let ress = arr.reduce(function(acc, item){
+		return acc + item*1;
+	}, 0);
+	alert(ress);
 }
