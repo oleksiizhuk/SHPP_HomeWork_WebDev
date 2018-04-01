@@ -119,11 +119,16 @@ main .rightMenu {
         background-color: #2ecc71;
         border-right: 5px solid #e74c3c; }
 
-footer .container {
-  height: 30px;
-  background-color: #95a5a6; }
-footer p {
-  margin: 0 auto;
-  text-align: center; }
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; }
+  footer .container {
+    height: 30px;
+    background-color: #95a5a6; }
+  footer p {
+    margin: 0 auto;
+    text-align: center; }
 
 /*# sourceMappingURL=main.css.map */

@@ -8,18 +8,18 @@ function first_task() {
 		document.getElementsByClassName('ft_firstNumber')[0].style.borderColor = "#e84118";
 		document.getElementsByClassName('ft_secondNumber')[0].style.borderColor = "#e84118";
 		document.getElementById('ft_result').style.borderColor = "#c2b6b6";
-		return 0;
+		return;
 	}
 	if(!Number.isInteger(firstNumber) || !Number.isInteger(secondNumber)){
 		alert('Введите число в формату 1234567890');
 		document.getElementsByClassName('ft_firstNumber')[0].style.borderColor = "#e84118";
 		document.getElementsByClassName('ft_secondNumber')[0].style.borderColor = "#e84118";
 		document.getElementById('ft_result').style.borderColor = "#c2b6b6";
-		return 0;
+		return;
 	}
 	var result = 0;
 	for(var i = firstNumber; i <= secondNumber;i++){
-		result = result + i;
+		result += i;
 	}
 	document.getElementsByClassName('ft_firstNumber')[0].style.borderColor = "#c2b6b6";
 	document.getElementsByClassName('ft_secondNumber')[0].style.borderColor = "#c2b6b6";
@@ -38,21 +38,21 @@ function second_task() {
 		document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#e84118";
 		document.getElementsByClassName('st_secondNumber')[0].style.borderColor = "#e84118";
 		document.getElementById('st_result').style.borderColor = "#c2b6b6";
-		return 0;
+		return;
 	}
 	if(!Number.isInteger(firstNumber) || !Number.isInteger(secondNumber)){
 		alert('Введите число в формату 1234567890');
 		document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#e84118";
 		document.getElementsByClassName('st_secondNumber')[0].style.borderColor = "#e84118";
 		document.getElementById('st_result').style.borderColor = "#c2b6b6";
-		return 0;
+		return;
 	}
 	for(var i = firstNumber; i <= secondNumber; i++){
 		var number = i.toString();
 		var lengthNumber = number.length;
 
 		if(number[lengthNumber-1] == "2" || number[lengthNumber-1] == 3 || number[lengthNumber-1]==7){
-			result = result + i;	
+			result += i;	
 		}
 	}
 	document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#c2b6b6";
@@ -71,12 +71,12 @@ function third_task(){
 	if(!Number.isInteger(firstNumber)){
 		alert('Введите число в формату 1234567890');
 		document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#e84118";
-		return 0;
+		return;
 	}
 	if(firstNumber > 500 || firstNumber <= 0){
 		alert("введите число меньше от 1 до 500!!!");
 		document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#e84118";
-		return 0;
+		return;
 	}
 	var ul = document.createElement("ul");
 	ul.setAttribute('id', 'myUl');
@@ -100,7 +100,7 @@ function fourth_task(){
 		alert('Введите число в формату 1234567890');
 		document.getElementsByClassName('fourT_Number')[0].style.borderColor = "#e84118";
 
-		return 0;
+		return;
 	}
 	var hour = 0;
 	var minutes = 0;
@@ -136,7 +136,7 @@ function fifth_task(){
 	if(year <= 0 || !Number.isInteger(year)){//#e84118
 		alert('Введите число в формату 1234567890');
 		document.getElementsByClassName('fifth_task_year')[0].style.borderColor = "#e84118";
-		return 0;
+		return;
 	}
 	var number = year.toString();
 	var numberLenght = number.length;
@@ -303,7 +303,7 @@ function eight_tast(){
 	if(getValue > 50 || getValue <= 4){
 		alert("введите число меньше от 4 до 50!!!");
 		document.getElementsByClassName('eight_task_getValue')[0].style.borderColor = "#e84118";
-		return 0;
+		return;
 	}
 	var container = document.getElementById('eight_task_div');
 	while (container.firstChild) {
@@ -352,7 +352,7 @@ function nine_task(){
 		document.getElementsByClassName('under')[0].style.borderColor = "#e84118";
 		document.getElementsByClassName('flats')[0].style.borderColor = "#e84118";
 		document.getElementsByClassName('numberOfFloors')[0].style.borderColor = "#e84118";
-		return 0;
+		return;
 	}
 	numberOfFlats = under * flats * numberOfFloors;
 	alert(numberOfFlats);
@@ -360,7 +360,7 @@ function nine_task(){
 
 	if(apartmentNumber > numberOfFlats || apartmentNumber <= 0 ||!Number.isInteger(apartmentNumber)){
 		alert("такой квартиры не существует");
-		return 0;
+		return;
 	}
 	for (var i = 1; i < apartmentNumber;i++){
 		if(i % flats == 0){
@@ -390,7 +390,7 @@ function ten_task(){
 	if(!Number.isInteger(check)){
 		alert("вводите только цыфры!");
 		document.getElementsByClassName('ten_getNumber')[0].style.borderColor = "#e84118";
-		return 0;
+		return;
 	}
 	let ress = 0;
 	 ress = arr.reduce(function(acc, item){
