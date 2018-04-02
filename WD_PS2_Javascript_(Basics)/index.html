@@ -72,65 +72,21 @@
 
 			<!-- -->
 			<div class="sixth_task">
-				<h2>sixth_task - </h2>
+				<h2>sixth_task + </h2>
 				<div class="months_number_time_first">
 					<p>Пользователь вводит две даты (в формате "October 13, 2014 11:13:00"). Вычислить промежуток времени прошедший между датами и получить массив, в котором будут года (365 дней), месяца (30 дней), дни, часы, минуты, секунды.
 
 Вывести пользователю (например): между датами прошло 2 года, 1 месяц, 3 дня, 5 часов, 10 минут, 15 секунд</p>
-					<input type="number" placeholder="change year" class="fYear" min="1970" value="1970">
-					<input list="months" placeholder="change months" class="fMounths" value="">
-						<datalist id="months">
-							<option value="January">
-							<option value="February">
-							<option value="March">
-							<option value="April">
-							<option value="May">
-							<option value="June">
-							<option value="July">
-							<option value="August">
-							<option value="September">
-							<option value="October">
-							<option value="November">
-							<option value="December">
-	 				 	</datalist> 
-	 				 <input type="number" placeholder="change date" min="1" max="31" class="fDate" value="01">
-					<input type="text" placeholder="23:59:59" class="fTime" value="02:00:00">
-				</div>
-
-				<div class="months_number_time_second">
-					<input type="text" placeholder="change year" min="1970" max="999" class="sYear" value="1970">
-					<input list="months" placeholder="change months" class="sMounths">
-						<datalist id="months">
-							<option value="January">
-							<option value="February">
-							<option value="March">
-							<option value="April">
-							<option value="May">
-							<option value="June">
-							<option value="July">
-							<option value="August">
-							<option value="September">
-							<option value="October">
-							<option value="November">
-							<option value="December">
-	 				 	</datalist>
-	 				 <input type="number" placeholder="change date" min="1" max="31" class="sDate" value="01">
-					<input type="text" placeholder="23:59:59" class="sTime" value="02:00:00">
-				</div>
-				<div class="six_task_result">
-					<input type="text" id="six_task_result_year">
-					<input type="text" id="six_task_result_mounths">
-					<input type="text" id="six_task_result_day">
-					<input type="text" id="six_task_result_time">
-				</div>
-
+					<input type="text" placeholder="введите первую дату" class="sixTaskFirstNumber">
+					<input type="text" placeholder="Введите вторую дату" class="sixTaskSecondNumber">
+					<p id="sixTaskResultP"></p>
 				<button onclick="sexth_task()">Кнопка</button>
 			</div>
 			<hr> 
 
 			<!-- -->
 			<div class="seven_task">
-				<h2>seven_task</h2>
+				<h2>seven_task +</h2>
 				<p>Пользователь вводит дату в формате 2014-12-31, а получает знак зодиака в этот день (с картинкой).</p>
 				<img src="" alt="" id="znak">
 				<input type="text" class="seven_task_data">

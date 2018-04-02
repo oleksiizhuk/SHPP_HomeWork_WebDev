@@ -159,32 +159,15 @@ function fifth_task(){
 }
 
 function sexth_task(){
-	// сделать ввод в одном формате 
-	var fYear =  document.getElementsByClassName('fYear')[0].value + "";
-	var fMounths = document.getElementsByClassName('fMounths')[0].value + "";
-	var fDate = document.getElementsByClassName('fDate')[0].value + "";
-	var fTime = document.getElementsByClassName('fTime')[0].value + "";
-	
-	var SYear =  document.getElementsByClassName('sYear')[0].value + "";
-	var SMounths = document.getElementsByClassName('sMounths')[0].value + "";
-	var SDate = document.getElementsByClassName('sDate')[0].value + "";
-	var STime = document.getElementsByClassName('sTime')[0].value + "";
 
+	let firstNumber = document.getElementsByClassName('sixTaskFirstNumber')[0].value + "";
+	let secondNumber = document.getElementsByClassName('sixTaskSecondNumber')[0].value + "";
 
-	var firstDate = fMounths +" " + fDate+ ", " + fYear +" "+ fTime;
-	var secondDate = SMounths +" " + SDate + ", " + SYear + " " + STime;
-	console.log("firstDate = " + firstDate);
-	console.log("secondDate = " + secondDate);
-
-    var fDataParse = Date.parse(firstDate);
-    var sDataParse = Date.parse(secondDate);
-    var sec = 1000;
+    let fDataParse = Date.parse(firstNumber);
+    let sDataParse = Date.parse(secondNumber);
+    let sec = 1000;
     fDataParse = fDataParse / sec;
     sDataParse = sDataParse / sec;
-
-    console.log(fDataParse);
-    console.log(sDataParse);
-
     if(fDataParse >= sDataParse){
     	fDataParse-= sDataParse;
     	dateTransform(fDataParse);
@@ -196,13 +179,13 @@ function sexth_task(){
 }
 
 function dateTransform(dataParse){
-	var year = 0;
-	var mounths = 0;
-	var day = 0;
-	var hour = 0;
-	var minutes = 0;
-	var seconds = 0;
-	var time = "";
+	let year = 0;
+	let mounths = 0;
+	let day = 0;
+	let hour = 0;
+	let minutes = 0;
+	let seconds = 0;
+	let time = "";
 	if(dataParse >= 31536000){
 		year = dataParse / 31536000;
 		year = Math.trunc(year);
@@ -218,28 +201,23 @@ function dateTransform(dataParse){
 		day = Math.trunc(day);
 		dataParse = dataParse - (86400 * day);
 	}
-	if(dataParse >= 3600){
+	if(dataParse >= 3600){ // hour
 		hour = dataParse / 3600;
 		hour =  Math.trunc(hour);
 		dataParse = dataParse - (3600 * hour);
-		alert('hour '+ hour);
-		alert('dataParse '+ dataParse);
 	}
-	if(dataParse >= 60){
+	if(dataParse >= 60){ // min
 		minutes = dataParse / 60
 		minutes =  Math.trunc(minutes);
 		dataParse = dataParse - (60 * minutes);
-		alert('minutes ' + minutes);
-		alert('dataParse ' + dataParse);
 	}
 		seconds = dataParse;
-		result = year + ' ' + mounths + ' ' + day +' '+ hour+':'+minutes+':'+seconds;
+		result = year + ' года, ' + mounths + ' месяц, ' + day +' дней, '+ hour+
+		' часов, '+minutes+' минут, '+seconds + " секунд";
 		console.log(result);
-		result = hour+':'+minutes+':'+seconds;
-		document.getElementById('six_task_result_year').value += year;
-		document.getElementById('six_task_result_mounths').value += mounths;
-		document.getElementById('six_task_result_day').value += day;
-		document.getElementById('six_task_result_time').value += result;		
+		document.getElementById("sixTaskResultP").innerText = result;
+		//result = hour+':'+minutes+':'+seconds;	
+
 }
 
 function seven_task(){
