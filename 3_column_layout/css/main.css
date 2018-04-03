@@ -10,28 +10,30 @@ body {
   padding: 0;
   margin: 0; }
 
-header .container {
-  background-color: #f1c40f;
-  text-align: center;
-  padding: 20px;
-  margin: 0; }
-header h1 {
-  margin-top: 0px; }
-header p {
-  margin-bottom: 0; }
+header {
+  min-height: 110px;
+  background-color: #f1c40f; }
+  header .container {
+    text-align: center;
+    padding: 20px;
+    margin: 0; }
+  header h1 {
+    margin-top: 0px; }
+  header p {
+    margin-bottom: 0; }
 
 main .container {
   display: flex;
-  height: 100%;
-  min-height: 100vh; }
+  height: 70%;
+  align-items: stretch; }
 main .content {
   background-color: #3498db;
   padding: 15px;
   text-align: center;
-  width: 100%;
-  min-height: 100vh;
-  height: 100%; }
-  main .content .firstForm .button {
+  width: 100%; }
+main .bl {
+  min-height: calc(100vh - 180px); }
+  main .bl .firstForm .button {
     background-color: #8e44ad;
     padding: 10px;
     margin: 10px;
@@ -45,29 +47,29 @@ main .content {
     -moz-transition: all 0.8s ease;
     transition: all 0.8s ease;
     cursor: pointer; }
-    main .content .firstForm .button:hover {
+    main .bl .firstForm .button:hover {
       border-left: 4px solid #eccc68;
       border-right: 4px solid #ff7f50;
       border-bottom: 4px solid green;
       border-top: 4px solid #F8EFBA; }
-  main .content .secondForm {
+  main .bl .secondForm {
     border: 1px solid #fff;
     display: inline-block;
     background-color: #eee;
     width: 250px;
     height: 170px;
     text-align: center; }
-    main .content .secondForm .logPass {
+    main .bl .secondForm .logPass {
       background-color: #fff;
       padding: 10px;
       margin-top: 10px; }
-    main .content .secondForm .resSub {
+    main .bl .secondForm .resSub {
       background-color: #62c987;
       border: 0;
       padding: 10px;
       margin-top: 10px;
       border-radius: 8px; }
-  main .content .similarForm {
+  main .bl .similarForm {
     margin: 20px auto 0;
     border: 2px solid #eee;
     width: 200px;
@@ -120,13 +122,11 @@ main .rightMenu {
         border-right: 5px solid #e74c3c; }
 
 footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%; }
+  width: 100%;
+  min-height: 40px;
+  background-color: #95a5a6; }
   footer .container {
-    height: 30px;
-    background-color: #95a5a6; }
+    height: 30px; }
   footer p {
     margin: 0 auto;
     text-align: center; }

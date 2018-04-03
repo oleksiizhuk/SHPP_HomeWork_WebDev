@@ -12,9 +12,10 @@ body
 	margin: 0
 
 
-header	
+header
+	min-height: 110px
+	background-color: #f1c40f
 	.container
-		background-color: #f1c40f
 		text-align: center
 		padding: 20px
 		margin: 0
@@ -23,19 +24,20 @@ header
 	p
 		margin-bottom: 0
 
+
+
 main	
 	.container
 		display: flex
-		height: 100%
-		min-height: 100vh
+		height: 70%
+		align-items: stretch
 	.content
 		background-color: #3498db
 		padding: 15px
 		text-align: center
 		width: 100%
-		min-height: 100vh
-
-		height: 100%
+	.bl
+		min-height: calc(100vh - 180px)
 		.firstForm
 			.button
 				background-color: #8e44ad
@@ -122,13 +124,11 @@ main
 					border-right: 5px solid #e74c3c
 
 footer
-	position: fixed
-	left: 0
-	bottom: 0
 	width: 100%
+	min-height: 40px
+	background-color: #95a5a6
 	.container
 		height: 30px
-		background-color: #95a5a6
 	p
 		margin: 0 auto
 		text-align: center
