@@ -22,19 +22,19 @@ function first_task() {
 		counter = secondNumber;
 		end = firstNumber;
 	}
-	for(var i = counter; i <= end;i++){
+	for(let i = counter; i <= end;i++){
 		result += i;
 	}
 	document.getElementsByClassName('ft_firstNumber')[0].style.borderColor = standardColor;
 	document.getElementsByClassName('ft_secondNumber')[0].style.borderColor = standardColor;
 	document.getElementById('ft_result').style.borderColor = greenColor;
-	document.getElementById('ft_result').value = result;
+	document.getElementById('ft_result').innerText = result;
 }
 
 function second_task() {
-	var firstNumber = +document.getElementsByClassName('st_firstNumber')[0].value;
-	var secondNumber = +document.getElementsByClassName('st_secondNumber')[0].value;
-	var result = 0;
+	let firstNumber = +document.getElementsByClassName('st_firstNumber')[0].value;
+	let secondNumber = +document.getElementsByClassName('st_secondNumber')[0].value;
+	let result = 0;
 	if(firstNumber > secondNumber){
 		alert("первое число должно быть меньше второго");
 		document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#e84118";
@@ -49,8 +49,8 @@ function second_task() {
 		document.getElementById('st_result').style.borderColor = "#c2b6b6";
 		return;
 	}
-	for(var i = firstNumber; i <= secondNumber; i++){
-		var check = Math.abs(i);
+	for(let i = firstNumber; i <= secondNumber; i++){
+		let check = Math.abs(i);
 		if(check % 10 == 2 || check % 10 == 3 || check % 10 == 7){
 			result += i;
 		}
@@ -58,15 +58,15 @@ function second_task() {
 	document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#c2b6b6";
 	document.getElementsByClassName('st_secondNumber')[0].style.borderColor = "#c2b6b6";
 	document.getElementById('st_result').style.borderColor = "#4cd137";
-	document.getElementById('st_result').value = result;
+	document.getElementById('st_result').innerText = result;
 }
 
 function third_task(){
-	var container = document.getElementById('tt_list');
+	let container = document.getElementById('tt_list');
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
-	var firstNumber = document.getElementsByClassName('tt_firstNumber')[0].value + "";
+	let firstNumber = document.getElementsByClassName('tt_firstNumber')[0].value + "";
 	firstNumber = parseInt(firstNumber);
 	if(!Number.isInteger(firstNumber)){
 		alert('Введите число в формату 1234567890');
@@ -78,32 +78,32 @@ function third_task(){
 		document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#e84118";
 		return;
 	}
-	var ul = document.createElement("ul");
+	let ul = document.createElement("ul");
 	ul.setAttribute('id', 'myUl');
 	document.getElementById("tt_list").appendChild(ul);
-	for(var i = 1; i <= firstNumber; i++){
-		var li = document.createElement("li"); // 
+	for(let i = 1; i <= firstNumber; i++){
+		let li = document.createElement("li"); 
 		id  = "myLi" + i;
 		li.setAttribute('id', id);
 		ul.appendChild(li);
-		for(var k = 0; k < i; k++){
-			document.getElementById('myLi'+i).innerText +='*'; // засунуть сразу все 
+		for(let k = 0; k < i; k++){
+			document.getElementById('myLi'+i).innerText +='*';
 		}	
 	}
 	document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#4cd137";
 }
 
 function fourth_task(){
-	var firstNumber = +document.getElementsByClassName('fourT_Number')[0].value;
+	let firstNumber = +document.getElementsByClassName('fourT_Number')[0].value;
 	if(firstNumber <= 0 || !Number.isInteger(firstNumber)){
 		alert('Введите число в формату 1234567890');
 		document.getElementsByClassName('fourT_Number')[0].style.borderColor = "#e84118";
 		return;
 	}
-	var hour = 0;
-	var minutes = 0;
-	var seconds = 0;
-	var result = 0;
+	let hour = 0;
+	let minutes = 0;
+	let seconds = 0;
+	let result = 0;
 
 	if(firstNumber >= 3600){
 		hour = firstNumber / 3600;
@@ -122,15 +122,15 @@ function fourth_task(){
 }
 
 function fifth_task(){
-	var year = +document.getElementsByClassName('fifth_task_year')[0].value;
-	var result = "";
+	let year = +document.getElementsByClassName('fifth_task_year')[0].value;
+	let result = "";
 	if(year <= 0 || !Number.isInteger(year)){
 		alert('Введите число в формату 1234567890');
 		document.getElementsByClassName('fifth_task_year')[0].style.borderColor = "#e84118";
 		return;
 	}
-	var number = year.toString();
-	var numberLenght = number.length;
+	let number = year.toString();
+	let numberLenght = number.length;
 	if(number[numberLenght -1] == 1){
 		if(number[numberLenght - 2] == 1){
 			result = year + " лет";
@@ -214,19 +214,16 @@ function dateTransform(dataParse){
 		seconds = dataParse;
 		result = year + ' года, ' + mounths + ' месяц, ' + day +' дней, '+ hour+
 		' часов, '+minutes+' минут, '+seconds + " секунд";
-		console.log(result);
 		document.getElementById("sixTaskResultP").innerText = result;
-		//result = hour+':'+minutes+':'+seconds;	
-
 }
 
 function seven_task(){
-	var date = document.getElementsByClassName('seven_task_data')[0].value + "";
+	let date = document.getElementsByClassName('seven_task_data')[0].value + "";
 
-	var d = new Date(date);
-    var day = d.getDate();
-    var m = new Date(date);
-    var mounths = m.getMonth() + 1;
+	let d = new Date(date);
+    let day = d.getDate();
+    let m = new Date(date);
+    let mounths = m.getMonth() + 1;
     if(m == "Invalid Date"){
     	alert("неверный формат ввода");
     	return;
@@ -270,51 +267,43 @@ function seven_task(){
 }
 
 function eight_tast(){
-    //формат 3х12
-	var getValue = document.getElementsByClassName('eight_task_getValue')[0].value + "";
-	getValue = parseInt(getValue);
+	let getValue = document.getElementsByClassName('eight_task_getValue')[0].value + "";
+	let heightWidth = getValue.split('x');
 
-	if(getValue > 50 || getValue <= 4){
-		alert("введите число меньше от 4 до 50!!!");
+	if(heightWidth[0] > 50 || heightWidth[0] <= 1 || heightWidth[1] > 50 || heightWidth[1] <= 1 ){
+		alert("введите число меньше от 2 до 50!!!");
 		document.getElementsByClassName('eight_task_getValue')[0].style.borderColor = "#e84118";
 		return;
 	}
-	var container = document.getElementById('eight_task_div');
+	let container = document.getElementById('eight_task_div');
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
-	for(var i = 1; i <= getValue; i++){		
-		var ul = document.createElement("ul");
+	for(let i = 1; i <= heightWidth[0]; i++){		
+		let ul = document.createElement("ul");
 		document.getElementById("eight_task_div").appendChild(ul);
-		var attrUl = 'E_Ul' + i;
+		let attrUl = 'E_Ul' + i;
 		ul.setAttribute('id', attrUl);
 
-		for(var k = 1; k <= getValue; k++){
-			if(k == getValue){
-				var li = document.createElement("li");
-				var attr  = "last_li";
-				li.setAttribute('class', attr);
-				document.getElementById(attrUl).appendChild(li);
-			}else{
-				var li = document.createElement("li");
-				var attr  = "myLi" + k;
-				li.setAttribute('class', attr);
-				document.getElementById(attrUl).appendChild(li);
-			}
+		for(let k = 1; k <= heightWidth[1]; k++){
+			let li = document.createElement("li");
+			let attr  = "last_li";
+			li.setAttribute('class', attr);
+			document.getElementById(attrUl).appendChild(li);
 		}	
 	}
 	document.getElementsByClassName('eight_task_getValue')[0].style.borderColor = "#4cd137";
 }
 
 function nine_task(){
-	var under = +document.getElementsByClassName('under')[0].value;
-	var flats = +document.getElementsByClassName('flats')[0].value;
-	var numberOfFloors = +document.getElementsByClassName('numberOfFloors')[0].value;
-	var apartmentNumber = +document.getElementsByClassName('apartmentNumber')[0].value;
-	var result = "";
-	var numberOfFlats = 0;
-	var countUnder = 1;
-	var countFlors = 1;
+	let under = +document.getElementsByClassName('under')[0].value;
+	let flats = +document.getElementsByClassName('flats')[0].value;
+	let numberOfFloors = +document.getElementsByClassName('numberOfFloors')[0].value;
+	let apartmentNumber = +document.getElementsByClassName('apartmentNumber')[0].value;
+	let result = "";
+	let numberOfFlats = 0;
+	let countUnder = 1;
+	let countFlors = 1;
 
 	if(!Number.isInteger(under) || !Number.isInteger(flats) ||!Number.isInteger(numberOfFloors) || !Number.isInteger(apartmentNumber)){
 		alert('Введите число в формату 1234567890');
@@ -329,7 +318,7 @@ function nine_task(){
 		alert("такой квартиры не существует");
 		return;
 	}
-	for (var i = 1; i < apartmentNumber;i++){
+	for (let i = 1; i < apartmentNumber;i++){
 		if(i % flats == 0){
 			countFlors++;
 		}
@@ -339,13 +328,12 @@ function nine_task(){
 		}
 	}
 	result = 'подьездн № ' + countUnder + ' этаж № ' + countFlors;
-	alert(result);
-	document.getElementById('nine_task_result').value = result;
+	document.getElementById('nine_task_results').innerText = result;
 
 	document.getElementsByClassName('under')[0].style.borderColor = "#c2b6b6";
 	document.getElementsByClassName('flats')[0].style.borderColor = "#c2b6b6";
 	document.getElementsByClassName('numberOfFloors')[0].style.borderColor = "#c2b6b6";
-	document.getElementById('nine_task_result').style.borderColor = "#4cd137";
+	document.getElementById('nine_task_results').style.borderColor = "#4cd137";
 }
 
 function ten_task(){ 
@@ -363,18 +351,22 @@ function ten_task(){
 	 ress = arr.reduce(function(acc, item){
 		return acc + item * 1;
 	}, 0);
-	document.getElementById('ten_result').value = ress;
+	document.getElementById('ten_result').innerText = ress;
 	document.getElementsByClassName('ten_getNumber')[0].style.borderColor = "#c2b6b6";
 	document.getElementById('ten_result').style.borderColor = "#4cd137";
 }
 
 function eleven_task(){
-	var clear = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
+	let clear = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
 	clear.innerText = "";
-	var a = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
-	var check = a.replace(/https?\:\/\//gi,'');
-	var arr = check.split(',');
+	let a = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
+	let check = a.replace(/https?\:\/\//gi,'');
+	let arr = check.split(',');
+	console.log(arr);
 	arr.sort();
+	for(let i = 0; i < arr.length; i++){
+		arr[i] += "\n";
+	}
 	document.getElementById('eleven_task_textarea_rezult').innerHTML = arr;
 }
 
