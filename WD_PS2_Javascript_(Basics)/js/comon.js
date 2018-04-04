@@ -337,7 +337,6 @@ function nine_task(){
 }
 
 function ten_task(){ 
-	//  должно кушать отрицательные числа
 	let firstNumber = document.getElementsByClassName('ten_getNumber')[0].value + "";
 	let arr = firstNumber.split('');
 	let check = 0;
@@ -373,7 +372,7 @@ function eleven_task(){
 function test(){
 	let arr = ["1","1","1","1"];
 	let ress = arr.reduce(function(acc, item){
-		return acc + item*1;
+		return acc + item;
 	}, 0);
 	alert(ress);
 }
