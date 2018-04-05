@@ -5,7 +5,7 @@ function first_task() {
 	let firstNumber = +document.getElementsByClassName('ft_firstNumber')[0].value;
 	let secondNumber = +document.getElementsByClassName('ft_secondNumber')[0].value;
 	if(!firstNumber || !secondNumber){
-		alert('заполните строки в формате 1234567890');
+		document.getElementById('ft_result').innerText = 'заполните строки в формате чисел 1234567890';
 		document.getElementsByClassName('ft_firstNumber')[0].style.borderColor = redColor;
 		document.getElementsByClassName('ft_secondNumber')[0].style.borderColor = redColor;
 		document.getElementById('ft_result').style.borderColor = standardColor;
@@ -36,14 +36,14 @@ function second_task() {
 	let secondNumber = +document.getElementsByClassName('st_secondNumber')[0].value;
 	let result = 0;
 	if(firstNumber > secondNumber){
-		alert("первое число должно быть меньше второго");
+		document.getElementById('st_result').innerText = "первое число должно быть меньше второго";
 		document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#e84118";
 		document.getElementsByClassName('st_secondNumber')[0].style.borderColor = "#e84118";
 		document.getElementById('st_result').style.borderColor = "#c2b6b6";
 		return;
 	}
 	if(!Number.isInteger(firstNumber) || !Number.isInteger(secondNumber)){
-		alert('Введите число в формату 1234567890');
+		document.getElementById('st_result').innerText = "Введите число в формату 1234567890";
 		document.getElementsByClassName('st_firstNumber')[0].style.borderColor = "#e84118";
 		document.getElementsByClassName('st_secondNumber')[0].style.borderColor = "#e84118";
 		document.getElementById('st_result').style.borderColor = "#c2b6b6";
@@ -61,7 +61,7 @@ function second_task() {
 	document.getElementById('st_result').innerText = result;
 }
 
-function third_task(){
+function third_task(){// одним свором ***
 	let container = document.getElementById('tt_list');
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
@@ -73,22 +73,24 @@ function third_task(){
 		document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#e84118";
 		return;
 	}
-	if(firstNumber > 500 || firstNumber <= 0){
-		alert("введите число меньше от 1 до 500!!!");
+	if(firstNumber > 300 || firstNumber <= 0){
+		alert("введите число меньше от 1 до 300!!!");
 		document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#e84118";
 		return;
 	}
 	let ul = document.createElement("ul");
 	ul.setAttribute('id', 'myUl');
 	document.getElementById("tt_list").appendChild(ul);
+	let star = "";
 	for(let i = 1; i <= firstNumber; i++){
 		let li = document.createElement("li"); 
 		id  = "myLi" + i;
 		li.setAttribute('id', id);
 		ul.appendChild(li);
-		for(let k = 0; k < i; k++){
-			document.getElementById('myLi'+i).innerText +='*';
+		for(let k = i - 1; k < i; k++){
+			star += "*" 
 		}	
+		document.getElementById('myLi'+i).innerText = star;
 	}
 	document.getElementsByClassName('tt_firstNumber')[0].style.borderColor = "#4cd137";
 }
@@ -96,7 +98,7 @@ function third_task(){
 function fourth_task(){
 	let firstNumber = +document.getElementsByClassName('fourT_Number')[0].value;
 	if(firstNumber <= 0 || !Number.isInteger(firstNumber)){
-		alert('Введите число в формату 1234567890');
+		document.getElementById('fourTaskResult').innerText = 'Введите число в формату 1234567890';
 		document.getElementsByClassName('fourT_Number')[0].style.borderColor = "#e84118";
 		return;
 	}
@@ -267,32 +269,33 @@ function seven_task(){
 }
 
 function eight_tast(){
-	let getValue = document.getElementsByClassName('eight_task_getValue')[0].value + "";
-	let heightWidth = getValue.split('x');
-
-	if(heightWidth[0] > 50 || heightWidth[0] <= 1 || heightWidth[1] > 50 || heightWidth[1] <= 1 ){
-		alert("введите число меньше от 2 до 50!!!");
-		document.getElementsByClassName('eight_task_getValue')[0].style.borderColor = "#e84118";
+	let getValuefirst = +document.getElementsByClassName('eightTaskGetValue')[0].value;
+	let getValueSecond = +document.getElementsByClassName('eightTaskGetValue')[1].value;
+	if(getValuefirst > 50 || getValuefirst <= 1 || getValueSecond > 50 || getValueSecond <= 1 || !Number.isInteger(getValuefirst) || !Number.isInteger(getValueSecond)){
+		document.getElementById('eightTaskMessege').innerText = "числа от 2 до 50!!!";
+		document.getElementsByClassName('eightTaskGetValue')[0].style.borderColor = "#e84118";
+		document.getElementsByClassName('eightTaskGetValue')[1].style.borderColor = "#e84118";
 		return;
 	}
 	let container = document.getElementById('eight_task_div');
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
-	for(let i = 1; i <= heightWidth[0]; i++){		
+	for(let i = 1; i <= getValuefirst; i++){		
 		let ul = document.createElement("ul");
 		document.getElementById("eight_task_div").appendChild(ul);
 		let attrUl = 'E_Ul' + i;
 		ul.setAttribute('id', attrUl);
 
-		for(let k = 1; k <= heightWidth[1]; k++){
+		for(let k = 1; k <= getValueSecond; k++){
 			let li = document.createElement("li");
 			let attr  = "last_li";
 			li.setAttribute('class', attr);
 			document.getElementById(attrUl).appendChild(li);
 		}	
 	}
-	document.getElementsByClassName('eight_task_getValue')[0].style.borderColor = "#4cd137";
+	document.getElementsByClassName('eightTaskGetValue')[0].style.borderColor = "#4cd137";
+	document.getElementById('eightTaskMessege').innerText = "";
 }
 
 function nine_task(){
@@ -366,7 +369,7 @@ function eleven_task(){
 	for(let i = 0; i < arr.length; i++){
 		arr[i] += "\n";
 	}
-	document.getElementById('eleven_task_textarea_rezult').innerHTML = arr;
+	document.getElementById('eleven_task_textarea_rezult').innerText = arr;
 }
 
 function test(){
@@ -376,3 +379,5 @@ function test(){
 	}, 0);
 	alert(ress);
 }
+
+//arr.filter(link => link);
