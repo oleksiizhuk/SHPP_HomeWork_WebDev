@@ -373,7 +373,7 @@ function eleven_task(){
 }
 
 function test(){
-	let arr = ["1","1","1","1"];
+	let arr = ["https://facebook.com","https://facebook.com","1","https://google.com","https://google.com"];
 	let ress = arr.reduce(function(acc, item){
 		return acc + item;
 	}, 0);
