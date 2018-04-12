@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   margin: 0;
   padding: 0; }
@@ -99,5 +100,14 @@ footer {
   background-color: #0c909d; }
   footer h2 {
     margin: 0px; }
+
+.userError {
+  border-color: "#e84118"; }
+
+.userEnteredCorrectly {
+  borderColor: "#4cd137"; }
+
+.standard╨бolor {
+  borderColor: "#c2b6b6"; }
 
 /*# sourceMappingURL=main.css.map */

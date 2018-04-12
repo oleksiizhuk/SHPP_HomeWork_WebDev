@@ -21,8 +21,8 @@
 			<div class="first_task">
 				<h2 class="first-h2">First task + </h2>
 				<p>1) посчитать сумму чисел от -1000 до 1000</p>
-				<input type="text" placeholder="Первое число" class="ft_firstNumber">
-				<input type="text" placeholder="Второе число" class="ft_secondNumber">
+				<input type="text" placeholder="Первое число" id="ft_firstNumber" onkeypress="if (event.keyCode==13){first_task()};">
+				<input type="text" placeholder="Второе число" id="ft_secondNumber" onkeypress="if (event.keyCode==13){first_task()};">
 				<p id="ft_result"></p>
 				<button onclick="first_task()">Кнопка</button>	
 			</div>
@@ -32,8 +32,8 @@
 			<div class="second_task">
 				<h2>second task + </h2>
 				<p>2) посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
-				<input type="text" class="st_firstNumber" placeholder="первое число">
-				<input type="text" class="st_secondNumber" placeholder="второе число ">
+				<input type="text" id="st_firstNumber" placeholder="первое число">
+				<input type="text" id="st_secondNumber" placeholder="второе число ">
 				<p id="st_result"></p>
 				<button onclick="second_task()">кнопка</button>
 			</div>
@@ -43,7 +43,7 @@
 			<div class="third_task">
 				<h2>third_task +</h2>
 				<p>3) вывести на страницу список из 50 элементов вида</p>
-				<input type="text" placeholder="введите число" class="tt_firstNumber" placeholder="введите число" max="200">
+				<input type="text" placeholder="введите число" id="tt_firstNumber" placeholder="введите число" max="200">
 				<button onclick="third_task()">Кнопка</button>
 				<div id="tt_list">
 				</div>
@@ -54,8 +54,8 @@
 			<div class="fourth_task">
 				<h2>fourth_task + </h2>
 				<p>4) Пользователь вводит время в секундах. Вывести в формате: hh:mm:ss (01:05:20)</p>
-				<input type="text" class="fourT_Number" placeholder="Введите число">
-				<input type="text" id="fourT_clock" placeholder="результат" readonly>
+				<input type="text" id="fourT_Number" placeholder="Введите число" onclick="fourth_task()">
+				<input type="text" id="fourT_clock" placeholder="результат" readonly onclick="fourth_task()">
 				<p id="fourTaskResult"></p>
 				<button onclick="fourth_task()">кнопка</button>
 			</div>
@@ -65,7 +65,7 @@
 			<div class="fifth_task">
 				<h2>fifth_task + </h2>
 				<p>5) Для указанного возраста студента вывести фразу вида "22 года" ( 1 год, 20 лет....)</p>
-				<input type="text" class="fifth_task_year" placeholder="22">
+				<input type="text" id="fifth_task_year" placeholder="22" onkeypress="if (event.keyCode==13){fifth_task()};">
 				<input type="text" id="fiftT_result" readonly>
 				<button onclick="fifth_task()">Кнопка</button>
 			</div>

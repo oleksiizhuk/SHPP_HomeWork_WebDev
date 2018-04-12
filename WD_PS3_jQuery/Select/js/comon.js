@@ -8,7 +8,7 @@ $(document).ready(function(){
 
 	$("#selectFreand").click(function(){ // открыть закрыть список 
 		i++;
-		if(i % 2 == 0){
+		if(i % 2 == 0) {
 			$(".ul").show();
 			 $("#iconHouseFirst").hide();
 			 $("#iconHouseSecond").show();
