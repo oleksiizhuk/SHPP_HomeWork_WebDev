@@ -2,7 +2,7 @@ var redColor = "#e84118";
 var standardColor = "#c2b6b6";
 var greenColor = "#4cd137";
 var numberFormatMassege = `Вводите в строку только числа`;
-function first_task() { 
+function firstTask() { 
 	let firstNumber = +document.getElementById(`ft_firstNumber`).value;
 	let secondNumber = +document.getElementById(`ft_secondNumber`).value;
 	if(!firstNumber || !secondNumber){
@@ -25,7 +25,7 @@ function first_task() {
 	document.getElementById(`ft_result`).innerText = result;
 }
 
-function second_task() {
+function secondTask() {
 	let firstNumber = +document.getElementById('st_firstNumber').value;
 	let secondNumber = +document.getElementById('st_secondNumber').value;
 	if(!firstNumber || !secondNumber){
@@ -52,9 +52,9 @@ function second_task() {
 	document.getElementById('st_result').innerText = result;
 }
 
-function third_task(){// одним свором ***
+function thirdTask(){// одним свором ***
 	//container.innerHtml = "";
-	let container = document.getElementById(`tt_list`);
+	let container = document.getElementById(`thirdTaskList`);
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
@@ -71,7 +71,7 @@ function third_task(){// одним свором ***
 		return;
 	}
 	let ul = document.createElement("ul");
-	document.getElementById("tt_list").appendChild(ul);
+	document.getElementById("thirdTaskList").appendChild(ul);
 	let star = "";
 	for(let i = 1; i <= firstNumber; i++){
 		let li = document.createElement("li"); 
@@ -86,14 +86,14 @@ function third_task(){// одним свором ***
 	document.getElementById(`tt_firstNumber`).classList.add(`userEnteredCorrectly`);
 }
 
-function fourth_task(){
-	let firstNumber = +document.getElementById('fourT_Number').value;
+function fourthTask(){
+	let firstNumber = +document.getElementById('getUserSeconds').value;
 	if(firstNumber <= 0 || !firstNumber){
 		document.getElementById(`fourTaskResult`).innerText = numberFormatMassege;
-		document.getElementById('fourT_Number').classList.add(`userError`);
+		document.getElementById('getUserSeconds').classList.add(`userError`);
 		return;
 	}
-	let hour, minutes,result;
+	let hour = 0, minutes = 0,result;
 	const secondPerHour = 3600;
 	if(firstNumber >= secondPerHour){
 		
@@ -108,20 +108,19 @@ function fourth_task(){
 		firstNumber = firstNumber - (secondPerMinutes * minutes);
 	}
 		result = hour + ':' + minutes + ':' + firstNumber;
-		document.getElementById('fourT_clock').value = result;
-		document.getElementById('fourT_Number').classList.add(`userEnteredCorrectly`);
+		document.getElementById('timeResult').value = result;
+		document.getElementById('getUserSeconds').classList.add(`userEnteredCorrectly`);
 }
 
-function fifth_task(){ // добавить ноль  /// доделать на 105
+function fifthTask(){ 
 	let year = +document.getElementById(`fifth_task_year`).value;
 	if (year <= 0 || !year){
 		alert(numberFormatMassege);
 		document.getElementById('fifth_task_year').classList.add(`userError`);
 		return;
 	}
-	let test = year % 100;
-	alert(test);
-	let number = test.toString();
+	let removeUnnecessary = year % 100;
+	let number = removeUnnecessary.toString();
 	let numberLenght = number.length;
 	let result = "";
 	if(year === 0){
@@ -161,110 +160,55 @@ function fifth_task(){ // добавить ноль  /// доделать на 1
 	}
 }
 
-function test(){
-	let year = +document.getElementById(`fifth_task_year`).value;
-	if (year <= 0 || !year){
-		alert(numberFormatMassege);
-		document.getElementById('fifth_task_year').classList.add(`userError`);
-		return;
-	}
-	let number = year.toString();
-	let numberLenght = number.length;
-	let result = "";
+function sixthTask(){ // считать высокосные года 
 
-
-	if (year == 1){
-		if(number[numberLenght - 2] == 1){
-			result = year + " лет";
-			document.getElementById('fiftT_result').value = result;
-		}else{
-			result = year + " год";
-			document.getElementById('fiftT_result').value = result;
-		}
-	}
-	if (number[numberLenght -1] == 2 || number[numberLenght -1] == 3 || number[numberLenght -1] == 4){
-		if (year >= 11 && year < 20){
-		 	result = year + " лет";
-			document.getElementById('fiftT_result').value = result;
-		} else {
-			result = year + " года";
-			document.getElementById('fiftT_result').value = result;
-			return;
-		}
-	} 
-	if (number[numberLenght -1] == 0){
-		result = year + " лет";
-		document.getElementById('fiftT_result').value = result;
-	}
-	document.getElementById('fifth_task_year').classList.add(`standardСolor`);
-	document.getElementById('fiftT_result').classList.add(`userEnteredCorrectly`);
-}
-
-function sixth_task(){ // считать высокосные года 
-
-	let firstNumber = document.getElementsByClassName('sixTaskFirstNumber')[0].value + "";
-	let secondNumber = document.getElementsByClassName('sixTaskSecondNumber')[0].value + "";
-
-    let fDataParse = Date.parse(firstNumber);
-    let sDataParse = Date.parse(secondNumber);
-    let sec = 1000;
-    fDataParse = fDataParse / sec;
-    sDataParse = sDataParse / sec;
-    if(fDataParse >= sDataParse){
-    	fDataParse-= sDataParse;
-    	dateTransform(fDataParse);
+	let firstNumber = document.getElementById('sixTaskFirstNumber').value + "";
+	let secondNumber = document.getElementById('sixTaskSecondNumber').value + "";
+    let date1 = Date.parse(firstNumber);
+    let date2 = Date.parse(secondNumber);
+    
+    if (date2 > date1){
+    	[date1, date2] = [date2, date1];
     }
-    else {
-    	sDataParse -= fDataParse;
-    	dateTransform(sDataParse);
-    }
-}
-//date = new date();
-//datewho = new date();
-//yeardiff = date.getYear()
+    let differenceBetwennTwoDates = date1 - date2;
+    let temp = new Date(differenceBetwennTwoDates);
+    let temp2 = new Date(0);
+    let yearRess = temp.getFullYear(differenceBetwennTwoDates) - temp2.getFullYear(0);
+    console.log(yearRess);
 
-function dateTransform(dataParse){
-	let year = 0;
-	let mounths = 0;
-	let day = 0;
-	let hour = 0;
-	let minutes = 0;
-	let seconds = 0;
-	let time = "";
-	if(dataParse >= 31536000){
-		year = dataParse / 31536000;
-		year = Math.trunc(year);
-		dataParse = dataParse - (31536000 * year);
-	}
-	if(dataParse >= 2592000){
-		mounths = dataParse / 2592000;
-		mounths = Math.trunc(mounths);
-		dataParse = dataParse - (2592000 * mounths);
-	}
-	if(dataParse >= 86400){
-		day = dataParse / 86400;
-		day = Math.trunc(day);
-		dataParse = dataParse - (86400 * day);
-	}
-	if(dataParse >= 3600){ // hour
-		hour = dataParse / 3600;
-		hour =  Math.trunc(hour);
-		dataParse = dataParse - (3600 * hour);
-	}
-	if(dataParse >= 60){ // min
-		minutes = dataParse / 60
-		minutes =  Math.trunc(minutes);
-		dataParse = dataParse - (60 * minutes);
-	}
-		seconds = dataParse;
-		result = year + ' года, ' + mounths + ' месяц, ' + day +' дней, '+ hour+
-		' часов, '+minutes+' минут, '+seconds + " секунд";
-		document.getElementById("sixTaskResultP").innerText = result;
+    const year = 31536000000;
+    differenceBetwennTwoDates = differenceBetwennTwoDates % year;
+    let monthRess = temp.getMonth(differenceBetwennTwoDates) - temp2.getMonth(0);
+    console.log(monthRess);
+
+    const month = 2592000000;
+    differenceBetwennTwoDates = differenceBetwennTwoDates % month;
+    let dayRess = temp.getDay(differenceBetwennTwoDates) - temp2.getDay(0);
+    console.log(dayRess);
+
+    const day = 86400000;
+    differenceBetwennTwoDates = differenceBetwennTwoDates % day;
+    let hourRess = temp.getHours(differenceBetwennTwoDates) - temp2.getHours(0);
+    console.log(hourRess);
+
+    const hour = 86400000;
+    differenceBetwennTwoDates = differenceBetwennTwoDates % hour;
+    let minutesRess = temp.getMinutes(differenceBetwennTwoDates) - temp2.getMinutes(0);
+    console.log(minutesRess);
+
+    const minutes = 3600000;
+    differenceBetwennTwoDates = differenceBetwennTwoDates % minutes;
+    let secondsRess = temp.getSeconds(differenceBetwennTwoDates) - temp2.getSeconds(0);
+    console.log(secondsRess);
+
+    let result = yearRess + ' года, ' + monthRess + ' месяц, ' + dayRess + ' дней, '+ hourRess +
+		' часов, ' + minutesRess +' минут, ' + secondsRess + ' секунд ';
+	document.getElementById("sixTaskResultP").innerText = result;
 }
 
 function seven_task(){
-	let date = document.getElementsByClassName('seven_task_data')[0].value + "";
-
+	let date = document.getElementById(`seven_task_data`).value + "";
+	const zodiacSign = "zodiacSign";
 	let d = new Date(date);
     let day = d.getDate();
     let m = new Date(date);
@@ -274,50 +218,50 @@ function seven_task(){
     	return;
     }
 	if (mounths==1 && day>=20 || mounths==2 && day<=18){  
-		document.getElementById("znak").src="img/водолей.png";
+		document.getElementById(zodiacSign).src="img/водолей.png";
 	}
 	else if (mounths==2 && day>=19 || mounths==3 && day<=20){
-		document.getElementById("znak").src="img/рыбы.png";
+		document.getElementById(zodiacSign).src="img/рыбы.png";
 	} 
 	else if (mounths==3 && day>=21 || mounths==4 && day<=19){
-		document.getElementById("znak").src="img/Оввен.png";
+		document.getElementById(zodiacSign).src="img/Оввен.png";
 	} 
 	else if (mounths==4 && day>=20 || mounths==5 && day<=20){
-		document.getElementById("znak").src="img/телец.png";
+		document.getElementById(zodiacSign).src="img/телец.png";
 	}
 	else if (mounths==5 && day>=21 || mounths==6 && day<=21){
-		document.getElementById("znak").src="img/близнецы.png";
+		document.getElementById(zodiacSign).src="img/близнецы.png";
 	}
 	else if (mounths==6 && day>=22 || mounths==7 && day<=22){
-		document.getElementById("znak").src="img/рак.png";
+		document.getElementById(zodiacSign).src="img/рак.png";
 	}
 	else if (mounths==7 && day>=23 || mounths==8 && day<=22){
-		document.getElementById("znak").src="img/Лев.png";
+		document.getElementById(zodiacSign).src="img/Лев.png";
 	}
 	else if (mounths==8 && day>=23 || mounths==9 && day<=22){
-		document.getElementById("znak").src="img/дева.png";
+		document.getElementById(zodiacSign).src="img/дева.png";
 	}
 	else if (mounths==9 && day>=23 || mounths==10 && day<=22){
-		document.getElementById("znak").src="img/весы.png";
+		document.getElementById(zodiacSign).src="img/весы.png";
 	}
 	else if (mounths==10 && day>=23 || mounths==11 && day<=21){
-		document.getElementById("znak").src="img/скорпион.png";
+		document.getElementById(zodiacSign).src="img/скорпион.png";
 	}
 	else if (mounths==11 && day>=22 || mounths==12 && day<=21){
-		document.getElementById("znak").src="img/стрелец.png";
+		document.getElementById(zodiacSign).src="img/стрелец.png";
 	}
 	else if (mounths==12 && day>=22 || mounths==1 && day<=19){
-		document.getElementById("znak").src="img/козерог.png";
+		document.getElementById(zodiacSign).src="img/козерог.png";
 	} 
 }
 
 function eight_tast(){// сделать что бы хавало 1 х 1  // вывести ДОМ из цыкла
-	let getValuefirst = +document.getElementsByClassName('eightTaskGetValue')[0].value;
-	let getValueSecond = +document.getElementsByClassName('eightTaskGetValue')[1].value;
-	if(getValuefirst > 50 || getValuefirst <= 1 || getValueSecond > 50 || getValueSecond <= 1 || !Number.isInteger(getValuefirst) || !Number.isInteger(getValueSecond)){
-		document.getElementById('eightTaskMessege').innerText = "числа от 2 до 50!!!";
-		document.getElementsByClassName('eightTaskGetValue')[0].style.borderColor = "#e84118";
-		document.getElementsByClassName('eightTaskGetValue')[1].style.borderColor = "#e84118";
+	let getValuefirst = +document.getElementById('eightTaskGetValue').value;
+	let getValueSecond = +document.getElementById('eightTaskGetSecondValue').value;
+	if(getValuefirst > 50 || getValuefirst <= 0 || getValueSecond > 50 || getValueSecond <= 0 || !getValuefirst || !getValueSecond){
+		document.getElementById('eightTaskMessege').innerText = "числа от 1 до 50!!!";
+		document.getElementById('eightTaskGetValue').classList.add(`userError`);
+		document.getElementById('eightTaskGetSecondValue').classList.add(`userError`);
 		return;
 	}
 	let container = document.getElementById('eight_task_div');
@@ -337,80 +281,77 @@ function eight_tast(){// сделать что бы хавало 1 х 1  // вы
 			document.getElementById(attrUl).appendChild(li);
 		}	
 	}
-	document.getElementsByClassName('eightTaskGetValue')[0].style.borderColor = "#4cd137";
+	document.getElementById('eightTaskGetValue').classList.add(`userEnteredCorrectly`) = "#4cd137";
+	document.getElementById('eightTaskGetSecondValue').classList.add(`userEnteredCorrectly`) = "#4cd137";
 	document.getElementById('eightTaskMessege').innerText = "";
 }
 
-function nine_task(){//сделать что бы знать куда вводить
-	let entrance = +document.getElementsByClassName('under')[0].value;
-	let flats = +document.getElementsByClassName('flats')[0].value;
-	let numberOfFloors = +document.getElementsByClassName('numberOfFloors')[0].value;
-	let apartmentNumber = +document.getElementsByClassName('apartmentNumber')[0].value;
-	let result = "";
-	let numberOfFlats = 0;
-	let countUnder = 1;
-	let countFlors = 1;
-
-	if(!Number.isInteger(under) || !Number.isInteger(flats) ||!Number.isInteger(numberOfFloors) || !Number.isInteger(apartmentNumber)){
-		alert('Введите число в формату 1234567890');
-		document.getElementsByClassName('under')[0].style.borderColor = "#e84118";
-		document.getElementsByClassName('flats')[0].style.borderColor = "#e84118";
-		document.getElementsByClassName('numberOfFloors')[0].style.borderColor = "#e84118";
+function nine_task(){
+	let entrance = +document.getElementById(`entrance`).value;
+	let flats = +document.getElementById(`flats`).value;
+	let numberOfFloors = +document.getElementById(`numberOfFloors`).value;
+	let apartmentNumber = +document.getElementById(`apartmentNumber`).value;
+	
+	if (!entrance || !flats || !numberOfFloors || !apartmentNumber){
+		alert(numberFormatMassege);
+		document.getElementById('entrance').classList.add(`userError`);
+		document.getElementById('flats').classList.add(`userError`);
+		document.getElementById('numberOfFloors').classList.add(`userError`);
 		return;
 	}
-	numberOfFlats = under * flats * numberOfFloors;
-
-	if(apartmentNumber > numberOfFlats || apartmentNumber <= 0 ||!Number.isInteger(apartmentNumber)){
+	let numberOfFlats = entrance * flats * numberOfFloors;
+	if (apartmentNumber > numberOfFlats || apartmentNumber <= 0){
 		alert("такой квартиры не существует");
 		return;
 	}
-	for (let i = 1; i < apartmentNumber;i++){
+	let countUnder = 1;
+	let countFlors = 1;
+	const flightOfStairs =  numberOfFloors * flats; //лестничный пролет
+	for (let i = 1; i < apartmentNumber; i++){
 		if(i % flats === 0){
 			countFlors++;
 		}
-		if(i % (numberOfFloors * flats) === 0){ // вывести в константу 
+		if(i % flightOfStairs === 0){ 
 			countUnder++;
 			countFlors -= numberOfFloors;
 		}
 	}
+	let result = "";
 	result = 'подьезд № ' + countUnder + ' этаж № ' + countFlors;
 	document.getElementById('nine_task_results').innerText = result;
 
-	document.getElementsByClassName('under')[0].style.borderColor = "#c2b6b6";
-	document.getElementsByClassName('flats')[0].style.borderColor = "#c2b6b6";
-	document.getElementsByClassName('numberOfFloors')[0].style.borderColor = "#c2b6b6";
-	document.getElementById('nine_task_results').style.borderColor = "#4cd137";
+	document.getElementById('entrance').classList.add(`standardСolor`);
+	document.getElementById('flats').classList.add(`standardСolor`);
+	document.getElementById('numberOfFloors').classList.add(`standardСolor`);
+	document.getElementById('nine_task_results').classList.add(`userEnteredCorrectly`);
 }
 
-function ten_task(){ 
-	let firstNumber = document.getElementsByClassName('ten_getNumber')[0].value + "";
-	let arr = firstNumber.split('');
-	let check = 0;
-	check = parseInt(firstNumber);
-	if(!Number.isInteger(check)){
-		alert("вводите только цыфры!");
-		document.getElementsByClassName('ten_getNumber')[0].style.borderColor = "#e84118";
+function tenTask(){ 
+	let firstNumber = +document.getElementById('tenTaskGetNumber').value;
+	if(!firstNumber){
+		alert(numberFormatMassege);
+		document.getElementById('tenTaskGetNumber').classList.add(`userError`);
 		return;
 	}
-	let ress = 0;
-	 ress = arr.reduce(function(acc, item){
+	let arr = firstNumber.toString().replace(/-/g, "").split('');
+	let check = parseInt(firstNumber);
+	
+	let result = arr.reduce(function(acc, item){
 		return acc + item * 1;
 	}, 0);
-	document.getElementById('ten_result').innerText = ress;
-	document.getElementsByClassName('ten_getNumber')[0].style.borderColor = "#c2b6b6";
-	document.getElementById('ten_result').style.borderColor = "#4cd137";
+	document.getElementById(`ten_result`).innerText = result;
+	document.getElementById(`tenTaskGetNumber`).classList.add(`standardСolor`);
 }
 
-function eleven_task(){// не сортирует 
-	let clear = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
+function eelevenTask(){// не сортирует 
+	let clear = document.getElementById('elevenTaskTextarea').value + "";
 	clear.innerText = "";
-	let a = document.getElementsByClassName('eleven_task_textarea')[0].value + "";
+	let a = document.getElementById('elevenTaskTextarea').value + "";
 	let check = a.replace(/https?\:\/\//gi,'');
-	let arr = check.split(',').arr.sort();
-	for(let i = 0; i < arr.length; i++){
-		arr[i] += "\n";
-	}
-	document.getElementById('eleven_task_textarea_rezult').innerText = arr;
+	let arr = check.split(',')
+	.split(' ')
+	.sort();
+	document.getElementById('elevenTaskTextareaRezult').innerText = arr;
 }
 
 function test(){
@@ -421,4 +362,22 @@ function test(){
 	alert(ress);
 }
 
-//arr.filter(link => link);
+function elevenTask(){// не сортирует 
+	let clear = document.getElementById('elevenTaskTextarea');
+	clear.innerText = "";
+	let a = document.getElementById('elevenTaskTextarea');
+
+	let link = a.value
+	.split(/[\s,]/)
+	.filter(link => link)
+	.map(link => link.replace(/https?\:\/\//gi,''))
+	.sort()
+	.reduce((ul, link) => 
+		ul = `<li><a href="//${link}">${link}</a></li>`, '');
+
+	document.getElementById('elevenTaskTextareaRezult').innerText = link;
+	let test = document.getElementById("link-item-ul");
+
+	//test.innerHtml = link;
+	test.appendChild(link);
+}

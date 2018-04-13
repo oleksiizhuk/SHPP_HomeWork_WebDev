@@ -21,8 +21,8 @@
 			<div class="first_task">
 				<h2 class="first-h2">First task + </h2>
 				<p>1) посчитать сумму чисел от -1000 до 1000</p>
-				<input type="text" placeholder="Первое число" id="ft_firstNumber" onkeypress="if (event.keyCode==13){first_task()};">
-				<input type="text" placeholder="Второе число" id="ft_secondNumber" onkeypress="if (event.keyCode==13){first_task()};">
+				<input type="text" placeholder="Первое число" id="ft_firstNumber" onkeypress="if (event.keyCode==13){firstTask()};">
+				<input type="text" placeholder="Второе число" id="ft_secondNumber" onkeypress="if (event.keyCode==13){firstTask()};">
 				<p id="ft_result"></p>
 				<button onclick="first_task()">Кнопка</button>	
 			</div>
@@ -30,58 +30,58 @@
 
 			<!-- -->
 			<div class="second_task">
-				<h2>second task + </h2>
+				<h2>second Task + </h2>
 				<p>2) посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
-				<input type="text" id="st_firstNumber" placeholder="первое число">
-				<input type="text" id="st_secondNumber" placeholder="второе число ">
+				<input type="text" id="st_firstNumber" placeholder="первое число" onkeypress="if (event.keyCode==13){secondTask()};">
+				<input type="text" id="st_secondNumber" placeholder="второе число " onkeypress="if (event.keyCode==13){secondTask()};">
 				<p id="st_result"></p>
-				<button onclick="second_task()">кнопка</button>
+				<button onclick="secondTask()">кнопка</button>
 			</div>
 			<hr> 
 
 			<!-- -->
-			<div class="third_task">
-				<h2>third_task +</h2>
+			<div class="thirdTask">
+				<h2>third Task +</h2>
 				<p>3) вывести на страницу список из 50 элементов вида</p>
-				<input type="text" placeholder="введите число" id="tt_firstNumber" placeholder="введите число" max="200">
-				<button onclick="third_task()">Кнопка</button>
-				<div id="tt_list">
+				<input type="text" placeholder="введите число" id="tt_firstNumber" placeholder="введите число" max="300" onkeypress="if (event.keyCode==13){secondTask()};">
+				<button onclick="thirdTask()">Кнопка</button>
+				<div id="thirdTaskList">
 				</div>
 			</div>
 			<hr> 
 
 			<!-- -->
 			<div class="fourth_task">
-				<h2>fourth_task + </h2>
+				<h2>fourth Task + </h2>
 				<p>4) Пользователь вводит время в секундах. Вывести в формате: hh:mm:ss (01:05:20)</p>
-				<input type="text" id="fourT_Number" placeholder="Введите число" onclick="fourth_task()">
-				<input type="text" id="fourT_clock" placeholder="результат" readonly onclick="fourth_task()">
+				<input type="text" id="getUserSeconds" placeholder="Введите число" onkeypress="if (event.keyCode==13){secondTask()};">
+				<input type="text" id="timeResult" placeholder="результат" readonly onkeypress="if (event.keyCode==13){secondTask()};">
 				<p id="fourTaskResult"></p>
-				<button onclick="fourth_task()">кнопка</button>
+				<button onclick="fourthTask()">кнопка</button>
 			</div>
 			<hr> 
 
 			<!-- -->
 			<div class="fifth_task">
-				<h2>fifth_task + </h2>
+				<h2>fifth Task + </h2>
 				<p>5) Для указанного возраста студента вывести фразу вида "22 года" ( 1 год, 20 лет....)</p>
-				<input type="text" id="fifth_task_year" placeholder="22" onkeypress="if (event.keyCode==13){fifth_task()};">
+				<input type="text" id="fifth_task_year" placeholder="22" onkeypress="if (event.keyCode==13){fifthTask()};">
 				<input type="text" id="fiftT_result" readonly>
-				<button onclick="fifth_task()">Кнопка</button>
+				<button onclick="fifthTask()">Кнопка</button>
 			</div>
 			<hr> 
 
 			<!-- -->
 			<div class="sixth_task">
-				<h2>sixth_task + </h2>
+				<h2>sixth Task + </h2>
 				<div class="months_number_time_first">
 					<p>Пользователь вводит две даты (в формате "October 13, 2014 11:13:00"). Вычислить промежуток времени прошедший между датами и получить массив, в котором будут года (365 дней), месяца (30 дней), дни, часы, минуты, секунды.
 
 Вывести пользователю (например): между датами прошло 2 года, 1 месяц, 3 дня, 5 часов, 10 минут, 15 секунд</p>
-					<input type="text" placeholder="введите первую дату" class="sixTaskFirstNumber">
-					<input type="text" placeholder="Введите вторую дату" class="sixTaskSecondNumber">
+					<input type="text" placeholder="введите первую дату" id="sixTaskFirstNumber">
+					<input type="text" placeholder="Введите вторую дату" id="sixTaskSecondNumber">
 					<p id="sixTaskResultP"></p>
-				<button onclick="sexth_task()">Кнопка</button>
+				<button onclick="sixthTask()">Кнопка</button>
 			</div>
 			<hr> 
 
@@ -89,8 +89,8 @@
 			<div class="seven_task">
 				<h2>seven_task +</h2>
 				<p>Пользователь вводит дату в формате 2014-12-31, 2014-11-31,2014-8-31,2014-1-1 а получает знак зодиака в этот день (с картинкой).</p>
-				<img src="" alt="" id="znak">
-				<input type="text" class="seven_task_data">
+				<img src="" alt="" id="zodiacSign">
+				<input type="text" id="seven_task_data">
 				<button onclick="seven_task()">Кнопка</button>
 			</div>
 			<hr> 
@@ -100,9 +100,9 @@
 				<h2>eighth_task+</h2>
 				<p>Пользователь вводит габариты доски (в формате ‘8x8’). Вывести шахматную доску.</p>
 				<p id="eightTaskMessege"></p>
-				<input type="text" class="eightTaskGetValue">
+				<input type="text" id="eightTaskGetValue">
 				<p class="x">X</p>
-				<input type="text" class="eightTaskGetValue">
+				<input type="text" id="eightTaskGetSecondValue">
 				<button onclick="eight_tast()">кнопка</button>
 				<div id="eight_task_div">
 					
@@ -114,10 +114,14 @@
 			<div class="nine_task">
 				<h2>nine_task+</h2>
 				<p>Количество подъездов, квартир на пролете, количество этажей дома также задает пользователь в инпутах.</p>
-				<input type="text" placeholder="количество подьездов" class="under">
-				<input type="text" placeholder="квартир на пролете" class="flats">
-				<input type="text" placeholder="количество этажей" class="numberOfFloors">
-				<input type="text" placeholder="номер квартиры" class="apartmentNumber">
+				<p>количество подьездов</p>
+				<input type="text" placeholder="количество подьездов" id="entrance">
+				<p>квартир на пролете</p>
+				<input type="text" placeholder="квартир на пролете" id="flats">
+				<p>количество этажей</p>
+				<input type="text" placeholder="количество этажей" id="numberOfFloors">
+				<p>номер квартиры</p>				
+				<input type="text" placeholder="номер квартиры" id="apartmentNumber">
 				<p id="nine_task_results"></p>
 				<button onclick="nine_task()">кнопка</button>
 			</div>
@@ -127,9 +131,9 @@
 			<div class="ten_task">
 				<h2>ten_task - </h2>
 				<p>Найти сумму цифр введённого числа.</p>
-					<input type="text" placeholder="111" class="ten_getNumber">
+					<input type="text" placeholder="111" id="tenTaskGetNumber"  onkeypress="if (event.keyCode==13){tenTask()};">
 					<p id="ten_result"></p>
-				<button onclick="ten_task()">Кнопка</button>
+				<button onclick="tenTask()">Кнопка</button>
 			</div>
 			<hr> 
 
@@ -137,8 +141,13 @@
 			<div class="eleven_task">
 				<h2>eleven_task + </h2>
 				<p>11) Дан некий textarea, в который пользователь вводит ссылки через запятую. Когда textarea станет неактивным удалить http:// и https:// из ссылок и вывести их отсортированным по алфавиту списком ссылок.</p>
-				<textarea name="" class="eleven_task_textarea" cols="30" rows="10" onchange="eleven_task()"></textarea>
-				<textarea name="" id="eleven_task_textarea_rezult" cols="30" rows="10"></textarea>
+				<textarea name="" id="elevenTaskTextarea" cols="30" rows="10" onchange="elevenTask()"></textarea>
+				<textarea name="" id="elevenTaskTextareaRezult" cols="30" rows="10"></textarea>
+				<div class="link-item">
+					<ul id="link-item-ul">
+						
+					</ul>
+				</div>
 				<h3>сылки для теста</h3>
 				<p class="last-p">https://google.com, https://www.youtube.com, https://www.twitch.tv, https://www.facebook.com,https://google.com, https://www.youtube.com, https://www.twitch.tv, https://www.facebook.com,</p>
 			</div>
