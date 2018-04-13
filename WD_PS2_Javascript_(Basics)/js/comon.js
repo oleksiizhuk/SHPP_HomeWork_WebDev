@@ -178,6 +178,7 @@ function sixthTask(){ // считать высокосные года
 
     const year = 31536000000;
     differenceBetwennTwoDates = differenceBetwennTwoDates % year;
+    alert(differenceBetwennTwoDates);
     let monthRess = temp.getMonth(differenceBetwennTwoDates) - temp2.getMonth(0);
     console.log(monthRess);
 
@@ -201,8 +202,9 @@ function sixthTask(){ // считать высокосные года
     let secondsRess = temp.getSeconds(differenceBetwennTwoDates) - temp2.getSeconds(0);
     console.log(secondsRess);
 
-    let result = yearRess + ' года, ' + monthRess + ' месяц, ' + dayRess + ' дней, '+ hourRess +
-		' часов, ' + minutesRess +' минут, ' + secondsRess + ' секунд ';
+    let result = yearRess + ' года, ' + monthRess + ' месяц, ' 
+    + dayRess + ' дней, '+ hourRess + ' часов, ' + minutesRess +' минут, '
+     + secondsRess + ' секунд ';
 	document.getElementById("sixTaskResultP").innerText = result;
 }
 
