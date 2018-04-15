@@ -162,53 +162,89 @@ function fifthTask(){
 
 function sixthTask(){ // считать высокосные года 
 
-	let firstNumber = document.getElementById('sixTaskFirstNumber').value + "";
-	let secondNumber = document.getElementById('sixTaskSecondNumber').value + "";
+	let firstNumber = document.getElementById('sixTaskFirstNumber').value ;
+	let secondNumber = document.getElementById('sixTaskSecondNumber').value ;
     let date1 = Date.parse(firstNumber);
     let date2 = Date.parse(secondNumber);
     
     if (date2 > date1){
     	[date1, date2] = [date2, date1];
+    	[firstNumber, secondNumber] = [secondNumber, firstNumber]
     }
-    let differenceBetwennTwoDates = date1 - date2;
-    let temp = new Date(differenceBetwennTwoDates);
-    let temp2 = new Date(0);
-    let yearRess = temp.getFullYear(differenceBetwennTwoDates) - temp2.getFullYear(0);
-    console.log(yearRess);
+    
+
+    let temp = new Date();
+    let temp2 = new Date();
+
+    temp.setTime(date1);
+    temp2.setTime(date2);
+    let differenceBetwennTwoDates = temp - temp2;
+/*    let yearRess = temp.getFullYear() - temp2.getFullYear();
 
     const year = 31536000000;
     differenceBetwennTwoDates = differenceBetwennTwoDates % year;
-    alert(differenceBetwennTwoDates);
-    let monthRess = temp.getMonth(differenceBetwennTwoDates) - temp2.getMonth(0);
+    let monthRess = temp.getMonth() - temp2.getMonth();
     console.log(monthRess);
 
     const month = 2592000000;
     differenceBetwennTwoDates = differenceBetwennTwoDates % month;
-    let dayRess = temp.getDay(differenceBetwennTwoDates) - temp2.getDay(0);
+    let dayRess = temp.getDate() - temp2.getDate();
     console.log(dayRess);
 
     const day = 86400000;
     differenceBetwennTwoDates = differenceBetwennTwoDates % day;
-    let hourRess = temp.getHours(differenceBetwennTwoDates) - temp2.getHours(0);
+    let hourRess = temp.getHours() - temp2.getHours();
     console.log(hourRess);
 
-    const hour = 86400000;
+    const hour = 3600000;
     differenceBetwennTwoDates = differenceBetwennTwoDates % hour;
-    let minutesRess = temp.getMinutes(differenceBetwennTwoDates) - temp2.getMinutes(0);
+    let minutesRess = temp.getMinutes() - temp2.getMinutes();
     console.log(minutesRess);
 
-    const minutes = 3600000;
+    const minutes = 60000;
     differenceBetwennTwoDates = differenceBetwennTwoDates % minutes;
-    let secondsRess = temp.getSeconds(differenceBetwennTwoDates) - temp2.getSeconds(0);
-    console.log(secondsRess);
+    let secondsRess = temp.getSeconds() - temp2.getSeconds();
+    console.log(secondsRess);*/
+    differenceBetwennTwoDates = differenceBetwennTwoDates / 1000
+    var a = 0, b =0, c =0, d = 0, e =0;
+    if(differenceBetwennTwoDates >= 31536000){
+		a = differenceBetwennTwoDates / 31536000;
+		a =  Math.trunc(a);
+		differenceBetwennTwoDates = differenceBetwennTwoDates % 31536000;
+	}
+	if(differenceBetwennTwoDates >= 2592000){
+		b = differenceBetwennTwoDates / 2592000;
+		b =  Math.trunc(b);
+		differenceBetwennTwoDates = differenceBetwennTwoDates % 2592000;
+	}
+	if(differenceBetwennTwoDates >= 86400){
+		c = differenceBetwennTwoDates / 86400;
+		c =  Math.trunc(c);
+		differenceBetwennTwoDates = differenceBetwennTwoDates % 86400;
+	}
+	if(differenceBetwennTwoDates >= 3600){
+		d = differenceBetwennTwoDates / 3600;
+		d =  Math.trunc(d);
+		differenceBetwennTwoDates = differenceBetwennTwoDates % 3600;
+	}
+	if(differenceBetwennTwoDates >= 60){
+		e = differenceBetwennTwoDates / 60;
+		e =  Math.trunc(e);
+		differenceBetwennTwoDates = differenceBetwennTwoDates % 60 ;
+	}
+	alert(a + " год  "  + b + " мес "  + c + " день "  + d + " часов" + e + "сек" + differenceBetwennTwoDates);
 
-    let result = yearRess + ' года, ' + monthRess + ' месяц, ' 
+
+
+/*    let result = yearRess + ' года, ' + monthRess + ' месяц, ' 
     + dayRess + ' дней, '+ hourRess + ' часов, ' + minutesRess +' минут, '
      + secondsRess + ' секунд ';
 	document.getElementById("sixTaskResultP").innerText = result;
+	let */
 }
 
-function seven_task(){
+
+function sevenTask(){
 	let date = document.getElementById(`seven_task_data`).value + "";
 	const zodiacSign = "zodiacSign";
 	let d = new Date(date);
@@ -257,7 +293,7 @@ function seven_task(){
 	} 
 }
 
-function eight_tast(){// сделать что бы хавало 1 х 1  // вывести ДОМ из цыкла
+function eightTast(){// сделать что бы хавало 1 х 1  // вывести ДОМ из цыкла
 	let getValuefirst = +document.getElementById('eightTaskGetValue').value;
 	let getValueSecond = +document.getElementById('eightTaskGetSecondValue').value;
 	if(getValuefirst > 50 || getValuefirst <= 0 || getValueSecond > 50 || getValueSecond <= 0 || !getValuefirst || !getValueSecond){
@@ -288,7 +324,7 @@ function eight_tast(){// сделать что бы хавало 1 х 1  // вы
 	document.getElementById('eightTaskMessege').innerText = "";
 }
 
-function nine_task(){
+function nineTask(){
 	let entrance = +document.getElementById(`entrance`).value;
 	let flats = +document.getElementById(`flats`).value;
 	let numberOfFloors = +document.getElementById(`numberOfFloors`).value;
@@ -345,15 +381,26 @@ function tenTask(){
 	document.getElementById(`tenTaskGetNumber`).classList.add(`standardСolor`);
 }
 
-function eelevenTask(){// не сортирует 
-	let clear = document.getElementById('elevenTaskTextarea').value + "";
+function elevenTask(){// не сортирует 
+	let clear = document.getElementById('elevenTaskTextarea');
 	clear.innerText = "";
-	let a = document.getElementById('elevenTaskTextarea').value + "";
-	let check = a.replace(/https?\:\/\//gi,'');
-	let arr = check.split(',')
-	.split(' ')
-	.sort();
-	document.getElementById('elevenTaskTextareaRezult').innerText = arr;
+	let a = document.getElementById('elevenTaskTextarea');
+
+	let ul = document.getElementById(`link-item-ul`);
+	
+	let link = a.value
+	.split(/[\s,]/)
+	.filter(link => link)
+	.map(link => link.replace(/https?\:\/\//gi,''))
+	.sort()
+	.reduce(function(acc, link){ 
+		let li = document.createElement("li");
+		let a = document.createElement("a");
+		a.href = `//${link}`;
+		a.innerText = link;
+		li.appendChild(a);
+		return ul.appendChild(li);
+	});
 }
 
 function test(){
@@ -362,24 +409,4 @@ function test(){
 		return acc + item;
 	}, 0);
 	alert(ress);
-}
-
-function elevenTask(){// не сортирует 
-	let clear = document.getElementById('elevenTaskTextarea');
-	clear.innerText = "";
-	let a = document.getElementById('elevenTaskTextarea');
-
-	let link = a.value
-	.split(/[\s,]/)
-	.filter(link => link)
-	.map(link => link.replace(/https?\:\/\//gi,''))
-	.sort()
-	.reduce((ul, link) => 
-		ul = `<li><a href="//${link}">${link}</a></li>`, '');
-
-	document.getElementById('elevenTaskTextareaRezult').innerText = link;
-	let test = document.getElementById("link-item-ul");
-
-	//test.innerHtml = link;
-	test.appendChild(link);
 }

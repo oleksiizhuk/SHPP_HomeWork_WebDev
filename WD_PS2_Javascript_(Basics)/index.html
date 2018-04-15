@@ -43,7 +43,7 @@
 			<div class="thirdTask">
 				<h2>third Task +</h2>
 				<p>3) вывести на страницу список из 50 элементов вида</p>
-				<input type="text" placeholder="введите число" id="tt_firstNumber" placeholder="введите число" max="300" onkeypress="if (event.keyCode==13){secondTask()};">
+				<input type="text" placeholder="введите число" id="tt_firstNumber" placeholder="введите число" max="300" onkeypress="if (event.keyCode==13){thirdTask()};">
 				<button onclick="thirdTask()">Кнопка</button>
 				<div id="thirdTaskList">
 				</div>
@@ -54,8 +54,8 @@
 			<div class="fourth_task">
 				<h2>fourth Task + </h2>
 				<p>4) Пользователь вводит время в секундах. Вывести в формате: hh:mm:ss (01:05:20)</p>
-				<input type="text" id="getUserSeconds" placeholder="Введите число" onkeypress="if (event.keyCode==13){secondTask()};">
-				<input type="text" id="timeResult" placeholder="результат" readonly onkeypress="if (event.keyCode==13){secondTask()};">
+				<input type="text" id="getUserSeconds" placeholder="Введите число" onkeypress="if (event.keyCode==13){fourthTask()};">
+				<input type="text" id="timeResult" placeholder="результат" readonly onkeypress="if (event.keyCode==13){fourthTask()};">
 				<p id="fourTaskResult"></p>
 				<button onclick="fourthTask()">кнопка</button>
 			</div>
@@ -78,8 +78,8 @@
 					<p>Пользователь вводит две даты (в формате "October 13, 2014 11:13:00" - "November 14, 2016 11:13:00"). Вычислить промежуток времени прошедший между датами и получить массив, в котором будут года (365 дней), месяца (30 дней), дни, часы, минуты, секунды.
 
 Вывести пользователю (например): между датами прошло 2 года, 1 месяц, 3 дня, 5 часов, 10 минут, 15 секунд</p>
-					<input type="text" placeholder="введите первую дату" id="sixTaskFirstNumber">
-					<input type="text" placeholder="Введите вторую дату" id="sixTaskSecondNumber">
+					<input type="text" placeholder="введите первую дату" id="sixTaskFirstNumber" onkeypress="if (event.keyCode==13){sixthTask()};">
+					<input type="text" placeholder="Введите вторую дату" id="sixTaskSecondNumber" onkeypress="if (event.keyCode==13){sixthTask()};">
 					<p id="sixTaskResultP"></p>
 				<button onclick="sixthTask()">Кнопка</button>
 			</div>
@@ -89,9 +89,9 @@
 			<div class="seven_task">
 				<h2>seven_task +</h2>
 				<p>Пользователь вводит дату в формате 2014-12-31, 2014-11-31,2014-8-31,2014-1-1 а получает знак зодиака в этот день (с картинкой).</p>
-				<img src="" alt="" id="zodiacSign">
-				<input type="text" id="seven_task_data">
-				<button onclick="seven_task()">Кнопка</button>
+				<img src="" alt="" id="zodiacSign" onkeypress="if (event.keyCode==13){sevenTask()};">
+				<input type="text" id="seven_task_data" onkeypress="if (event.keyCode==13){sevenTask()};">
+				<button onclick="sevenTask()">Кнопка</button>
 			</div>
 			<hr> 
 
@@ -100,10 +100,10 @@
 				<h2>eighth_task+</h2>
 				<p>Пользователь вводит габариты доски (в формате ‘8x8’). Вывести шахматную доску.</p>
 				<p id="eightTaskMessege"></p>
-				<input type="text" id="eightTaskGetValue">
+				<input type="text" id="eightTaskGetValue" onkeypress="if (event.keyCode==13){eightTast()};">
 				<p class="x">X</p>
-				<input type="text" id="eightTaskGetSecondValue">
-				<button onclick="eight_tast()">кнопка</button>
+				<input type="text" id="eightTaskGetSecondValue" onkeypress="if (event.keyCode==13){eightTast()};">
+				<button onclick="eightTast()">кнопка</button>
 				<div id="eight_task_div">
 					
 				</div>
@@ -112,24 +112,24 @@
 
 			<!-- -->
 			<div class="nine_task">
-				<h2>nine_task+</h2>
+				<h2>nine Task+</h2>
 				<p>Количество подъездов, квартир на пролете, количество этажей дома также задает пользователь в инпутах.</p>
 				<p>количество подьездов</p>
-				<input type="text" placeholder="количество подьездов" id="entrance">
+				<input type="text" placeholder="количество подьездов" id="entrance" onkeypress="if (event.keyCode==13){nineTask()};">
 				<p>квартир на пролете</p>
-				<input type="text" placeholder="квартир на пролете" id="flats">
+				<input type="text" placeholder="квартир на пролете" id="flats" onkeypress="if (event.keyCode==13){nineTask()};">
 				<p>количество этажей</p>
-				<input type="text" placeholder="количество этажей" id="numberOfFloors">
+				<input type="text" placeholder="количество этажей" id="numberOfFloors" onkeypress="if (event.keyCode==13){nineTask()};">
 				<p>номер квартиры</p>				
-				<input type="text" placeholder="номер квартиры" id="apartmentNumber">
+				<input type="text" placeholder="номер квартиры" id="apartmentNumber" onkeypress="if (event.keyCode==13){nineTask()};">
 				<p id="nine_task_results"></p>
-				<button onclick="nine_task()">кнопка</button>
+				<button onclick="nineTask()">кнопка</button>
 			</div>
 			<hr> 
 
 			<!-- -->
 			<div class="ten_task">
-				<h2>ten_task - </h2>
+				<h2>ten Task + </h2>
 				<p>Найти сумму цифр введённого числа.</p>
 					<input type="text" placeholder="111" id="tenTaskGetNumber"  onkeypress="if (event.keyCode==13){tenTask()};">
 					<p id="ten_result"></p>
@@ -143,7 +143,7 @@
 				<p>11) Дан некий textarea, в который пользователь вводит ссылки через запятую. Когда textarea станет неактивным удалить http:// и https:// из ссылок и вывести их отсортированным по алфавиту списком ссылок.</p>
 				<textarea name="" id="elevenTaskTextarea" cols="30" rows="10" onchange="elevenTask()"></textarea>
 				<textarea name="" id="elevenTaskTextareaRezult" cols="30" rows="10"></textarea>
-				<div class="link-item">
+				<div id="link-item">
 					<ul id="link-item-ul">
 						
 					</ul>
