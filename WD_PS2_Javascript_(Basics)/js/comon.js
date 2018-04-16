@@ -41,7 +41,7 @@ function secondTask() {
 	let result = 0;
 	for(let i = firstNumber; i <= secondNumber; i++){
 		let removeMinus = Math.abs(i); 
-		const check = removeMinus % 10;
+		let check = removeMinus % 10;
 		if(check === 2 || check === 3 || check === 7){
 			result += i;
 		}
@@ -141,7 +141,7 @@ function fifthTask(){
 	}
 	if (number[numberLenght -1] == 2 || number[numberLenght -1] == 3 || number[numberLenght -1] == 4){
 		if (test >= 11 && test < 20){
-		 	result = year + " лет";
+			result = year + " лет";
 			document.getElementById('fiftT_result').value = result;
 			return;
 		} else {
@@ -160,101 +160,94 @@ function fifthTask(){
 	}
 }
 
-function sixthTask(){ // считать высокосные года 
-
-	let firstNumber = document.getElementById('sixTaskFirstNumber').value ;
-	let secondNumber = document.getElementById('sixTaskSecondNumber').value ;
-    let date1 = Date.parse(firstNumber);
-    let date2 = Date.parse(secondNumber);
-    
-    if (date2 > date1){
-    	[date1, date2] = [date2, date1];
-    	[firstNumber, secondNumber] = [secondNumber, firstNumber]
-    }
-    
-
-    let temp = new Date();
-    let temp2 = new Date();
-
-    temp.setTime(date1);
-    temp2.setTime(date2);
-    let differenceBetwennTwoDates = temp - temp2;
-/*    let yearRess = temp.getFullYear() - temp2.getFullYear();
-
-    const year = 31536000000;
-    differenceBetwennTwoDates = differenceBetwennTwoDates % year;
-    let monthRess = temp.getMonth() - temp2.getMonth();
-    console.log(monthRess);
-
-    const month = 2592000000;
-    differenceBetwennTwoDates = differenceBetwennTwoDates % month;
-    let dayRess = temp.getDate() - temp2.getDate();
-    console.log(dayRess);
-
-    const day = 86400000;
-    differenceBetwennTwoDates = differenceBetwennTwoDates % day;
-    let hourRess = temp.getHours() - temp2.getHours();
-    console.log(hourRess);
-
-    const hour = 3600000;
-    differenceBetwennTwoDates = differenceBetwennTwoDates % hour;
-    let minutesRess = temp.getMinutes() - temp2.getMinutes();
-    console.log(minutesRess);
-
-    const minutes = 60000;
-    differenceBetwennTwoDates = differenceBetwennTwoDates % minutes;
-    let secondsRess = temp.getSeconds() - temp2.getSeconds();
-    console.log(secondsRess);*/
-    differenceBetwennTwoDates = differenceBetwennTwoDates / 1000
-    var a = 0, b =0, c =0, d = 0, e =0;
-    if(differenceBetwennTwoDates >= 31536000){
-		a = differenceBetwennTwoDates / 31536000;
-		a =  Math.trunc(a);
-		differenceBetwennTwoDates = differenceBetwennTwoDates % 31536000;
+function sixthTask(){ 
+	let date1 = new Date(document.getElementById('sixTaskFirstNumber').value);
+	let date2 = new Date(document.getElementById('sixTaskSecondNumber').value);
+	if (date2 > date1){
+		[date1, date2] = [date2, date1];
 	}
-	if(differenceBetwennTwoDates >= 2592000){
-		b = differenceBetwennTwoDates / 2592000;
-		b =  Math.trunc(b);
-		differenceBetwennTwoDates = differenceBetwennTwoDates % 2592000;
+    let year = date1.getYear() - date2.getYear();
+    let month = date1.getMonth() - date2.getMonth();
+    let date = date1.getDate() - date2.getDate();
+    let hours = date1.getHours() - date2.getHours();
+    let minutes = date1.getMinutes() - date2.getMinutes();
+    let seconds = date1.getSeconds() - date2.getSeconds();
+	
+	if (seconds < 0){
+		minutes = minutes - 1;
+		seconds = 60 + seconds; 
 	}
-	if(differenceBetwennTwoDates >= 86400){
-		c = differenceBetwennTwoDates / 86400;
-		c =  Math.trunc(c);
-		differenceBetwennTwoDates = differenceBetwennTwoDates % 86400;
+	if (minutes < 0){
+		hours = hours - 1;
+		minutes = 60 + minutes; 
 	}
-	if(differenceBetwennTwoDates >= 3600){
-		d = differenceBetwennTwoDates / 3600;
-		d =  Math.trunc(d);
-		differenceBetwennTwoDates = differenceBetwennTwoDates % 3600;
+	if (hours < 0){
+		date = date - 1;
+		hours = 24 + hours; 
 	}
-	if(differenceBetwennTwoDates >= 60){
-		e = differenceBetwennTwoDates / 60;
-		e =  Math.trunc(e);
-		differenceBetwennTwoDates = differenceBetwennTwoDates % 60 ;
+	if (date < 0){
+		month = month - 1;
+		date = new Date(date1.getYear(), 
+                    date1.getMonth()+1, 
+                    0).getDate() + date; 
 	}
-	alert(a + " год  "  + b + " мес "  + c + " день "  + d + " часов" + e + "сек" + differenceBetwennTwoDates);
-
-
-
-/*    let result = yearRess + ' года, ' + monthRess + ' месяц, ' 
-    + dayRess + ' дней, '+ hourRess + ' часов, ' + minutesRess +' минут, '
-     + secondsRess + ' секунд ';
+	if (month < 0){
+		year = year - 1;
+		month = 12 + month; 
+	}
+	let result = year + ' года, ' + 
+	month + ' месяц, ' 
+	+ date + ' дней, '+ 
+	hours + ' часов, ' + 
+	minutes +' минут, '
+	 + seconds + ' секунд ';
 	document.getElementById("sixTaskResultP").innerText = result;
-	let */
 }
 
+function sixTaskVersion2(){
+	let firstNumber = document.getElementById('sixTaskFirstNumber2').value;
+	let secondNumber = document.getElementById('sixTaskSecondNumber2').value;
+    let date1 = Date.parse(firstNumber);
+    let date2 = Date.parse(secondNumber);
+	
+	if (date2 > date1){
+		[date1, date2] = [date2, date1];
+		[firstNumber, secondNumber] = [secondNumber, firstNumber];
+	}
+	
+	var z = new Date(date1 - date2);
+	var epoch = new Date('1970-01-01 00:00:00');
+	var yearRessult = z.getYear() - epoch.getYear();
+	var monthRessult = z.getMonth() - epoch.getMonth();
+	var daysRessult = z.getDate() - epoch.getDate();
+	// ********************************** //
+		let d1 = new Date();
+		let timeSecond = da.setTime(Date.parse(firstNumber));
+		let b2 = new Date();
+		let timeFirst = be.setTime(Date.parse(secondNumber));
+
+		let timeDifference = Math.abs(timeSecond - timeFirst);
+		let hourRessult = Math.floor((((timeDifference % 31536000000) % 2592000000) % 86400000) / 3600000);
+		let minutesRussult = Math.floor(((((timeDifference % 31536000000) % 2592000000) % 86400000) % 3600000) / 60000);
+		let secondsRessult = Math.floor((((((timeDifference % 31536000000) % 2592000000) % 86400000) % 3600000) % 60000) / 1000);
+				// ***************************************** //
+	 let result = yearRessult + ' года, ' + monthRessult + ' месяц, ' 
+	+ daysRessult + ' дней, '+ hourRessult + ' часов, ' + minutesRussult +' минут, '
+	+ secondsRessult + ' секунд ';
+	document.getElementById("sixTaskResultP2").innerText = result;
+}
 
 function sevenTask(){
 	let date = document.getElementById(`seven_task_data`).value + "";
 	const zodiacSign = "zodiacSign";
 	let d = new Date(date);
-    let day = d.getDate();
-    let m = new Date(date);
-    let mounths = m.getMonth() + 1;
-    if(m == "Invalid Date"){
-    	alert("неверный формат ввода");
-    	return;
-    }
+	let day = d.getDate();
+	let m = new Date(date);
+	let mounths = m.getMonth() + 1;
+	if(m == "Invalid Date"){
+		alert("неверный формат ввода");
+		return;
+	}
 	if (mounths==1 && day>=20 || mounths==2 && day<=18){  
 		document.getElementById(zodiacSign).src="img/водолей.png";
 	}
@@ -403,10 +396,3 @@ function elevenTask(){// не сортирует
 	});
 }
 
-function test(){
-	let arr = ["https://facebook.com","https://facebook.com","1","https://google.com","https://google.com"];
-	let ress = arr.reduce(function(acc, item){
-		return acc + item;
-	}, 0);
-	alert(ress);
-}
