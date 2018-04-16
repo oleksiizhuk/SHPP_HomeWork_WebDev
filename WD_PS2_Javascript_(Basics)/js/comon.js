@@ -99,14 +99,17 @@ function fourthTask(){
 		
 		hour = firstNumber / secondPerHour;
 		hour =  Math.trunc(hour);
+		hour = hour.toString().padStart(2, '0');
 		firstNumber = firstNumber - (secondPerHour * hour);
 	}
 	const secondPerMinutes = 60;
 	if(firstNumber >= secondPerMinutes){
 		minutes = firstNumber / secondPerMinutes
 		minutes =  Math.trunc(minutes);
+		minutes = minutes.toString().padStart(2, '0');
 		firstNumber = firstNumber - (secondPerMinutes * minutes);
 	}
+		firstNumber = firstNumber.toString().padStart(2, '0');
 		result = hour + ':' + minutes + ':' + firstNumber;
 		document.getElementById('timeResult').value = result;
 		document.getElementById('getUserSeconds').classList.add(`userEnteredCorrectly`);
@@ -163,6 +166,10 @@ function fifthTask(){
 function sixthTask(){ 
 	let date1 = new Date(document.getElementById('sixTaskFirstNumber').value);
 	let date2 = new Date(document.getElementById('sixTaskSecondNumber').value);
+	if (date1 == "Invalid Date" || date2 == "Invalid Date"){
+		document.getElementById("sixTaskResultP").innerText = "Invalid Date";
+		return;
+	}
 	if (date2 > date1){
 		[date1, date2] = [date2, date1];
 	}
@@ -195,12 +202,7 @@ function sixthTask(){
 		year = year - 1;
 		month = 12 + month; 
 	}
-	let result = year + ' года, ' + 
-	month + ' месяц, ' 
-	+ date + ' дней, '+ 
-	hours + ' часов, ' + 
-	minutes +' минут, '
-	 + seconds + ' секунд ';
+	let result = ` ${year} года, ${month} месяц ${date} дней ${hours} часов, ${minutes} минут ${seconds} секунд`;
 	document.getElementById("sixTaskResultP").innerText = result;
 }
 
@@ -209,7 +211,10 @@ function sixTaskVersion2(){
 	let secondNumber = document.getElementById('sixTaskSecondNumber2').value;
     let date1 = Date.parse(firstNumber);
     let date2 = Date.parse(secondNumber);
-	
+	if (date1 == "Invalid Date" || date2 == "Invalid Date"){
+		document.getElementById("sixTaskResultP2").innerText = "Invalid Date";
+		return;
+	}
 	if (date2 > date1){
 		[date1, date2] = [date2, date1];
 		[firstNumber, secondNumber] = [secondNumber, firstNumber];
@@ -222,18 +227,16 @@ function sixTaskVersion2(){
 	var daysRessult = z.getDate() - epoch.getDate();
 	// ********************************** //
 		let d1 = new Date();
-		let timeSecond = da.setTime(Date.parse(firstNumber));
-		let b2 = new Date();
-		let timeFirst = be.setTime(Date.parse(secondNumber));
+		let timeSecond = d1.setTime(Date.parse(firstNumber));
+		let d2 = new Date();
+		let timeFirst = d2.setTime(Date.parse(secondNumber));
 
 		let timeDifference = Math.abs(timeSecond - timeFirst);
 		let hourRessult = Math.floor((((timeDifference % 31536000000) % 2592000000) % 86400000) / 3600000);
 		let minutesRussult = Math.floor(((((timeDifference % 31536000000) % 2592000000) % 86400000) % 3600000) / 60000);
 		let secondsRessult = Math.floor((((((timeDifference % 31536000000) % 2592000000) % 86400000) % 3600000) % 60000) / 1000);
-				// ***************************************** //
-	 let result = yearRessult + ' года, ' + monthRessult + ' месяц, ' 
-	+ daysRessult + ' дней, '+ hourRessult + ' часов, ' + minutesRussult +' минут, '
-	+ secondsRessult + ' секунд ';
+		// ***************************************** //
+	 let result = `${yearRessult} года, ${monthRessult} месяц, ${daysRessult} дней, ${hourRessult} часов, ${minutesRussult} минут, ${secondsRessult} секунд `;
 	document.getElementById("sixTaskResultP2").innerText = result;
 }
 
@@ -299,17 +302,18 @@ function eightTast(){// сделать что бы хавало 1 х 1  // вы�
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
+	let getDiv = document.getElementById("eight_task_div");
 	for(let i = 1; i <= getValuefirst; i++){		
 		let ul = document.createElement("ul");
-		document.getElementById("eight_task_div").appendChild(ul);
+		getDiv.appendChild(ul);
 		let attrUl = 'E_Ul' + i;
 		ul.setAttribute('id', attrUl);
-
+		let getAttr = document.getElementById(attrUl);
 		for(let k = 1; k <= getValueSecond; k++){
 			let li = document.createElement("li");
 			let attr  = "last_li";
 			li.setAttribute('class', attr);
-			document.getElementById(attrUl).appendChild(li);
+			getAttr.appendChild(li);
 		}	
 	}
 	document.getElementById('eightTaskGetValue').classList.add(`userEnteredCorrectly`) = "#4cd137";
