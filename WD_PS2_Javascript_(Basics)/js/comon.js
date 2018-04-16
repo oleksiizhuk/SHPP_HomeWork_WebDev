@@ -52,8 +52,7 @@ function secondTask() {
 	document.getElementById('st_result').innerText = result;
 }
 
-function thirdTask(){// одним свором ***
-	//container.innerHtml = "";
+function thirdTask(){
 	let container = document.getElementById(`thirdTaskList`);
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
@@ -106,7 +105,7 @@ function fourthTask(){
 	if(firstNumber >= secondPerMinutes){
 		minutes = firstNumber / secondPerMinutes
 		minutes =  Math.trunc(minutes);
-		minutes = minutes.toString().padStart(2, '0');
+		minutes = minutes.toString().padStart(2, '0'); // cool func
 		firstNumber = firstNumber - (secondPerMinutes * minutes);
 	}
 		firstNumber = firstNumber.toString().padStart(2, '0');
@@ -127,38 +126,38 @@ function fifthTask(){
 	let numberLenght = number.length;
 	let result = "";
 	if(year === 0){
-		result = year + " лет";
+		result = `${year}  лет`;
 		document.getElementById(`fiftT_result`).value = result;
 		return;
 	}
 	if (number[numberLenght -1] == 1){
 		if(number[numberLenght - 2] == 1){
-			result = year + " лет";
+			result = `${year}  лет`;
 			document.getElementById('fiftT_result').value = result;
 			return;
 		}else{
-			result = year + " год";
+			result = `${year}  год`;
 			document.getElementById('fiftT_result').value = result;
 			return;
 		}
 	}
 	if (number[numberLenght -1] == 2 || number[numberLenght -1] == 3 || number[numberLenght -1] == 4){
 		if (test >= 11 && test < 20){
-			result = year + " лет";
+			result = `${year}  лет`;
 			document.getElementById('fiftT_result').value = result;
 			return;
 		} else {
-			result = year + " года";
+			result = `${year}  года`;
 			document.getElementById('fiftT_result').value = result;
 			return;
 		}
 	} else {
-		result = year + " лет";
+		result = `${year}  лет`;
 		document.getElementById('fiftT_result').value = result;
 		return;
 	}
 	if (number[numberLenght -1] == 0){
-		result = year + " лет";
+		result = `${year}  лет`;;
 		document.getElementById('fiftT_result').value = result;
 	}
 }
@@ -167,7 +166,7 @@ function sixthTask(){
 	let date1 = new Date(document.getElementById('sixTaskFirstNumber').value);
 	let date2 = new Date(document.getElementById('sixTaskSecondNumber').value);
 	if (date1 == "Invalid Date" || date2 == "Invalid Date"){
-		document.getElementById("sixTaskResultP").innerText = "Invalid Date";
+		document.getElementById("sixTaskResultP").innerText = "Ooops... Invalid Date";
 		return;
 	}
 	if (date2 > date1){
@@ -194,9 +193,7 @@ function sixthTask(){
 	}
 	if (date < 0){
 		month = month - 1;
-		date = new Date(date1.getYear(), 
-                    date1.getMonth()+1, 
-                    0).getDate() + date; 
+		date = new Date(date1.getYear(), date1.getMonth()+1, 0).getDate() + date; 
 	}
 	if (month < 0){
 		year = year - 1;
@@ -212,16 +209,15 @@ function sixTaskVersion2(){
     let date1 = Date.parse(firstNumber);
     let date2 = Date.parse(secondNumber);
 	if (date1 == "Invalid Date" || date2 == "Invalid Date"){
-		document.getElementById("sixTaskResultP2").innerText = "Invalid Date";
+		document.getElementById("sixTaskResultP2").innerText = "Ooops... Invalid Date";
 		return;
 	}
 	if (date2 > date1){
 		[date1, date2] = [date2, date1];
 		[firstNumber, secondNumber] = [secondNumber, firstNumber];
 	}
-	
 	var z = new Date(date1 - date2);
-	var epoch = new Date('1970-01-01 00:00:00');
+	var epoch = new Date("1970-01-01 00:00:00");
 	var yearRessult = z.getYear() - epoch.getYear();
 	var monthRessult = z.getMonth() - epoch.getMonth();
 	var daysRessult = z.getDate() - epoch.getDate();
@@ -231,10 +227,10 @@ function sixTaskVersion2(){
 		let d2 = new Date();
 		let timeFirst = d2.setTime(Date.parse(secondNumber));
 
-		let timeDifference = Math.abs(timeSecond - timeFirst);
-		let hourRessult = Math.floor((((timeDifference % 31536000000) % 2592000000) % 86400000) / 3600000);
-		let minutesRussult = Math.floor(((((timeDifference % 31536000000) % 2592000000) % 86400000) % 3600000) / 60000);
-		let secondsRessult = Math.floor((((((timeDifference % 31536000000) % 2592000000) % 86400000) % 3600000) % 60000) / 1000);
+		let differenceBetweenTwoDate = Math.abs(timeSecond - timeFirst);
+		let hourRessult = Math.floor((((differenceBetweenTwoDate % 31536000000) % 2592000000) % 86400000) / 3600000);
+		let minutesRussult = Math.floor(((((differenceBetweenTwoDate % 31536000000) % 2592000000) % 86400000) % 3600000) / 60000);
+		let secondsRessult = Math.floor((((((differenceBetweenTwoDate % 31536000000) % 2592000000) % 86400000) % 3600000) % 60000) / 1000);
 		// ***************************************** //
 	 let result = `${yearRessult} года, ${monthRessult} месяц, ${daysRessult} дней, ${hourRessult} часов, ${minutesRussult} минут, ${secondsRessult} секунд `;
 	document.getElementById("sixTaskResultP2").innerText = result;
@@ -248,7 +244,7 @@ function sevenTask(){
 	let m = new Date(date);
 	let mounths = m.getMonth() + 1;
 	if(m == "Invalid Date"){
-		alert("неверный формат ввода");
+		alert("Ooops... Invalid Date");
 		return;
 	}
 	if (mounths==1 && day>=20 || mounths==2 && day<=18){  
@@ -289,7 +285,7 @@ function sevenTask(){
 	} 
 }
 
-function eightTast(){// сделать что бы хавало 1 х 1  // вывести ДОМ из цыкла
+function eightTast(){
 	let getValuefirst = +document.getElementById('eightTaskGetValue').value;
 	let getValueSecond = +document.getElementById('eightTaskGetSecondValue').value;
 	if(getValuefirst > 50 || getValuefirst <= 0 || getValueSecond > 50 || getValueSecond <= 0 || !getValuefirst || !getValueSecond){
@@ -341,7 +337,7 @@ function nineTask(){
 	}
 	let countUnder = 1;
 	let countFlors = 1;
-	const flightOfStairs =  numberOfFloors * flats; //лестничный пролет
+	const flightOfStairs =  numberOfFloors * flats;
 	for (let i = 1; i < apartmentNumber; i++){
 		if(i % flats === 0){
 			countFlors++;
@@ -352,7 +348,7 @@ function nineTask(){
 		}
 	}
 	let result = "";
-	result = 'подьезд № ' + countUnder + ' этаж № ' + countFlors;
+	result = `подьезд № ${countUnder} этаж № ${countFlors}`;
 	document.getElementById('nine_task_results').innerText = result;
 
 	document.getElementById('entrance').classList.add(`standardСolor`);
@@ -378,13 +374,11 @@ function tenTask(){
 	document.getElementById(`tenTaskGetNumber`).classList.add(`standardСolor`);
 }
 
-function elevenTask(){// не сортирует 
+function elevenTask(){
 	let clear = document.getElementById('elevenTaskTextarea');
 	clear.innerText = "";
 	let a = document.getElementById('elevenTaskTextarea');
-
 	let ul = document.getElementById(`link-item-ul`);
-	
 	let link = a.value
 	.split(/[\s,]/)
 	.filter(link => link)
