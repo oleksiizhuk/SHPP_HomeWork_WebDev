@@ -23,7 +23,7 @@
 				<input type="text" placeholder="Первое число" id="ft_firstNumber" onkeypress="if (event.keyCode==13){firstTask()};">
 				<input type="text" placeholder="Второе число" id="ft_secondNumber" onkeypress="if (event.keyCode==13){firstTask()};">
 				<p id="ft_result"></p>
-				<button onclick="first_task()">Кнопка</button>	
+				<button onclick="firstTask()">Кнопка</button>	
 			</div>
 			<hr> 
 
@@ -107,6 +107,7 @@
 				<img src="" alt="" id="zodiacSign" onkeypress="if (event.keyCode==13){sevenTask()};">
 				<input type="text" id="seven_task_data" onkeypress="if (event.keyCode==13){sevenTask()};">
 				<button onclick="sevenTask()">Кнопка</button>
+				<p id="resultErorrSevenTask"> </p>
 			</div>
 			<hr> 
 
@@ -157,7 +158,6 @@
 				<h2>eleven_task + </h2>
 				<p>11) Дан некий textarea, в который пользователь вводит ссылки через запятую. Когда textarea станет неактивным удалить http:// и https:// из ссылок и вывести их отсортированным по алфавиту списком ссылок.</p>
 				<textarea name="" id="elevenTaskTextarea" cols="30" rows="10" onchange="elevenTask()"></textarea>
-				<textarea name="" id="elevenTaskTextareaRezult" cols="30" rows="10"></textarea>
 				<div id="link-item">
 					<ul id="link-item-ul">
 						

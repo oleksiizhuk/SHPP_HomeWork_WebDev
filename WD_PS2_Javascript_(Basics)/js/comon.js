@@ -80,7 +80,7 @@ function thirdTask(){
 		for(let k = i - 1; k < i; k++){
 			star += "*" 
 		}	
-		document.getElementById('myLi'+i).innerText = star; // доделать
+		document.getElementById('myLi'+i).innerText = star; 
 	}
 	document.getElementById(`tt_firstNumber`).classList.add(`userEnteredCorrectly`);
 }
@@ -95,28 +95,24 @@ function fourthTask(){
 	let hour = 0, minutes = 0,result;
 	const secondPerHour = 3600;
 	if(firstNumber >= secondPerHour){
-		
 		hour = firstNumber / secondPerHour;
 		hour =  Math.trunc(hour);
-		hour = hour.toString().padStart(2, '0');
 		firstNumber = firstNumber - (secondPerHour * hour);
 	}
 	const secondPerMinutes = 60;
 	if(firstNumber >= secondPerMinutes){
 		minutes = firstNumber / secondPerMinutes
 		minutes =  Math.trunc(minutes);
-		minutes = minutes.toString().padStart(2, '0'); // cool func
 		firstNumber = firstNumber - (secondPerMinutes * minutes);
 	}
-		firstNumber = firstNumber.toString().padStart(2, '0');
-		result = hour + ':' + minutes + ':' + firstNumber;
+		result = hour.toString().padStart(2, '0')  + ':' + minutes.toString().padStart(2, '0') + ':' + firstNumber.toString().padStart(2, '0');
 		document.getElementById('timeResult').value = result;
 		document.getElementById('getUserSeconds').classList.add(`userEnteredCorrectly`);
 }
 
 function fifthTask(){ 
 	let year = +document.getElementById(`fifth_task_year`).value;
-	if (year <= 0 || !year){
+	if (year != 0 && !year){
 		alert(numberFormatMassege);
 		document.getElementById('fifth_task_year').classList.add(`userError`);
 		return;
@@ -239,51 +235,68 @@ function sixTaskVersion2(){
 function sevenTask(){
 	let date = document.getElementById(`seven_task_data`).value + "";
 	const zodiacSign = "zodiacSign";
+	let checker = checkDateSevenTask(date);
+	if (checker == "err"){
+		document.getElementById(zodiacSign).src = "#";
+		return;
+	}
 	let d = new Date(date);
 	let day = d.getDate();
 	let m = new Date(date);
 	let mounths = m.getMonth() + 1;
-	if(m == "Invalid Date"){
+	if (m == "Invalid Date"){
 		alert("Ooops... Invalid Date");
 		return;
 	}
-	if (mounths==1 && day>=20 || mounths==2 && day<=18){  
+	if (mounths == 1 && day >= 20 || mounths == 2 && day<=18){  
 		document.getElementById(zodiacSign).src="img/водолей.png";
 	}
-	else if (mounths==2 && day>=19 || mounths==3 && day<=20){
+	else if (mounths == 2 && day >= 19 || mounths == 3 && day <= 20){
 		document.getElementById(zodiacSign).src="img/рыбы.png";
 	} 
-	else if (mounths==3 && day>=21 || mounths==4 && day<=19){
+	else if (mounths == 3 && day >= 21 || mounths == 4 && day <= 19){
 		document.getElementById(zodiacSign).src="img/Оввен.png";
 	} 
-	else if (mounths==4 && day>=20 || mounths==5 && day<=20){
+	else if (mounths == 4 && day >= 20 || mounths == 5 && day <= 20){
 		document.getElementById(zodiacSign).src="img/телец.png";
 	}
-	else if (mounths==5 && day>=21 || mounths==6 && day<=21){
+	else if (mounths == 5 && day >= 21 || mounths == 6 && day <= 21){
 		document.getElementById(zodiacSign).src="img/близнецы.png";
 	}
-	else if (mounths==6 && day>=22 || mounths==7 && day<=22){
+	else if (mounths == 6 && day >= 22 || mounths == 7 && day <= 22){
 		document.getElementById(zodiacSign).src="img/рак.png";
 	}
-	else if (mounths==7 && day>=23 || mounths==8 && day<=22){
+	else if (mounths == 7 && day >= 23 || mounths == 8 && day <= 22){
 		document.getElementById(zodiacSign).src="img/Лев.png";
 	}
-	else if (mounths==8 && day>=23 || mounths==9 && day<=22){
+	else if (mounths == 8 && day >= 23 || mounths == 9 && day <= 22){
 		document.getElementById(zodiacSign).src="img/дева.png";
 	}
-	else if (mounths==9 && day>=23 || mounths==10 && day<=22){
+	else if (mounths == 9 && day >= 23 || mounths == 10 && day <= 22){
 		document.getElementById(zodiacSign).src="img/весы.png";
 	}
-	else if (mounths==10 && day>=23 || mounths==11 && day<=21){
+	else if (mounths == 10 && day >= 23 || mounths == 11 && day <= 21){
 		document.getElementById(zodiacSign).src="img/скорпион.png";
 	}
-	else if (mounths==11 && day>=22 || mounths==12 && day<=21){
+	else if (mounths == 11 && day >= 22 || mounths == 12 && day <= 21){
 		document.getElementById(zodiacSign).src="img/стрелец.png";
 	}
-	else if (mounths==12 && day>=22 || mounths==1 && day<=19){
+	else if (mounths == 12 && day >= 22 || mounths == 1 && day <= 19){
 		document.getElementById(zodiacSign).src="img/козерог.png";
 	} 
+	document.getElementById('resultErorrSevenTask').innerText = "";
 }
+
+function checkDateSevenTask(date){
+	let dateAndMounths = date.split('-');
+	let arr = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	if (arr[dateAndMounths[1] - 1] < dateAndMounths[2]){
+		document.getElementById('resultErorrSevenTask').innerText = `в этом месяце максимальное количество дней ${arr[dateAndMounths[1] - 1]}`;
+		return "err";
+	}
+	return 0;
+}
+
 
 function eightTast(){
 	let getValuefirst = +document.getElementById('eightTaskGetValue').value;
