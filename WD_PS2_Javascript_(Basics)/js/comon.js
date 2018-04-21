@@ -230,9 +230,9 @@ function sixTaskVersion2(){
 		const MILESECONDS_IN_HOUR = 3600000;
 		const MILESECONDS_IN_MINUTES = 60000;
 		const MILESECONDS = 1000;
-		let hourRessult = Math.floor((((differenceBetweenTwoDate % SECONDS_IN_YEAR) % SECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) / MILESECONDS_IN_HOUR);
-		let minutesRussult = Math.floor(((((differenceBetweenTwoDate % SECONDS_IN_YEAR) % SECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) / MILESECONDS_IN_MINUTES);
-		let secondsRessult = Math.floor((((((differenceBetweenTwoDate % SECONDS_IN_YEAR) % SECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) % MILESECONDS_IN_MINUTES) / MILESECONDS);
+		let hourRessult = Math.floor((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) / MILESECONDS_IN_HOUR);
+		let minutesRussult = Math.floor(((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) / MILESECONDS_IN_MINUTES);
+		let secondsRessult = Math.floor((((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) % MILESECONDS_IN_MINUTES) / MILESECONDS);
 		// ***************************************** //
 	 let result = `${yearRessult} года, ${monthRessult} месяц, ${daysRessult} дней, ${hourRessult} часов, ${minutesRussult} минут, ${secondsRessult} секунд `;
 	document.getElementById("sixTaskResultP2").innerText = result;
@@ -254,7 +254,7 @@ function sevenTask(){
 		alert("Ooops... Invalid Date");
 		return;
 	}
-	if (mounths === 1 && day >= 20 || mounths === 2 && day<=18){  
+	if (mounths === 1 && day >= 20 || mounths === 2 && day <= 18){  
 		document.getElementById(zodiacSign).src="img/водолей.png";
 	}
 	else if (mounths === 2 && day >= 19 || mounths === 3 && day <= 20){
@@ -302,7 +302,6 @@ function checkDateSevenTask(date){
 	}
 	return 0;
 }
-
 
 function eightTast(){
 	let getValuefirst = +document.getElementById('eightTaskGetValue').value;
@@ -376,6 +375,11 @@ function nineTask(){
 
 function tenTask(){  //.join("-")
 	let firstNumber = document.getElementById('tenTaskGetNumber').value;
+	if (firstNumber.replace (/\d/g, '')){
+		document.getElementById("ten_result").innerText = 'вы ввели не только цифры';
+		return;
+	} 
+
 	if (!firstNumber){
 		alert(numberFormatMassege);
 		document.getElementById('tenTaskGetNumber').classList.add("userError");
