@@ -111,15 +111,15 @@ function fourthTask(){
 }
 
 function fifthTask(){ 
-	let year = +document.getElementById("fifth_task_year").value;
+	const year = +document.getElementById("fifth_task_year").value;
 	if (year != 0 && !year){
 		alert(numberFormatMassege);
 		document.getElementById('fifth_task_year').classList.add("userError");
 		return;
 	}
-	let removeUnnecessary = year % 100;
-	let number = removeUnnecessary.toString();
-	let numberLenght = number.length;
+	const removeUnnecessary = year % 100;
+	const number = removeUnnecessary.toString();
+	const numberLenght = number.length;
 	let result = "";
 	if (year === 0){
 		result = `${year} лет`;
@@ -239,17 +239,17 @@ function sixTaskVersion2(){
 }
 
 function sevenTask(){
-	let date = document.getElementById("seven_task_data").value + "";
+	const date = document.getElementById("seven_task_data").value + "";
 	const zodiacSign = "zodiacSign";
-	let checker = checkDateSevenTask(date);
+	const checker = checkDateSevenTask(date);
 	if (checker === "err"){
 		document.getElementById(zodiacSign).src = "#";
 		return;
 	}
-	let d = new Date(date);
-	let day = d.getDate();
-	let m = new Date(date);
-	let mounths = m.getMonth() + 1;
+	const d = new Date(date);
+	const day = d.getDate();
+	const m = new Date(date);
+	const mounths = m.getMonth() + 1;
 	if (m === "Invalid Date"){
 		alert("Ooops... Invalid Date");
 		return;
@@ -304,15 +304,15 @@ function checkDateSevenTask(date){
 }
 
 function eightTast(){
-	let getValuefirst = +document.getElementById('eightTaskGetValue').value;
-	let getValueSecond = +document.getElementById('eightTaskGetSecondValue').value;
+	const getValuefirst = +document.getElementById('eightTaskGetValue').value;
+	const getValueSecond = +document.getElementById('eightTaskGetSecondValue').value;
 	if (getValuefirst > 50 || getValuefirst <= 0 || getValueSecond > 50 || getValueSecond <= 0 || !getValuefirst || !getValueSecond){
 		document.getElementById('eightTaskMessege').innerText = "числа от 1 до 50!!!";
 		document.getElementById('eightTaskGetValue').classList.add("userError");
 		document.getElementById('eightTaskGetSecondValue').classList.add("userError");
 		return;
 	}
-	let container = document.getElementById('eight_task_div');
+	const container = document.getElementById('eight_task_div');
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
