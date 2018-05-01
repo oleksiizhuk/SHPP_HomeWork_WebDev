@@ -58,7 +58,7 @@ function thirdTask(){
 		container.removeChild(container.firstChild);
 	}
 
-	let firstNumber = +document.getElementById("tt_firstNumber").value;
+	const firstNumber = +document.getElementById("tt_firstNumber").value;
 	if (!firstNumber && firstNumber != 0){
 		alert(numberFormatMassege);
 		document.getElementById("tt_firstNumber").classList.add("userError");
@@ -72,15 +72,17 @@ function thirdTask(){
 	let ul = document.createElement("ul");
 	document.getElementById("thirdTaskList").appendChild(ul);
 	let star = "";
+
 	for (let i = 1; i <= firstNumber; i++){
-		let li = document.createElement("li"); 
+		let li = document.createElement("li");     /*<<<<-- в данной ситуации, если вынести её из цыкла сломает задачку -----*/
 		id  = "myLi" + i;
 		li.setAttribute('id', id);
 		ul.appendChild(li);
 		for (let k = i - 1; k < i; k++){
 			star += "*" 
 		}	
-		document.getElementById('myLi' + i).innerText = star; 
+		let liContent = document.getElementById('myLi' + i);
+		liContent.innerText = star; 
 	}
 	document.getElementById("tt_firstNumber").classList.add("userEnteredCorrectly");
 }
@@ -212,18 +214,18 @@ function sixTaskVersion2(){
 		[date1, date2] = [date2, date1];
 		[firstNumber, secondNumber] = [secondNumber, firstNumber];
 	}
-	let z = new Date(date1 - date2);
-	let epoch = new Date("1970-01-01 00:00:00");
-	let yearRessult = z.getYear() - epoch.getYear();
-	let monthRessult = z.getMonth() - epoch.getMonth();
-	let daysRessult = z.getDate() - epoch.getDate();
+	const z = new Date(date1 - date2);
+	const epoch = new Date("1970-01-01 00:00:00");
+	const yearRessult = z.getYear() - epoch.getYear();
+	const monthRessult = z.getMonth() - epoch.getMonth();
+	const daysRessult = z.getDate() - epoch.getDate();
 	// ********************************** //
-		let d1 = new Date();
-		let timeSecond = d1.setTime(Date.parse(firstNumber));
-		let d2 = new Date();
-		let timeFirst = d2.setTime(Date.parse(secondNumber));
+		const d1 = new Date();
+		const timeSecond = d1.setTime(Date.parse(firstNumber));
+		const d2 = new Date();
+		const timeFirst = d2.setTime(Date.parse(secondNumber));
 
-		let differenceBetweenTwoDate = Math.abs(timeSecond - timeFirst);
+		const differenceBetweenTwoDate = Math.abs(timeSecond - timeFirst);
 		const MILESECONDS_IN_YEAR = 31536000000;
 		const MILESECONDS_IN_MOUTH = 2592000000;
 		const MILESECONDS_IN_DAY = 86400000;
@@ -294,8 +296,8 @@ function sevenTask(){
 }
 
 function checkDateSevenTask(date){
-	let dateAndMounths = date.split('-');
-	let arr = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+	const dateAndMounths = date.split('-');
+	const arr = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 	if (arr[dateAndMounths[1] - 1] < dateAndMounths[2]){
 		document.getElementById('resultErorrSevenTask').innerText = `в этом месяце максимальное количество дней ${arr[dateAndMounths[1] - 1]}`;
 		return "err";
@@ -318,15 +320,13 @@ function eightTast(){
 	}
 	let getDiv = document.getElementById("eight_task_div");
 	for (let i = 1; i <= getValuefirst; i++){		
-		let ul = document.createElement("ul");
+		let ul = document.createElement("ul");              /*каждый новый ряд доски  если убрать сломает*/
 		getDiv.appendChild(ul);
 		let attrUl = 'E_Ul' + i;
 		ul.setAttribute('id', attrUl);
 		let getAttr = document.getElementById(attrUl);
 		for(let k = 1; k <= getValueSecond; k++){
 			let li = document.createElement("li");
-			let attr  = "last_li";
-			li.setAttribute('class', attr);
 			getAttr.appendChild(li);
 		}	
 	}
@@ -334,10 +334,10 @@ function eightTast(){
 }
 
 function nineTask(){
-	let entrance = +document.getElementById("entrance").value;
-	let flats = +document.getElementById("flats").value;
-	let numberOfFloors = +document.getElementById("numberOfFloors").value;
-	let apartmentNumber = +document.getElementById("apartmentNumber").value;
+	const entrance = +document.getElementById("entrance").value;
+	const flats = +document.getElementById("flats").value;
+	const numberOfFloors = +document.getElementById("numberOfFloors").value;
+	const apartmentNumber = +document.getElementById("apartmentNumber").value;
 	
 	if (!entrance || !flats || !numberOfFloors || !apartmentNumber){
 		alert(numberFormatMassege);
@@ -373,12 +373,9 @@ function nineTask(){
 	document.getElementById('nine_task_results').classList.add("userEnteredCorrectly");
 }
 
-function tenTask(){  //.join("-")
-	let firstNumber = document.getElementById('tenTaskGetNumber').value;
-	if (firstNumber.replace (/\d/g, '')){
-		document.getElementById("ten_result").innerText = 'вы ввели не только цифры';
-		return;
-	} 
+function tenTask(){ 
+	const firstNumber = document.getElementById('tenTaskGetNumber').value;
+	const test = firstNumber;
 
 	if (!firstNumber){
 		alert(numberFormatMassege);
@@ -386,13 +383,20 @@ function tenTask(){  //.join("-")
 		return;
 	}
 	let arr = firstNumber.toString().replace(/-/g, "").split('');
-	let check = parseInt(firstNumber);
+
 	
 	let result = arr.reduce(function(acc, item){
 		return acc + item * 1;
 	}, 0);
-	document.getElementById("ten_result").innerText = result;
+
+	let checkForMinus = "";
+	if(firstNumber[0] === "-"){
+		checkForMinus = '-';
+	}
+
+	document.getElementById("ten_result").innerText = `${checkForMinus}${result}`;
 	document.getElementById("tenTaskGetNumber").classList.add("standardСolor");
+	
 }
 
 function elevenTask(){
