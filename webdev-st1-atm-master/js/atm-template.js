@@ -18,7 +18,7 @@ const ATM = {
 	// authorization
 	auth: function(number, pin) {
 		if(this.is_auth){
-			console.log("вы должны разлогиниться! зачем вы пробуете логинитесь повторно"); // удалить перед сдаче
+			console.log("вы должны разлогиниться! зачем вы пробуете логинитесь повторно"); 
 			return;
 		}
 		for(let i = 0; i < this.users.length; i++){
@@ -36,7 +36,7 @@ const ATM = {
 		}    
 		console.log("Не верный логин или пароль");
 	},
-	// check current debet  проверить баланас  +++++++++++++++++   можно сдавать 
+	// check current debet  проверить баланас  +
 	check: function() {
 		if ( !this.checkIsAuth() ){
 			return;
@@ -46,7 +46,7 @@ const ATM = {
 			this.logs(this.log);
 	},
 
-	// get cash - available for user only     снять деньги с банкомата +++++++ можно сдавать 
+	// get cash - available for user only   
 	getCash: function(amount) {
 		if( !this.checkIsAuth() ){
 			return;
@@ -88,7 +88,7 @@ const ATM = {
 	},
 
 	// load cash to ATM - available for admin only - EXTENDED  добавить деньги в ATM только для админа
-	load_cash: function(addition) { //!this.current_type != "admin"
+	load_cash: function(addition) { 
  		if ( this.current_type != "admin" ){ 
  			console.log("Только администратор может пользоваться данной функцией");// 
  			this.log = "Пытались воспользоваться функциями администратора, положить деньги.";
@@ -96,7 +96,6 @@ const ATM = {
  			return;
  		}
  		if ( !this.checkMoney(addition) ) {
-			console.log("введите корректную сумму"); // удалить перед сдачей
 			return;
 		 }
  			this.cash += parseInt(addition);
@@ -116,7 +115,6 @@ const ATM = {
 		}
 		this.log = `${this.users[this.current_user].name}, посмотрел логи ;).`;
 		this.logs(this.log);
- 		console.log(this.current_log.log);
 	},
 
 	// log out
@@ -142,13 +140,13 @@ const ATM = {
 	},
 
 	checkIsAuth: function() { 
-		if( !this.is_auth ) {   // аутификация
+		if( !this.is_auth ) { 
 			console.log("Вы не залогинились, вы не можете работать с банкоматом !!!");
 			this.log = `Не авторизированный пользователь, пытался воспользоваться функциями банкомата.`;
 			this.logs(this.log);
 			return false;
 		} 
-		if ( this.current_type != "user" ) { // если не пользователь 
+		if ( this.current_type != "user" ) { 
 			console.log(this.current_type);
 			console.log("Вы залогинились как Администратор, Вы не можете работать с банкоматом  как пользователь!!!");
 			this.log = `Администратор, пытался воспользоваться функциями пользователя.`;
@@ -160,10 +158,8 @@ const ATM = {
 
 	checkMoney: function(money){
 		if ( typeof(money) === "number" && money > 0  ) {
-			console.log("good"); // удалить перед сдачей
 			return true;
 		} 
-			console.log("bad"); // удалить перед сдачей
 			this.log = `${this.users[this.current_user].name}, сумма указанна не верно.`;
 			this.logs(this.log);
 			return false;
