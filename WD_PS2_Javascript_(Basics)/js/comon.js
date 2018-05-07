@@ -1,7 +1,7 @@
-var redColor = "#e84118";
-var standardColor = "#c2b6b6";
-var greenColor = "#4cd137";
-var numberFormatMassege = "Вводите в строку только числа";
+const redColor = "#e84118";
+const standardColor = "#c2b6b6";
+const greenColor = "#4cd137";
+const numberFormatMassege = "Вводите в строку только числа";
 function firstTask() { 
 	let firstNumber = +document.getElementById("ft_firstNumber").value;
 	let secondNumber = +document.getElementById("ft_secondNumber").value;
@@ -53,7 +53,7 @@ function secondTask() {
 }
 
 function thirdTask(){
-	let container = document.getElementById("thirdTaskList");
+	const container = document.getElementById("thirdTaskList");
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
@@ -70,7 +70,8 @@ function thirdTask(){
 		return;
 	}
 	let ul = document.createElement("ul");
-	document.getElementById("thirdTaskList").appendChild(ul);
+	let block = document.getElementById("thirdTaskList");
+	block.appendChild(ul);
 	let star = "";
 
 	for (let i = 1; i <= firstNumber; i++){
@@ -232,11 +233,11 @@ function sixTaskVersion2(){
 		const MILESECONDS_IN_HOUR = 3600000;
 		const MILESECONDS_IN_MINUTES = 60000;
 		const MILESECONDS = 1000;
-		let hourRessult = Math.floor((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) / MILESECONDS_IN_HOUR);
-		let minutesRussult = Math.floor(((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) / MILESECONDS_IN_MINUTES);
-		let secondsRessult = Math.floor((((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) % MILESECONDS_IN_MINUTES) / MILESECONDS);
+		const hourRessult = Math.floor((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) / MILESECONDS_IN_HOUR);
+		const minutesRussult = Math.floor(((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) / MILESECONDS_IN_MINUTES);
+		const secondsRessult = Math.floor((((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) % MILESECONDS_IN_MINUTES) / MILESECONDS);
 		// ***************************************** //
-	 let result = `${yearRessult} года, ${monthRessult} месяц, ${daysRessult} дней, ${hourRessult} часов, ${minutesRussult} минут, ${secondsRessult} секунд `;
+	 const result = `${yearRessult} года, ${monthRessult} месяц, ${daysRessult} дней, ${hourRessult} часов, ${minutesRussult} минут, ${secondsRessult} секунд `;
 	document.getElementById("sixTaskResultP2").innerText = result;
 }
 
@@ -382,19 +383,14 @@ function tenTask(){
 		document.getElementById('tenTaskGetNumber').classList.add("userError");
 		return;
 	}
-	let arr = firstNumber.toString().replace(/-/g, "").split('');
+	let arr = firstNumber.toString().replace(/[^0-9]/g, "").split('');
 
 	
 	let result = arr.reduce(function(acc, item){
 		return acc + item * 1;
 	}, 0);
 
-	let checkForMinus = "";
-	if(firstNumber[0] === "-"){
-		checkForMinus = '-';
-	}
-
-	document.getElementById("ten_result").innerText = `${checkForMinus}${result}`;
+	document.getElementById("ten_result").innerText = result;
 	document.getElementById("tenTaskGetNumber").classList.add("standardСolor");
 	
 }
