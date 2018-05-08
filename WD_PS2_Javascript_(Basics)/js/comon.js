@@ -69,20 +69,20 @@ function thirdTask(){
 		document.getElementById('tt_firstNumber').classList.add('userError');
 		return;
 	}
-	let ul = document.createElement("ul");
-	let block = document.getElementById("thirdTaskList");
+	const ul = document.createElement("ul");
+	const block = document.getElementById("thirdTaskList");
 	block.appendChild(ul);
 	let star = "";
 
 	for (let i = 1; i <= firstNumber; i++){
-		let li = document.createElement("li");     /*<<<<-- в данной ситуации, если вынести её из цыкла сломает задачку -----*/
+		const li = document.createElement("li");     /*<<<<-- в данной ситуации, если вынести её из цыкла сломает задачку -----*/
 		id  = "myLi" + i;
 		li.setAttribute('id', id);
 		ul.appendChild(li);
 		for (let k = i - 1; k < i; k++){
 			star += "*" 
 		}	
-		let liContent = document.getElementById('myLi' + i);
+		const liContent = document.getElementById('myLi' + i);
 		liContent.innerText = star; 
 	}
 	document.getElementById("tt_firstNumber").classList.add("userEnteredCorrectly");
@@ -95,7 +95,7 @@ function fourthTask(){
 		document.getElementById('getUserSeconds').classList.add("userError");
 		return;
 	}
-	let hour = 0, minutes = 0,result;
+	let hour = 0, minutes = 0;
 	const secondPerHour = 3600;
 	if (firstNumber >= secondPerHour){
 		hour = firstNumber / secondPerHour;
@@ -108,7 +108,7 @@ function fourthTask(){
 		minutes =  Math.trunc(minutes);
 		firstNumber = firstNumber - (secondPerMinutes * minutes);
 	}
-		result = hour.toString().padStart(2, '0')  + ':' + minutes.toString().padStart(2, '0') + ':' + firstNumber.toString().padStart(2, '0');
+		const result = hour.toString().padStart(2, '0')  + ':' + minutes.toString().padStart(2, '0') + ':' + firstNumber.toString().padStart(2, '0');
 		document.getElementById('timeResult').value = result;
 		document.getElementById('getUserSeconds').classList.add("userEnteredCorrectly");
 }
@@ -124,40 +124,41 @@ function fifthTask(){
 	const number = removeUnnecessary.toString();
 	const numberLenght = number.length;
 	let result = "";
+	const elemForRess = document.getElementById(`fiftT_result`);
 	if (year === 0){
 		result = `${year} лет`;
-		document.getElementById(`fiftT_result`).value = result;
+		elemForRess.value = result;
 		return;
 	}
 	if (number[numberLenght - 1] == 1){
 		if (number[numberLenght - 2] == 1){
 			result = `${year} лет`;
-			document.getElementById('fiftT_result').value = result;
+			elemForRess.value = result;
 			return;
 		}else{
 			result = `${year} год`;
-			document.getElementById('fiftT_result').value = result;
+			elemForRess.value = result;
 			return;
 		}
 	}
 	if (number[numberLenght - 1] == 2 || number[numberLenght -1] == 3 || number[numberLenght -1] == 4){
 		if (removeUnnecessary >= 11 && removeUnnecessary < 20){
 			result = `${year} лет`;
-			document.getElementById('fiftT_result').value = result;
+			elemForRess.value = result;
 			return;
 		} else {
 			result = `${year} года`;
-			document.getElementById('fiftT_result').value = result;
+			elemForRess.value = result;
 			return;
 		}
 	} else {
 		result = `${year} лет`;
-		document.getElementById('fiftT_result').value = result;
+		elemForRess.value = result;
 		return;
 	}
 	if (number[numberLenght - 1] == 0){
 		result = `${year} лет`;;
-		document.getElementById('fiftT_result').value = result;
+		elemForRess.value = result;
 	}
 }
 
@@ -198,7 +199,7 @@ function sixthTask(){
 		year = year - 1;
 		month = 12 + month; 
 	}
-	let result = ` ${year} года, ${month} месяц ${date} дней ${hours} часов, ${minutes} минут ${seconds} секунд`;
+	const result = ` ${year} года, ${month} месяц ${date} дней ${hours} часов, ${minutes} минут ${seconds} секунд`;
 	document.getElementById("sixTaskResultP").innerText = result;
 }
 
@@ -319,15 +320,15 @@ function eightTast(){
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
-	let getDiv = document.getElementById("eight_task_div");
+	const getDiv = document.getElementById("eight_task_div");
 	for (let i = 1; i <= getValuefirst; i++){		
-		let ul = document.createElement("ul");              /*каждый новый ряд доски  если убрать сломает*/
+		const ul = document.createElement("ul");              /*каждый новый ряд доски  если убрать сломает*/
 		getDiv.appendChild(ul);
-		let attrUl = 'E_Ul' + i;
+		const attrUl = 'E_Ul' + i;
 		ul.setAttribute('id', attrUl);
-		let getAttr = document.getElementById(attrUl);
+		const getAttr = document.getElementById(attrUl);
 		for(let k = 1; k <= getValueSecond; k++){
-			let li = document.createElement("li");
+			const li = document.createElement("li");
 			getAttr.appendChild(li);
 		}	
 	}
@@ -347,7 +348,7 @@ function nineTask(){
 		document.getElementById('numberOfFloors').classList.add("userError");
 		return;
 	}
-	let numberOfFlats = entrance * flats * numberOfFloors;
+	const numberOfFlats = entrance * flats * numberOfFloors;
 	if (apartmentNumber > numberOfFlats || apartmentNumber <= 0){
 		alert("такой квартиры не существует");
 		return;
@@ -364,8 +365,7 @@ function nineTask(){
 			countFlors -= numberOfFloors;
 		}
 	}
-	let result = "";
-	result = `подьезд № ${countUnder} этаж № ${countFlors}`;
+	const result = `подьезд № ${countUnder} этаж № ${countFlors}`;
 	document.getElementById('nine_task_results').innerText = result;
 
 	document.getElementById('entrance').classList.add("standardСolor");
@@ -377,37 +377,37 @@ function nineTask(){
 function tenTask(){ 
 	const firstNumber = document.getElementById('tenTaskGetNumber').value;
 	const test = firstNumber;
-
 	if (!firstNumber){
 		alert(numberFormatMassege);
 		document.getElementById('tenTaskGetNumber').classList.add("userError");
 		return;
 	}
-	let arr = firstNumber.toString().replace(/[^0-9]/g, "").split('');
-
-	
-	let result = arr.reduce(function(acc, item){
+	const arr = firstNumber.toString().replace(/[^0-9]/g, "").split('');
+	const result = arr.reduce(function(acc, item){
 		return acc + item * 1;
 	}, 0);
 
 	document.getElementById("ten_result").innerText = result;
 	document.getElementById("tenTaskGetNumber").classList.add("standardСolor");
-	
 }
 
 function elevenTask(){
-	let clear = document.getElementById('elevenTaskTextarea');
+	const clear = document.getElementById('elevenTaskTextarea');
 	clear.innerText = "";
-	let a = document.getElementById('elevenTaskTextarea');
-	let ul = document.getElementById("link-item-ul");
-	let link = a.value
+	const container = document.getElementById('link-item-ul');
+	while (container.firstChild) {
+		container.removeChild(container.firstChild);
+	}
+	const a = document.getElementById('elevenTaskTextarea');
+	const ul = document.getElementById("link-item-ul");
+	const link = a.value
 	.split(/[\s,]/)
 	.filter(link => link)
 	.map(link => link.replace(/https?\:\/\//gi,''))
 	.sort()
 	.reduce(function(acc, link){ 
-		let li = document.createElement("li");
-		let a = document.createElement("a");
+		const li = document.createElement("li");
+		const a = document.createElement("a");
 		a.href = `//${link}`;
 		a.innerText = link;
 		li.appendChild(a);
