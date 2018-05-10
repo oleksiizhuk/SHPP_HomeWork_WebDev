@@ -28,7 +28,7 @@ function firstTask() {
 function secondTask() {
 	let firstNumber = +document.getElementById('st_firstNumber').value;
 	let secondNumber = +document.getElementById('st_secondNumber').value;
-	if(!firstNumber && firstNumber != 0   || !secondNumber && secondNumber != 0 ){
+	if (!firstNumber && firstNumber != 0   || !secondNumber && secondNumber != 0 ){
 		document.getElementById('st_result').innerText = numberFormatMassege;
 		document.getElementById('st_firstNumber').classList.add('userError');
 		document.getElementById('st_secondNumber').classList.add('userError');
@@ -39,7 +39,7 @@ function secondTask() {
 		[secondNumber, firstNumber] = [firstNumber, secondNumber];
 	}
 	let result = 0;
-	for(let i = firstNumber; i <= secondNumber; i++){
+	for (let i = firstNumber; i <= secondNumber; i++){
 		let removeMinus = Math.abs(i); 
 		let check = removeMinus % 10;
 		if(check === 2 || check === 3 || check === 7){
@@ -238,7 +238,7 @@ function sixTaskVersion2(){
 		const minutesRussult = Math.floor(((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) / MILESECONDS_IN_MINUTES);
 		const secondsRessult = Math.floor((((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) % MILESECONDS_IN_MINUTES) / MILESECONDS);
 		// ***************************************** //
-	 const result = `${yearRessult} года, ${monthRessult} месяц, ${daysRessult} дней, ${hourRessult} часов, ${minutesRussult} минут, ${secondsRessult} секунд `;
+	const result = `${yearRessult} года, ${monthRessult} месяц, ${daysRessult} дней, ${hourRessult} часов, ${minutesRussult} минут, ${secondsRessult} секунд `;
 	document.getElementById("sixTaskResultP2").innerText = result;
 }
 
@@ -327,7 +327,7 @@ function eightTast(){
 		const attrUl = 'E_Ul' + i;
 		ul.setAttribute('id', attrUl);
 		const getAttr = document.getElementById(attrUl);
-		for(let k = 1; k <= getValueSecond; k++){
+		for (let k = 1; k <= getValueSecond; k++) {
 			const li = document.createElement("li");
 			getAttr.appendChild(li);
 		}	
@@ -341,7 +341,7 @@ function nineTask(){
 	const numberOfFloors = +document.getElementById("numberOfFloors").value;
 	const apartmentNumber = +document.getElementById("apartmentNumber").value;
 	
-	if (!entrance || !flats || !numberOfFloors || !apartmentNumber){
+	if (!entrance || !flats || !numberOfFloors || !apartmentNumber) {
 		alert(numberFormatMassege);
 		document.getElementById('entrance').classList.add("userError");
 		document.getElementById('flats').classList.add("userError");
@@ -357,10 +357,10 @@ function nineTask(){
 	let countFlors = 1;
 	const flightOfStairs =  numberOfFloors * flats;
 	for (let i = 1; i < apartmentNumber; i++){
-		if(i % flats === 0){
+		if (i % flats === 0){
 			countFlors++;
 		}
-		if(i % flightOfStairs === 0){ 
+		if (i % flightOfStairs === 0){ 
 			countUnder++;
 			countFlors -= numberOfFloors;
 		}
@@ -374,17 +374,12 @@ function nineTask(){
 	document.getElementById('nine_task_results').classList.add("userEnteredCorrectly");
 }
 
-function tenTask(){ 
+function tenTask() { 
 	const firstNumber = document.getElementById('tenTaskGetNumber').value;
-	const test = firstNumber;
-	if (!firstNumber){
-		alert(numberFormatMassege);
-		document.getElementById('tenTaskGetNumber').classList.add("userError");
-		return;
-	}
+
 	const arr = firstNumber.toString().replace(/[^0-9]/g, "").split('');
 	const result = arr.reduce(function(acc, item){
-		return acc + item * 1;
+		return acc + parseInt(item);
 	}, 0);
 
 	document.getElementById("ten_result").innerText = result;
