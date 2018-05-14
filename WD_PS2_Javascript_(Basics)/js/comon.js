@@ -1,7 +1,8 @@
-const redColor = "#e84118";
+const userError = "#e84118";
 const standardColor = "#c2b6b6";
 const greenColor = "#4cd137";
 const numberFormatMassege = "Вводите в строку только числа";
+const button = document.getElementsByClassName("button");
 function firstTask() { 
 	let firstNumber = +document.getElementById("ft_firstNumber").value;
 	let secondNumber = +document.getElementById("ft_secondNumber").value;
@@ -10,6 +11,7 @@ function firstTask() {
 		document.getElementById("ft_firstNumber").classList.add("userError");
 		document.getElementById("ft_secondNumber").classList.add("userError");
 		document.getElementById("ft_result").classList.add("standardСolor");
+		button[0].style.borderColor = "#e84118"
 		return;
 	}
 	if (firstNumber > secondNumber){
@@ -54,24 +56,23 @@ function secondTask() {
 
 function thirdTask(){
 	const container = document.getElementById("thirdTaskList");
+	const errorMesseg = "введите число меньше от 1 до 300!!!";
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
-
 	const firstNumber = +document.getElementById("tt_firstNumber").value;
-	if (!firstNumber && firstNumber != 0){
-		alert(numberFormatMassege);
+	if (!firstNumber && firstNumber != 0) {
+		container.innerText = numberFormatMassege;
 		document.getElementById("tt_firstNumber").classList.add("userError");
 		return;
 	}
 	if (firstNumber > 300 || firstNumber <= 0){
-		alert("введите число меньше от 1 до 300!!!");
-		document.getElementById('tt_firstNumber').classList.add('userError');
+		container.innerText = errorMesseg;
+		document.getElementById("tt_firstNumber").classList.add("userError");
 		return;
 	}
 	const ul = document.createElement("ul");
-	const block = document.getElementById("thirdTaskList");
-	block.appendChild(ul);
+	container.appendChild(ul);
 	let star = "";
 
 	for (let i = 1; i <= firstNumber; i++){
@@ -114,17 +115,20 @@ function fourthTask(){
 }
 
 function fifthTask(){ 
-	const year = +document.getElementById("fifth_task_year").value;
-	if (year != 0 && !year){
-		alert(numberFormatMassege);
-		document.getElementById('fifth_task_year').classList.add("userError");
+	const year = +document.getElementById('fifth_task_year').value;
+	const elemForRess = document.getElementById('fiftTResult');
+	elemForRess.value = "";
+
+	if (year != 0 && !year) {
+		elemForRess.value = numberFormatMassege; 
+		document.getElementById('fiftTResult').classList.add("userError");
 		return;
 	}
 	const removeUnnecessary = year % 100;
 	const number = removeUnnecessary.toString();
 	const numberLenght = number.length;
 	let result = "";
-	const elemForRess = document.getElementById(`fiftT_result`);
+	
 	if (year === 0){
 		result = `${year} лет`;
 		elemForRess.value = result;
@@ -244,67 +248,73 @@ function sixTaskVersion2(){
 
 function sevenTask(){
 	const date = document.getElementById("seven_task_data").value + "";
-	const zodiacSign = "zodiacSign";
-	const checker = checkDateSevenTask(date);
-	if (checker === "err"){
-		document.getElementById(zodiacSign).src = "#";
+	const imgZodiac  = document.getElementById('zodiacSign');
+	const ckeckValidationDate = checkDateSevenTask(date);
+
+	if ( ckeckValidationDate === false ) {
+		const errorMesseg = "Invalid Date";
+		imgZodiac.src = "#";
+		document.getElementById('resultErorrSevenTask').innerText = errorMesseg;
 		return;
 	}
 	const d = new Date(date);
 	const day = d.getDate();
 	const m = new Date(date);
 	const mounths = m.getMonth() + 1;
-	if (m === "Invalid Date"){
-		alert("Ooops... Invalid Date");
-		return;
-	}
+	
 	if (mounths === 1 && day >= 20 || mounths === 2 && day <= 18){  
-		document.getElementById(zodiacSign).src="img/водолей.png";
+		imgZodiac.src="img/водолей.png";
 	}
 	else if (mounths === 2 && day >= 19 || mounths === 3 && day <= 20){
-		document.getElementById(zodiacSign).src="img/рыбы.png";
+		imgZodiac.src="img/рыбы.png";
 	} 
 	else if (mounths === 3 && day >= 21 || mounths === 4 && day <= 19){
-		document.getElementById(zodiacSign).src="img/Оввен.png";
+		imgZodiac.src="img/Оввен.png";
 	} 
 	else if (mounths === 4 && day >= 20 || mounths === 5 && day <= 20){
-		document.getElementById(zodiacSign).src="img/телец.png";
+		imgZodiac.src="img/телец.png";
 	}
 	else if (mounths === 5 && day >= 21 || mounths === 6 && day <= 21){
-		document.getElementById(zodiacSign).src="img/близнецы.png";
+		imgZodiac.src="img/близнецы.png";
 	}
 	else if (mounths === 6 && day >= 22 || mounths === 7 && day <= 22){
-		document.getElementById(zodiacSign).src="img/рак.png";
+		imgZodiac.src="img/рак.png";
 	}
 	else if (mounths === 7 && day >= 23 || mounths === 8 && day <= 22){
-		document.getElementById(zodiacSign).src="img/Лев.png";
+		imgZodiac.src="img/Лев.png";
 	}
 	else if (mounths === 8 && day >= 23 || mounths === 9 && day <= 22){
-		document.getElementById(zodiacSign).src="img/дева.png";
+		imgZodiac.src="img/дева.png";
 	}
 	else if (mounths === 9 && day >= 23 || mounths === 10 && day <= 22){
-		document.getElementById(zodiacSign).src="img/весы.png";
+		imgZodiac.src="img/весы.png";
 	}
 	else if (mounths === 10 && day >= 23 || mounths === 11 && day <= 21){
-		document.getElementById(zodiacSign).src="img/скорпион.png";
+		imgZodiac.src="img/скорпион.png";
 	}
 	else if (mounths === 11 && day >= 22 || mounths === 12 && day <= 21){
-		document.getElementById(zodiacSign).src="img/стрелец.png";
+		imgZodiac.src="img/стрелец.png";
 	}
 	else if (mounths === 12 && day >= 22 || mounths === 1 && day <= 19){
-		document.getElementById(zodiacSign).src="img/козерог.png";
+		imgZodiac.src="img/козерог.png";
 	} 
 	document.getElementById('resultErorrSevenTask').innerText = "";
 }
 
 function checkDateSevenTask(date){
-	const dateAndMounths = date.split('-');
+	const checkValidation = date.split('-');
 	const arr = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-	if (arr[dateAndMounths[1] - 1] < dateAndMounths[2]){
+	if (arr[checkValidation[0] ] < checkValidation[2]){
 		document.getElementById('resultErorrSevenTask').innerText = `в этом месяце максимальное количество дней ${arr[dateAndMounths[1] - 1]}`;
-		return "err";
+		return false;
 	}
-	return 0;
+	checkValidation[1] -= 1;
+		const d = new Date(checkValidation[0], checkValidation[1], checkValidation[2]);
+	if ((d.getFullYear() == checkValidation[0]) && (d.getMonth() == checkValidation[1]) && (d.getDate() == checkValidation[2])) {
+		return;
+	} else {
+		return false;
+	}
 }
 
 function eightTast(){
@@ -340,19 +350,24 @@ function nineTask(){
 	const flats = +document.getElementById("flats").value;
 	const numberOfFloors = +document.getElementById("numberOfFloors").value;
 	const apartmentNumber = +document.getElementById("apartmentNumber").value;
-	
+
+	const numberOfFlats = entrance * flats * numberOfFloors;
+	const outputRessult = document.getElementById('nineTaskResults');
+
 	if (!entrance || !flats || !numberOfFloors || !apartmentNumber) {
-		alert(numberFormatMassege);
+		outputRessult.innerText = numberFormatMassege;
 		document.getElementById('entrance').classList.add("userError");
 		document.getElementById('flats').classList.add("userError");
 		document.getElementById('numberOfFloors').classList.add("userError");
 		return;
 	}
-	const numberOfFlats = entrance * flats * numberOfFloors;
-	if (apartmentNumber > numberOfFlats || apartmentNumber <= 0){
-		alert("такой квартиры не существует");
+
+	if (apartmentNumber > numberOfFlats || apartmentNumber <= 0) {
+		const errorMesseg = "такой квартиры не существует";
+		outputRessult.innerText = errorMesseg;
 		return;
 	}
+
 	let countUnder = 1;
 	let countFlors = 1;
 	const flightOfStairs =  numberOfFloors * flats;
@@ -366,7 +381,7 @@ function nineTask(){
 		}
 	}
 	const result = `подьезд № ${countUnder} этаж № ${countFlors}`;
-	document.getElementById('nine_task_results').innerText = result;
+	outputRessult.innerText = result;
 
 	document.getElementById('entrance').classList.add("standardСolor");
 	document.getElementById('flats').classList.add("standardСolor");

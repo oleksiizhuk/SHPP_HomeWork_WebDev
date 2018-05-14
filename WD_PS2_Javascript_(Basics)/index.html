@@ -23,7 +23,7 @@
 				<input type="text" placeholder="Первое число" id="ft_firstNumber" onkeypress="if (event.keyCode==13){firstTask()};">
 				<input type="text" placeholder="Второе число" id="ft_secondNumber" onkeypress="if (event.keyCode==13){firstTask()};">
 				<p id="ft_result"></p>
-				<button onclick="firstTask()">Кнопка</button>	
+				<button onclick="firstTask() " class="button" >Кнопка</button>	
 			</div>
 			<hr> 
 
@@ -34,7 +34,7 @@
 				<input type="text" id="st_firstNumber" placeholder="первое число" onkeypress="if (event.keyCode==13){secondTask()};">
 				<input type="text" id="st_secondNumber" placeholder="второе число " onkeypress="if (event.keyCode==13){secondTask()};">
 				<p id="st_result"></p>
-				<button onclick="secondTask()">кнопка</button>
+				<button onclick="secondTask()" class="button" >кнопка</button>
 			</div>
 			<hr> 
 
@@ -43,7 +43,7 @@
 				<h2>third Task +</h2>
 				<p>3) вывести на страницу список из 50 элементов вида</p>
 				<input type="text" placeholder="введите число" id="tt_firstNumber" placeholder="введите число" max="300" onkeypress="if (event.keyCode==13){thirdTask()};">
-				<button onclick="thirdTask()">Кнопка</button>
+				<button onclick="thirdTask()" class="button" >Кнопка</button>
 				<div id="thirdTaskList">
 				</div>
 			</div>
@@ -65,7 +65,7 @@
 				<h2>fifth Task + </h2>
 				<p>5) Для указанного возраста студента вывести фразу вида "22 года" ( 1 год, 20 лет....)</p>
 				<input type="text" id="fifth_task_year" placeholder="22" onkeypress="if (event.keyCode==13){fifthTask()};">
-				<input type="text" id="fiftT_result" readonly>
+				<input type="text" id="fiftTResult" readonly>
 				<button onclick="fifthTask()">Кнопка</button>
 			</div>
 			<hr> 
@@ -106,6 +106,7 @@
 				<p>Пользователь вводит дату в формате 2014-12-31, 2014-11-31,2014-8-31,2014-1-1 а получает знак зодиака в этот день (с картинкой).</p>
 				<img src="" alt="" id="zodiacSign" onkeypress="if (event.keyCode==13){sevenTask()};">
 				<input type="text" id="seven_task_data" onkeypress="if (event.keyCode==13){sevenTask()};">
+				<p></p>
 				<button onclick="sevenTask()">Кнопка</button>
 				<p id="resultErorrSevenTask"> </p>
 			</div>
@@ -138,7 +139,7 @@
 				<input type="text" placeholder="количество этажей" id="numberOfFloors" onkeypress="if (event.keyCode==13){nineTask()};">
 				<p>номер квартиры</p>				
 				<input type="text" placeholder="номер квартиры" id="apartmentNumber" onkeypress="if (event.keyCode==13){nineTask()};">
-				<p id="nine_task_results"></p>
+				<p id="nineTaskResults"></p>
 				<button onclick="nineTask()">кнопка</button>
 			</div>
 			<hr> 
@@ -147,7 +148,7 @@
 			<div class="ten_task">
 				<h2>ten Task + </h2>
 				<p>Найти сумму цифр введённого числа.</p>
-				<p>Для Примера 1*2.3+4-5aasdGsdf&*(^&%^$##$$&^1   результат 16</p>
+				<p>Для Примера 1*2.3+4-5</p>
 					<input type="text" placeholder="111" id="tenTaskGetNumber"  onkeypress="if (event.keyCode==13){tenTask()};">
 					<p id="ten_result"></p>
 				<button onclick="tenTask()">Кнопка</button>
