@@ -1,17 +1,11 @@
-const userError = "#e84118";
-const standardColor = "#c2b6b6";
-const greenColor = "#4cd137";
 const numberFormatMassege = "Вводите в строку только числа";
-const button = document.getElementsByClassName("button");
+
 function firstTask() { 
 	let firstNumber = +document.getElementById("ft_firstNumber").value;
 	let secondNumber = +document.getElementById("ft_secondNumber").value;
+	const resultFirstTast = document.getElementById("ft_result");
 	if (!firstNumber && firstNumber != 0   || !secondNumber && secondNumber != 0 ){
-		document.getElementById("ft_result").innerText = numberFormatMassege;
-		document.getElementById("ft_firstNumber").classList.add("userError");
-		document.getElementById("ft_secondNumber").classList.add("userError");
-		document.getElementById("ft_result").classList.add("standardСolor");
-		button[0].style.borderColor = "#e84118"
+		resultFirstTast.innerText = numberFormatMassege;
 		return;
 	}
 	if (firstNumber > secondNumber){
@@ -21,20 +15,15 @@ function firstTask() {
 	for (let i = firstNumber; i <= secondNumber; i++){
 		result += i;
 	}
-	document.getElementById("ft_firstNumber").classList.add("standardСolor");
-	document.getElementById("ft_secondNumber").classList.add("standardСolor");
-	document.getElementById("ft_result").classList.add("userEnteredCorrectly");
-	document.getElementById("ft_result").innerText = result;
+	resultFirstTast.innerText = result;
 }
 
 function secondTask() {
 	let firstNumber = +document.getElementById('st_firstNumber').value;
 	let secondNumber = +document.getElementById('st_secondNumber').value;
+	const resultSecondTask = document.getElementById('st_result');
 	if (!firstNumber && firstNumber != 0   || !secondNumber && secondNumber != 0 ){
-		document.getElementById('st_result').innerText = numberFormatMassege;
-		document.getElementById('st_firstNumber').classList.add('userError');
-		document.getElementById('st_secondNumber').classList.add('userError');
-		document.getElementById('st_result').classList.add('standardСolor');
+		resultSecondTask.innerText = numberFormatMassege;
 		return;
 	}
 	if (firstNumber > secondNumber){
@@ -48,27 +37,22 @@ function secondTask() {
 			result += i;
 		}
 	}
-	document.getElementById('st_firstNumber').classList.add('standardСolor');
-	document.getElementById('st_secondNumber').classList.add('standardСolor');
-	document.getElementById('st_result').classList.add('userEnteredCorrectly');
-	document.getElementById('st_result').innerText = result;
+	resultSecondTask.innerText = result;
 }
 
 function thirdTask(){
 	const container = document.getElementById("thirdTaskList");
-	const errorMesseg = "введите число меньше от 1 до 300!!!";
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
 	const firstNumber = +document.getElementById("tt_firstNumber").value;
 	if (!firstNumber && firstNumber != 0) {
 		container.innerText = numberFormatMassege;
-		document.getElementById("tt_firstNumber").classList.add("userError");
 		return;
 	}
+	const errorMesseg = "введите число меньше от 1 до 300!!!";
 	if (firstNumber > 300 || firstNumber <= 0){
 		container.innerText = errorMesseg;
-		document.getElementById("tt_firstNumber").classList.add("userError");
 		return;
 	}
 	const ul = document.createElement("ul");
@@ -86,14 +70,12 @@ function thirdTask(){
 		const liContent = document.getElementById('myLi' + i);
 		liContent.innerText = star; 
 	}
-	document.getElementById("tt_firstNumber").classList.add("userEnteredCorrectly");
 }
 
 function fourthTask(){
 	let firstNumber = +document.getElementById('getUserSeconds').value;
 	if (firstNumber <= 0 || !firstNumber){
 		document.getElementById("fourTaskResult").innerText = numberFormatMassege;
-		document.getElementById('getUserSeconds').classList.add("userError");
 		return;
 	}
 	let hour = 0, minutes = 0;
@@ -111,7 +93,6 @@ function fourthTask(){
 	}
 		const result = hour.toString().padStart(2, '0')  + ':' + minutes.toString().padStart(2, '0') + ':' + firstNumber.toString().padStart(2, '0');
 		document.getElementById('timeResult').value = result;
-		document.getElementById('getUserSeconds').classList.add("userEnteredCorrectly");
 }
 
 function fifthTask(){ 
@@ -121,14 +102,12 @@ function fifthTask(){
 
 	if (year != 0 && !year) {
 		elemForRess.value = numberFormatMassege; 
-		document.getElementById('fiftTResult').classList.add("userError");
 		return;
 	}
 	const removeUnnecessary = year % 100;
 	const number = removeUnnecessary.toString();
 	const numberLenght = number.length;
 	let result = "";
-	
 	if (year === 0){
 		result = `${year} лет`;
 		elemForRess.value = result;
@@ -169,8 +148,9 @@ function fifthTask(){
 function sixthTask(){ 
 	let date1 = new Date(document.getElementById('sixTaskFirstNumber').value);
 	let date2 = new Date(document.getElementById('sixTaskSecondNumber').value);
+	const resultSixTask = document.getElementById("sixTaskResultP");
 	if (date1 === "Invalid Date" || date2 === "Invalid Date"){
-		document.getElementById("sixTaskResultP").innerText = "Ooops... Invalid Date";
+		resultSixTask.innerText = "Ooops... Invalid Date";
 		return;
 	}
 	if (date2 > date1){
@@ -204,7 +184,7 @@ function sixthTask(){
 		month = 12 + month; 
 	}
 	const result = ` ${year} года, ${month} месяц ${date} дней ${hours} часов, ${minutes} минут ${seconds} секунд`;
-	document.getElementById("sixTaskResultP").innerText = result;
+	resultSixTask.innerText = result;
 }
 
 function sixTaskVersion2(){
@@ -212,8 +192,9 @@ function sixTaskVersion2(){
 	let secondNumber = document.getElementById('sixTaskSecondNumber2').value;
     let date1 = Date.parse(firstNumber);
     let date2 = Date.parse(secondNumber);
+    const resulrSixTaskV2 = document.getElementById("sixTaskResultP2");
 	if (date1 === "Invalid Date" || date2 === "Invalid Date"){
-		document.getElementById("sixTaskResultP2").innerText = "Ooops... Invalid Date";
+		resulrSixTaskV2.innerText = "Ooops... Invalid Date";
 		return;
 	}
 	if (date2 > date1){
@@ -243,18 +224,19 @@ function sixTaskVersion2(){
 		const secondsRessult = Math.floor((((((differenceBetweenTwoDate % MILESECONDS_IN_YEAR) % MILESECONDS_IN_MOUTH) % MILESECONDS_IN_DAY) % MILESECONDS_IN_HOUR) % MILESECONDS_IN_MINUTES) / MILESECONDS);
 		// ***************************************** //
 	const result = `${yearRessult} года, ${monthRessult} месяц, ${daysRessult} дней, ${hourRessult} часов, ${minutesRussult} минут, ${secondsRessult} секунд `;
-	document.getElementById("sixTaskResultP2").innerText = result;
+	resulrSixTaskV2.innerText = result;
 }
 
 function sevenTask(){
 	const date = document.getElementById("seven_task_data").value + "";
 	const imgZodiac  = document.getElementById('zodiacSign');
 	const ckeckValidationDate = checkDateSevenTask(date);
+	const resultSevenTask = document.getElementById('resultErorrSevenTask');
 
 	if ( ckeckValidationDate === false ) {
 		const errorMesseg = "Invalid Date";
 		imgZodiac.src = "#";
-		document.getElementById('resultErorrSevenTask').innerText = errorMesseg;
+		resultSevenTask.innerText = errorMesseg;
 		return;
 	}
 	const d = new Date(date);
@@ -298,7 +280,7 @@ function sevenTask(){
 	else if (mounths === 12 && day >= 22 || mounths === 1 && day <= 19){
 		imgZodiac.src="img/козерог.png";
 	} 
-	document.getElementById('resultErorrSevenTask').innerText = "";
+	resultSevenTask.innerText = "";
 }
 
 function checkDateSevenTask(date){
@@ -322,18 +304,15 @@ function eightTast(){
 	const getValueSecond = +document.getElementById('eightTaskGetSecondValue').value;
 	if (getValuefirst > 50 || getValuefirst <= 0 || getValueSecond > 50 || getValueSecond <= 0 || !getValuefirst || !getValueSecond){
 		document.getElementById('eightTaskMessege').innerText = "числа от 1 до 50!!!";
-		document.getElementById('eightTaskGetValue').classList.add("userError");
-		document.getElementById('eightTaskGetSecondValue').classList.add("userError");
 		return;
 	}
 	const container = document.getElementById('eight_task_div');
 	while (container.firstChild) {
 		container.removeChild(container.firstChild);
 	}
-	const getDiv = document.getElementById("eight_task_div");
 	for (let i = 1; i <= getValuefirst; i++){		
 		const ul = document.createElement("ul");              /*каждый новый ряд доски  если убрать сломает*/
-		getDiv.appendChild(ul);
+		container.appendChild(ul);
 		const attrUl = 'E_Ul' + i;
 		ul.setAttribute('id', attrUl);
 		const getAttr = document.getElementById(attrUl);
@@ -356,18 +335,13 @@ function nineTask(){
 
 	if (!entrance || !flats || !numberOfFloors || !apartmentNumber) {
 		outputRessult.innerText = numberFormatMassege;
-		document.getElementById('entrance').classList.add("userError");
-		document.getElementById('flats').classList.add("userError");
-		document.getElementById('numberOfFloors').classList.add("userError");
 		return;
 	}
-
 	if (apartmentNumber > numberOfFlats || apartmentNumber <= 0) {
 		const errorMesseg = "такой квартиры не существует";
 		outputRessult.innerText = errorMesseg;
 		return;
 	}
-
 	let countUnder = 1;
 	let countFlors = 1;
 	const flightOfStairs =  numberOfFloors * flats;
@@ -382,11 +356,6 @@ function nineTask(){
 	}
 	const result = `подьезд № ${countUnder} этаж № ${countFlors}`;
 	outputRessult.innerText = result;
-
-	document.getElementById('entrance').classList.add("standardСolor");
-	document.getElementById('flats').classList.add("standardСolor");
-	document.getElementById('numberOfFloors').classList.add("standardСolor");
-	document.getElementById('nine_task_results').classList.add("userEnteredCorrectly");
 }
 
 function tenTask() { 
@@ -398,7 +367,6 @@ function tenTask() {
 	}, 0);
 
 	document.getElementById("ten_result").innerText = result;
-	document.getElementById("tenTaskGetNumber").classList.add("standardСolor");
 }
 
 function elevenTask(){
