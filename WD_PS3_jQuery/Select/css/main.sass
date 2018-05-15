@@ -20,7 +20,6 @@ main
 .list
 	margin-top: 30px
 	padding: 20px
-
 	border: 1px solid black
 	width: 33%
 	p
@@ -30,19 +29,19 @@ main
 		font-weight: 900
 	#iconHouseSecond
 		display: none
-	ul
-		list-style-type: none
-		display: none
-		
-		li
-			font-size: 18px
-			border-bottom: 1px solid #c8d6e5
-			span
-				@include transition(all 0.3s ease)
-				cursor: pointer
-				&:hover
-					color: #ffffff
-					text-shadow: 2px 2px 9px rgba(0,0,0,0.3)
+	.slide
+		.btn-slide
+			background-color: #f27613
+			border-radius: 15px
+			text-align: center
+			width: 144px
+			height: 31px
+			padding: 10px 10px 0 0
+			margin: 0 auto
+			display: block
+			color: #fff
+			text-decoration: none
+			
 	input
 		color: rgba(0,142,198,1)
 		font: normal 16px/normal "Times New Roman", Times, serif
@@ -67,6 +66,19 @@ main
 			outline: none
 		&:focus
 			outline: none
+#panel
+	display: none
+	ul
+		list-style-type: none
+		li
+			font-size: 18px
+			border-bottom: 1px solid #c8d6e5
+			span
+				@include transition(all 0.3s ease)
+				cursor: pointer
+				&:hover
+					color: #ffffff
+					text-shadow: 2px 2px 9px rgba(0,0,0,0.3)
 
 .container
 	width: 1200px
