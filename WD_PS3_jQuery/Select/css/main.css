@@ -1,2 +1,134 @@
-html{height:100%}body{margin:0;padding:0}header{background-color:green}header h1{margin:0;padding:0}main{background-color:#b2bec3;min-height:calc(100vh - 63px)}.list{margin-top:30px;padding:20px;border:1px solid #000;width:33%}.list p{display:inline-block;padding-left:20%;font-size:22px;font-weight:900}.list #iconHouseSecond{display:none}.list .slide .btn-slide{background-color:#f27613;border-radius:15px;text-align:center;width:144px;height:31px;padding:10px 10px 0 0;margin:0 auto;display:block;color:#fff;text-decoration:none}.list input{color:#008ec6;font:normal 16px/normal "Times New Roman",Times,serif;margin-left:5px;padding:6px 3px;box-shadow:2px 2px 2px 0 rgba(0,0,0,0.2) gold;text-shadow:1px 1px 0 rgba(255,255,255,0.66);background-color:#fcfcfc;border:1px solid #b7b7b7;border-radius:3px}.list button{background-color:green;border-radius:15px;border:1px solid green;font-weight:900;padding:5px}.list button:hover{color:#fff;box-shadow:0 0 10px rgba(0,0,0,0.5);outline:none}.list button:active{outline:none}.list button:focus{outline:none}#panel{display:none}#panel ul{list-style-type:none}#panel ul li{font-size:18px;border-bottom:1px solid #c8d6e5}#panel ul li span{-webkit-transition:all .3s ease;-moz-transition:all .3s ease;transition:all .3s ease;cursor:pointer}#panel ul li span:hover{color:#fff;text-shadow:2px 2px 9px rgba(0,0,0,0.3)}.container{width:1200px;margin:0 auto}footer{background-color:#81ecec}footer h2{margin:0;padding:0}
+html {
+  height: 100%; }
+
+body {
+  margin: 0;
+  padding: 0; }
+
+header {
+  background-color: green; }
+  header h1 {
+    margin: 0;
+    padding: 0; }
+
+main {
+  background-color: #b2bec3;
+  min-height: calc(100vh - 63px); }
+
+.container {
+  width: 1200px;
+  margin: 0 auto; }
+
+.list {
+  background-color: #69899f;
+  background-color: rgba(105, 137, 159, 0.7);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  margin-top: 30px;
+  border-top: 4px solid #92deed;
+  border-radius: 4px;
+  width: 33%;
+  position: relative;
+  padding: 5px; }
+  .list #selectFreand {
+    margin: 0;
+    font-size: 18px;
+    padding: 9px 0 9px 12px;
+    font-family: Roboto, Arial, sans-serif;
+    font-weight: normal;
+    line-height: 1.4; }
+    .list #selectFreand:after {
+      content: "";
+      border-bottom: 2px solid #54b6f5;
+      position: absolute;
+      height: 20px;
+      width: 160px;
+      top: 17px;
+      left: 10px; }
+  .list #iconHouseSecond {
+    display: none; }
+  .list .slide .btn-slide {
+    background-color: #498887;
+    border-radius: 15px;
+    text-align: center;
+    width: 100px;
+    height: 25px;
+    padding: 10px 5px 0 0;
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    -webkit-transition: all 0.9s ease;
+    -moz-transition: all 0.9s ease;
+    transition: all 0.9s ease; }
+    .list .slide .btn-slide:hover {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      outline: none;
+      background-color: #40a7a9; }
+
+.addFreand {
+  color: #008ec6;
+  font: normal 16px/normal "Times New Roman", Times, serif;
+  margin-left: 5px;
+  padding: 6px 3px;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.2) gold;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.66);
+  background-color: #fcfcfc;
+  border: 1px solid #b7b7b7;
+  border-radius: 3px; }
+
+#buttonAddFreand {
+  background-color: #498887;
+  border-radius: 15px;
+  border: 1px solid #498887;
+  padding: 5px;
+  font-family: Roboto, Arial, sans-serif;
+  font-weight: normal;
+  line-height: 1.4;
+  font-size: 16px;
+  cursor: pointer;
+  color: #fff;
+  -webkit-transition: all 0.9s ease;
+  -moz-transition: all 0.9s ease;
+  transition: all 0.9s ease; }
+  #buttonAddFreand:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    outline: none;
+    background-color: #40a7a9;
+    border: 1px solid #40a7a9; }
+  #buttonAddFreand:active {
+    outline: none; }
+  #buttonAddFreand:focus {
+    outline: none; }
+
+#panel {
+  display: none; }
+  #panel ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+    #panel ul li {
+      font-size: 15px;
+      padding: 9px 0 9px 12px;
+      border-bottom: 1px solid #F5F5F5;
+      color: #c9d7dd;
+      font-family: Roboto, Arial, sans-serif;
+      font-weight: normal;
+      line-height: 1.4; }
+      #panel ul li:hover {
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        cursor: pointer; }
+        #panel ul li:hover:hover {
+          color: #348fc4;
+          text-shadow: 2px 2px 9px rgba(0, 0, 0, 0.3);
+          background-color: #2f3b42; }
+      #panel ul li span {
+        margin-left: 2px; }
+
+footer {
+  background-color: #81ecec; }
+  footer h2 {
+    margin: 0;
+    padding: 0; }
+
 /*# sourceMappingURL=main.css.map */
