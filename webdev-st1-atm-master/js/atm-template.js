@@ -1,42 +1,42 @@
 const ATM = {
-	is_auth: false, 
-	current_user: false, // 
-	current_type: false, //
-	current_log: {logs: []},
-	log: "",
-	// all cash of ATM
-	cash: 2000,
-	// all available users
-	users: [
-		{number: "0000", pin: "000", debet: 0, type: "admin", name: "Admin"}, 
-		{number: "0025", pin: "123", debet: 675, type: "user", name: "Oleksii"},
-		{number: "0026", pin: "222", debet: 1000, type: "user", name: "Aleksandr"},
-		{number: "7777", pin: "777", debet: 100000, type: "user", name: "Yura"},
-		{number: "8888", pin: "888", debet: 100001, type: "user", name: "Nastya"}
-	],
-	// authorization
-	auth: function(number, pin) {
-		if ( !this.is_auth ) {
-			const numberOfUsers = this.users.length;
-			for( let i = 0; i < numberOfUsers; i++ ) {
-				if ( this.users[i].number === number && this.users[i].pin === pin ){
-					this.is_auth = !this.is_auth;
-					this.current_user = i;
-					this.current_type = this.users[i].type;
-					console.log(`Добрый день ${this.users[i].name}, вы успешно авторизовались.`);
-					let log = `${this.users[i].name}, успешно авторизованы.`;
-					this.logs(log);
-					return;
-				}
-			}  
-		console.log("Не верный логин или пароль");
-		} 
-		else {
-			console.log("Вы уже авторизованы"); 
-			return;
-		}		
-	},
-	// check current debet user проверить баланас 
+  is_auth: false,
+  current_user: false, //
+  current_type: false, //
+  current_log: { logs: [] },
+  log: '',
+  // all cash of ATM
+  cash: 2000,
+  // all available users
+  users: [
+   { number: '0000', pin: '000', debet: 0, type: 'admin', name: 'Admin' },
+   { number: '0025', pin: '123', debet: 675, type: 'user', name: 'Oleksii' },
+   { number: '0026', pin: '222', debet: 1000, type: 'user', name: 'Aleksandr' },
+   { number: '7777', pin: '777', debet: 100000, type: 'user', name: 'Yura' },
+   { number: '8888', pin: '888', debet: 100001, type: 'user', name: 'Nastya' },
+  ],
+  // authorization
+  auth: function (number, pin) {
+   if (!this.is_auth) {
+    const numberOfUsers = this.users.length;
+    for (let i = 0; i < numberOfUsers; i++) {
+     if (this.users[i].number === number && this.users[i].pin === pin) {
+      this.is_auth = !this.is_auth;
+      this.current_user = i;
+      this.current_type = this.users[i].type;
+      console.log(`Добрый день ${this.users[i].name}, вы успешно авторизовались.`);
+      let log = `${this.users[i].name}, успешно авторизованы.`;
+      this.logs(log);
+      return;
+     }
+    }
+   console.log("Не верный логин или пароль");
+   }
+   else {
+    console.log("Вы уже авторизованы");
+    return;
+   }
+  },
+	// check current debet user проверить баланас
 	check: function() {
 		if ( this.checkCurrentType() !== "user" ) {
 			const act = "проверить баланс";
@@ -48,8 +48,8 @@ const ATM = {
 			this.logs( this.log );
 	},
 
-	// get cash - available for user only   
-	getCash: function( amount ) { 
+	// get cash - available for user only
+	getCash: function( amount ) {
 		if ( this.checkCurrentType() !== "user" ){
 			const act = "снять деньги";
 			this.errLog(act, 3);
@@ -85,7 +85,7 @@ const ATM = {
 			const act = "положить деньги на счёт";
 			this.errLog(act, 3);
 			return;
-		} 
+		}
 		if ( !this.checkMoney( amount ) ) {
 			const act = "положить деньги на счёт";
 			this.errLog(act, 4);
@@ -98,8 +98,8 @@ const ATM = {
 	},
 
 	// load cash to ATM - available for admin only - EXTENDED  добавить деньги в ATM только для админа
-	load_cash: function(addition) { 
- 		if ( this.checkCurrentType() !== "admin" ){ 
+	load_cash: function(addition) {
+ 		if ( this.checkCurrentType() !== "admin" ){
 			const act = "положить деньги в банкомат";
 			this.errLog( act, 2 );
 			return;
@@ -113,10 +113,10 @@ const ATM = {
  		console.log(`Поздравляю вы положили на счет: ${addition} грн. В банкомате ${this.cash} грн`);
  		this.log = `${this.users[this.current_user].name}, Администратор, положил в банкомат: ${addition} грн.`;
 		this.logs(this.log);
-		
+
 	},
-	// get report about cash actions - available for admin only - EXTENDED она только показует 
-	getReport: function() { 
+	// get report about cash actions - available for admin only - EXTENDED она только показует
+	getReport: function() {
 		if ( this.checkCurrentType() !== "admin" ){
 			const act = "посмтреть логи";
 			this.errLog( act, 2 );
@@ -126,7 +126,7 @@ const ATM = {
 		this.logs( this.log );
 		console.log( this.current_log.logs );
 	},
-	// log out 
+	// log out
 	logout: function() {
 		if ( this.checkCurrentType () === false ){
 			const act = "разлогироваться";
@@ -140,17 +140,17 @@ const ATM = {
 			this.current_user = false;
 			this.current_type = false;
 	},
-	checkCurrentType: function() { 
-		if ( !this.is_auth ) { 
+	checkCurrentType: function() {
+		if ( !this.is_auth ) {
 			return false;
-		} 
+		}
 		return this.current_type;
 	},
 
 	checkMoney: function( money ){
 		if ( typeof ( money ) === "number" && money > 0  && Number.isInteger( money ) ) {
 			return true;
-		} 
+		}
 		return false;
 	},
 		errLog: function (act, numberErr) { // 1 - не авторизированный, 2 - только для админа, 3 - только для user, 4 - деньги ,
@@ -178,7 +178,7 @@ const ATM = {
 					console.log("не верный формат денег !!!");
 					this.log = `${this.current_type}: не верный  ${act} .`;
 					this.logs( this.log );
-					break;				
+					break;
 				default:
 					break;
 			}
@@ -186,7 +186,8 @@ const ATM = {
 		// функция для записи в базу логов
 	logs: function( log ){
 		let d = new Date();
-		this.current_log.logs.push(`${d.toUTCString()} -  ${log} \n`);
-		
+		this.current_log.logs.push(`${d.toUTCString()} -  ${log}
+`);
+
 	}
 };
