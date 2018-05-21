@@ -29,25 +29,72 @@
 			<div class="firstTask">
 				<h2>first Task</h2>
 				<p>1) посчитать сумму чисел от -1000 до 1000</p>
-				<form action=""></form>
 				<form  method="POST" >
 					<input type="text" name="firstTask" class="hiddenInput" value="firstTask">
 					<input type="text" name="firstNumber">
 					<input type="text" name="secondNumber">
 					<input type="submit" name="enter">
-									<p id="firstTaskResult"> <?php firstTask()?></p>
-
+						<p id="firstTaskResult"> <?php
+							if(isset($_POST['enter'])){
+								firstTask($_POST['firstNumber'], $_POST['secondNumber']);
+							}
+						 ?></p>
 				</form>
 			</div>
 			<hr>
 
-			<div class="firstTask">
+			<div class="SecondTask">
 				<h2>Second Task</h2>
 				<p>2)посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
-				<input type="text">
-				<input type="text">
-				<button>+</button>
+				<form action="" method="POST">
+					<input type = "text" name ="firstNumberSecondTask">
+					<input type = "text" name = "secondNumberSecondTask">
+					<input type = "submit" name = "enterSecondTask" >
+					<p id="secondTaskResult">
+					<?php
+					if (isset($_POST['enterSecondTask'])) {
+						secondTask($_POST['firstNumberSecondTask'], $_POST['secondNumberSecondTask']); 
+					}
+					?> 
+					 </p>
+				</form>
 			</div>
+			<hr>
+
+			<div class="thirdTask">
+				<h2>Third Task</h2>
+				<p>вывести на страницу список из 50 элементов вида:</p>
+				<form action="" method="POST">
+					<input type="text" name="numberThirdTak">
+					<input type="submit" name="enterThirdTask">
+				<div class="resultThirdTask">
+					<p><?php 
+					if (isset($_POST['enterThirdTask'])) {
+						thirdTask($_POST['numberThirdTak']);
+					}
+					?></p>
+				</div>
+			</form>
+			</div>
+			<hr> 
+
+			<div class="fourTask">
+				<h2>Four Task</h2>
+				<p>Шахматная доска </p>
+				<form action="" method="POST">
+					<input type="text" name="numberFourTak">
+					<input type="text" name="secondFourTak">
+					<input type="submit" name="enterFourTask">
+				<div class="resultFourTask">
+					<p><?php 
+					if ( isset($_POST['enterFourTask'])) {
+						fourTask($_POST['numberThirdTak']);
+					}
+					?></p>
+				</div>
+			</form>
+			</div>
+
 		</div>
 	</main>
 	<footer>
