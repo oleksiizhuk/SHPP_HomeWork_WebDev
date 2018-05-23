@@ -99,6 +99,7 @@ const ATM = {
     }
 
     this.users[this.current_user].debet += amount;
+    this.cash += amount;
     console.log(`Вы успешло положили: ${amount} грн, Пожалуйста проверте свой баланс :)`);
     this.log = `${this.users[this.current_user].name}, положил ${amount} грн.`;
     this.logs(this.log);
@@ -131,16 +132,17 @@ const ATM = {
       this.errLog(act, 2);
       return;
     }
+
     this.log = `${this.users[this.current_user].name}, посмотрел логи ;).`;
     this.logs(this.log);
     //console.log(this.current_log.logs);
-    this.current_log.logs.forEach(function(elem) {
-       console.log(elem);
+    this.current_log.logs.forEach(function (elem) {
+      console.log(elem);
     });
   },
   // log out
   logout: function () {
-    if ( !this.checkCurrentType() ) {
+    if (!this.checkCurrentType()) {
       const act = 'разлогироваться';
       this.errLog(act, 1);
       return;
@@ -158,6 +160,7 @@ const ATM = {
       if (!this.is_auth) {
         return false;
       }
+
       return this.current_type;
     },
 
@@ -165,6 +168,7 @@ const ATM = {
     if (typeof (money) === 'number' && money > 0  && Number.isInteger(money)) {
       return true;
     }
+
     return false;
   },
 
@@ -201,8 +205,6 @@ const ATM = {
   // функция для записи в базу логов
   logs: function (log) {
     let d = new Date();
-    this.current_log.logs.push(`${d.toUTCString()} -  ${log}
-`);
-
+    this.current_log.logs.push(`${d.toUTCString()} -  ${log}`);
   },
 };
