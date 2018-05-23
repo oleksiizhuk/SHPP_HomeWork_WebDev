@@ -7,7 +7,7 @@ $(document).ready(function () {
     ul.append(listName);
   }
 
-  $('.btn-slide').click(function () {
+  $('#selectFreand').click(function () { // slide booton
     $('#panel').slideToggle('slow');
     $(this).toggleClass('active');
   });
@@ -21,8 +21,8 @@ $(document).ready(function () {
 
   $('#buttonAddFreand').click(function () { // добавить  друга
     let addFriend = $('.addFreand').val();
-    let errBlock = $('.alertMessege p');
-    if (addFriend === '') {
+    let errBlock = $('.alertMessege').find('p');
+    if (!addFriend.length) {
       errBlock.text('You must write something!');
       return;
     }
