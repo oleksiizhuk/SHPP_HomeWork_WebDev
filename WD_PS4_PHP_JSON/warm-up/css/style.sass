@@ -10,12 +10,12 @@ h1
 h2
 	margin: 0
 	padding: 0
-	
+
 .wraper
 	width: 1200px
 	margin: 0 auto
 
-header 
+header
 	background-color: green
 
 main
@@ -25,4 +25,15 @@ main
 	.hiddenInput
 		display: none
 
-.
+.resultFourTask
+	ul
+		&:nth-child(even)
+			.firstLine
+				background-color: #ffffff
+				color: red
+		&:nth-child(odd)
+			.SecondLien
+				background-color: red
+				color: green
+	li
+		list-style-type: none

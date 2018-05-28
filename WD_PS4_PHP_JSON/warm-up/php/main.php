@@ -5,7 +5,7 @@
 		$b = $_POST["secondNumber"];
 		firstTask($a, $b);
 
-		<p> <?= !empty($_POST) ? firstTask($_POST['first'], $_POST['second']) : '' ?> </p> 
+		<p> <?= !empty($_POST) ? firstTask($_POST['first'], $_POST['second']) : '' ?> </p>
 
 
 	} */
@@ -19,7 +19,7 @@
 			$result += $i;
 		}
 		echo $result;
-	}	
+	}
 
 	function secondTask($firstNumber =- 1000, $secondNumber = 1000){
 		if ($secondNumber < $firstNumber){
@@ -36,25 +36,33 @@
 	}
 
 	function thirdTask($listHeight){
-		echo $listHeight;
-		$list;
-		$star;
+		$star = "";
+		$list = "";
 		for ($i = 1; $i <= $listHeight; $i++){
 			$star = $star."*";
 			$list = $list.$star.'</br>';
-			
 		}
 		echo $list;
 	}
 
 	function fourTask($firstNumberFT, $secondNumberST){
-		for($i = 1;$i <= $firstNumberFT; $i++ ){
-			for($k = 1;$k <= $secondNumberST; $k++ ){
-				echo "hi";
-				print'<li>чё ты </li>';
+		for ($i = 1; $i <= $firstNumberFT; $i++ ) {
+			echo "<ul>";
+			for($j = 1; $j <= $secondNumberST; $j++ ) {
+				if ($i % 2 === 0){
+					echo '<li class = "SecondLien"> _1_ </li>';
+				}
+				else {
+					echo '<li class = "firstLine"> _2_ </li>';
+				}
 			}
+			echo "</ul>";
 		}
 	}
 
-?>
+	function fiveTask($value)	{
+		echo $value;
 
+	}
+
+?>

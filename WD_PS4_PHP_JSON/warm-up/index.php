@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>WD_PS4_PHP_JSON warm-up</title>
-	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.min.css">
 	<!--favicon-->
 	<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
@@ -16,7 +16,7 @@
 
 	<?php
 		include "php/main.php";
-	?> 
+	?>
 
 </head>
 <body>
@@ -53,9 +53,9 @@
 					<p id="secondTaskResult">
 					<?php
 					if (isset($_POST['enterSecondTask'])) {
-						secondTask($_POST['firstNumberSecondTask'], $_POST['secondNumberSecondTask']); 
+						secondTask($_POST['firstNumberSecondTask'], $_POST['secondNumberSecondTask']);
 					}
-					?> 
+					?>
 					 </p>
 				</form>
 			</div>
@@ -68,7 +68,7 @@
 					<input type="text" name="numberThirdTak">
 					<input type="submit" name="enterThirdTask">
 				<div class="resultThirdTask">
-					<p><?php 
+					<p><?php
 					if (isset($_POST['enterThirdTask'])) {
 						thirdTask($_POST['numberThirdTak']);
 					}
@@ -76,7 +76,7 @@
 				</div>
 			</form>
 			</div>
-			<hr> 
+			<hr>
 
 			<div class="fourTask">
 				<h2>Four Task</h2>
@@ -86,19 +86,41 @@
 					<input type="text" name="secondFourTak">
 					<input type="submit" name="enterFourTask">
 				<div class="resultFourTask">
-					<p><?php 
+					<?php
 					if ( isset($_POST['enterFourTask'])) {
-						fourTask($_POST['numberThirdTak']);
+						fourTask($_POST['numberFourTak'], $_POST['secondFourTak']);
 					}
-					?></p>
+					?>
+					<ul>
+							<li class="firstLine">1</li>
+							<li class="firstLine">1</li>
+							<li class="firstLine">1</li>
+					</ul>
+					<ul>
+							<li class="SecondLien">2</li>
+							<li class="SecondLien">2</li>
+							<li class="SecondLien">2</li>
+					</ul>
 				</div>
 			</form>
+			</div>
+
+			<div class="fiveTask">
+				<form action="" method="POST">
+					<input type="text" name="fiveTaskValue" value="">
+					<input type="submit" name="enterFiveTask">
+				</form>
+				<?php
+					if (isset($_POST['enterFiveTask'])) {
+						fiveTask($_POST['fiveTaskValue']);
+					}
+				 ?>
 			</div>
 
 		</div>
 	</main>
 	<footer>
-		
+
 	</footer>
 
 
