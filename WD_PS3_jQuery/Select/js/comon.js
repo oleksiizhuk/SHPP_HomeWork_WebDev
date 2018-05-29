@@ -14,7 +14,7 @@ $(document).ready(function () {
 
   $('.ul').on('click', 'li', function () {  //  заменить ник
     const name = $(this).text();
-    $(this).remove();
+ 
     $('#panel').slideToggle('slow');
     $('#selectFreand').text(name);
   });
