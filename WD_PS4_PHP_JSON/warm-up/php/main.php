@@ -50,7 +50,7 @@
 			echo "<ul>";
 			for($j = 1; $j <= $secondNumberST; $j++ ) {
 				if ($i % 2 === 0){
-					echo '<li class = "SecondLien"> _1_ </li>';
+					echo '<li class = "secondLien"> _1_ </li>';
 				}
 				else {
 					echo '<li class = "firstLine"> _2_ </li>';
@@ -60,9 +60,25 @@
 		}
 	}
 
-	function fiveTask($value)	{
-		echo $value;
-
+	function fiveTask($str)	{
+		echo $str."</br>";
+		$test = str_split($str);
+		for ($i = 0; $i < count($test); $i++) {
+			$result = $result + $test[$i];
+		}
+		echo $result;
 	}
 
+	function sixTask(){
+		for( $i=0, $maxNum = 100; $i < $maxNum; $i++) {
+			$arr[$i] = rand(1,10); // add random number
+		}
+		$result = (array_unique($arr)); // remove repeat
+		print_r($result)."</br>";
+		sort($result); // sort
+		print_r($result)."</hr>";
+		$result = array_reverse($result); // reverse
+		print_r($result)."</br>";
+
+	}
 ?>

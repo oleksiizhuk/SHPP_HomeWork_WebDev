@@ -106,6 +106,7 @@
 			</div>
 
 			<div class="fiveTask">
+				<h2>five task</h2>
 				<form action="" method="POST">
 					<input type="text" name="fiveTaskValue" value="">
 					<input type="submit" name="enterFiveTask">
@@ -115,6 +116,19 @@
 						fiveTask($_POST['fiveTaskValue']);
 					}
 				 ?>
+			</div>
+			<hr>
+			<div class="sixTask">
+				<h2>six task</h2>
+				<form action="" method="POST">
+					<input type="text" name="test">
+					<input type="submit" name="enterSixValue">
+					<?php
+						if(isset($_POST['enterSixValue'])) {
+							sixTask();
+						}
+					?>
+				</form>
 			</div>
 
 		</div>
