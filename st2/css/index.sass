@@ -1,102 +1,23 @@
-//proximanova light
-
 @font-face 
 	font-family: "BLACKJAR"
 	src: url("/st2/black_jack_font/BLACKJAR.TTF")
 
-
 @madia (min-width: 992px)
 	.container
-		width: 970px
-		
-.row::after
-	content: ''
-	clear: both
-	display: block
-
-.col-1
-	width: 8.3333%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-2
-	width: 16.6666%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-3
-	width: 25%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-4
-	width: 33.3333%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-5
-	width: 41.6666%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-6
-	width: 50%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-7
-	width: 58.3333%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-8
-	width: 66.6666%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-9
-	width: 75%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-10
-	width: 83.3333%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-11
-	width: 91.3333%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
-.col-12
-	width: 100%
-	float: left
-	box-sizing: border-box
-	padding-left: 10px
-	padding-right: 10px
+		width: 940px
+body 
+	margin: 0
+	padding: 0
 
 .container
 	width: 940px
 	margin: 0 auto 
 
-body 
-	margin: 0
-	padding: 0
+
 header
 	background-image: url(../img/blue-pattern.jpg)
 	position: relative 
+	height: 650px
 
 .head-nav
 	display: flex
@@ -113,42 +34,331 @@ header
 	p
 		padding: 14px 37px
 		margin: 0
+// ************************ //
+.sandwich 
+	display: inline-block
+	cursor: pointer
+
+.bar1, .bar2, .bar3, .bar4
+	width: 31px
+	height: 4px
+	background-color: #fff
+	margin: 2px 0
+	transition: 0.4s
+	border-radius: 13%
+
+.change .bar1 
+	transform: rotate(-45deg) translate(-1px, 2px)
+
+.change .bar2
+	opacity: 0
+.change .bar4
+	opacity: 0
+
+.change .bar3 
+	transform: rotate(45deg) translate(-6px, -8px)
+// ************************ //
+
 .headMenu
-	top: 37px 
-	margin: 0
+	margin-top: 37px
 	i
-		font-size: 25px	
+		font-size: 25px 
 		color: #fff
-.headText
-	display: grid
-	justify-content: flex-end
+
+.head-text
+	display: flex
+	flex-direction: column
+	Justify-content: flex-end
 	color: #fff
 	h1
 		text-align: right
 		font-size: 70px
 		font-weight: 100
 		font-family: "BLACKJAR"
-		margin: 50px 12px 0px
+		margin: 50px 0px 0px
 	p
 		font-size: 35px
 		margin-top: 20px
-		margin-right: 40px
+		text-align: right
 		
 .headPhone
-	display: inline-block
-	margin-top: 32px
-	margin-left: 73px
+	margin-top: 31px
+	margin-left: 72px
 	position: absolute
+	z-index: 0
 
-.headButton
-	border: 2px solid #fff
-	color: #fff
+.headButton	
 	position: absolute
-	right: 213px
-	top: 42%
-	display: inline-flex
-	text-transform: uppercase
-	padding: 3px 44px 3px 23px
-	font-size: 15px
-	i
-		margin-top: 17px
+	right: 203px
+	top: 362px
+	.head-button-item
+		position: relative
+		a
+			display: block
+			font-size: 15px
+			border: 2px solid #fff
+			color: #fff
+			text-transform: uppercase
+			width: 191px
+			height: 53px
+			text-transform: uppercase
+			text-decoration: none
+			text-align: center
+			line-height: 55px
+			font-weight: 600
+			font-family: 'Montserrat', sans-serif
+			&::after
+				font-family: Font Awesome\ 5 Free 
+				content: "\f039"	
+				font-size: 15px
+				position: absolute
+				top: 3%
+				right: 19%
+// ************************ //
+section
+	background-color: rgb(244,244,244)
+	position: relative
+
+.content
+	padding-top: 103px
+	display: flex
+	Justify-content: space-between
+	align-items: stretch
+	height: 500px
+	h2
+		font-size: 40px
+		font-weight: 100
+		margin-bottom: 28px
+		font-family: 'Montserrat', sans-serif
+	p
+		font-size: 16px
+		font-weight: 100
+		font-family: 'Montserrat', sans-serif
+		line-height: 26px
+		word-spacing: 2px
+		color: #737371
+	.last-p
+		border-left: 5px solid #00aee0
+		padding-left: 21px
+		margin-top: 20px
+		font-family: 'Montserrat', sans-serif
+
+.content-button
+	margin-top: 49px
+	display: inline-block
+	margin-left: 2px
+	position: relative
+	a
+		border: 2px solid #01b08f
+		text-transform: uppercase
+		text-decoration: none
+		display: block
+		text-align: center
+		width: 139px
+		height: 53px
+		padding-right: 30px
+		line-height: 55px
+		color: #01b08f
+		font-size: 15px
+		font-weight: 600
+		font-family: 'Montserrat', sans-serif
+		&::after
+			content: "\f0e0"
+			font-family: Font Awesome\ 5 Free 
+			display: block
+			font-size: 15px
+			position: absolute
+			top: 3%
+			right: 19%
+
+.aside
+	position: absolute
+	left: 966px
+	top: 149px
+// ************************ //
+	
+.divaces
+	background-color: #fff
+	font-family: 'Montserrat', sans-serif
+	position: relative
+.portfolio
+	padding-top: 112px
+	padding-bottom: 83px
+	height: 500px
+	display: flex
+	Justify-content: flex-end
+	
+.portfolio-image
+	position: absolute
+	top: 318px
+	left: -34px
+	z-index: 0
+	
+.portfolio-text
+	padding-right: 59px
+	h2
+		font-size: 40px
+		font-weight: 100
+	p
+		font-size: 16px
+		width: 365px
+	.last-p
+		width: 386px    
+
+.portfolio-buttom
+	margin-top: 75px
+	display: inline-block
+	margin-left: 2px
+	position: relative
+	a
+		border: 2px solid #01b08f
+		text-transform: uppercase
+		text-decoration: none
+		display: block
+		text-align: center
+		width: 239px
+		height: 53px
+		padding-right: 30px
+		line-height: 55px
+		color: #01b08f
+		font-size: 15px
+		font-weight: 600
+		font-family: 'Montserrat', sans-serif
+		&::after
+			content: "\f434"
+			font-family: Font Awesome\ 5 Free 
+			display: block
+			font-size: 15px
+			position: absolute
+			top: 3%
+			right: 19%
+// ************************ //
+
+.donate
+	background-image: url(../img/green-pattern.jpg)
+	font-family: 'Montserrat', sans-serif
+	color: #fff
+
+
+.donate-block
+	padding-top: 59px
+	padding-bottom: 99px
+	text-align: center
+
+.donate-block-text
+	margin: 0 auto  
+	h2
+		font-size: 40px
+		font-weight: 100
+
+.donate-block-button
+	display: inline-block
+	margin-left: 2px
+	position: relative
+	a
+		border: 2px solid #fff
+		text-transform: uppercase
+		text-decoration: none
+		display: block
+		text-align: center
+		width: 191px
+		height: 53px
+		padding-right: 30px
+		line-height: 55px
+		color: #fff
+		font-size: 15px
+		font-weight: 600
+		font-family: 'Montserrat', sans-serif
+		&::after
+			content: "\f0fc"
+			font-family: Font Awesome\ 5 Free 
+			display: block
+			font-size: 15px
+			position: absolute
+			top: 3%
+			right: 19%
+	// ************************ //
+.contact
+	background-color: rgb(244,244,244)
+	font-family: 'Montserrat', sans-serif
+	color: #545454
+
+.contact-block
+	padding-top: 245px
+	text-align: center
+	padding-bottom: 232px
+	nav
+		display: inline-block
+		margin-right: 38px
+		color: #545454
+		&:last-child
+			margin: 0
+		.social-item
+			border: 3px solid #545454
+			border-radius: 50%
+			font-size: 20px
+			font-weight: 600
+		.f
+			padding: 13px 15px
+		.s
+			padding: 13px 19px
+		.t
+			padding: 13px 15px
+		.fo
+			padding: 13px 15px
+
+
+.contact-block-mail
+	display: flex
+	Justify-content: center
+	padding-top: 65px
+	.contact-block-mail-text
+		margin-right: 40px
+		color: black
+		font-size: 16px
+		font-family: 'Montserrat', sans-serif
+		font-weight: 600
+		color: #545454
+		
+.contact-block-mail-input
+	position: relative
+	input
+		padding: 10px
+		border: none
+		color: #d3d3d3
+		font-size: 14px
+		border-radius: 13px
+	label
+		&::after
+			color: #80cced
+			content: "\f0e0"
+			font-family: Font Awesome\ 5 Free 
+			display: block
+			font-size: 15px
+			position: absolute
+			top: 20%
+			right: 20%
+			border-left: 1px solid #d3d3d3
+			padding-left: 2px
+
+footer
+	.foot
+		padding-top: 30px
+		font-size: 12px
+		.foot-container
+			position: relative
+			text-align: center
+			p
+				color: #545454
+				&::before
+					color: #545454
+					content: "\f1f9"
+					font-family: Font Awesome\ 5 Free 
+					display: block
+					font-size: 15px
+					position: absolute
+					top: -6%
+					right: 63%
+
+
+	// ************************ //
