@@ -13,11 +13,11 @@ body
 	width: 940px
 	margin: 0 auto 
 
-
 header
 	background-image: url(../img/blue-pattern.jpg)
 	position: relative 
 	height: 650px
+	z-index: -4
 
 .head-nav
 	display: flex
@@ -34,6 +34,12 @@ header
 	p
 		padding: 14px 37px
 		margin: 0
+
+.headMenu
+	margin-top: 37px
+	i
+		font-size: 25px 
+		color: #fff
 // ************************ //
 .sandwich 
 	display: inline-block
@@ -59,16 +65,10 @@ header
 	transform: rotate(45deg) translate(-6px, -8px)
 // ************************ //
 
-.headMenu
-	margin-top: 37px
-	i
-		font-size: 25px 
-		color: #fff
 
 .head-text
 	display: flex
 	flex-direction: column
-	Justify-content: flex-end
 	color: #fff
 	h1
 		text-align: right
@@ -76,75 +76,82 @@ header
 		font-weight: 100
 		font-family: "BLACKJAR"
 		margin: 50px 0px 0px
+		word-spacing: 3px
+		letter-spacing: -1px
+
 	p
 		font-size: 35px
 		margin-top: 20px
+		word-spacing: -3px
+		letter-spacing: 1px
 		text-align: right
-		
-.headPhone
-	margin-top: 31px
-	margin-left: 72px
-	position: absolute
-	z-index: 0
 
-.headButton	
-	position: absolute
-	right: 203px
-	top: 362px
-	.head-button-item
-		position: relative
-		a
-			display: block
-			font-size: 15px
-			border: 2px solid #fff
-			color: #fff
-			text-transform: uppercase
-			width: 191px
-			height: 53px
-			text-transform: uppercase
-			text-decoration: none
-			text-align: center
-			line-height: 55px
-			font-weight: 600
-			font-family: 'Montserrat', sans-serif
-			&::after
-				font-family: Font Awesome\ 5 Free 
-				content: "\f039"	
+.head-phone-and-button	
+	display: flex
+	justify-content: space-between
+	.headPhone
+		margin-top: 31px
+		margin-left: 72px
+		z-index: 0
+
+	.headButton	
+		padding-top: 13px
+		.head-button-item
+			position: relative
+			a
+				display: block
 				font-size: 15px
-				position: absolute
-				top: 3%
-				right: 19%
+				border: 2px solid #fff
+				color: #fff
+				width: 150px
+				padding-right: 20px
+				height: 53px
+				text-transform: uppercase
+				text-align: center
+				line-height: 55px
+				font-weight: 600
+				font-family: 'Montserrat', sans-serif
+				&::after
+					font-family: Font Awesome\ 5 Free 
+					content: "\f381"	
+					font-size: 15px
+					position: absolute
+					top: 3%
+					right: 10%
 // ************************ //
-section
+.section-about-me
 	background-color: rgb(244,244,244)
 	position: relative
-
+	height: 650px
+	z-index: -3
+.content-text
+	width: 60%
 .content
 	padding-top: 103px
 	display: flex
-	Justify-content: space-between
-	align-items: stretch
+	justify-content: space-between
 	height: 500px
 	h2
 		font-size: 40px
 		font-weight: 100
 		margin-bottom: 28px
+		letter-spacing: -4px
 		font-family: 'Montserrat', sans-serif
 	p
 		font-size: 16px
 		font-weight: 100
 		font-family: 'Montserrat', sans-serif
-		line-height: 26px
-		word-spacing: 2px
+		line-height: 24px
+		word-spacing: -3px
 		color: #737371
 	.last-p
 		border-left: 5px solid #00aee0
 		padding-left: 21px
-		margin-top: 20px
+		margin-top: 27px
 		font-family: 'Montserrat', sans-serif
 
 .content-button
-	margin-top: 49px
+	margin-top: 28px
 	display: inline-block
 	margin-left: 2px
 	position: relative
@@ -172,66 +179,78 @@ section
 			right: 19%
 
 .aside
-	position: absolute
-	left: 966px
-	top: 149px
+	color: red
+	padding-top: 48px
+
 // ************************ //
 	
 .divaces
 	background-color: #fff
 	font-family: 'Montserrat', sans-serif
 	position: relative
+	z-index: -2
 .portfolio
-	padding-top: 112px
-	padding-bottom: 83px
+	padding-top: 40px
+	padding-bottom: 109px
 	height: 500px
 	display: flex
 	Justify-content: flex-end
 	
 .portfolio-image
-	position: absolute
-	top: 318px
-	left: -34px
-	z-index: 0
-	
+	padding-top: 231px
+	padding-right: 236px
+	width: 57%
+
 .portfolio-text
-	padding-right: 59px
+	margin: 10px
+	padding-top: 10px
 	h2
 		font-size: 40px
 		font-weight: 100
+		word-spacing: -3px
+		letter-spacing: -3px
 	p
 		font-size: 16px
-		width: 365px
+		word-spacing: -2px
+		letter-spacing: 0px
+		line-height: 24px
+		margin-bottom: 27px
 	.last-p
-		width: 386px    
+		width: 386px
+		color: #9e9e9e
+		font-size: 16px
+		word-spacing: -3px
+		letter-spacing: 0px
+		line-height: 25px
+		margin-bottom: 27px    
 
 .portfolio-buttom
-	margin-top: 75px
+	margin-top: 28px
 	display: inline-block
 	margin-left: 2px
 	position: relative
 	a
-		border: 2px solid #01b08f
+		border: 2px solid #ea4c89
 		text-transform: uppercase
-		text-decoration: none
 		display: block
 		text-align: center
-		width: 239px
+		width: 190px
 		height: 53px
 		padding-right: 30px
 		line-height: 55px
-		color: #01b08f
+		color: #ea4c89
 		font-size: 15px
-		font-weight: 600
 		font-family: 'Montserrat', sans-serif
+		word-spacing: -1px
 		&::after
+			font-weight: 600
 			content: "\f434"
 			font-family: Font Awesome\ 5 Free 
 			display: block
 			font-size: 15px
 			position: absolute
 			top: 3%
-			right: 19%
+			right: 14%
 // ************************ //
 
 .donate
@@ -239,9 +258,8 @@ section
 	font-family: 'Montserrat', sans-serif
 	color: #fff
 
-
 .donate-block
-	padding-top: 59px
+	padding-top: 101px
 	padding-bottom: 99px
 	text-align: center
 
@@ -250,11 +268,17 @@ section
 	h2
 		font-size: 40px
 		font-weight: 100
+		word-spacing: -8px
+		margin: 0
+		letter-spacing: 0px
+		line-height: 25px
+		font-family: 'Montserrat', sans-serif
 
 .donate-block-button
 	display: inline-block
 	margin-left: 2px
 	position: relative
+	margin-top: 45px
 	a
 		border: 2px solid #fff
 		text-transform: uppercase
@@ -267,9 +291,10 @@ section
 		line-height: 55px
 		color: #fff
 		font-size: 15px
-		font-weight: 600
+		font-weight: 100
 		font-family: 'Montserrat', sans-serif
 		&::after
+			font-weight: 600
 			content: "\f0fc"
 			font-family: Font Awesome\ 5 Free 
 			display: block
@@ -284,9 +309,9 @@ section
 	color: #545454
 
 .contact-block
-	padding-top: 245px
+	padding-top: 243px
 	text-align: center
-	padding-bottom: 232px
+	padding-bottom: 238px
 	nav
 		display: inline-block
 		margin-right: 31px
@@ -311,24 +336,28 @@ section
 .contact-block-mail
 	display: flex
 	Justify-content: center
-	padding-top: 65px
+	padding-top: 66px
+
 	.contact-block-mail-text
-		margin-right: 38px
 		color: black
 		font-size: 16px
 		font-family: 'Montserrat', sans-serif
 		font-weight: 600
 		color: #545454
+		line-height: 14px
+		margin-right: 21px
 		
 .contact-block-mail-input
 	position: relative
 	input
-		padding: 10px
+		padding: 14px
+		padding-right: 33px
 		border: none
-		color: #d3d3d3
+		color: #dedede
 		font-size: 14px
-		border-radius: 13px
-	label
+		border-radius: 10px
+
+	a
 		&::after
 			color: #80cced
 			content: "\f0e0"
@@ -336,29 +365,35 @@ section
 			display: block
 			font-size: 15px
 			position: absolute
-			top: 20%
-			right: 20%
+			top: 30%
+			right: 8%
 			border-left: 1px solid #d3d3d3
-			padding-left: 2px
+			padding-left: 17px
 
 footer
 	.foot
-		padding-top: 30px
-		font-size: 12px
+		padding-top: 46px
 		.foot-container
 			position: relative
 			text-align: center
+			span
+				color: #6dc5ea
 			p
+				font-size: 12px
 				color: #545454
+				font-weight: 100
+				margin: 0
+				line-height: 14px
+				font-family: 'Montserrat', sans-serif
 				&::before
 					color: #545454
 					content: "\f1f9"
 					font-family: Font Awesome\ 5 Free 
 					display: block
-					font-size: 15px
+					font-size: 10px
 					position: absolute
 					top: -6%
-					right: 63%
+					right: 65%
 
 
 	// ************************ //
