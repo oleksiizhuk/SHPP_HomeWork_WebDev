@@ -1,0 +1,265 @@
+@font-face 
+	font-family: "BLACKJAR"
+	src: url("/st2/black_jack_font/BLACKJAR.TTF")
+.col-1 
+	width: 8.33%
+.col-2 
+	width: 16.66%
+.col-3 
+	width: 25%
+.col-4 
+	width: 33.33%
+.col-5 
+	width: 41.66%
+.col-6 
+	width: 50%
+.col-7 
+	width: 58.33%
+.col-8 
+	width: 66.66%
+.col-9 
+	width: 75%
+.col-10 
+	width: 83.33%
+.col-11 
+	width: 91.66%
+.col-12 
+	width: 100%
+
+.row::after 
+	content: ""
+	clear: both
+	display: table
+
+[class*="col-"] 
+	float: left
+	padding-left: 10px
+	padding-right: 10px
+	border: 1px solid red
+
+.container
+	width: 960px 
+	margin: 0 auto
+	border-left: 1px solid green
+	border-right: 1px solid green
+*
+	box-sizing: border-box
+/* img
+	height: auto
+	max-width: 100%
+	overflow: hidden */
+
+
+header
+	background-image: url(../img/blue-pattern.jpg)
+	position: relative
+	height: 650px
+.logo
+	display: inline-block
+	p
+		padding: 14px 37px
+		background-color: #fff
+		margin: 0
+		font-family: 'Kaushan Script', cursive
+		color: #00aae8
+		border: 1px solid
+		font-size: 50px
+		font-weight: 900
+		box-shadow: 15px 17px 7px 2px #01b1ea
+
+.sandwich-block
+	text-align: right
+	padding-top: 36px
+
+.sandwich 
+	display: inline-block
+	cursor: pointer
+	text-align: right
+
+.bar1, .bar2, .bar3, .bar4
+	width: 31px
+	height: 4px
+	background-color: #fff
+	margin: 2px 0
+	transition: 0.4s
+	border-radius: 13%
+
+.change .bar1 
+	transform: rotate(-45deg) translate(-1px, 2px)
+
+.change .bar2
+	opacity: 0
+.change .bar4
+	opacity: 0
+
+.change .bar3 
+	transform: rotate(45deg) translate(-6px, -8px)	
+
+.section-adboutMe
+	background-color: #f4f4f4
+
+.section-portfolio
+	background-color: #ffffff
+.section-donate
+	background-image: url(../img/green-pattern.jpg)
+.head-caption-text
+	text-align: right
+	.caption
+		h2
+			font-size: 70px
+			font-weight: 100
+			font-family: "BLACKJAR"
+			margin: 50px -8px 18px
+	.text
+		p
+			font-size: 35px
+			margin-top: 0
+.head-img
+	text-align: center
+	padding-top: 30px
+	height: 295px
+	overflow: hidden
+
+.head-button
+	text-align: right
+	button
+		display: inline-block
+		cursor: pointer
+		margin-top: 10px
+		background: transparent
+		padding: 18px 32px
+		font-size: 15px
+		border: 2px solid #fff
+		color: #fff
+		a
+			text-decoration: none
+			color: #fff
+
+
+.section-aboutMe
+	height: 650px
+	background-color: #f4f4f4
+.aboutMe-text
+	h2
+		font-size: 40px
+		margin-top: 137px
+		margin-bottom: 25px
+	p
+		font-size: 16px
+		margin-bottom: 25px
+		font-family: 'Montserrat', sans-serif
+		line-height: 24px
+	.last-p
+		border-left: 5px solid #00aee0
+		padding-left: 20px
+
+	button
+		display: inline-block
+		cursor: pointer
+		margin-top: 47px
+		background: transparent
+		padding: 18px 32px
+		font-size: 15px
+		border: 2px solid #14af8f
+		color: #14af8f
+		a
+			text-decoration: none
+			color: #14af8f
+
+.section-portfolio
+	height: 650px
+	position: relative
+	overflow: hidden
+	
+
+.portfolio-text
+	margin-top: 94px
+	margin-left: 63px
+	font-family: 'Montserrat', sans-serif
+	h2
+		font-size: 40px
+		font-weight: 100
+		color: #545454
+	p
+		font-size: 16px
+		color: #474e5d
+		line-height: 24px
+		margin-bottom: 25px
+	.last-p
+		color: #9a9a9a
+		margin: 0
+	button
+		display: inline-block
+		cursor: pointer
+		margin-top: 33px
+		margin-bottom: 237px
+		background: transparent
+		padding: 18px 32px
+		font-size: 15px
+		border: 2px solid #14af8f
+		color: #14af8f
+		a
+			text-decoration: none
+			color: #14af8f
+.portfolio-img
+	position: absolute
+	bottom: 13px
+	left: -31px
+	height: 365px
+	width: 760px
+
+
+
+.section-donate
+	height: 325px
+
+.donate
+	text-align: center
+	margin-top: 85px
+	h2
+		font-size: 40px
+		font-family: 'Montserrat', sans-serif
+		color: #ffffff
+		font-weight: 100
+		margin: 15px
+	button
+		display: inline-block
+		cursor: pointer
+		margin-top: 20px
+		margin-bottom: 97px
+		background: transparent
+		padding: 18px 32px
+		font-size: 15px
+		border: 2px solid #ffffff
+		color: #ffffff
+		a
+			text-decoration: none
+			color: #ffffff
+
+.section-contact
+	height: 650px
+	background-color: rgb(244,244,244)
+
+.contact
+	padding-top: 243px
+	text-align: center
+	nav
+		display: inline-block
+		margin-right: 31px
+		color: #545454
+		&:last-child
+			margin: 0
+		.social-item
+			border: 3px solid #545454
+			border-radius: 50%
+			font-size: 20px
+			font-weight: 600
+			padding: 13px 15px
+		.facebook-item
+			padding: 13px 20px
+
+.contact-block-mail
+	padding-bottom: 238px
+	text-align: center
+@import "media/media.sass"
+	
