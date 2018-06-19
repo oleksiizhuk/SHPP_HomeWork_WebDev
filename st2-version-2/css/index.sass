@@ -35,20 +35,14 @@
 	float: left
 	padding-left: 10px
 	padding-right: 10px
-	border: 1px solid red
+	
 
 .container
 	width: 960px 
 	margin: 0 auto
-	border-left: 1px solid green
-	border-right: 1px solid green
+
 *
 	box-sizing: border-box
-/* img
-	height: auto
-	max-width: 100%
-	overflow: hidden */
-
 
 header
 	background-image: url(../img/blue-pattern.jpg)
@@ -70,11 +64,15 @@ header
 .sandwich-block
 	text-align: right
 	padding-top: 36px
+	
+		
 
 .sandwich 
 	display: inline-block
 	cursor: pointer
 	text-align: right
+	z-index: 151
+	position: relative
 
 .bar1, .bar2, .bar3, .bar4
 	width: 31px
@@ -95,15 +93,10 @@ header
 .change .bar3 
 	transform: rotate(45deg) translate(-6px, -8px)	
 
-.section-adboutMe
-	background-color: #f4f4f4
 
-.section-portfolio
-	background-color: #ffffff
-.section-donate
-	background-image: url(../img/green-pattern.jpg)
 .head-caption-text
 	text-align: right
+	color: #ffffff
 	.caption
 		h2
 			font-size: 70px
@@ -114,20 +107,27 @@ header
 		p
 			font-size: 35px
 			margin-top: 0
+.head-img-button
+	display: flex
+	justify-content: space-between
+	position: relative
 .head-img
 	text-align: center
-	padding-top: 30px
-	height: 295px
+	display: inline-block
+	margin-top: 36px
+	margin-left: 70px
+	height: 266px
 	overflow: hidden
 
 .head-button
 	text-align: right
+	display: inline-block
 	button
 		display: inline-block
 		cursor: pointer
-		margin-top: 10px
+		margin-top: 15px
 		background: transparent
-		padding: 18px 32px
+		padding: 18px 29px
 		font-size: 15px
 		border: 2px solid #fff
 		color: #fff
@@ -136,19 +136,54 @@ header
 			color: #fff
 
 
+.show-for-surprize
+	position: fixed
+	display: none
+	width: 100%
+	height: 100%
+	background-color: rgba(229,127,133,.8)
+	z-index: 50
+	right: 0
+	top: 0
+	
+	.navigation
+		margin-top: 150px
+		max-width: 150px
+		margin: 150px auto
+		
+		
+	.social-item
+		display: inline-block
+		border-radius: 50%
+		font-size: 20px
+		font-weight: 600
+		padding: 13px 15px
+		color: #4eacdd
+		background-color: #fff
+	.facebook-item
+			padding: 13px 20px
+
+	p
+		display: inline-block
+		color: #fff
+
+
 .section-aboutMe
 	height: 650px
 	background-color: #f4f4f4
+	position: relative
+	
+
 .aboutMe-text
 	h2
 		font-size: 40px
-		margin-top: 137px
-		margin-bottom: 25px
+		margin-top: 140px
+		margin-bottom: 27px
 	p
 		font-size: 16px
-		margin-bottom: 25px
+		margin-bottom: 24px
 		font-family: 'Montserrat', sans-serif
-		line-height: 24px
+		line-height: 25px
 	.last-p
 		border-left: 5px solid #00aee0
 		padding-left: 20px
@@ -156,9 +191,9 @@ header
 	button
 		display: inline-block
 		cursor: pointer
-		margin-top: 47px
+		margin-top: 45px
 		background: transparent
-		padding: 18px 32px
+		padding: 18px 34px
 		font-size: 15px
 		border: 2px solid #14af8f
 		color: #14af8f
@@ -166,11 +201,22 @@ header
 			text-decoration: none
 			color: #14af8f
 
+.aboutMe-img
+	position: absolute
+	bottom: 0px
+	right: 0px
+	height: 500px
+	width: 340px
+	overflow: hidden
+
+//******section-portfolio*********
+
 .section-portfolio
 	height: 650px
 	position: relative
 	overflow: hidden
-	
+	background-color: #ffffff	
+
 
 .portfolio-text
 	margin-top: 94px
@@ -191,28 +237,34 @@ header
 	button
 		display: inline-block
 		cursor: pointer
-		margin-top: 33px
+		margin-top: 35px
 		margin-bottom: 237px
 		background: transparent
-		padding: 18px 32px
+		padding: 18px 21px
 		font-size: 15px
 		border: 2px solid #14af8f
 		color: #14af8f
 		a
 			text-decoration: none
 			color: #14af8f
+
 .portfolio-img
-	position: absolute
-	bottom: 13px
-	left: -31px
-	height: 365px
-	width: 760px
+	position: relative
+	height: 650px
 
+	.portfolio-img-block
+		position: absolute
+		bottom: 0px
+		height: 377px
+		right: -161px
+		overflow: hidden
 
+//******section-donate*********
 
 .section-donate
 	height: 325px
-
+	background-image: url(../img/green-pattern.jpg)
+	
 .donate
 	text-align: center
 	margin-top: 85px
@@ -255,11 +307,65 @@ header
 			font-size: 20px
 			font-weight: 600
 			padding: 13px 15px
+			display: inline-block
 		.facebook-item
 			padding: 13px 20px
 
 .contact-block-mail
-	padding-bottom: 238px
+	padding-bottom: 240px
+	font-family: 'Montserrat', sans-serif
 	text-align: center
+	display: flex
+	flex-direction: row
+	Justify-content: center
+	align-items: center
+	margin-top: 66px
+	.contact-block-mail-text
+		margin-right: 25px
+		p
+			margin: 0
+	.contact-block-mail-input
+		input
+			padding: 14px
+			padding-right: 33px
+			border: none
+			color: #dedede
+			font-size: 14px
+			border-radius: 10px
+
+.section-footer
+	height: 100px
+.foot-container
+	text-align: center
+	position: relative
+	font-family: 'Montserrat', sans-serif
+	margin-top: 47px
+	span
+		color: #6dc5ea
+	p
+		font-size: 12px
+		color: #545454
+		&::before
+			color: #545454
+			content: "\f1f9"
+			font-family: Font Awesome\ 5 Free 
+			display: block
+			font-size: 10px
+			position: absolute
+			top: -6%
+			right: 65%
+.button-up
+	position: relative
+	.button
+		position: absolute
+		right: -93px
+		top: -32px
+		display: inline-block
+		button
+			background-color: #f4f4f4
+			border: 1px solid #f4f4f4
+			padding: 10px 14px
+			border-radius: 5px
+	
 @import "media/media.sass"
 	
