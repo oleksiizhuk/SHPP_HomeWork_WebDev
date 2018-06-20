@@ -56,10 +56,10 @@ header
 		margin: 0
 		font-family: 'Kaushan Script', cursive
 		color: #00aae8
-		border: 1px solid
+		border-bottom: 4px solid rgba(13,169,229, 1)
 		font-size: 50px
 		font-weight: 900
-		box-shadow: 15px 17px 7px 2px #01b1ea
+		box-shadow: 15px 15px 0px 0px #01b1ea
 
 .sandwich-block
 	text-align: right
@@ -150,6 +150,9 @@ header
 		margin-top: 150px
 		max-width: 150px
 		margin: 150px auto
+		a
+			text-decoration: none
+			
 		
 		
 	.social-item
@@ -324,14 +327,24 @@ header
 		margin-right: 25px
 		p
 			margin: 0
+			font-weight: 600
 	.contact-block-mail-input
-		input
-			padding: 14px
-			padding-right: 33px
-			border: none
-			color: #dedede
-			font-size: 14px
-			border-radius: 10px
+		form
+			position: relative
+			input
+				padding: 14px
+				padding-right: 33px
+				border: none
+				color: #dedede
+				font-size: 14px
+				border-radius: 10px
+			a
+				position: absolute
+				color: #6ec5ea
+				border-left: 1px solid #e9e9e9
+				padding-left: 10px
+				bottom: 12px
+				right: 10px
 
 .section-footer
 	height: 100px
@@ -345,18 +358,9 @@ header
 	p
 		font-size: 12px
 		color: #545454
-		&::before
-			color: #545454
-			content: "\f1f9"
-			font-family: Font Awesome\ 5 Free 
-			display: block
-			font-size: 10px
-			position: absolute
-			top: -6%
-			right: 65%
 .button-up
 	position: relative
-	.button
+	.button-go-up
 		position: absolute
 		right: -93px
 		top: -32px

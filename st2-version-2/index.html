@@ -11,7 +11,7 @@
 </head>
 <body>
 	<!--   ******    -->
-	<header>
+	<header id="header">
 		<div class="container">
 			<div class="row">
 				<div class="col-6">
@@ -21,7 +21,7 @@
 				</div>
 				<div class="col-6">
 					<div class="sandwich-block">
-						<div class="sandwich" onclick="sandwich(this)">
+						<div class="sandwich" > <!--onclick="sandwich(this)"-->
 							<div class="bar1"></div>
 							<div class="bar2"></div>
 							<div class="bar3"></div>
@@ -57,32 +57,43 @@
 					<div class="col-12">
 						<div class="show-for-surprize">
 							<div class="navigation">
-								<nav>
-									<a href="#">
+
+								<a href="#">
+									<nav>
 										<div class="social-item f">
 											<i class="fas fa-basketball-ball"></i>	
 										</div>
-									</a>
-									<p>home</p>	
-								</nav>
+										<p>home</p>	
+									</nav>
+								</a>
+
+								<a href="#">
 								<nav>
 									<div class="social-item facebook-item">
 										<i class="fab fa-facebook-f"></i>
 									</div>
 									<p>about me</p>
 								</nav>
+								</a>
+
+								<a href="#">
 								<nav>
 									<div class="social-item t">
 										<i class="fab fa-twitter"></i>
 									</div>
 									<p>portfolio</p>	
 								</nav>
+								</a>
+
+								<a href="#">
 								<nav>
 									<div class="social-item fo">
 										<i class="fab fa-telegram-plane"></i>
 									</div>
 									<p>drop me a line</p>	
 								</nav>
+								</a>
+
 							</div>
 						</div>
 					</div>
@@ -91,7 +102,7 @@
 		</div>
 	</header>
 	<!--   ******    -->
-	<section class="section-aboutMe">
+	<section class="section-aboutMe" id="section-aboutMe">
 		<div class="container">
 			<div class="row">
 				<div class="col-8 col-m-12">
@@ -123,7 +134,7 @@
 		</div>
 	</section>
 	<!--   ******    -->
-	<section class="section-portfolio">
+	<section class="section-portfolio" id="section-portfolio">
 		<div class="container">
 			<div class="row">
 
@@ -155,7 +166,7 @@
 		</div>
 	</section>
 	<!--   ******    -->
-	<section class="section-donate">
+	<section class="section-donate" id="section-donate">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
@@ -174,7 +185,7 @@
 		</div>
 	</section>
 	<!--   ******    -->
-		<section class="section-contact">
+		<section class="section-contact" id="section-contact">
 			<div class="container">
 				<div class="row">
 					<div class="col-12">
@@ -185,16 +196,19 @@
 										<i class="fas fa-basketball-ball"></i>
 									</div>
 								</nav>
+
 								<nav>
 									<div class="social-item facebook-item">
 										<i class="fab fa-facebook-f"></i>
 									</div>
 								</nav>
+
 								<nav>
 									<div class="social-item t">
 										<i class="fab fa-twitter"></i>
 									</div>
 								</nav>
+
 								<nav>
 									<div class="social-item fo">
 										<i class="fab fa-telegram-plane"></i>
@@ -222,14 +236,15 @@
 			</div>
 		</section>
 	<!--   ******    -->
-	<footer class="section-footer">
+	<footer class="section-footer" id="section-footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
 					<div class="foot-container">
-						<p>2013 <span>Perth.</span> Breedling pixels since the naugties.</p>
+
+						<p><i class="far fa-copyright"></i> 2013 <span>Perth.</span> Breedling pixels since the naugties.</p>
 						<div class="button-up">
-							<div class="button">
+							<div class="button-go-up">
 								<button>
 									<i class="fas fa-angle-up"></i>
 								</button>
