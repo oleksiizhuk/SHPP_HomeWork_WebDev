@@ -1,0 +1,2 @@
+body{margin:0px;padding:0px}h1,h2{margin:0px;padding:0px}.wraper{width:1000px;margin:0 auto}header{background-color:green}main{background-color:#b2bec3}.firstTask .hiddenInput{display:none}#resultFourTask ul{margin:0}#resultFourTask ul li{display:flex;list-style-type:none}#resultFourTask ul{margin:0}#resultFourTask ul:nth-child(even) .firstLine{background-color:#fff;color:red}#resultFourTask ul:nth-child(odd) .secondLien{background-color:red;color:green}#resultFourTask ul li{display:inline-block;color:red;list-style-type:none}
+/*# sourceMappingURL=style.css.map */

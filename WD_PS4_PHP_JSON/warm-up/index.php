@@ -25,10 +25,11 @@
 	</header>
 
 	<main>
+
 		<div class="wraper">
 			<div class="firstTask">
 				<h2>first Task</h2>
-				<p>1) посчитать сумму чисел от -1000 до 1000</p>
+				<p>1  посчитать сумму чисел от -1000 до 1000</p>
 				<form  method="POST" >
 					<input type="text" name="firstTask" class="hiddenInput" value="firstTask">
 					<input type="text" name="firstNumber">
@@ -45,7 +46,7 @@
 
 			<div class="SecondTask">
 				<h2>Second Task</h2>
-				<p>2)посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
+				<p>2 посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
 				<form action="" method="POST">
 					<input type = "text" name ="firstNumberSecondTask">
 					<input type = "text" name = "secondNumberSecondTask">
@@ -81,11 +82,14 @@
 			<div class="fourTask">
 				<h2>Four Task</h2>
 				<p>Шахматная доска </p>
+
 				<form action="" method="POST">
 					<input type="text" name="numberFourTak">
 					<input type="text" name="secondFourTak">
 					<input type="submit" name="enterFourTask">
-				<div class="resultFourTask">
+				</form>
+
+				<div id="resultFourTask">
 					<?php
 					if ( isset($_POST['enterFourTask'])) {
 						fourTask($_POST['numberFourTak'], $_POST['secondFourTak']);
@@ -102,7 +106,7 @@
 							<li class="SecondLien">2</li>
 					</ul>
 				</div>
-			</form>
+			
 			</div>
 
 			<div class="fiveTask">
@@ -137,6 +141,6 @@
 
 	</footer>
 
-
+<link rel="stylesheet" type="text/css" href="css/style.min.css">
 </body>
 </html>

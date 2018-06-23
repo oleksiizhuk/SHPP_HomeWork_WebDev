@@ -10,7 +10,17 @@
 
 	} */
 
-	function firstTask($first =-1000, $seconds = 1000){
+	function firstTask ($first, $seconds) {
+		if ( empty($first) || empty($seconds) )  { 
+			echo "Строка пустая";
+			return;
+			}
+		if ( is_numeric($first) && is_numeric($seconds) ) {
+			echo "  число", PHP_EOL . "</br>";
+		} else {
+			echo "  НЕ число", PHP_EOL . "</br>";
+			return;
+		}
 		if ($seconds < $first){
 			[$first , $seconds ] = [$seconds, $first];
 		}
@@ -21,7 +31,17 @@
 		echo $result;
 	}
 
-	function secondTask($firstNumber =- 1000, $secondNumber = 1000){
+	function secondTask($firstNumber, $secondNumber) {
+		if ( empty($firstNumber) || empty($secondNumber) )  { 
+			echo "Строка пустая";
+			return;
+			}
+		if ( is_numeric($firstNumber) && is_numeric($secondNumber) ) {
+			echo " - число", PHP_EOL . "</br>";
+		} else {
+			echo " - НЕ число", PHP_EOL . "</br>";
+			return;
+		}
 		if ($secondNumber < $firstNumber){
 			[$firstNumber , $secondNumber ] =  [$secondNumber, $firstNumber];
 		}
@@ -36,6 +56,17 @@
 	}
 
 	function thirdTask($listHeight){
+		if ( empty($listHeight) )  { 
+			echo "Строка пустая";
+			return;
+			}
+		if ( is_numeric($listHeight) ) {
+			echo " число", PHP_EOL . "</br>";
+			
+		} else {
+			echo " не - число", PHP_EOL . "</br>";
+			return;
+		}
 		$star = "";
 		$list = "";
 		for ($i = 1; $i <= $listHeight; $i++){
@@ -44,29 +75,38 @@
 		}
 		echo $list;
 	}
-
-	function fourTask($firstNumberFT, $secondNumberST){
-		for ($i = 1; $i <= $firstNumberFT; $i++ ) {
-			echo "<ul>";
-			for($j = 1; $j <= $secondNumberST; $j++ ) {
+/*<li class = "secondLien" style="display: inline-block"> _1_ </li>*/
+	function fourTask($boardHeight, $boardWidth){
+		for ( $i = 0; $i <= $boardHeight; $i++ ) {
+			echo '<ul style="margin: 0 ">';
+			for( $j = 0; $j <= $boardWidth; $j++ ) {
 				if ($i % 2 === 0){
-					echo '<li class = "secondLien"> _1_ </li>';
+					echo '<li class = "secondLien" style="display: inline-block; background-color: #ffffff;padding: 5px "> </li> ';
 				}
 				else {
-					echo '<li class = "firstLine"> _2_ </li>';
+					echo '<li class = "firstLine" style="display: inline-block; background-color: red;padding: 5px"> </li>';
 				}
 			}
-			echo "</ul>";
+			echo '</ul>';
 		}
 	}
 
 	function fiveTask($str)	{
 		echo $str."</br>";
-		$test = str_split($str);
+		$test = str_split($str) . "</br>";
+		echo $test;
 		for ($i = 0; $i < count($test); $i++) {
-			$result = $result + $test[$i];
+			$result += $test[$i];
 		}
-		echo $result;
+		echo $result."</br>";
+
+		foreach ($variable as $key => $value) {
+			# code...
+		}
+		foreach ($test as $value) {
+			echo "тест";
+		}
+
 	}
 
 	function sixTask(){

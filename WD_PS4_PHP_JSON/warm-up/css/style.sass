@@ -1,18 +1,14 @@
-@import "bourbon/bourbon"
 
 body
 	margin: 0px
 	padding: 0px
 
-h1
+h1, h2
 	margin: 0px
 	padding: 0px
-h2
-	margin: 0
-	padding: 0
 
 .wraper
-	width: 1200px
+	width: 1000px
 	margin: 0 auto
 
 header
@@ -25,8 +21,16 @@ main
 	.hiddenInput
 		display: none
 
-.resultFourTask
+#resultFourTask
 	ul
+		margin: 0
+		li
+			display: flex
+			list-style-type: none
+
+#resultFourTask
+	ul
+		margin: 0
 		&:nth-child(even)
 			.firstLine
 				background-color: #ffffff
@@ -35,6 +39,9 @@ main
 			.secondLien
 				background-color: red
 				color: green
-	li
-		list-style-type: none
-		display: inline
+		li
+			
+			display: inline-block
+			color: red
+			list-style-type: none
+
