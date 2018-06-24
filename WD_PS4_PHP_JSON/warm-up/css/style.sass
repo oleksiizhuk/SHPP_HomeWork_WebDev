@@ -28,20 +28,33 @@ main
 			display: flex
 			list-style-type: none
 
-#resultFourTask
+.resultFourTask
+	text-align: center
+	
 	ul
 		margin: 0
+		padding: 0
+		font-size: 0
 		&:nth-child(even)
-			.firstLine
-				background-color: #ffffff
-				color: red
+			li
+				background-color: #e6cdab
+				display: inline-block
+				padding: 10px
+				&:nth-child(even)
+					background-color: #9f571b
 		&:nth-child(odd)
-			.secondLien
-				background-color: red
-				color: green
-		li
-			
-			display: inline-block
-			color: red
-			list-style-type: none
+			li
+				background-color: #9f571b
+				display: inline-block
+				padding: 10px
+				&:nth-child(even)
+					background-color: #e6cdab
+.sixTask
+	p
+		margin: 0
+		padding: 10px
+footer
+	background-color: yellow
+	h2
+		margin: 0
 

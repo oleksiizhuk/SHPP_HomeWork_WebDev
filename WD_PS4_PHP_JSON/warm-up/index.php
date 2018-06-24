@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>WD_PS4_PHP_JSON warm-up</title>
-	<link rel="stylesheet" type="text/css" href="css/style.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!--favicon-->
 	<link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
@@ -27,20 +27,26 @@
 	<main>
 
 		<div class="wraper">
+
 			<div class="firstTask">
 				<h2>first Task</h2>
 				<p>1  посчитать сумму чисел от -1000 до 1000</p>
+
 				<form  method="POST" >
 					<input type="text" name="firstTask" class="hiddenInput" value="firstTask">
 					<input type="text" name="firstNumber">
 					<input type="text" name="secondNumber">
 					<input type="submit" name="enter">
-						<p id="firstTaskResult"> <?php
-							if(isset($_POST['enter'])){
-								firstTask($_POST['firstNumber'], $_POST['secondNumber']);
-							}
-						 ?></p>
 				</form>
+
+				<p id="firstTaskResult"> 
+					<?php
+						if(isset($_POST['enter'])){
+							firstTask($_POST['firstNumber'], $_POST['secondNumber']);
+						}
+					?>
+				 </p>
+
 			</div>
 			<hr>
 
@@ -51,14 +57,16 @@
 					<input type = "text" name ="firstNumberSecondTask">
 					<input type = "text" name = "secondNumberSecondTask">
 					<input type = "submit" name = "enterSecondTask" >
-					<p id="secondTaskResult">
+				</form>
+
+				<p id="secondTaskResult">
 					<?php
 					if (isset($_POST['enterSecondTask'])) {
 						secondTask($_POST['firstNumberSecondTask'], $_POST['secondNumberSecondTask']);
 					}
 					?>
-					 </p>
-				</form>
+				 </p>
+
 			</div>
 			<hr>
 
@@ -68,14 +76,16 @@
 				<form action="" method="POST">
 					<input type="text" name="numberThirdTak">
 					<input type="submit" name="enterThirdTask">
+				</form>
 				<div class="resultThirdTask">
-					<p><?php
-					if (isset($_POST['enterThirdTask'])) {
-						thirdTask($_POST['numberThirdTak']);
-					}
-					?></p>
+					<p>
+						<?php
+							if (isset($_POST['enterThirdTask'])) {
+								thirdTask($_POST['numberThirdTak']);
+							}
+						?>
+					</p>
 				</div>
-			</form>
 			</div>
 			<hr>
 
@@ -89,56 +99,53 @@
 					<input type="submit" name="enterFourTask">
 				</form>
 
-				<div id="resultFourTask">
+				<div class="resultFourTask">
 					<?php
 					if ( isset($_POST['enterFourTask'])) {
 						fourTask($_POST['numberFourTak'], $_POST['secondFourTak']);
 					}
 					?>
-					<ul>
-							<li class="firstLine">1</li>
-							<li class="firstLine">1</li>
-							<li class="firstLine">1</li>
-					</ul>
-					<ul>
-							<li class="SecondLien">2</li>
-							<li class="SecondLien">2</li>
-							<li class="SecondLien">2</li>
-					</ul>
 				</div>
-			
-			</div>
 
+			</div>
+	
 			<div class="fiveTask">
 				<h2>five task</h2>
 				<form action="" method="POST">
 					<input type="text" name="fiveTaskValue" value="">
 					<input type="submit" name="enterFiveTask">
 				</form>
-				<?php
-					if (isset($_POST['enterFiveTask'])) {
-						fiveTask($_POST['fiveTaskValue']);
-					}
-				 ?>
+
+				<p>
+					<?php
+						if (isset($_POST['enterFiveTask'])) {
+							fiveTask($_POST['fiveTaskValue']);
+						}
+					?>
+				 </p>
 			</div>
 			<hr>
+
 			<div class="sixTask">
 				<h2>six task</h2>
 				<form action="" method="POST">
-					<input type="text" name="test">
 					<input type="submit" name="enterSixValue">
+				</form>
+				<p>
 					<?php
 						if(isset($_POST['enterSixValue'])) {
 							sixTask();
 						}
 					?>
-				</form>
+				</p>
 			</div>
 
 		</div>
 	</main>
 	<footer>
-
+		<div class="wraper">
+			<h2>cool</h2>
+		</div>
 	</footer>
 
 <link rel="stylesheet" type="text/css" href="css/style.min.css">
