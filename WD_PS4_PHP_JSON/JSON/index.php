@@ -5,6 +5,7 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/normalize/normalize.css">
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 	
 </head>
 <body>
@@ -20,36 +21,42 @@
 			<div class="main">
 				
 				<div class="block-form">
-					<form action="#">
-						<label class="container">3-15
-							<input type="radio" checked="checked" name="radio">
+					<form action="result.php" method="post">
+						<label class="container">1000
+							<input type="radio" checked="checked" name="radio" value="1000">
 							<span class="checkmark"></span>
 						</label>
 
-						<label class="container">15-30
-							<input type="radio" name="radio">
+						<label class="container">2000
+							<input type="radio" name="radio" value="2000">
 							<span class="checkmark"></span>
 						</label>
 
-						<label class="container">30-45
-							<input type="radio" name="radio">
+						<label class="container">3000
+							<input type="radio" name="radio" value="3000">
 							<span class="checkmark"></span>
 						</label>
 
-						<label class="container">45+
-							<input type="radio" name="radio">
+						<label class="container">4000
+							<input type="radio" name="radio" value="4000">
 							<span class="checkmark"></span>
 						</label>
-						<input type="submit" value="отправить">
+						<input type="submit" value="enter">
 					</form>
+					<?php
+						
+					?>
 				</div>
 
 				<div class="question">
-					<p>Сколько вам лет</p>
+					<p>Какая у вас зарплата? </p>
 				</div>
 
 			</div>
 		</div>
+		<script type="text/javascript">
+        </script>
+     
 	</section>
 
 	<footer>
