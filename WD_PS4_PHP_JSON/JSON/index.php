@@ -5,8 +5,6 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="css/index.css">
 	<link rel="stylesheet" href="css/normalize/normalize.css">
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-	
 </head>
 <body>
 
@@ -41,7 +39,7 @@
 							<input type="radio" name="radio" value="4000">
 							<span class="checkmark"></span>
 						</label>
-						<input type="submit" value="enter">
+						<input type="submit" value="enter" id="button" >
 					</form>
 					<?php
 						
@@ -53,10 +51,7 @@
 				</div>
 
 			</div>
-		</div>
-		<script type="text/javascript">
-        </script>
-     
+		</div>   
 	</section>
 
 	<footer>
@@ -64,8 +59,5 @@
 			<span>footer</span>
 		</div>	
 	</footer>
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="js/index.js"></script>
 </body>
 </html>

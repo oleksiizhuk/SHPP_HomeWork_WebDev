@@ -1,22 +1,48 @@
+/*console.log(objDataJson);
+let arrJson;
+arrJson = JSON.stringify(objDataJson);
+console.log(arrJson);*/
 
-      google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      array = JSON.parse(array);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['1000$', 1],
-          ['2000$', 1],
-          ['3000$', 1],
-          ['4000$', 1],
+$(document).ready ( function() {
+ ajaxGet();
+});
 
-        ]);
+function ajaxGet(){
+	$.ajax ({
+			url: "ajax.php",
+			type: "POST",
+			dataType: "json",
+			data: {
+				getResult: "",
+			},
+			success(ressponce) {
+				jsonToGoogleCharts(ressponce);
+			}
+		});
+		console.log('ajaxGet - отработал');
 
-        var options = {
-          title: 'My Daily Activities',
-          pieHole: 0.4,
-        };
+}
 
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
-        chart.draw(data, options);
-      }
+function jsonToGoogleCharts(jsonArray) {
+	
+	google.charts.load("current", {packages:["corechart"]});
+			google.charts.setOnLoadCallback(drawChart);
+			function drawChart() {
+				var data = google.visualization.arrayToDataTable([
+					['Salary', 'Amount'],
+					['1000$',     jsonArray.option1],
+					['2000$',      jsonArray.option2],
+					['3000$',  jsonArray.option3],
+					['4000$', jsonArray.option4],
+				]);
+
+				var options = {
+					title: 'Зарплаты',
+					pieHole: 0.4,
+				};
+
+				var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+				chart.draw(data, options);
+			}
+}
+
