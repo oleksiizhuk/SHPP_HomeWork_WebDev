@@ -1,21 +1,27 @@
 $(document).ready(function () {
+	const sandwich = $(".sandwich");
+	const showForSurpize = $(".show-for-surprize");
+	const page = $('body,html');
+	sandwich.click(function() {
+		sandwich.toggleClass("change");
 
-	$(".sandwich").click(function() {
-		$(".sandwich").toggleClass("change");
-
-		if ($(".show-for-surprize").is(":visible")) {
-			$(".show-for-surprize").fadeOut(600);
-			$(".sandwich").css("position", "absolute");
+		if ( showForSurpize.is(":visible")) {
+			showForSurpize.fadeOut(600);
+			sandwich.css("position", "absolute");
 		} else {
-			$(".show-for-surprize").fadeIn(600);
-			$(".sandwich").css("position", "fixed");
+			showForSurpize.fadeIn(600);
+			sandwich.css("position", "fixed");
 		}
 	});
 
 	$('.button-go-up').click(function () {
-		$('body,html').animate({
+		page.animate({
 			scrollTop: 0,
 		}, 800);
 		return false;
 	});
 });
+
+function buttonSubmit() {
+    document.getElementById("formEnterEmail").submit();
+}
