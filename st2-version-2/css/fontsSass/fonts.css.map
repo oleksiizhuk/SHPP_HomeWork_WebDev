@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "WAEC,WAAW,CAAE,UAAU,CACvB,GAAG,CAAE,oDAAoD,CACzD,GAAG,CAAE,oDAAoD,CACzD,GAAG,CAAE,qDAAqD,YAG1D,WAAW,CAAE,WAAW,CACxB,GAAG,CAAE,sCAAsC,YAG3C,WAAW,CAAE,WAAW,CACxB,GAAG,CAAE,sCAAsC,YAG3C,WAAW,CAAE,WAAW,CACxB,GAAG,CAAE,sCAAsC",
+"sources": ["fonts.sass"],
+"names": [],
+"file": "fonts.css"
+}
