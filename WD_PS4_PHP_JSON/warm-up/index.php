@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,10 +15,6 @@
 	<meta name="theme-color" content="#ffffff">
 	<!--favicon-->
 
-	<?php
-		include "php/main.php";
-	?>
-
 </head>
 <body>
 	<header>
@@ -32,7 +29,8 @@
 				<h2>first Task</h2>
 				<p>1  посчитать сумму чисел от -1000 до 1000</p>
 
-				<form  method="POST" >
+				<form  method="POST" action="php/main.php">
+					<input type="hidden" value="task1" name="submit">
 					<input type="text" name="firstTask" class="hiddenInput" value="firstTask">
 					<input type="text" name="firstNumber">
 					<input type="text" name="secondNumber">
@@ -41,8 +39,8 @@
 
 				<p id="firstTaskResult"> 
 					<?php
-						if(isset($_POST['enter'])){
-							firstTask($_POST['firstNumber'], $_POST['secondNumber']);
+						if (isset($_SESSION['task']) && $_SESSION['task'] === 'task1') {
+							echo $_SESSION['result'];
 						}
 					?>
 				 </p>
@@ -136,6 +134,7 @@
 						if(isset($_POST['enterSixValue'])) {
 							sixTask();
 						}
+						session_destroy();
 					?>
 				</p>
 			</div>
