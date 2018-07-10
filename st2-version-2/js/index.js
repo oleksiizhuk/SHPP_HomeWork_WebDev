@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 		if ( showForSurpize.is(":visible")) {
 			showForSurpize.fadeOut(600);
-			sandwich.css("position", "absolute");
+			sandwich.css("position", "relative");
 		} else {
 			showForSurpize.fadeIn(600);
 			sandwich.css("position", "fixed");
@@ -23,5 +23,5 @@ $(document).ready(function () {
 });
 
 function buttonSubmit() {
-    document.getElementById("formEnterEmail").submit();
+    $("#formEnterEmail").submit();
 }
