@@ -70,6 +70,9 @@ return $result;
 
 function thirdTask() {
 	$listHeight = $_POST['numberThirdTak'];
+	if ($listHeight > 100 || $listHeight < 1) {
+		return "Размер списка от 1 до 100";
+	}
 	if( isEmpty($listHeight)  ) {
 		return "Строка пустая";
 	}
@@ -89,6 +92,9 @@ function fourTask() {
 	$boardHeight = $_POST['numberFourTak'];
 	$boardWidth = $_POST['secondFourTak'];
 	$result;
+	if($boardHeight > 50 || $boardHeight < 1 && $boardWidth > 50 || $boardWidth < 1){
+		return "Размер доски от 1 до 50";
+	}
 	for ($i = 1; $i <= $boardHeight; $i++) {
 		$result = $result.'<ul class="flex">';
 			for ($j = 1; $j <= $boardWidth; $j++) {

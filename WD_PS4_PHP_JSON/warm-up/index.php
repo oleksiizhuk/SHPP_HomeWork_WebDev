@@ -36,7 +36,7 @@
 
 					<input type="text" name="firstNumber">
 					<input type="text" name="secondNumber">
-					<input type="submit" name="enter">
+					<input type="submit" name="enter" value="посчитать">
 				</form>
 
 				<p id="firstTaskResult"> 
@@ -60,8 +60,8 @@
 					<input type="hidden" value="task2" name="submit">
 					<input type = "text" name ="firstNumberSecondTask">
 					<input type = "text" name = "secondNumberSecondTask">
-					<input type = "submit" name = "enterSecondTask" >
-					<input type="hidden" value="task2" name="enter">
+					<input type = "submit" name = "enterSecondTask" value="посчитать">
+					<input type="hidden" value="task2" name="enter" >
 				</form>
 
 				<p id="secondTaskResult">
@@ -85,7 +85,7 @@
 				<form action="php/main.php" method="POST">
 					<input type="text" name="numberThirdTak">
 					<input type="hidden" value="task3" name="submit">
-					<input type="submit" name="enterThirdTask">
+					<input type="submit" name="enterThirdTask" value="вывести">
 				</form>
 				<div class="resultThirdTask">
 					<p>
@@ -111,7 +111,7 @@
 					<input type="text" name="numberFourTak">
 					<input type="text" name="secondFourTak">
 					<input type="hidden" value="task4" name="submit">
-					<input type="submit" name="enterFourTask">
+					<input type="submit" name="enterFourTask" value="Построить доску">
 				</form>
 
 				<div class="resultFourTask">
@@ -132,7 +132,7 @@
 				<form action="php/main.php" method="POST">
 					<input type="text" name="fiveTaskValue" value="">
 					<input type="hidden" value="task5" name="submit">
-					<input type="submit" name="enterFiveTask">
+					<input type="submit" name="enterFiveTask" value="посчитать">
 				</form>
 
 				<p>
@@ -153,7 +153,7 @@
 				<p>​6 ​Сгенерировать массив рандомных целых чисел от 1 до 10, длинна массива 100. Убрать из массива повторы, отсортировать и ревертнуть.</p>
 				<form action="php/main.php" method="POST">
 					<input type="hidden" value="task6" name="submit">
-					<input type="submit" name="enterSixValue">
+					<input type="submit" name="enterSixValue" value="Сгенерировать массив">
 				</form>
 				<p>
 					<?php

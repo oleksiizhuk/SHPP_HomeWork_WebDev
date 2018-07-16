@@ -1,3 +1,6 @@
+<?php
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,25 +24,26 @@
 				<div class="block-form">
 					<form action="result.php" method="post">
 						<label class="container">1000
-							<input type="radio" checked="checked" name="radio" value="1000">
+							<input type="radio" checked="checked" name="radio" value="1">
 							<span class="checkmark"></span>
 						</label>
 
 						<label class="container">2000
-							<input type="radio" name="radio" value="2000">
+							<input type="radio" name="radio" value="2">
 							<span class="checkmark"></span>
 						</label>
 
 						<label class="container">3000
-							<input type="radio" name="radio" value="3000">
+							<input type="radio" name="radio" value="3">
 							<span class="checkmark"></span>
 						</label>
 
 						<label class="container">4000
-							<input type="radio" name="radio" value="4000">
+							<input type="radio" name="radio" value="4">
 							<span class="checkmark"></span>
 						</label>
-						<input type="submit" value="enter" id="button" >
+						<input type="hidden" value="choice" name="submit">
+						<input type="submit" value="vote" id="button" >
 					</form>
 					<?php
 						

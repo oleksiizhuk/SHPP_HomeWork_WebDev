@@ -1,3 +1,6 @@
+<?php
+	session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,25 +20,30 @@
 	<section>
 		<?php
 
-		$userChoice = $_POST['radio'] / 1000;
+			$_SESSION['choice'] = $_POST['submit'];
 
-			if (isset($_POST['radio'])){
-				//echo "<p>пришел запрос</p>";
-			}else {
-				//echo "<p>запрос не пришел</p>";
-				return;
+			if (isset($_SESSION['choice']) && $_SESSION['choice'] === 'choice') {
+				countVotes();
+			}
+			else{
+				header("Location:../index.php");
 			}
 
-			$urlJson = "json/index.json";
-			$jsonData = file_get_contents($urlJson);
-			$json = json_decode($jsonData, true);
+			function countVotes() {
+				$userChoice = $_POST['radio'];
+				$urlJson = "json/index.json";
+				$jsonData = file_get_contents($urlJson);
+				$json = json_decode($jsonData, true);
 
-			$json["option".$userChoice]++;
+				$json["option".$userChoice]++;
 
-			$json = json_encode($json);	
-			file_put_contents($urlJson, $json, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+				$json = json_encode($json);	
+				file_put_contents($urlJson, $json, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
+			}
+			
+			session_destroy();
 		?>
-		<!-- <script> var objDataJson = <?=$json.';' ?></script> -->
+		<!-- <script> let objDataJson = <?=$json.';' ?></script> -->
 		<div id="donutchart" style="width: 600px; height: 400px;"></div>
 	</section>
 	<footer>
