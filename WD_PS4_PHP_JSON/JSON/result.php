@@ -14,19 +14,20 @@
 <body>
 	<header>
 		<div class="container-block">
-		<a href="index.php"><h2>Голосуй</h2></a>		
+		<a href="index.php" class="link"><h2>Вернуться обратно</h2></a>		
 		</div>
 	</header>
 	<section>
 		<?php
 
-			$_SESSION['choice'] = $_POST['submit'];
+			if( !empty($_POST['submit'])) {
+				$_SESSION['choice'] = $_POST['submit'];
+			}
+			
 
 			if (isset($_SESSION['choice']) && $_SESSION['choice'] === 'choice') {
 				countVotes();
-			}
-			else{
-				header("Location:../index.php");
+				header('location: ./result.php');
 			}
 
 			function countVotes() {
@@ -40,8 +41,7 @@
 				$json = json_encode($json);	
 				file_put_contents($urlJson, $json, JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
 			}
-			
-			session_destroy();
+			session_destroy();			
 		?>
 		<!-- <script> let objDataJson = <?=$json.';' ?></script> -->
 		<div id="donutchart" style="width: 600px; height: 400px;"></div>
