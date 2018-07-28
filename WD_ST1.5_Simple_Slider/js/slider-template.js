@@ -12,35 +12,33 @@ const IMAGES = [
 ];
 
 $(function() {
-	let image;
-	let sliderPreviews = $('.slider-previews');
+	let image = "";
+	const sliderPreviews = $('.slider-previews');
 	for (let i = 0; i <= IMAGES.length - 1; i++) {
 		if (i === 0) {
-			image = `<li class="img current"><img src='${API_URL}${SMALL_SIZE}/${IMAGES[i]}'></li>`;
-			sliderPreviews.append(image);
+			image += `<li class="img current"><img src='${API_URL}${SMALL_SIZE}/${IMAGES[i]}'></li>`;
 		} else {
-			image = `<li class="img"><img src='${API_URL}${SMALL_SIZE}/${IMAGES[i]}'></li>`;
-			sliderPreviews.append(image);
+			image += `<li class="img"><img src='${API_URL}${SMALL_SIZE}/${IMAGES[i]}'></li>`;
 		}
 	}
+	sliderPreviews.append(image);
 });
 
 $('.slider-current').on('click', 'img', function() {
 	prevNextSlide("1");
 });
 
-$('.slider-previews').on('click', 'li', function() {
-    const nextSlide = $( this ).index();
-    prevNextSlide(false, nextSlide);
-
+$('.slider-previews').on('click', 'li', function() {  
+	const nextSlide = $( this ).index();
+	prevNextSlide(false, nextSlide);
 });
 
-document.addEventListener("keyup", function(e) {
-	const key = e.key + e.location;
-	if (key === "ArrowLeft0") {
+$(document).keydown(function(event) {
+	const key = event.keyCode;
+	if (key== 37) { 
 		prevNextSlide("0");
 	}
-	if (key === "ArrowRight0") {
+	if (key == 39){
 		prevNextSlide("1");
 	}
 });
