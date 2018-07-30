@@ -54,7 +54,7 @@ $(function() {
 
 	function changePicture(nextImageIndex) {
 		const photo = $('.slider-current img');
-		const src = `${API_URL}${BIG_SIZE}/${IMAGES[nextImageIndex]}`;
+		const src = `${API_URL + BIG_SIZE + IMAGES[nextImageIndex]}`;
 		photo.attr('src', src);
 		const nextImage = $('.img').eq(nextImageIndex);
 		const currImage = $('.current');
