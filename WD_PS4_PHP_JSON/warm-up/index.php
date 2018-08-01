@@ -34,8 +34,8 @@
 					<input type="text" name="firstTask" 
 					class="hiddenInput" value="firstTask">
 
-					<input type="text" name="firstNumber">
-					<input type="text" name="secondNumber">
+					<input type="number" name="firstNumber">
+					<input type="number" name="secondNumber">
 					<input type="submit" name="enter" value="посчитать">
 				</form>
 
@@ -45,12 +45,10 @@
 							echo $_SESSION['result'];
 						}
 					?>
-				 </p>
+				</p>
 			</div>
 			<hr>
 					<!--            first task        -->
-
-
 
 			<!--            SecondTask      -->
 			<div class="SecondTask">
@@ -58,8 +56,8 @@
 				<p>2 посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
 				<form action="php/main.php" method="POST">
 					<input type="hidden" value="task2" name="submit">
-					<input type = "text" name ="firstNumberSecondTask">
-					<input type = "text" name = "secondNumberSecondTask">
+					<input type = "number" name ="firstNumberSecondTask">
+					<input type = "number" name = "secondNumberSecondTask">
 					<input type = "submit" name = "enterSecondTask" value="посчитать">
 					<input type="hidden" value="task2" name="enter" >
 				</form>
@@ -83,7 +81,6 @@
 				<h2>Third Task</h2>
 				<p>вывести на страницу список из 50 элементов вида:</p>
 				<form action="php/main.php" method="POST">
-					<input type="text" name="numberThirdTak">
 					<input type="hidden" value="task3" name="submit">
 					<input type="submit" name="enterThirdTask" value="вывести">
 				</form>
@@ -128,7 +125,7 @@
 			<!--            fiveTask        -->
 			<div class="fiveTask">
 				<h2>five task</h2>
-				<p>5) Найти сумму цифр введённого числа.</p>
+				<p>5 Найти сумму цифр введённого числа.</p>
 				<form action="php/main.php" method="POST">
 					<input type="text" name="fiveTaskValue" value="">
 					<input type="hidden" value="task5" name="submit">
@@ -158,7 +155,7 @@
 				<p>
 					<?php
 						if (isset($_SESSION['task']) && $_SESSION['task'] === 'task6') {
-							echo $_SESSION['result'];
+							print_r($_SESSION['result']);
 						}
 						session_destroy();
 					?>
@@ -173,7 +170,5 @@
 			<h2>cool</h2>
 		</div>
 	</footer>
-
-<link rel="stylesheet" type="text/css" href="css/style.min.css">
 </body>
 </html>

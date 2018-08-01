@@ -1,43 +1,38 @@
 <?php
 session_start();
-$_SESSION['task'] = $_POST['submit'];
+if (isset($_POST['submit'])){
+		$_SESSION['task'] = $_POST['submit'];
+}
 switch ($_SESSION['task']) {
 		case 'task1':
-				$result = firstTask ();
+				$_SESSION['result'] = firstTask ();
 				break;
 		case 'task2':
-				$result = secondTask ();
+				$_SESSION['result'] = secondTask ();
 				break;
 		case 'task3':
-				$result = thirdTask ();
+				$_SESSION['result'] = thirdTask ();
 				break;
 		case 'task4':
-				$result = fourTask ();
+				$_SESSION['result'] = fourTask ();
 				break;
 		case 'task5':
-				$result = fiveTask ();
+				$_SESSION['result'] = fiveTask ();
 				break;
 		case 'task6':
-				$result = sixTask ();
-				break;
-		default:
-				# code...
+				$_SESSION['result'] = sixTask ();
 				break;
 }
-$_SESSION['result'] = $result;
 header("Location:../index.php");
 
 function firstTask() {
 	$first = $_POST['firstNumber'];
 	$seconds = $_POST['secondNumber'];
-	if ( isEmpty($first) || isEmpty($seconds) )  { 
-		return "Строка пустая";
-	} 
 	if ( !isNumeric($first) || !isNumeric($seconds) ) {
-		return "ввели не правильное значение";
+		return "ошибка";
 	}
 	if ( $seconds < $first ) {
-		[$first , $seconds ] = [$seconds, $first];
+		[$first , $seconds] = [$seconds, $first];
 	}
 	$result = 0;
 	for ($i = $first; $i <= $seconds; $i++){
@@ -49,11 +44,8 @@ function firstTask() {
 function secondTask() {
 	$firstNumber = $_POST['firstNumberSecondTask'];
 	$secondNumber = $_POST['secondNumberSecondTask'];
-	if ( isEmpty($firstNumber) || isEmpty($secondNumber) )  { 
-			return "Строка пустая";
-	} 
 	if ( !isNumeric($firstNumber) || !isNumeric($secondNumber) ) {
-			return "ввели не правильное значение";
+			return "ошибка";
 	}
 	if ( $secondNumber < $firstNumber ) {
 		[$firstNumber , $secondNumber ]=[$secondNumber, $firstNumber];
@@ -69,21 +61,10 @@ return $result;
 }
 
 function thirdTask() {
-	$listHeight = $_POST['numberThirdTak'];
-	if ($listHeight > 100 || $listHeight < 1) {
-		return "Размер списка от 1 до 100";
-	}
-	if( isEmpty($listHeight)  ) {
-		return "Строка пустая";
-	}
-	if (!isNumeric($listHeight) ){
-		return "ввели не правильное значение";
-	}
-	$star = "";
 	$list = "";
+	$listHeight = 50;
 	for ($i = 1; $i <= $listHeight; $i++) {
-		$star = $star."*";
-		$list = $list.$star.'</br>';
+		$list .= str_repeat("*",$i).'</br>';
 	}
 	return $list;
 }
@@ -91,27 +72,23 @@ function thirdTask() {
 function fourTask() {
 	$boardHeight = $_POST['numberFourTak'];
 	$boardWidth = $_POST['secondFourTak'];
-	$result;
-	if($boardHeight > 50 || $boardHeight < 1 && $boardWidth > 50 || $boardWidth < 1){
+	if ($boardHeight > 50 || $boardHeight < 1 || $boardWidth > 50 || $boardWidth < 1) {
 		return "Размер доски от 1 до 50";
 	}
+	$result = ""; 
 	for ($i = 1; $i <= $boardHeight; $i++) {
-		$result = $result.'<ul class="flex">';
+		$result .= '<ul class="flex">';
 			for ($j = 1; $j <= $boardWidth; $j++) {
-				if ( $i % 2 === 0 ){
-					$result =$result.'<li class="secondLien"></li>';
-				} else {
-					$result = $result.'<li class="firstLine"></li>';
-				}
+				$result .= $i % 2 === 0 ? '<li class="secondLien"></li>' : '<li class="firstLine"></li>';
 			}
-		$result = $result.'</ul>';
+		$result .='</ul>';
 	}		
 	return $result;
 }
 
 function fiveTask() {
 	$stringOfNumbers = $_POST['fiveTaskValue'];
-	if ( !ctype_digit($stringOfNumbers) ) {
+	if ( !isNumeric($stringOfNumbers) ) {
 		return "ввели не правильное значение";
 	}
 	$result = array_sum( str_split($stringOfNumbers) );
@@ -119,22 +96,21 @@ function fiveTask() {
 }
 
 function sixTask() {
-	for($i = 0, $maxNum = 100; $i < $maxNum; $i++) {
+	for($i = 0; $i < 100; $i++) {
 		$arr[$i] = rand(1,10);  // add random number
 	}
 	$tempArr = array_unique($arr); // remove repeat
 	sort($tempArr); // sort
 	$tempArr = array_reverse($tempArr); // reverse
-	foreach ($tempArr as $key => $item) {
+	//print_r($tempArr);
+	/*foreach ($tempArr as $key => $item) {
 		$result = $result."[".$key."] - ".$item."</br>";
-	}
+	}*/
+	$result = $tempArr;
 	return $result;
-}
-
-function isEmpty($val) {
-		return empty($val);
 }
 function isNumeric($val) {
 		return is_numeric($val);
 }
+
 ?>
