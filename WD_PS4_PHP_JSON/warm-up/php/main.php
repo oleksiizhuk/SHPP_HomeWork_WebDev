@@ -1,41 +1,41 @@
 <?php
 session_start();
-if (isset($_POST['submit'])){
+if (isset($_POST['submit'])) {
 		$_SESSION['task'] = $_POST['submit'];
 }
 switch ($_SESSION['task']) {
 		case 'task1':
-				$_SESSION['result'] = firstTask ();
-				break;
+			$_SESSION['result'] = firstTask();
+			break;
 		case 'task2':
-				$_SESSION['result'] = secondTask ();
-				break;
+			$_SESSION['result'] = secondTask();
+			break;
 		case 'task3':
-				$_SESSION['result'] = thirdTask ();
-				break;
+			$_SESSION['result'] = thirdTask();
+			break;
 		case 'task4':
-				$_SESSION['result'] = fourTask ();
-				break;
+			$_SESSION['result'] = fourTask();
+			break;
 		case 'task5':
-				$_SESSION['result'] = fiveTask ();
-				break;
+			$_SESSION['result'] = fiveTask();
+			break;
 		case 'task6':
-				$_SESSION['result'] = sixTask ();
-				break;
+			$_SESSION['result'] = sixTask();
+			break;
 }
 header("Location:../index.php");
 
 function firstTask() {
 	$first = $_POST['firstNumber'];
 	$seconds = $_POST['secondNumber'];
-	if ( !isNumeric($first) || !isNumeric($seconds) ) {
+	if (!isNumeric($first) || !isNumeric($seconds)) {
 		return "ошибка";
 	}
-	if ( $seconds < $first ) {
+	if ($seconds < $first) {
 		[$first , $seconds] = [$seconds, $first];
 	}
 	$result = 0;
-	for ($i = $first; $i <= $seconds; $i++){
+	for ($i = $first; $i <= $seconds; $i++) {
 		$result += $i;
 	}
 	return $result;
@@ -44,11 +44,11 @@ function firstTask() {
 function secondTask() {
 	$firstNumber = $_POST['firstNumberSecondTask'];
 	$secondNumber = $_POST['secondNumberSecondTask'];
-	if ( !isNumeric($firstNumber) || !isNumeric($secondNumber) ) {
+	if (!isNumeric($firstNumber) || !isNumeric($secondNumber)) {
 			return "ошибка";
 	}
-	if ( $secondNumber < $firstNumber ) {
-		[$firstNumber , $secondNumber ]=[$secondNumber, $firstNumber];
+	if ($secondNumber < $firstNumber) {
+		[$firstNumber , $secondNumber ] = [$secondNumber, $firstNumber];
 	}
 	$result = 0;
 	for ($i = $firstNumber; $i <= $secondNumber; $i++) {
@@ -88,29 +88,30 @@ function fourTask() {
 
 function fiveTask() {
 	$stringOfNumbers = $_POST['fiveTaskValue'];
-	if ( !isNumeric($stringOfNumbers) ) {
+	if (!isNumeric($stringOfNumbers)) {
 		return "ввели не правильное значение";
 	}
-	$result = array_sum( str_split($stringOfNumbers) );
+	$result = array_sum(str_split($stringOfNumbers));
 	return $result."</br>";
 }
 
+
 function sixTask() {
-	for($i = 0; $i < 100; $i++) {
-		$arr[$i] = rand(1,10);  // add random number
+	for ($i = 0; $i < 100; $i++) {
+		$arr[$i] = rand(1,10);
 	}
-	$tempArr = array_unique($arr); // remove repeat
-	sort($tempArr); // sort
+	$tempArr = array_unique($arr);
+	sort($tempArr);
 	$tempArr = array_reverse($tempArr); // reverse
-	//print_r($tempArr);
-	/*foreach ($tempArr as $key => $item) {
+	/*print_r($tempArr);
+	foreach ($tempArr as $key => $item) {
 		$result = $result."[".$key."] - ".$item."</br>";
-	}*/
-	$result = $tempArr;
-	return $result;
+	}
+	$result = $tempArr;*/
+	return $tempArr;
 }
 function isNumeric($val) {
 		return is_numeric($val);
 }
 
-?>
+

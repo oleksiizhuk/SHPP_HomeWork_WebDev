@@ -3,7 +3,7 @@ let arrJson;
 arrJson = JSON.stringify(objDataJson);
 console.log(arrJson);*/
 
-$(document).ready ( function() {
+$(function() {
  ajaxGet();
 });
 
@@ -15,12 +15,11 @@ function ajaxGet(){
 			data: {
 				getResult: "",
 			},
-			success(ressponce) {
-				jsonToGoogleCharts(ressponce);
+			success (response) {
+				jsonToGoogleCharts(response);
 			}
 		});
 		console.log('ajaxGet - отработал');
-
 }
 
 function jsonToGoogleCharts(jsonArray) {
@@ -28,7 +27,7 @@ function jsonToGoogleCharts(jsonArray) {
 	google.charts.load("current", {packages:["corechart"]});
 			google.charts.setOnLoadCallback(drawChart);
 			function drawChart() {
-				var data = google.visualization.arrayToDataTable([
+				const data = google.visualization.arrayToDataTable([
 					['Salary', 'Amount'],
 					['1000$',     jsonArray.option1],
 					['2000$',      jsonArray.option2],
@@ -36,12 +35,12 @@ function jsonToGoogleCharts(jsonArray) {
 					['4000$', jsonArray.option4],
 				]);
 
-				var options = {
+				const options = {
 					title: 'Зарплаты',
 					pieHole: 0.4,
 				};
 
-				var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+				const chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 				chart.draw(data, options);
 			}
 }

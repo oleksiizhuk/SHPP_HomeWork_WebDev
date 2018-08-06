@@ -19,11 +19,9 @@
 	</header>
 	<section>
 		<?php
-
 			if( !empty($_POST['submit'])) {
 				$_SESSION['choice'] = $_POST['submit'];
 			}
-			
 
 			if (isset($_SESSION['choice']) && $_SESSION['choice'] === 'choice') {
 				countVotes();
