@@ -5,6 +5,6 @@ $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '
 require $config['setAndGetJson'];
 
 $data = new DataBase($config['setAndGetJson']);
-$result = $data->checkJson();
+$result = $data->ajaxJson();
 
 echo $result;

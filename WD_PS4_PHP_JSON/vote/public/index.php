@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +10,7 @@
 
 	<header>
 		<div class="container-block">
-			<h2>Голосуй</h2>		
+			<h2>Опрос</h2>		
 		</div>
 	</header>
 
@@ -45,10 +42,12 @@
 						<input type="hidden" value="choice" name="submit">
 						<input type="submit" value="vote" id="button" >
 					</form>
-					<?php
-						
-					?>
 				</div>
+				<?php
+					if (isset($_SESSION['er'])){
+						echo $_SESSION['er'];
+					}
+				?>
 
 				<div class="question">
 					<p>Какая у вас зарплата? </p>

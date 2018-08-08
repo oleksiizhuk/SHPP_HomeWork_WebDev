@@ -4,10 +4,13 @@ $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '
 
 require $config['setAndGetJson'];
 $userChoice = $_POST['radio'];
-echo $userChoice. " - 1";
+
 $dataBase = new DataBase($config['setAndGetJson']);
-var_dump($dataBase);
+
 $dataBase->addVote($userChoice);
+$test = $dataBase->checkJson();
+echo $test;
+
 
 header("Location:result.php");
 
