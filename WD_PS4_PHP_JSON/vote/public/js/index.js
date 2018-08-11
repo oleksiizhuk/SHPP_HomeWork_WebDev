@@ -1,20 +1,15 @@
-/*console.log(objDataJson);
-let arrJson;
-arrJson = JSON.stringify(objDataJson);
-console.log(arrJson);*/
-
-$(function() {
- ajaxGet();
+$(function () {
+  ajaxGet();
 });
 
-function ajaxGet(){
-	$.ajax ({
-			url: "ajax.php",
-			type: "POST",
-			dataType: "json",
-			data: {
+function ajaxGet() {
+ $.ajax ({
+   url: "ajax.php",
+   type: "POST",
+   dataType: "json",
+   data: {
 				getResult: "",
-			},
+},
 			success(ressponce) {
 				jsonToGoogleCharts(ressponce);
 			}
@@ -22,13 +17,12 @@ function ajaxGet(){
 		console.log('ajaxGet - отработал');
 
 }
-
 function jsonToGoogleCharts(jsonArray) {
 	console.log("jsonArray - " + jsonArray);
 	google.charts.load("current", {packages:["corechart"]});
 			google.charts.setOnLoadCallback(drawChart);
 			function drawChart() {
-				var data = google.visualization.arrayToDataTable([
+				const data = google.visualization.arrayToDataTable([
 					['Salary', 'Amount'],
 					['1000$',     jsonArray.option1],
 					['2000$',      jsonArray.option2],
@@ -36,13 +30,12 @@ function jsonToGoogleCharts(jsonArray) {
 					['4000$', jsonArray.option4],
 				]);
 
-				var options = {
+				const options = {
 					title: 'Зарплаты',
 					pieHole: 0.4,
 				};
 
-				var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+				const chart = new google.visualization.PieChart(document.getElementById('donutchart'));
 				chart.draw(data, options);
 			}
 }
-
