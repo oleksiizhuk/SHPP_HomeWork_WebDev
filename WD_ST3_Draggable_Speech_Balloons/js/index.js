@@ -1,5 +1,11 @@
 $(function () {
-	$('#draggable').draggable({snap:true});
+	
+	const dragOpts = {
+	height: "110px",
+    width: "120px"
+
+					};
+	$('#draggable').draggable({snap:true, dragOpts});
 	const main = $('#main');
 	const draggable = $('.draggable');
 	const site = $("html, body");
@@ -61,6 +67,6 @@ const drag ={
 				"top": evY + 'px'
 			})
 		.bind()
-		.draggable({snap:true});
+		.draggable({snap:true, containment: ".main", scroll: false});
 	},
 }
