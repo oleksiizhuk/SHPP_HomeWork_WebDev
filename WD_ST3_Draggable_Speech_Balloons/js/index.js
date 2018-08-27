@@ -5,7 +5,7 @@ $(function () {
     width: "120px"
 
 					};
-	$('#draggable').draggable({snap:true, dragOpts});
+	$('#draggable').draggable({snap:true, containment: ".main", scroll: false});
 	const main = $('#main');
 	const draggable = $('.draggable');
 	const site = $("html, body");
@@ -22,39 +22,46 @@ $(function () {
 		.draggable();
 		console.log(this);*/	
 	});
-	$(window).resize(function(event){
+
+	//  Check resize window
+	$(window).resize( function(event) {
 		$(".mainResize").text("Width: "+ window.innerWidth + ", height" +window.innerHeight);
 	});
 
+	// Create div on the mouse position
 	main.on("dblclick", function(ev) {
 		drag.createdraggable(event.pageX, event.pageY);
 	});
 
+	// show input
 	body.on("dblclick", '#draggable', function(event) {
-		/*console.log(this);
-		console.log(event.pageX);
-		console.log(event.pageY);
-		console.log(event.type);*/
-
 		$(this).children().attr("type", "text").focus();
 		const indexInput = $( this ).index();
 	});
 
+	// 
 	body.on("focusout", '#draggable', function() {
 		$(this).find('input').attr("type", "hidden");
 		const value = $(this).find('input').val();
 		$(this).find('p').text(value);
-		alert(value);
 	});
 
 	$(document).keyup(function(event) {
-		if(event.which == 13) {
-			alert('You pressed enter!');
+		if(event.which === 13) {	
+			const value = $(':focus').val();
+			alert(value);
+			$(this).find('p').text(value);
+			$(this).find('input').attr("type", "hidden");
 		} 
-		if(event.which == 27) {
-			alert('You pressed Escape');
+		if(event.which === 27) {
+			alert("esc")
+			$(this).remove();
+			$(this).trigger("enterKey");
+			$( elem ).hide();
 		}
-		
+	});
+	main.on("blur",'#draggable' (function(event) {
+
 	});
 	
 });
