@@ -11,7 +11,6 @@ $(function () {
 	const site = $("html, body");
 	const html = $("html");
 	const body = $("body");
-	main.draggable();
 
 	main.dblclick(function(event) {
 		/*const div = $('<div id="draggable" class="ui-widget-content">Drag me around<input type="text"></div>')
@@ -42,32 +41,38 @@ $(function () {
 	});
 
 	// 
-	main.on("focusout", '.draggable', function(event) {
+	main.on("blur", '.draggable', function(event) {
 		$(this).find('input').attr("type", "hidden");
 		const value = $(this).find('input').val();
 		$(this).find('p').text(value);
+		alert("focusout");
 	});
 
-	/*body.on("blur", )*/
 
 	$(document).keyup(function(event) {
 		if(event.which === 13) {	
-			const value = $(':focus').val();
+			//let EvTarg = ;
+			let value = $(event.target).val();
+			value = value.slice(0, 70);
 			alert(value);
+			if (value.length < 36) {
+				$(this).find('div').css("height", "20%");
+			}
+			if (value.length > 37) {
+				$(this).find('div').css("height", "30%");
+			}
+			if (value.length > 58) {
+				$(this).find('div').css("height", "37%");
+			}
+			$(this).parent().find('input').val(value);
 			$(this).parent().find('p').text(value);
-			//console.log(this);
-			$(this).parent().find('input').attr("type", "hidden");
+			$(this).find('p').text(value);
+			$(event.target).attr("type", "hidden");
 		} 
+
 		if(event.which === 27) {
-			alert("esc")
-			$(this).remove();
-			$(this).trigger("enterKey");
-			$( elem ).hide();
+			alert("esc");
 		}
-	});
-
-	main.on("blur",'#draggable', function(event) {
-
 	});
 	
 });
