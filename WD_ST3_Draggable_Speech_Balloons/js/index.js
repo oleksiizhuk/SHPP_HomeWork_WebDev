@@ -18,7 +18,28 @@ $(function () {
 			})
 		.bind()
 		.draggable({snap:true, containment: ".main", scroll: false});	
+		let indexId = div.index();
+		alert(index);
+		let formData = {
+			"id": index,
+			"positionX" : event.pageX,
+			"positionY" : event.pageY,
+			"content" : "ololo"
+		};
+		$.ajax({
+			url : '../php/dataBase.php',
+			type : 'POST',
+			data : { 'jsonData' + $.toJSON(formData) } ,
+			success(ressponce) {
+				test(ressponce);
+			}
+		});
+		console.log('ajaxGet - отработал');
 	});
+	
+	function test(test) {
+		alert(test);
+	};
 
 	// show input dbclick
 	main.on("dblclick", '.draggable', function(event) {
@@ -36,10 +57,16 @@ $(function () {
 
 
 	$(document).keyup(function(event) {
+		main.off('blur', '.draggable');
+		/*event.stopPropagation();*/
 		if (event.which === enter) {	
 			let value = $(event.target).val();
-			value = value.slice(0, 70);
+			
 			alert(value);
+			if(value.length > 70){
+				value = value.slice(0, 70);
+				alert("max length 70 symbol");
+			}
 			if (value.length < 36) {
 				$(this).find('div').css("height", "20%");
 			}
@@ -51,18 +78,20 @@ $(function () {
 			}
 			$(event.target).val(value);
 			$(event.target).attr("type", "hidden");
-			$(event.target).parent().find('p').text(value);	
-			event.stopPropagation();
+			$(event.target).parent().find('p').text(value);
+
 		} 
 		if (event.which === escape) {
-			alert("esc");
+			alert("check esc");
 			let value = $(event.target).val();
 			$(event.target).val(value);
 			$(event.target).attr("type", "hidden");
-			event.stopPropagation();
 		}
 
 	});
+	function ajaxJson () {
+
+	}
 
 	//  Check resize window
 	/*$(window).resize( function(event) {
