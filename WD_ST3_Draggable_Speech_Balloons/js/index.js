@@ -13,32 +13,38 @@ $(function () {
 		const div = $('<div class="draggable ui-widget-content btn btn-primary" data-toggle="modal" data-target="#exampleModal"><p>corner</p><input type="hidden" class="dragInput" value=""> </div>')
 		.appendTo("main")
 		.css({
-				"left": event.pageX + 'px',
-				"top": event.pageY + 'px'
-			})
+			"left": event.pageX + 'px',
+			"top": event.pageY + 'px'
+		})
 		.bind()
 		.draggable({snap:true, containment: ".main", scroll: false});	
 		let indexId = div.index();
-		alert(indexId);
 		let jsonData = {
-			"id": indexId,
-			"positionX" : event.pageX,
-			"positionY" : event.pageY,
-			"content" : "ololo"
+			id: indexId,
+			positionX : event.pageX,
+			positionY : event.pageY,
+			content : "corner"
 		};
+		addNewDraggToJson(jsonData);	
+	});
+
+	function addNewDraggToJson (jsonData) {
+		let objData = JSON.stringify(jsonData);
 		$.ajax({
-			url : '../php/dataBase.php',
 			type : 'POST',
-			data : JSON.stringify(jsonData),
-			dataType: 'json',
-			async: false,
-			success(ressponce) {
+			url : 'php/dataBase.php',
+			data : 'objData1=' + objData,
+			success: function (ressponce) {
 				test(ressponce);
+			},
+			error: function () {
+				alert("error");
 			}
 		});
-		console.log('ajaxGet - отработал');
-	});
-	
+		return false;
+
+	};
+
 	function test(test) {
 		console.log(test);
 	};
@@ -91,9 +97,6 @@ $(function () {
 		}
 
 	});
-	function ajaxJson () {
-
-	}
 
 	//  Check resize window
 	/*$(window).resize( function(event) {
