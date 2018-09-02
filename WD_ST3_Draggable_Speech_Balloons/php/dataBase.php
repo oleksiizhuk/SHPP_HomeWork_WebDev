@@ -4,6 +4,7 @@
 		echo "получилось";
 		return;
 	}
+	echo "test";
 
 	function getJson() {
 		$urlJson = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'index.json';

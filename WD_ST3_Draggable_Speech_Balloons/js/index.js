@@ -19,9 +19,9 @@ $(function () {
 		.bind()
 		.draggable({snap:true, containment: ".main", scroll: false});	
 		let indexId = div.index();
-		alert(index);
-		let formData = {
-			"id": index,
+		alert(indexId);
+		let jsonData = {
+			"id": indexId,
 			"positionX" : event.pageX,
 			"positionY" : event.pageY,
 			"content" : "ololo"
@@ -29,7 +29,9 @@ $(function () {
 		$.ajax({
 			url : '../php/dataBase.php',
 			type : 'POST',
-			data : { 'jsonData' + $.toJSON(formData) } ,
+			data : JSON.stringify(jsonData),
+			dataType: 'json',
+			async: false,
 			success(ressponce) {
 				test(ressponce);
 			}
@@ -38,7 +40,7 @@ $(function () {
 	});
 	
 	function test(test) {
-		alert(test);
+		console.log(test);
 	};
 
 	// show input dbclick
