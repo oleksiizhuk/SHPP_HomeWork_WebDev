@@ -1,14 +1,14 @@
 [
-	{
-		"id":"0",
-		"positionX":"100px",
-		"positionY":"100px",
-		"content":"test1"
-	},
-	{
-		"id":"1",
-		"positionX":"200px",
-		"positionY":"200px",
-		"content":"test2"
-	},
+    {
+        "id": "0",
+        "positionX": "100px",
+        "positionY": "100px",
+        "content": "test1"
+    },
+    {
+        "id": "1",
+        "positionX": "200px",
+        "positionY": "200px",
+        "content": "test2"
+    }
 ]

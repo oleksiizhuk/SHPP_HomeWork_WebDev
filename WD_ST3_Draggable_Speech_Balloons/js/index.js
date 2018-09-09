@@ -7,6 +7,7 @@ $(function () {
 	const body = $("body");
 	const enter = 13;
 	const escape = 27;
+	getDrag();
 
 	// Create div on the mouse position
 	main.on("dblclick", function(event) {
@@ -19,7 +20,8 @@ $(function () {
 		.bind()
 		.draggable({snap:true, containment: ".main", scroll: false});	
 		let indexId = div.index();
-		let jsonData = {
+		alert(indexId);
+		let jsonData = {	
 			id: indexId,
 			positionX : event.pageX,
 			positionY : event.pageY,
@@ -35,18 +37,69 @@ $(function () {
 			url : 'php/dataBase.php',
 			data : 'objData1=' + objData,
 			success: function (ressponce) {
-				test(ressponce);
+				//test(ressponce);
 			},
 			error: function () {
-				alert("error");
+				alert("error : AddNewDraggToJson");
 			}
 		});
 		return false;
-
 	};
 
+	function getDrag () {
+		const getDrag = "getDrag";
+		$.ajax({
+			type : 'POST',
+			url : 'php/dataBase.php',
+			data : 'getDrag=' + getDrag,
+			success: function (ressponce) {
+				test(ressponce);
+				createNewDragg(ressponce);
+			},
+			error: function() {
+				alert("error : getDrag");
+			}
+		});
+	};
+
+	function createNewDragg (arr) {
+		let obj = $.parseJSON( arr );
+		for (let i = 0; i < obj.length ; i++) {
+			Things[i]
+		}
+		const div = $('<div class="draggable ui-widget-content btn btn-primary" data-toggle="modal" data-target="#exampleModal"><p>corner</p><input type="hidden" class="dragInput" value=""> </div>')
+		.appendTo("main")
+		.css({
+			"left": event.pageX + 'px',
+			"top": event.pageY + 'px'
+		})
+		.bind()
+		.draggable({snap:true, containment: ".main", scroll: false});	
+	}
+
 	function test(test) {
-		console.log(test);
+		console.log("то что вернулось с php - " + test + " type - " +typeof(test));
+		var obj = $.parseJSON( test );
+
+		// console.log(obj[0]['positionX']);
+		// for(let i = 0; i < obj.length; i++){
+		// 	if (obj[i] === "1"){
+		// 		console.log(obj[i][positionY]);
+		// 	}
+		// }
+		//alert( obj.id === "1" );
+		
+		// console.log("test[0] " + test[0]);
+		// console.log("test[0][0] " + test[0][0]);
+		// console.log("test[0][0]['id'] " + test[0][0]['id']);
+		// console.log("test[0][0][0] " + test[0][0][0]);
+
+		// console.log("test[30][0] " + test[30][0]);
+		// console.log("test[0][1] " + test[0][1]);
+		// console.log("test[0][10] " + test[0][10]);
+
+
+
 	};
 
 	// show input dbclick
