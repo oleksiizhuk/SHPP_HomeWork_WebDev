@@ -1,17 +1,15 @@
 $(function () {
-
 	$('#draggable').draggable({snap:true, containment: ".main", scroll: false});
 	const main = $('#main');
 	const draggable = $('.draggable');
-	const html = $("html");
-	const body = $("body");
 	const enter = 13;
 	const escape = 27;
 	getDrag();
 
 	// Create div on the mouse position
 	main.on("dblclick", function(event) {
-		const div = $('<div class="draggable ui-widget-content btn btn-primary" data-toggle="modal" data-target="#exampleModal"><p>corner</p><input type="hidden" class="dragInput" value=""> </div>')
+		return; // залипает даблклик на мышке
+		const div = $('<div class="draggable><p>corner</p><input type="hidden" class="dragInput" value=""> </div>')// ui-widget-content btn btn-primary" data-toggle="modal" data-target="#exampleModal"
 		.appendTo("main")
 		.css({
 			"left": event.pageX + 'px',
@@ -19,8 +17,8 @@ $(function () {
 		})
 		.bind()
 		.draggable({snap:true, containment: ".main", scroll: false});	
+
 		let indexId = div.index();
-		alert(indexId);
 		let jsonData = {	
 			id: indexId,
 			positionX : event.pageX,
@@ -30,77 +28,14 @@ $(function () {
 		addNewDraggToJson(jsonData);	
 	});
 
-	function addNewDraggToJson (jsonData) {
-		let objData = JSON.stringify(jsonData);
-		$.ajax({
-			type : 'POST',
-			url : 'php/dataBase.php',
-			data : 'objData1=' + objData,
-			success: function (ressponce) {
-				//test(ressponce);
-			},
-			error: function () {
-				alert("error : AddNewDraggToJson");
-			}
-		});
-		return false;
-	};
+	main.on('mouseup','.draggable', function(eventObject) {
+		console.log('вы отпустили кнопку с обьекта под номером' + eventObject.target);
+	});
 
-	function getDrag () {
-		const getDrag = "getDrag";
-		$.ajax({
-			type : 'POST',
-			url : 'php/dataBase.php',
-			data : 'getDrag=' + getDrag,
-			success: function (ressponce) {
-				test(ressponce);
-				createNewDragg(ressponce);
-			},
-			error: function() {
-				alert("error : getDrag");
-			}
-		});
-	};
-
-	function createNewDragg (arr) {
-		let obj = $.parseJSON( arr );
-		for (let i = 0; i < obj.length ; i++) {
-			Things[i]
-		}
-		const div = $('<div class="draggable ui-widget-content btn btn-primary" data-toggle="modal" data-target="#exampleModal"><p>corner</p><input type="hidden" class="dragInput" value=""> </div>')
-		.appendTo("main")
-		.css({
-			"left": event.pageX + 'px',
-			"top": event.pageY + 'px'
-		})
-		.bind()
-		.draggable({snap:true, containment: ".main", scroll: false});	
-	}
-
-	function test(test) {
-		console.log("то что вернулось с php - " + test + " type - " +typeof(test));
-		var obj = $.parseJSON( test );
-
-		// console.log(obj[0]['positionX']);
-		// for(let i = 0; i < obj.length; i++){
-		// 	if (obj[i] === "1"){
-		// 		console.log(obj[i][positionY]);
-		// 	}
-		// }
-		//alert( obj.id === "1" );
-		
-		// console.log("test[0] " + test[0]);
-		// console.log("test[0][0] " + test[0][0]);
-		// console.log("test[0][0]['id'] " + test[0][0]['id']);
-		// console.log("test[0][0][0] " + test[0][0][0]);
-
-		// console.log("test[30][0] " + test[30][0]);
-		// console.log("test[0][1] " + test[0][1]);
-		// console.log("test[0][10] " + test[0][10]);
-
-
-
-	};
+	$("#test").on("click", function() {
+		let id = 1;
+		deleteElemntWithJson(id);
+	});
 
 	// show input dbclick
 	main.on("dblclick", '.draggable', function(event) {
@@ -108,7 +43,6 @@ $(function () {
 		event.stopPropagation();
 	});
 
-	// 
 	main.on("blur", '.draggable', function(event) {
 		$(event.target).attr("type", "hidden");
 		const value = $(event.target).val();
@@ -116,13 +50,11 @@ $(function () {
 		alert("focusout");
 	});
 
-
 	$(document).keyup(function(event) {
 		main.off('blur', '.draggable');
 		/*event.stopPropagation();*/
 		if (event.which === enter) {	
 			let value = $(event.target).val();
-			
 			alert(value);
 			if(value.length > 70){
 				value = value.slice(0, 70);
@@ -141,6 +73,8 @@ $(function () {
 			$(event.target).attr("type", "hidden");
 			$(event.target).parent().find('p').text(value);
 
+			let indexId = $(event.target).index();
+			saveChangesInBlock(indexId, value);
 		} 
 		if (event.which === escape) {
 			alert("check esc");
@@ -148,12 +82,82 @@ $(function () {
 			$(event.target).val(value);
 			$(event.target).attr("type", "hidden");
 		}
-
 	});
-
 	//  Check resize window
 	/*$(window).resize( function(event) {
 		$(".mainResize").text("Width: "+ window.innerWidth + ", height" +window.innerHeight);
 	});*/
+	function saveChangesInBlock (id, content) {
+		let informationOnTheBlock = [];
+		informationOnTheBlock[0] = id;
+		informationOnTheBlock[1] = content;
+		$.ajax({
+			type : 'POST',
+			url : 'php/dataBase.php',
+			data : 'informationOnTheBlock=' + informationOnTheBlock,
+			success: function(response) {
+				alert (response);
+			}
+		});
+	};
+	
+	function deleteElemntWithJson(id) {
+		$.ajax({
+			type : 'POST',
+			url : 'php/dataBase.php',
+			data : 'removeIdElement=' + id,
+			success: function(response) {
+				alert(response);
+			},
+		});
+	};
+
+	function getDrag() {
+		$.ajax({
+			type : 'POST',
+			url : 'php/dataBase.php',
+			data : 'getDrag=',
+			success: function (ressponce) {
+				let obj = $.parseJSON( ressponce );
+				for (let value in obj) {
+					console.log(obj[value]['id']);
+					const div  = $('<div class="draggable "><p>' + obj[value]['content'] +' </p><input type="hidden" class="dragInput"> </div>')
+					.appendTo("main")
+					.css({
+						"left": obj[value]['positionX'],
+						"top": obj[value]['positionY']
+					})
+					.bind()
+					.draggable({snap:true, containment: ".main", scroll: false});
+				}
+			}
+		});
+	};
+
+	function addNewDraggToJson (jsonData) {
+		let objData = JSON.stringify(jsonData);
+		$.ajax({
+			type : 'POST',
+			url : 'php/dataBase.php',
+			data : 'objData1=' + objData,
+			success: function (ressponce) {
+			},
+			error: function () {
+				alert("error : AddNewDraggToJson");
+			}
+		});
+		return false;
+	};
+
+	function test(test) {
+		console.log("то что вернулось с php - " + test + " type - " +typeof(test));
+		var obj = $.parseJSON( test );
+		for (let value in obj ) {
+			console.log(obj[value]['id']);
+			console.log(obj[value]['positionX']);
+			console.log(obj[value]['positionY']);
+			console.log(obj[value]['content']);
+		}
+	};
 });
 
