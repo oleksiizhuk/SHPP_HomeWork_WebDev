@@ -8,8 +8,8 @@ if ( isset($_POST['objData1']) ) {
 	putToJson($objData, $urlJson);
 	return;
 } 
-if ( isset($_POST['getDrag'])) {
-	getJson($urlJson);
+if ( isset($_POST['getInfoAboutDraggableFromJson'])) {
+	getInfoAboutDraggableFromJson($urlJson);
 	return;
 }
 
@@ -22,6 +22,10 @@ if ( isset($_POST['removeIdElement'])) {
 	$id = $_POST['removeIdElement'];
 	removeFromJson($urlJson, $id);
 	return;
+}
+if( isset($_POST['addNewСoordinationToJson'])) {
+	$dataObj = $_POST['addNewСoordinationToJson'];
+	addNewСoordinationToJson($urlJson, $dataObj);
 }
 else {
 	echo "error";
@@ -39,7 +43,7 @@ function putToJson($objData, $urlJson) {
 	    }
 }
 
-function getJson($urlJson) {
+function getInfoAboutDraggableFromJson($urlJson) {
 		$jsonData = file_get_contents($urlJson);
 		print_r($jsonData);
 }
@@ -53,7 +57,6 @@ function replaceContent ($urlJson, $objInfo) {
 			$json[$key]['content'] = $arr[1];
 		}
 	}
-	print_r($json);
 	$result = json_encode($json, JSON_PRETTY_PRINT);
 	file_put_contents($urlJson, $result);
 }
@@ -61,11 +64,27 @@ function replaceContent ($urlJson, $objInfo) {
 function removeFromJson($urlJson, $objId) {
 	$jsonData = file_get_contents($urlJson);
 	$json = json_decode($jsonData, true);
-	print_r($json);
 	foreach ($json as $key => $value) {
 		if($value['id'] == $objId){
-			unset($json[$key]);
+			$json[$key]['deleted'] = true;
 		}
 	}
-	print_r($json);
+	$result = json_encode($json, JSON_PRETTY_PRINT);
+	file_put_contents($urlJson, $result);
+}
+
+function addNewСoordinationToJson ($urlJson, $dataObj) {
+	$jsonData = file_get_contents($urlJson);
+	$json = json_decode($jsonData, true);
+	print_r($dataObj);
+	$arr = explode(',', $dataObj);
+	print_r($arr);
+	foreach ($json as $key => $value) {
+		if ($value['id'] == $arr['2']) {
+			$json[$key]['positionX'] = $arr['0'];
+			$json[$key]['positionY'] = $arr['1'];
+		}
+	}
+	$result = json_encode($json, JSON_PRETTY_PRINT);
+	file_put_contents($urlJson, $result);
 }

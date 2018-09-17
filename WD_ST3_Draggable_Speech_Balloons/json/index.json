@@ -1,20 +1,16 @@
 [
     {
         "id": "1",
-        "positionX": "600px",
-        "positionY": "31px",
-        "content": "test3"
+        "positionX": "101",
+        "positionY": "55",
+        "content": "id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1",
+        "deleted": false
     },
     {
         "id": "2",
-        "positionX": "862px",
-        "positionY": "100px",
-        "content": "test2"
-    },
-    {
-        "id": 3,
-        "positionX": 225,
-        "positionY": 56,
-        "content": "corner"
+        "positionX": "840",
+        "positionY": "148",
+        "content": "id 2",
+        "deleted": false
     }
 ]
