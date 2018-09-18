@@ -7,10 +7,11 @@ $(function () {
 
 	// Create div on the mouse position
 	main.on("dblclick", function(event) {
+		let indexId = div.index() + 1; 
 		const div = $(`
-			<div class="draggable">
+			<div class="draggable" id="${indexId}">
 				<p>corner</p>
-				<input type="hidden" class="dragInput" value="">
+				<input type="text" class="dragInput" value="corner">
 			</div>`)
 		.appendTo("main")
 		.css({
@@ -22,7 +23,6 @@ $(function () {
 			containment: ".main",
 		 	scroll: false
 		 });	
-		let indexId = div.index(); 
 		let jsonData = {	
 			id: indexId,
 			positionX : event.pageX,
@@ -30,7 +30,8 @@ $(function () {
 			content : "corner",
 			deleted : false
 		};
-		addNewDraggToJson(jsonData);	
+		addNewDraggToJson(jsonData);
+		$("div input:text").first().focus();
 	});
 
 	// show input dbclick
@@ -45,6 +46,7 @@ $(function () {
 		const id = $(this).parent().attr('id');
 		if (value.length == 0) {
 			console.log('deleted div - '+ $(this).parent().attr('id'));
+			$(`#${id}`).remove();
 			deleteElemntWithJson(id)
 			return;
 		}
@@ -54,13 +56,14 @@ $(function () {
 		saveChangesInBlock(id, value);
 	});
 
-	$(document).keyup(function(event) {
+	$(document).on("keyup", function(event) {
 		if (event.which === enter) {	
 			const value = $(event.target).val(); 
 			const target = $(event.target);
 			if (value.length == 0) {
 				console.log('deleted div enter - '+ target.parent().attr('id'));
 				const id = target.parent().attr('id');
+				$(`#${id}`).remove();
 				deleteElemntWithJson(id);
 				return;
 			}
@@ -88,9 +91,6 @@ $(function () {
 			type : 'POST',
 			url : 'php/dataBase.php',
 			data : 'informationOnTheBlock=' + informationOnTheBlock,
-			success: function(response) {
-				alert (response);
-			}
 		});
 	};
 	
@@ -99,9 +99,6 @@ $(function () {
 			type : 'POST',
 			url : 'php/dataBase.php',
 			data : 'removeIdElement=' + id,
-			success: function(response) {
-				alert(response);
-			},
 		});
 	};
 
@@ -148,9 +145,6 @@ $(function () {
 			type : 'POST',
 			url : urlPhp,
 			data : 'addNewСoordinationToJson=' + coordination,
-			success: function(response) {
-				console.log(response);
-			}
 		});
 	}
 
@@ -161,8 +155,6 @@ $(function () {
 			type : 'POST',
 			url : 'php/dataBase.php',
 			data : 'objData1=' + objData,
-			success: function (ressponce) {
-			},
 		});
 	};
 

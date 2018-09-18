@@ -53,7 +53,7 @@ function replaceContent ($urlJson, $objInfo) {
 	$json = json_decode($jsonData, true);
 	$arr =  explode(',', $objInfo);
 	foreach ($json as $key => $value) {
-		if ($value['id'] === $arr[0]) {
+		if ($value['id'] == $arr[0]) {
 			$json[$key]['content'] = $arr[1];
 		}
 	}
@@ -76,9 +76,7 @@ function removeFromJson($urlJson, $objId) {
 function addNewСoordinationToJson ($urlJson, $dataObj) {
 	$jsonData = file_get_contents($urlJson);
 	$json = json_decode($jsonData, true);
-	print_r($dataObj);
 	$arr = explode(',', $dataObj);
-	print_r($arr);
 	foreach ($json as $key => $value) {
 		if ($value['id'] == $arr['2']) {
 			$json[$key]['positionX'] = $arr['0'];

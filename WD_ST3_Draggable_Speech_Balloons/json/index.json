@@ -1,23 +1,23 @@
 [
     {
         "id": "1",
-        "positionX": "245",
-        "positionY": "163",
-        "content": "id1 ",
+        "positionX": "170",
+        "positionY": "140",
+        "content": "1",
         "deleted": false
     },
     {
         "id": "2",
-        "positionX": "510",
-        "positionY": "157",
-        "content": "id 2",
+        "positionX": "538",
+        "positionY": "195",
+        "content": "id 21",
         "deleted": false
     },
     {
-        "id": "3",
-        "positionX": "670",
-        "positionY": "180",
-        "content": "id3",
+        "id": 3,
+        "positionX": "1030",
+        "positionY": "153",
+        "content": "cornerasdf",
         "deleted": false
     }
 ]
