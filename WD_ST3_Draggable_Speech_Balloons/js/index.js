@@ -18,13 +18,17 @@ $(function () {
 			"top": event.pageY + 'px'
 		})
 		.bind()
-		.draggable({snap:true, containment: ".main", scroll: false});	
-		let indexId = div.index();
+		.draggable({
+			containment: ".main",
+		 	scroll: false
+		 });	
+		let indexId = div.index(); 
 		let jsonData = {	
 			id: indexId,
 			positionX : event.pageX,
 			positionY : event.pageY,
-			content : "corner"
+			content : "corner",
+			deleted : false
 		};
 		addNewDraggToJson(jsonData);	
 	});

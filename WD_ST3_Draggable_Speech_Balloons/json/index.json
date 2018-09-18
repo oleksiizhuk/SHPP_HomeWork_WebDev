@@ -1,16 +1,23 @@
 [
     {
         "id": "1",
-        "positionX": "101",
-        "positionY": "55",
-        "content": "id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1id 1",
+        "positionX": "245",
+        "positionY": "163",
+        "content": "id1 ",
         "deleted": false
     },
     {
         "id": "2",
-        "positionX": "840",
-        "positionY": "148",
+        "positionX": "510",
+        "positionY": "157",
         "content": "id 2",
+        "deleted": false
+    },
+    {
+        "id": "3",
+        "positionX": "670",
+        "positionY": "180",
+        "content": "id3",
         "deleted": false
     }
 ]
