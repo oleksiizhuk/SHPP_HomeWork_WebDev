@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,23 +21,23 @@
 				
 				<div class="block-form">
 					<form action="handler.php" method="post">
-						<label class="container">1000
-							<input type="radio" checked="checked" name="radio" value="1">
+						<label class="container">BMW
+							<input type="radio" checked="checked" name="radio" value="BMW">
 							<span class="checkmark"></span>
 						</label>
 
-						<label class="container">2000
-							<input type="radio" name="radio" value="2">
+						<label class="container">Audi
+							<input type="radio" name="radio" value="Audi">
 							<span class="checkmark"></span>
 						</label>
 
-						<label class="container">3000
-							<input type="radio" name="radio" value="3">
+						<label class="container">GMC
+							<input type="radio" name="radio" value="GMC">
 							<span class="checkmark"></span>
 						</label>
 
-						<label class="container">4000
-							<input type="radio" name="radio" value="4">
+						<label class="container">Zhiguli
+							<input type="radio" name="radio" value="Zhiguli">
 							<span class="checkmark"></span>
 						</label>
 						<input type="hidden" value="choice" name="submit">
@@ -44,13 +45,14 @@
 					</form>
 				</div>
 				<?php
-					if (isset($_SESSION['er'])){
+					if (isset($_SESSION['er'])) {
 						echo $_SESSION['er'];
 					}
+					session_destroy();
 				?>
 
 				<div class="question">
-					<p>Какая у вас зарплата? </p>
+					<p>Какую машину вы выберете? </p>
 				</div>
 
 			</div>

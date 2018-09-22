@@ -3,35 +3,32 @@ $(function () {
 });
 
 function ajaxGet() {
- $.ajax ({
-   url: "ajax.php",
-   type: "POST",
-   dataType: "json",
-   data: {
-				getResult: "",
-},
-			success(ressponce) {
-				jsonToGoogleCharts(ressponce);
-			}
-		});
-		console.log('ajaxGet - отработал');
-
+	$.ajax ({
+		url: 'ajax.php',
+		type: "POST",
+		data: 'getJson=',
+		success(ressponce) {
+			jsonToGoogleCharts(ressponce);
+		}
+	});
 }
-function jsonToGoogleCharts(jsonArray) {
-	console.log("jsonArray - " + jsonArray);
+
+function jsonToGoogleCharts(arr) {
+	arr =  $.parseJSON( arr );
+	
 	google.charts.load("current", {packages:["corechart"]});
 			google.charts.setOnLoadCallback(drawChart);
 			function drawChart() {
 				const data = google.visualization.arrayToDataTable([
 					['Salary', 'Amount'],
-					['1000$',     jsonArray.option1],
-					['2000$',      jsonArray.option2],
-					['3000$',  jsonArray.option3],
-					['4000$', jsonArray.option4],
+					['BMW',     arr[0].BMW],
+					['Audi',      arr[0].Audi],
+					['GMC',  arr[0].GMC],
+					['Zhiguli', arr[0].Zhiguli],
 				]);
 
 				const options = {
-					title: 'Зарплаты',
+					title: 'Марка автомобиля',
 					pieHole: 0.4,
 				};
 

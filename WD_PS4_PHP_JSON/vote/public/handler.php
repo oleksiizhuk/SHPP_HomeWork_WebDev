@@ -1,15 +1,25 @@
 <?php
+session_start();
 
 $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'privat' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR .  'config.php';
 
 require $config['dataBase'];
-$userChoice = $_POST['radio'];
-
 $dataBase = new DataBase($config['dataBase']);
 
-$dataBase->addVote($userChoice);
-$test = $dataBase->checkJson();
+if (isset($_POST['radio'])){
+	$userChoice = $_POST['radio'];
 
-echo $test;
+}
 
+$dataBase->addVote($userChoice);	
 header("Location:result.php");
+
+
+
+try{
+
+} catch( Exception $ex) {
+	$_SESSION['er'] = "error";
+}
+
+session_destroy();

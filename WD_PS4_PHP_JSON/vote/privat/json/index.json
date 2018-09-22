@@ -1,1 +1,8 @@
-{"option1":5,"option2":18,"option3":12,"option4":7}
+[
+    {
+        "BMW": 1,
+        "Audi": 1,
+        "GMC": 2,
+        "Zhiguli": 2
+    }
+]
