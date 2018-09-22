@@ -9,15 +9,18 @@
 </head>
 <body>
 
-	<header>
-		<div class="container-block">
-			<h2>Опрос</h2>		
+	<header class="header">
+		<div class="header__container-block">
+			<h2>Vote</h2>		
 		</div>
 	</header>
 
-	<section>
-		<div class="container-block">
-			<div class="main">
+	<section class="section">
+		<div class="sectio__container-block">
+
+				<div class="question">
+					<p>Какую машину вы выберете? </p>
+				</div>
 				
 				<div class="block-form">
 					<form action="handler.php" method="post">
@@ -45,23 +48,16 @@
 					</form>
 				</div>
 				<?php
-					if (isset($_SESSION['er'])) {
-						echo $_SESSION['er'];
+					if (isset($_SESSION['error'])) {
+						echo $_SESSION['error'];
 					}
 					session_destroy();
 				?>
-
-				<div class="question">
-					<p>Какую машину вы выберете? </p>
-				</div>
-
-			</div>
 		</div>   
 	</section>
 
 	<footer>
 		<div class="container-block">
-			<span>footer</span>
 		</div>	
 	</footer>
 </body>

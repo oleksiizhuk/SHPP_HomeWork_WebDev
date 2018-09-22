@@ -24,7 +24,6 @@
 	<main>
 		<div class="wraper">
 			
-			<!--            first task        -->
 			<div class="firstTask">
 				<h2>first Task</h2>
 				<p>1  посчитать сумму чисел от -1000 до 1000</p>
@@ -48,9 +47,7 @@
 				</p>
 			</div>
 			<hr>
-					<!--            first task        -->
 
-			<!--            SecondTask      -->
 			<div class="SecondTask">
 				<h2>Second Task</h2>
 				<p>2 посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
@@ -69,14 +66,9 @@
 						}
 					?>
 				 </p>
-
 			</div>
 			<hr>
-			<!--            SecondTask       -->
 
-
-
-			<!--            thirdTask       -->
 			<div class="thirdTask">
 				<h2>Third Task</h2>
 				<p>вывести на страницу список из 50 элементов вида:</p>
@@ -96,21 +88,16 @@
 				</div>
 			</div>
 			<hr>
-			<!--            thirdTask       -->
 
-
-			<!--            fourTask       -->
 			<div class="fourTask">
 				<h2>Four Task</h2>
 				<p>Шахматная доска </p>
-
 				<form action="php/main.php" method="POST">
 					<input type="text" name="numberFourTak">
 					<input type="text" name="secondFourTak">
 					<input type="hidden" value="task4" name="submit">
 					<input type="submit" name="enterFourTask" value="Построить доску">
 				</form>
-
 				<div class="resultFourTask">
 					<?php
 						if (isset($_SESSION['task']) && $_SESSION['task'] === 'task4') {
@@ -119,10 +106,7 @@
 					?>
 				</div>
 			</div>
-			<!--            fourTask       -->
 
-
-			<!--            fiveTask        -->
 			<div class="fiveTask">
 				<h2>five task</h2>
 				<p>5 Найти сумму цифр введённого числа.</p>
@@ -131,7 +115,6 @@
 					<input type="hidden" value="task5" name="submit">
 					<input type="submit" name="enterFiveTask" value="посчитать">
 				</form>
-
 				<p>
 					<?php
 						if (isset($_SESSION['task']) && $_SESSION['task'] === 'task5') {
@@ -141,10 +124,7 @@
 				 </p>
 			</div>
 			<hr>
-			<!--            fiveTask       -->
 
-
-			<!--            sixTask       -->
 			<div class="sixTask">
 				<h2>six task</h2>
 				<p>​6 ​Сгенерировать массив рандомных целых чисел от 1 до 10, длинна массива 100. Убрать из массива повторы, отсортировать и ревертнуть.</p>
@@ -161,7 +141,6 @@
 					?>
 				</p>
 			</div>
-			<!--            sixTask       -->
 
 		</div>
 	</main>

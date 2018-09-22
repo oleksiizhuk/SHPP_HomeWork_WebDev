@@ -95,23 +95,16 @@ function fiveTask() {
 	return $result."</br>";
 }
 
-
 function sixTask() {
 	for ($i = 0; $i < 100; $i++) {
 		$arr[$i] = rand(1,10);
 	}
 	$tempArr = array_unique($arr);
 	sort($tempArr);
-	$tempArr = array_reverse($tempArr); // reverse
-	/*print_r($tempArr);
-	foreach ($tempArr as $key => $item) {
-		$result = $result."[".$key."] - ".$item."</br>";
-	}
-	$result = $tempArr;*/
+	$tempArr = array_reverse($tempArr);
 	return $tempArr;
 }
+
 function isNumeric($val) {
 		return is_numeric($val);
 }
-
-

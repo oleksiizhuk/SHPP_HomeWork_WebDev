@@ -6,20 +6,15 @@ $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '
 require $config['dataBase'];
 $dataBase = new DataBase($config['dataBase']);
 
-if (isset($_POST['radio'])){
-	$userChoice = $_POST['radio'];
-
+if (isset($_POST['radio'])) {
+    $userChoice = $_POST['radio'];
 }
 
-$dataBase->addVote($userChoice);	
-header("Location:result.php");
-
-
-
-try{
-
-} catch( Exception $ex) {
-	$_SESSION['er'] = "error";
+if ($dataBase->checkJsonUrl()) {
+    $dataBase->addVote($userChoice);    
+    header("Location:result.php");
+} else {
+    $_SESSION['error'] = $dataBase->getError();
+    header("Location:index.php");
 }
 
-session_destroy();
