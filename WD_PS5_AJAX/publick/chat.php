@@ -11,17 +11,38 @@
 		<div class="container__header">
 		</div>
 	</header>
-	<main>
-		<div class="container">
+	<section class="chatSection">
+<!-- 		<div class="chatSection__container"> -->
 			<h1>Easy Chat</h1>
-			<textarea name="comment" cols="40" rows="10" rows="3" class="textarea"></textarea>
 
-			<form action="handler.php" method="post">
-				<input type="text" class="inputSemd">
-				<input type="submit" value="Send" class="send">
+			<?php
+				if(isset($_SESSION['login'])) {
+					echo $_SESSION['login'];
+				}
+			?>
+			<div class="chatSection__container">
+				<div class="chatSection__container__chatWindow">
+					<div class="bubblechat right">
+						<p><span>User: </span>Hey there! What's up?</p>
+					</div>
+
+					<div class="bubblechat left">
+						<p><span>User: </span> Hey there! What's up?</p>
+					</div>
+
+					<div class="bubblechat right">
+						<p><span>User: </span> Hey there! What's up?</p>
+					</div>
+
+				</div>
+			</div class="chatSection__container">
+
+			<form action="#" class="chatSection__form">
+				<input type="text" class="inputSend" id="inputSend">
+				<input type="submit" value="sendMsg" class="sendMsg" id="sendMsg">
 			</form>
 		</div>
-	</main>
+	</section>
 	<footer>
 		
 	</footer>
