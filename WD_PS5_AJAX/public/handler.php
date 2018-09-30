@@ -1,40 +1,70 @@
 <?php
 //use User\UserCheck;
-
 session_start();
 $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 
 if (isset($_POST['submit'])) {
-	require $config['UserCheck'];
-	$userCheck = new UserCheck($_POST['login'], $_POST['password']);
+	require $config['UserCheck']; // переименновать class в verificy
+	$userCheck = new UserCheck($_POST['login'], $_POST['password'], $config['usersJson']);
 
 	if (!$userCheck->checkEmptyAndRegularLoginAndPassword()) {
 		header("Location:index.php");
 		exit;
 	}
+
 	if (!$userCheck->checkJsonUrl()) {
 		$_SESSION['error'] = "404";
 		header("Location:errorPage.php");
 		exit;
 	}
 
-	if ($userCheck->verificationIsUser()) {
+	if (!$userCheck->verification()) {
 		header("Location:index.php");
+		exit;
+	} else {
+		header("Location:chat.php");
 		exit;
 	}
 }
 
+if (isset($_POST['getMsg'])) {
+	require $config['UnloadFromJson'];
+	$UnloadMsg = new UnloadFromJson($config['messageJson']);
 
-return;
+	if (!$UnloadMsg->checkJsonUrl()) {
+		echo "not file";
+		return;
+	}
+	$message = $UnloadMsg->unloadMessage();
+	print_r( $message );
+	return;
+}
+
+if (isset($_POST['addNewMsg'])) {
+	require $config['AddMsgToJson'];
+	$userCheck = new AddMsgToJson($config['messageJson']);
+
+	$message = $_POST['addNewMsg'];
+	$data = date("H:i:s");
+	$dateToSecond = strtotime(date("Y-m-d H:i:s"));
+
+	if ($userCheck->checkJsonUrl()) {
+		$userCheck->addNewMsg($dateToSecond, $message);
+		echo $data.','.$_SESSION['user'];
+		return;  // потом удалить - косталь
+	} else {
+		echo "err - no file";
+		return;  // потом удалить - косталь
+	}
+}
 
 
-
-$manager = new Manager;
+/*$manager = new Manager;
 $manager->checkAjaxGetMsg();
 
 if ($manager->checkAjaxGetMsg()) { // 
 	require $config['UnloadFromJson'];
-	$UnloadMsg = new UnloadFromJson($config['UnloadFromJson']);
+	$UnloadMsg = new UnloadFromJson();
 
 	if(!$UnloadMsg->checkJsonUrl()){
 		echo "not file";
@@ -59,7 +89,7 @@ if ($manager->checkAjax()) {
 		echo "err - no file";
 		return;  // потом удалить - косталь
 	}
-}
+}*/
 
 /**
  * 

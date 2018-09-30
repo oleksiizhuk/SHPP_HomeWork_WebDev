@@ -4,7 +4,11 @@
  */
 class UnloadFromJson // jsonHandler
 {
-	private $urlJson = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR . 'message.json';
+	private $urlJson;
+
+	public function __construct ($urlJson) {
+		$this->urlJson = $urlJson;
+	}
 
 	public function checkJsonUrl()	{
         return (file_exists($this->urlJson));

@@ -29,8 +29,7 @@ session_start();
 		<div class="erBlock">
 			<?php
 			if (isset($_SESSION['error'])) {
-				$message = $_SESSION['error'];
-				echo $message;
+				echo $_SESSION['error'];
 			}
 			session_destroy();
 		?>

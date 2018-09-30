@@ -7,19 +7,19 @@ class UserCheck
 {
 
   private const ERROR_MSG = [
-  	'wrongPassword' => 'неверный пароль'
+  	'wrongPassword' => 'введите пароль'
   ];
 
-	private $userStatus = null;
+	private $userStatus = null; // пока не придумал что с ней делать
 
-	private $urlJson = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR . 'users.json';
-
+	private $urlJson;
 	private $login;
 	private $password;
 
-	public function __construct ($login, $password) {
+	public function __construct ($login, $password, $urlJson) {
 		$this->login = $login;
 		$this->password = $password;
+		$this->urlJson = $urlJson;
 	}
 
 	public function checkEmptyAndRegularLoginAndPassword() {
@@ -53,31 +53,33 @@ class UserCheck
 		return true;
 	}
 
-	public function verificationIsUser() {
+	public function checkJsonUrl() {
+		return (file_exists($this->urlJson));
+	}
+
+	public function verification() {
 		$jsonData = file_get_contents($this->urlJson);
 		$json = json_decode($jsonData, true);
 		foreach ($json as $key => $value) {
 			if ($value['user'] == $this->login) {
 				if ($value['password'] == $this->password) {
+					$_SESSION['user'] = $this->login;
 					return true;
-				}
-				$_SESSION['error'] = "не верный пароль";
+				} else {
+					$_SESSION['error'] = "не верный пароль";
 					return false;
+				}
 			} 
 		}
-		$this->createNewUser();
-	}
-
-	 public function checkJsonUrl()	{
-		return (file_exists($this->urlJson));
+		return $this->createNewUser();
 	}
 
 	public function createNewUser() {
-		$_SESSION['user'] = $this->$login;
+		$_SESSION['user'] = $this->login;
 		$jsonData = file_get_contents($this->urlJson);
 		$json = json_decode($jsonData, true);
 		$user = array(
-			"user" => $this->$login,
+			"user" => $this->login,
 			"password" => $this->password
 		);
 		$json[] = $user;
@@ -85,7 +87,8 @@ class UserCheck
 
 		if(file_put_contents($this->urlJson, $result)) {
 			echo "create new user";
+			return true;
 		}
-			
 	}
+
 }
