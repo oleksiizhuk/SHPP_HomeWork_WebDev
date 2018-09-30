@@ -52,6 +52,11 @@ $(function() {
 			url : "handler.php",
 			data : "getMsg",
 			success: function(ressponce) {
+				if(!ressponce) {
+					console.log("сообщений за последний час не было")
+					return;
+				}
+				console.log(ressponce);
 				const objMsg = $.parseJSON(ressponce);
 				console.log(objMsg);
 				unloadMsgtest(objMsg);

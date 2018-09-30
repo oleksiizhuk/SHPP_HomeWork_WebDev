@@ -2,10 +2,10 @@
 session_start();
 $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 require $config['UserCheck'];
-//$_SESSION['user'] = 'admin';
+$_SESSION['user'] = 'admin';
 
 $manager = new Manager;
-echo $manager->checkAjaxGetMsg();
+$manager->checkAjaxGetMsg();
 
 
 if ($manager->checkAjaxGetMsg()) { // 
@@ -30,7 +30,7 @@ if ($manager->checkAjax()) {
 	$dateToSecond = strtotime(date("Y-m-d H:i:s"));
 	if ($userCheck->checkJsonUrl()) {
 		$userCheck->addNewMsg($dateToSecond, $message);
-		echo $data.','.$_COOKIE['user'];
+		echo $data.','.$_SESSION['user'];
 		return;
 	} else {
 		echo "err";
@@ -97,7 +97,7 @@ class Manager
 		return !isset($_POST['addNewMsg']) ? false : true;
 	}
 	public function checkAjaxGetMsg () {
-		return !isset($_POST["getMsg"]) ? "false" : "true";
+		return !isset($_POST["getMsg"]) ? false : true;
 	}
 }
 

@@ -5,8 +5,20 @@
 */
 class UserCheck
 {
-	
+	public $User;
+
 	private $urlJson = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR . 'users.json';
+
+
+    public function checkEmpty($login, $password) {
+        if (empty($login)) {
+            return "введите логин";
+        }
+        if (empty($password)) {
+            return "введите пароль";
+        }
+        return true;
+    }
 
 	public function checkUserPass($login, $password) {
 		$jsonData = file_get_contents($this->urlJson);
@@ -16,10 +28,11 @@ class UserCheck
 				if ($value['password'] == $password) {
 					return true;
 				} else {
-					return false;
+					return;
 				}
 			} 
 		}
+        $this->user = $login;
 		$this->createNewUser($login, $password);
 	}
 
@@ -32,26 +45,15 @@ class UserCheck
     	$json = json_decode($jsonData, true);
     	$user = array(
     		"user" => $login,
-    		"password" => md5($password)
+    		"password" => $password
     	);
     	$json[] = $user;
     	$result = json_encode($json, JSON_PRETTY_PRINT);
 
     	if(file_put_contents($this->urlJson, $result)) {
-    		echo "create new user";
+    		//echo "create new user";
     	}
     		
     }
 }
 
-
-/*[
-    {
-        "user": "admin",
-        "password": "admin"
-    },
-    {
-        "user": "q",
-        "password": "q"
-    }
-]*/

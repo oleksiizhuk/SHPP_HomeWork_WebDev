@@ -2,6 +2,7 @@
 
 class CheckRequst
 {
+	
 	public function checkEmpty($login, $password) {
 		if (empty($login)) {
 			return "введите логин";
