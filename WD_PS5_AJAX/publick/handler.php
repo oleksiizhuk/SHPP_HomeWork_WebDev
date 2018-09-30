@@ -2,42 +2,39 @@
 session_start();
 $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 require $config['UserCheck'];
-//$_SESSION['user'] = 'admin';
+$_SESSION['user'] = 'admin';
 
 $manager = new Manager;
-echo $manager->checkAjaxGetMsg();
 
-
-if ($manager->checkAjaxGetMsg()) { // 
-	require $config['UnloadFromJson'];
-	$UnloadMsg = new UnloadFromJson($config['UnloadFromJson']);
-
-	if(!$UnloadMsg->checkJsonUrl()){
-		echo "not file";
-		return;
-	}
-	
-	$message = $UnloadMsg->unloadMessage();
-	print_r( $message );
-	return;
-} 
 
 if ($manager->checkAjax()) {
 	require $config['AddMsgToJson'];
 	$userCheck = new AddMsgToJson($config['AddMsgToJson']);
 	$message = $_POST['addNewMsg'];
-	$data = date("H:i:s");
+	$time = date("H:i:s");
 	$dateToSecond = strtotime(date("Y-m-d H:i:s"));
 	if ($userCheck->checkJsonUrl()) {
 		$userCheck->addNewMsg($dateToSecond, $message);
-		echo $data.','.$_COOKIE['user'];
+		echo $time.','.$_SESSION['user'];
 		return;
 	} else {
 		echo "err";
 		return;
 	}
-	
 }
+
+if ($manager->checkAjaxGetMsg()) { // 
+	require $config['UnloadFromJson'];
+	$UnloadMsg = new UnloadFromJson($config['UnloadFromJson']);
+
+	if (!$UnloadMsg->checkJsonUrl()) {
+		echo "not file";
+		return;
+	}	
+	$message = $UnloadMsg->unloadMessage();
+	print_r( $message );
+	return;
+} 
 
 if(!$manager->checkIsset()) {
 	$_SESSION['er'] = "404";

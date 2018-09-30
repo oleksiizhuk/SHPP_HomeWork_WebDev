@@ -1,26 +1,10 @@
 [
     {
         "user": "admin",
-        "password": "21232f297a57a5a743894a0e4a801fc3"
-    },
-    {
-        "user": "a",
-        "password": "0cc175b9c0f1b6a831c399e269772661"
-    },
-    {
-        "user": null,
-        "password": "d41d8cd98f00b204e9800998ecf8427e"
+        "password": "admin"
     },
     {
         "user": "Aleks",
-        "password": "202cb962ac59075b964b07152d234b70"
-    },
-    {
-        "user": "123",
-        "password": "202cb962ac59075b964b07152d234b70"
-    },
-    {
-        "user": "123qwe",
-        "password": "202cb962ac59075b964b07152d234b70"
+        "password": "Aleks"
     }
 ]

@@ -2,7 +2,7 @@
 /**
  * check url json and unload msg with json.
  */
-class UnloadFromJson
+class UnloadFromJson // jsonHandler
 {
 	private $urlJson = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR . 'message.json';
 
@@ -15,6 +15,7 @@ class UnloadFromJson
 		$json = json_decode($jsonData, true);
 		$timeToStr = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")));
 		$count = 0;
+		$newArray;
 		foreach ($json as $key => $value) {
 			$count++;
 			$filterToTime = $timeToStr - $value['time'];
@@ -24,7 +25,12 @@ class UnloadFromJson
 				$newArray[$count]['time'] = date("H:i:s", $value['time']);
 			}
 		}
-		$result = json_encode($newArray, JSON_PRETTY_PRINT);
-		return $result;
+		if (!empty($newArray)) {
+			$result = json_encode($newArray, JSON_PRETTY_PRINT);
+			return $result;
+		} 
+		
+		return ' for the last hour of the message was not';
+		
 	}
 }
