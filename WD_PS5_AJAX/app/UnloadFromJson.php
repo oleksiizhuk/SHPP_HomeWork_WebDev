@@ -2,7 +2,7 @@
 /**
  * check url json and unload msg with json.
  */
-class UnloadFromJson
+class UnloadFromJson // jsonHandler
 {
 	private $urlJson = __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR . 'message.json';
 
@@ -25,11 +25,12 @@ class UnloadFromJson
 				$newArray[$count]['time'] = date("H:i:s", $value['time']);
 			}
 		}
-		if (empty($newArray)) {
-			return false;
-		} else {
-				$result = json_encode($newArray, JSON_PRETTY_PRINT);
-				return $result;
-		}
+		if (!empty($newArray)) {
+			$result = json_encode($newArray, JSON_PRETTY_PRINT);
+			return $result;
+		} 
+		
+		return ' for the last hour of the message was not';
+		
 	}
 }

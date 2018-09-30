@@ -1,5 +1,5 @@
 $(function() {
-	getDataDromJson();
+	unloadMessageWithJson();
 
 	$('#sendMsg').click(function() {
 		const message = $('#inputSend').val();
@@ -33,7 +33,7 @@ $(function() {
 		.appendTo(".chatSection__container__chatWindow");
 	}
 
-	function unloadMsgtest(objMsg) {
+	function createUnloadedMessage(objMsg) {
 		for (let value in objMsg) {
 				const div = $(
 					`<div class="bubblechat left">
@@ -46,20 +46,15 @@ $(function() {
 		}
 	}
 
-	function getDataDromJson() {
+	function unloadMessageWithJson() {
 		$.ajax({
 			type : "POST",
 			url : "handler.php",
 			data : "getMsg",
 			success: function(ressponce) {
-				if(!ressponce) {
-					console.log("сообщений за последний час не было")
-					return;
-				}
-				console.log(ressponce);
 				const objMsg = $.parseJSON(ressponce);
 				console.log(objMsg);
-				unloadMsgtest(objMsg);
+				createUnloadedMessage(objMsg);
 			}
 		});
 	}
