@@ -12,19 +12,5 @@
         "positionY": 125,
         "content": "corner",
         "deleted": true
-    },
-    {
-        "id": 3,
-        "positionX": "315",
-        "positionY": "63",
-        "content": "corner",
-        "deleted": false
-    },
-    {
-        "id": 4,
-        "positionX": 595,
-        "positionY": 79,
-        "content": "corner",
-        "deleted": false
     }
 ]
