@@ -3,12 +3,11 @@ $urlJsonDraggeble = __DIR__ . DIRECTORY_SEPARATOR .
 	'..' . DIRECTORY_SEPARATOR . 'json' .
 	 DIRECTORY_SEPARATOR . 'index.json';
 
-
 $handlerJson = new handlerJson($urlJsonDraggeble);
 
-if ( isset($_POST['objData1']) ) {
-	$objData = $_POST['objData1'];
-	$handlerJson->putToJson($objData);
+if ( isset($_POST['addNewDraggableToJson']) ) {
+	$objData = $_POST['addNewDraggableToJson'];
+	$handlerJson->addNewDraggableToJson($objData);
 	return;
 } 
 
@@ -24,8 +23,8 @@ if ( isset($_POST['getInfoAboutDraggableFromJson'])) {
 	return;
 }
 
-if ( isset($_POST['informationOnTheBlock'])) {
-	$objInfo = $_POST['informationOnTheBlock'];
+if ( isset($_POST['replaceContent'])) {
+	$objInfo = $_POST['replaceContent'];
 	$handlerJson->replaceContent($objInfo);
 	return;
 }
@@ -51,7 +50,7 @@ class handlerJson
 		$this->urlJson = $urlJson;
 	}
 
-	public function putToJson($objData) {
+	public function addNewDraggableToJson($objData) {
 		$jsonData = file_get_contents($this->urlJson);
 		$json = json_decode($jsonData);
 		$objData = json_decode($objData, true);
@@ -76,10 +75,10 @@ class handlerJson
 	public function replaceContent ($objInfo) {
 		$jsonData = file_get_contents($this->urlJson);
 		$json = json_decode($jsonData, true);
-		$arr =  explode(',', $objInfo);
+		$object = json_decode($objInfo, true); 
 		foreach ($json as $key => $value) {
-			if ($value['id'] == $arr[0]) {
-				$json[$key]['content'] = $arr[1];
+			if ($value['id'] == $object['id']) {
+				$json[$key]['content'] = $object['content'];
 			}
 		}
 		$result = json_encode($json, JSON_PRETTY_PRINT);
