@@ -3,9 +3,17 @@
 session_start();
 $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 
+if (isset($_POST['test'])) {
+	require $config['ReloadMessage'];
+	$reloadMessage = new ReloadMessage($config['userJson']);
+	$id = 2;
+	$result = $reloadMessage->unloadMessage($id);
+	echo $result;
+}
+
 if (isset($_POST['submit'])) {
-	require $config['UserCheck']; // переименновать class в verificy
-	$userCheck = new UserCheck($_POST['login'], $_POST['password'], $config['usersJson']);
+	require $config['Verification'];
+	$userCheck = new Verification($_POST['login'], $_POST['password'], $config['usersJson']);
 
 	if (!$userCheck->checkEmptyAndRegularLoginAndPassword()) {
 		header("Location:index.php");

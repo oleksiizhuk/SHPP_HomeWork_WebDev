@@ -1,20 +1,21 @@
 $(function () {
-  ajaxGet();
+  getDataWithJson();
 });
 
-function ajaxGet() {
+function getDataWithJson() {
 	$.ajax ({
-		url: 'ajax.php',
+		url: 'handler.php',
 		type: "POST",
 		data: 'getJson=',
 		success(ressponce) {
+			console.log(ressponce);
 			jsonToGoogleCharts(ressponce);
 		}
 	});
 }
 
 function jsonToGoogleCharts(arr) {
-	arr =  $.parseJSON( arr );
+	arr = $.parseJSON(arr);
 	
 	google.charts.load("current", {packages:["corechart"]});
 			google.charts.setOnLoadCallback(drawChart);

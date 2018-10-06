@@ -1,6 +1,12 @@
 $(function() {
 	unloadMessageWithJson();
 
+
+	let id = setTimeout(function tick() {
+		console.log(1);
+		id = setTimeout(tick, 5000);
+	});
+
 	$('#sendMsg').click(function() {
 		const message = $('#inputSend').val();
 		if (message.length == 0) {
@@ -21,6 +27,15 @@ $(function() {
 			}
 		});
 	});
+
+	/*function reloadMessage() {
+		
+		const second = 2000;
+		setTimeout(reloadMessage(), 2000);
+	}*/
+
+
+
 
 	function createMsg(time,user,message) {
 		const blockMsg = $(
@@ -52,6 +67,10 @@ $(function() {
 			url : "handler.php",
 			data : "getMsg",
 			success: function(ressponce) {
+				if (ressponce.length == 0) {
+					console.log("за последний час не было сообщений");
+					return;
+				}
 				const objMsg = $.parseJSON(ressponce);
 				console.log(objMsg);
 				createUnloadedMessage(objMsg);

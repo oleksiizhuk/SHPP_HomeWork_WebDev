@@ -28,5 +28,10 @@
         "user": "test",
         "message": "hi",
         "time": 1538345615
+    },
+    {
+        "user": "admin",
+        "message": "Aleks",
+        "time": 1538575068
     }
 ]

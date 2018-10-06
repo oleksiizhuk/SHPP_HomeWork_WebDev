@@ -34,7 +34,7 @@ class UnloadFromJson // jsonHandler
 			return $result;
 		} 
 		
-		return ' for the last hour of the message was not';
+		return false;
 		
 	}
 }

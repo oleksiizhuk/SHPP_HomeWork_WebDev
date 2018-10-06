@@ -1,7 +1,7 @@
 <?php
 
 return[
-	'UserCheck' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'app' .DIRECTORY_SEPARATOR. 'UserCheck.php',
+	'Verification' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'app' .DIRECTORY_SEPARATOR. 'Verification.php',
 	
 	'AddMsgToJson' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'app' .DIRECTORY_SEPARATOR. 'AddMsgToJson.php',
 
@@ -9,7 +9,11 @@ return[
 	
 	'CheckRequst' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'app' .DIRECTORY_SEPARATOR. 'CheckRequst.php',
 
+	'ReloadMessage' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'app' .DIRECTORY_SEPARATOR. 'ReloadMessage.php',
+
 	'messageJson' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR . 'message.json',
 
 	'usersJson' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR . 'users.json'
+
+
 ];
