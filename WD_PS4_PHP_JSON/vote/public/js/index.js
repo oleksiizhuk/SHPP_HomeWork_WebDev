@@ -22,10 +22,10 @@ function jsonToGoogleCharts(arr) {
 			function drawChart() {
 				const data = google.visualization.arrayToDataTable([
 					['Salary', 'Amount'],
-					['BMW',     arr[0].BMW],
-					['Audi',      arr[0].Audi],
-					['GMC',  arr[0].GMC],
-					['Zhiguli', arr[0].Zhiguli],
+					['BMW',     arr.BMW],
+					['Audi',      arr.Audi],
+					['GMC',  arr.GMC],
+					['Zhiguli', arr.Zhiguli],
 				]);
 
 				const options = {

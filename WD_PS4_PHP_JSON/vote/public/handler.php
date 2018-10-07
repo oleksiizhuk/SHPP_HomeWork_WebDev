@@ -1,9 +1,15 @@
 <?php
 session_start();
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("location:index.php"); 
+}
+
 $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR .  'config.php';
 
-require_once( $config['dataBase']);
+require $config['dataBase'];
 $dataBase = new DataBase($config['urlJson']);
+$valueVote = include $config['valueVote'];
 
 
 if (isset($_POST['radio'])) {
@@ -13,8 +19,9 @@ if (isset($_POST['radio'])) {
 		header("Location:result.php");
 		exit;
 	} else {
-		$_SESSION['error'] = $dataBase->getError();
-		header("Location:index.php");
+		$dataBase->createJson($valueVote);
+		$dataBase->addVote($userChoice);
+		header("Location:result.php");
 		exit;
 	}
 }
@@ -23,6 +30,3 @@ if (isset($_POST['getJson'])) {
     $result = $dataBase->ajaxGetJson();
     print_r ($result);
 }
-
-
-

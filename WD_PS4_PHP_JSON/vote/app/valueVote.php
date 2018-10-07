@@ -5,5 +5,5 @@ return
 		'BMW' => 0,
 		'Audi' => 0,
 		'GMC' => 0,
-		'Zhuguli' => 0
+		'Zhiguli' => 0
 	 );
