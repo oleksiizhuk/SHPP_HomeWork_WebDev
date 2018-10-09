@@ -19,7 +19,7 @@ $(function () {
 				const div = $(`
 				<div class="draggable" id="${ressponce}">
 					<p></p>
-					<input type="text" class="dragInput" value="corner">
+					<input type="text" class="dragInput" value="">
 				</div>`)
 				.appendTo("main")
 				.css({
@@ -29,13 +29,17 @@ $(function () {
 				.bind()
 				.draggable({
 					containment: ".main",
-		 			scroll: false
+		 			scroll: false,
+		 			stop: function(event, ui) {
+						const obj = `${ui.position.left},${ui.position.top},${event.target.id}`;
+						recordInBase(key.addNewСoordinationToJson, obj)
+					}
 				 });	
 				let ballon = {	
 					id: ressponce,
 					positionX : event.pageX,
 					positionY : event.pageY,
-					content : "corner",
+					content : "",
 					deleted : false
 				};
 				recordInBase(key.addNewDraggableToJson, JSON.stringify(ballon)); 
@@ -64,37 +68,35 @@ $(function () {
 				id: id,
 				content: value
 			};
-			recordInBase(key.replaceContent, JSON.stringify(obj));
+		recordInBase(key.replaceContent, JSON.stringify(obj));
 	}); 	
 
 	$(document).on("keyup", function(event) {
 			const enter = 13;
 			const escape = 27;
 			const target = $(event.target);
-
+			const value = target.val();
 		if (event.which === enter) {	
-			const value = target.val(); 
 			if (value.length == 0) {
 				const id = target.parent().attr('id');
 				$(`#${id}`).remove();
 				recordInBase(key.removeElementById, id);
-				return;
+			} else {
+				target.val(value);
+				target.attr("type", "hidden");
+				target.parent().find('p').text(value);
+				const indexId = target.parent().attr('id');
+				const obj = {
+					id: indexId,
+					content: value
+				};
+				recordInBase(key.replaceContent, JSON.stringify(obj));
 			}
-			target.val(value);
-			target.attr("type", "hidden");
-			target.parent().find('p').text(value);
-			const indexId = target.parent().attr('id');
-			let obj = {
-				id: indexId,
-				content: value
-			};
-			recordInBase(key.replaceContent, JSON.stringify(obj));
-			return;
 		} 
 		if (event.which === escape) {
-			const value = $(event.target).val();
-			$(event.target).val(value);
-			$(event.target).attr("type", "hidden");
+			const oldValue = target.parent().find('p').text();
+			target.val(oldValue);
+			target.attr("type", "hidden");
 		}
 	});
 
@@ -137,14 +139,10 @@ $(function () {
 	};
 
 	function recordInBase(key, obj) {
-		console.log("obj - " + obj.id + obj.content);
 		$.ajax({
 			type : 'POST',
 			url : urlPhp,
-			data : `${key}` +  obj,
-			success: function(ressponce) {
-				console.log("ressponce - " + ressponce)
-			}
+			data : `${key}` +  obj
 		});
 	}
 

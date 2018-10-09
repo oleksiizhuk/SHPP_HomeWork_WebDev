@@ -1,16 +1,30 @@
 [
     {
         "id": "1",
-        "positionX": "147",
-        "positionY": "92",
-        "content": "Ag",
+        "positionX": "299",
+        "positionY": "50",
+        "content": "Hi all",
         "deleted": false
     },
     {
-        "id": 2,
-        "positionX": 442,
-        "positionY": 125,
-        "content": "corner",
-        "deleted": true
+        "id": 4,
+        "positionX": "257",
+        "positionY": "304",
+        "content": "what's going here",
+        "deleted": false
+    },
+    {
+        "id": 5,
+        "positionX": "925",
+        "positionY": "64",
+        "content": "hello:)",
+        "deleted": false
+    },
+    {
+        "id": 4,
+        "positionX": "257",
+        "positionY": "304",
+        "content": "what's going here",
+        "deleted": false
     }
 ]
