@@ -11,7 +11,7 @@
 
 	<header class="header">
 		<div class="header__container-block">
-			<h2>Vote</h2>		
+			<h2>Vote</h2>   
 		</div>
 	</header>
 
@@ -58,7 +58,7 @@
 
 	<footer>
 		<div class="container-block">
-		</div>	
+		</div>  
 	</footer>
 </body>
 </html>

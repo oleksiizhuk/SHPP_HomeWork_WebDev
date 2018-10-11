@@ -1,35 +1,52 @@
 <?php
+
 class DataBase
 {
-    public $urlJson = __DIR__ . DIRECTORY_SEPARATOR . 'json' . DIRECTORY_SEPARATOR . 'index.json';
+    private $urlJson;
+    private $jsonDB;
+    private $valueVote;
 
-    function __construct($urlJson) {
+    function __construct($urlJson, $valueVote) {
        $this->urlJson = $urlJson;
+       $this->valueVote = $valueVote;
    }
 
-   public function ajaxGetJson() {
-    $jsonData = file_get_contents($this->urlJson);
-    return $jsonData;
+    public function ajaxGetJson() {
+        $jsonData = file_get_contents($this->urlJson);
+        return $jsonData;
+    }
+
+    public function addVote($userChoice) {    
+        $this->jsonDB = $this->loadJson();
+        $this->jsonDB[$userChoice]++;
+        $result = json_encode($this->jsonDB, JSON_PRETTY_PRINT);
+        file_put_contents($this->urlJson, $result);
+    }
+
+private function loadJson() {
+    $db;
+    if (!$this->checkJsonUrl()) {
+        $this->createNewJsonFile();
+    }
+    $db = json_decode(file_get_contents($this->urlJson), true);
+    if (json_last_error() === JSON_ERROR_NONE) {
+        return $db;
+    } 
+    throw new Exception("Error", 1);
 }
 
-public function addVote($userChoice) {
-    $jsonData = file_get_contents($this->urlJson);
-    $json = json_decode($jsonData, true);
-    $json[$userChoice]++;
-    $result = json_encode($json, JSON_PRETTY_PRINT);
-    file_put_contents($this->urlJson, $result);
+    public function checkJsonUrl() {
+        return (file_exists($this->urlJson));
+    }
+
+    public function createNewJsonFile() {
+        $result = json_encode($this->$valueVote, JSON_PRETTY_PRINT);
+        file_put_contents($this->urlJson, $result);
+    }
+public function isJsonValid() {
+    $jsonData = file_get_contents($this->testUrlJson);
+    $json = json_decode($jsonData);
+    return json_last_error();
 }
 
-public function checkJsonUrl() {
-    return (file_exists($this->urlJson));
-}
-
-public function getError() {
-    return "error - Файл не существует";
-}
-
-public function createJson($viriant) {
-    $result = json_encode($viriant, JSON_PRETTY_PRINT);
-    file_put_contents($this->urlJson, $result);
-}
 }

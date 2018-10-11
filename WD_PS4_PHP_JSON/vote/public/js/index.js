@@ -1,22 +1,18 @@
 $(function () {
-  getDataWithJson();
-});
-
-function getDataWithJson() {
+  (function () {
 	$.ajax ({
 		url: 'handler.php',
 		type: "POST",
 		data: 'getJson=',
 		success(ressponce) {
-			console.log(ressponce);
-			jsonToGoogleCharts(ressponce);
+			jsonToGoogleCharts($.parseJSON(ressponce));
 		}
 	});
-}
+	})();
+
+});
 
 function jsonToGoogleCharts(arr) {
-	arr = $.parseJSON(arr);
-	
 	google.charts.load("current", {packages:["corechart"]});
 			google.charts.setOnLoadCallback(drawChart);
 			function drawChart() {
