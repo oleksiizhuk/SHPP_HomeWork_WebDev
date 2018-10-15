@@ -17,6 +17,7 @@ session_start();
 	<main>
 		<div class="main__container">
 			<h1>Easy Chat</h1>
+			
 			<form action="handler.php" id="form" method="post">
 				<label for="login">Enter your name</label>
 				<input type="text" placeholder="John Doe" id="login" name="login">

@@ -1,9 +1,9 @@
 $(function() {
 	unloadMessageWithJson();
 
-
 	let id = setTimeout(function tick() {
 		console.log(1);
+		updateMessageW();
 		id = setTimeout(tick, 5000);
 	});
 
@@ -28,11 +28,24 @@ $(function() {
 		});
 	});
 
-	/*function reloadMessage() {
-		
-		const second = 2000;
-		setTimeout(reloadMessage(), 2000);
-	}*/
+	function updateMessage() {
+		$.post( "handler.php", function( data ) {
+			console.log( data );
+		});
+	}
+
+	function updateMessageW() {
+		$.ajax({
+			type : 'POST',
+			url : 'handler.php',
+			data : "updateMessage=",
+			success: function (ressponce) {
+				let countBubble = $('.bubblechat').length;
+				//console.log(countBubble + " - bubblechat");
+				console.log(ressponce);
+			}
+		});
+	}
 
 
 

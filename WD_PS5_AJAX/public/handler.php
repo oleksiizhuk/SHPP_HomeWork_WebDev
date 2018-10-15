@@ -1,6 +1,7 @@
 <?php
 //use User\UserCheck;
 session_start();
+
 $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 
 if (isset($_POST['test'])) {
@@ -30,6 +31,7 @@ if (isset($_POST['submit'])) {
 		header("Location:index.php");
 		exit;
 	} else {
+		$_SESSION['login'] = $_POST['login'];
 		header("Location:chat.php");
 		exit;
 	}
@@ -64,6 +66,13 @@ if (isset($_POST['addNewMsg'])) {
 		echo "err - no file";
 		return;  // потом удалить - косталь
 	}
+}
+
+if (isset($_POST['updateMessage'])) {
+	require $config['UnloadFromJson'];
+	$UnloadMsg = new UnloadFromJson($config['messageJson']);
+	$message = $UnloadMsg->unloadMessage();
+	print_r( $message );
 }
 
 

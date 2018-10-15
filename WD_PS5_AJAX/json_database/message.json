@@ -10,28 +10,23 @@
         "time": 1538309094
     },
     {
-        "user": "admin",
-        "message": "qwe",
-        "time": 1538309094
-    },
-    {
-        "user": null,
+        "user": "1",
         "message": "hi",
-        "time": 1538345486
+        "time": 1539559889
     },
     {
-        "user": null,
-        "message": "hi",
-        "time": 1538345578
-    },
-    {
-        "user": "test",
-        "message": "hi",
-        "time": 1538345615
-    },
-    {
-        "user": "admin",
+        "user": "1",
         "message": "Aleks",
-        "time": 1538575068
+        "time": 1539600466
+    },
+    {
+        "user": "1",
+        "message": "Aleks",
+        "time": 1539600469
+    },
+    {
+        "user": "1",
+        "message": "Alawoierhtjoiawsdfhoipsdf",
+        "time": 1539600481
     }
 ]
