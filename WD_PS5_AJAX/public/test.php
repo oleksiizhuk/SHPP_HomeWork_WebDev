@@ -1,5 +1,5 @@
 <?php
-/*	echo $today = date("F j, Y, g:i a")."</br>";
+	echo $today = date("F j, Y, g:i a")."</br>";
 	echo $today = date("m.d.y")."</br>"; 
 	echo $today = date("j, n, Y")."</br>";
 	echo $today = date("Ymd")."</br>";
@@ -13,9 +13,10 @@
 	echo time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")))."</br>";
 	$test = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")))."</br>";
 	echo date("H:i:s", 1538211073)."</br>";
+	//echo date("H:i:s", 15:38:30)."</br>";
+	$test = time("Y-m-d H:i:s", strtotime(date("Y-m-d 15:38:30")))."</br>";
 	
-	//print_r( $message );*/
-
+	//print_r( $message );
 
 	$UnloadMsg = new UnloadFromJson;
 	$message = $UnloadMsg->unloadMessage();

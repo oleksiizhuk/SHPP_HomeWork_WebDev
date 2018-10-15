@@ -37,4 +37,26 @@ class UnloadFromJson // jsonHandler
 		return false;
 		
 	}
+
+	public function updateMessage($countBebble)	{
+		$jsonData = file_get_contents($this->urlJson);
+		$json = json_decode($jsonData, true);
+		$timeToStr = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")));
+		$count = 0;
+		$newArray;
+		foreach ($json as $key => $value) {
+			$filterToTime = $timeToStr - $value['time'];
+			if ($filterToTime < 3600) {
+				$newArray['user'] = $value['user'];
+				$newArray['message'] = $value['message'];
+				$newArray['time'] = date("H:i:s", $value['time']);
+			}
+		}
+		if (!empty($newArray)) {
+			return $result;
+		} 
+		return false;
+	}
+
+
 }

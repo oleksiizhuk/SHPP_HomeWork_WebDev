@@ -2,9 +2,14 @@ $(function() {
 	unloadMessageWithJson();
 
 	let id = setTimeout(function tick() {
-		console.log(1);
-		updateMessageW();
-		id = setTimeout(tick, 5000);
+		let i = 0;
+		i++;
+		console.log(i);
+		let time = $('.bubblechat:last-child p').children('.span__time').text();
+		let ress = time.substring(1, time.length-1);
+		let countBubble = $('.bubblechat').length;
+		updateMessageW(countBubble);
+		id = setTimeout(tick, 3000);
 	});
 
 	$('#sendMsg').click(function() {
@@ -28,34 +33,41 @@ $(function() {
 		});
 	});
 
-	function updateMessage() {
-		$.post( "handler.php", function( data ) {
-			console.log( data );
-		});
-	}
-
-	function updateMessageW() {
+	function updateMessageW(time) {
 		$.ajax({
 			type : 'POST',
 			url : 'handler.php',
-			data : "updateMessage=",
+			data : "updateMessage=" + time,
 			success: function (ressponce) {
 				let countBubble = $('.bubblechat').length;
-				//console.log(countBubble + " - bubblechat");
-				console.log(ressponce);
+				console.log(countBubble + " - bubblechat");
+				//console.log("time - " + time);
+				console.log("ressponce - " + ressponce);
+
+				/*for (let value in ressponce) {
+					if( response === 123) {
+					const div = $(
+						`<div class="bubblechat left">
+							<p>
+								<span class="span__time">[${ressponce[value].time}]</span> 
+								<span class="span__user">:${ressponce[value].user}</span>
+								<span class="span__message">${ressponce[value].message}</span>	
+							</p>
+						</div>`)
+					.appendTo(".chatSection__container__chatWindow");
+					}
+				}*/
 			}
 		});
 	}
-
-
-
 
 	function createMsg(time,user,message) {
 		const blockMsg = $(
 			`<div class="bubblechat right">
 						<p>
-							<span>[${time}] ${user}:</span> 
-							${message}
+							<span class="span__time">[${time}]</span> 
+							<span class="span__user">:${user}</span>
+							<span class="span__message">${message}</span>				
 						</p>
 					</div>`)
 		.appendTo(".chatSection__container__chatWindow");
@@ -66,8 +78,9 @@ $(function() {
 				const div = $(
 					`<div class="bubblechat left">
 						<p>
-							<span>${objMsg[value].time} : ${objMsg[value].user} </span> 
-							${objMsg[value].message}
+							<span class="span__time">[${objMsg[value].time}]</span> 
+							<span class="span__user">:${objMsg[value].user}</span>
+							<span class="span__message">${objMsg[value].message}</span>	
 						</p>
 					</div>`)
 				.appendTo(".chatSection__container__chatWindow");

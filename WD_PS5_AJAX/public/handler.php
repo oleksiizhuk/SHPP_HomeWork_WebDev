@@ -61,64 +61,20 @@ if (isset($_POST['addNewMsg'])) {
 	if ($userCheck->checkJsonUrl()) {
 		$userCheck->addNewMsg($dateToSecond, $message);
 		echo $data.','.$_SESSION['user'];
-		return;  // потом удалить - косталь
+		return;  // потом удалить - 
 	} else {
 		echo "err - no file";
-		return;  // потом удалить - косталь
+		return;  // потом удалить - 
 	}
 }
 
 if (isset($_POST['updateMessage'])) {
+	$count = $_POST['updateMessage'];
 	require $config['UnloadFromJson'];
 	$UnloadMsg = new UnloadFromJson($config['messageJson']);
-	$message = $UnloadMsg->unloadMessage();
+	$message = $UnloadMsg->updateMessage($count);
 	print_r( $message );
 }
 
-
-/*$manager = new Manager;
-$manager->checkAjaxGetMsg();
-
-if ($manager->checkAjaxGetMsg()) { // 
-	require $config['UnloadFromJson'];
-	$UnloadMsg = new UnloadFromJson();
-
-	if(!$UnloadMsg->checkJsonUrl()){
-		echo "not file";
-		return;
-	}
-	$message = $UnloadMsg->unloadMessage();
-	print_r( $message );
-	return;
-} 
-
-if ($manager->checkAjax()) {
-	require $config['AddMsgToJson'];
-	$userCheck = new AddMsgToJson($config['AddMsgToJson']);
-	$message = $_POST['addNewMsg'];
-	$data = date("H:i:s");
-	$dateToSecond = strtotime(date("Y-m-d H:i:s"));
-	if ($userCheck->checkJsonUrl()) {
-		$userCheck->addNewMsg($dateToSecond, $message);
-		echo $data.','.$_SESSION['user'];
-		return;  // потом удалить - косталь
-	} else {
-		echo "err - no file";
-		return;  // потом удалить - косталь
-	}
-}*/
-
-/**
- * 
- */
-class Manager
-{
-	public function checkAjax() {
-		return !isset($_POST['addNewMsg']) ? false : true;
-	}
-	public function checkAjaxGetMsg () {
-		return !isset($_POST["getMsg"]) ? "false" : "true";
-	}
-}
 
 
