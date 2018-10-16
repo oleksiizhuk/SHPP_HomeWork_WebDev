@@ -73,7 +73,28 @@ if (isset($_POST['updateMessage'])) {
 	require $config['UnloadFromJson'];
 	$UnloadMsg = new UnloadFromJson($config['messageJson']);
 	$message = $UnloadMsg->updateMessage($count);
-	print_r( $message );
+	$result = array();
+	//print_r(json_encode($message, JSON_PRETTY_PRINT));
+	//return;
+	//echo count($message)." - ".$count;
+
+
+	if (count($message) > $count ) {
+		for($i = $count + 1, $k = 0; $i < count($message); $i++, $k++) {
+			$result[$k] = $message[$i + 1];
+			/*$result[$k]['user'] = $message[$i]['user'];
+			$result[$k]['message'] = $message[$i]['message'];
+			$result[$k]['time'] = $message[$i]['time'];*/
+		}
+		print_r(json_encode($result, JSON_PRETTY_PRINT));
+		return;
+		if (!empty($result)) {
+			print_r( json_encode($result, JSON_PRETTY_PRINT));
+		} else {
+			return;
+		}
+	}
+	
 }
 
 

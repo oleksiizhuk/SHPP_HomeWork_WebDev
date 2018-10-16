@@ -9,7 +9,7 @@ $(function() {
 		let ress = time.substring(1, time.length-1);
 		let countBubble = $('.bubblechat').length;
 		updateMessageW(countBubble);
-		id = setTimeout(tick, 3000);
+		id = setTimeout(tick, 5000);
 	});
 
 	$('#sendMsg').click(function() {
@@ -41,23 +41,28 @@ $(function() {
 			success: function (ressponce) {
 				let countBubble = $('.bubblechat').length;
 				console.log(countBubble + " - bubblechat");
-				//console.log("time - " + time);
 				console.log("ressponce - " + ressponce);
 
-				/*for (let value in ressponce) {
-					if( response === 123) {
-					const div = $(
-						`<div class="bubblechat left">
-							<p>
-								<span class="span__time">[${ressponce[value].time}]</span> 
-								<span class="span__user">:${ressponce[value].user}</span>
-								<span class="span__message">${ressponce[value].message}</span>	
-							</p>
-						</div>`)
-					.appendTo(".chatSection__container__chatWindow");
+				
+				if (ressponce.length == 0) {	
+					console.log("не было обновленией");
+					return;
+				}
+				let obj = $.parseJSON(ressponce);
+				//console.log(obj.time);
+				//console.log(obj[0].time);
+					for (let value in obj) {
+						const div = $(
+							`<div class="bubblechat left">
+								<p>
+									<span class="span__time">[${obj[value].time}]</span> 
+									<span class="span__user">:${obj[value].user}</span>
+									<span class="span__message">${obj[value].message}</span>	
+								</p>
+							</div>`)
+						.appendTo(".chatSection__container__chatWindow");
 					}
-				}*/
-			}
+				}
 		});
 	}
 

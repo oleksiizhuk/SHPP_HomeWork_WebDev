@@ -38,7 +38,7 @@ class UnloadFromJson // jsonHandler
 		
 	}
 
-	public function updateMessage($countBebble)	{
+	public function updateMessage()	{
 		$jsonData = file_get_contents($this->urlJson);
 		$json = json_decode($jsonData, true);
 		$timeToStr = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")));
@@ -47,13 +47,14 @@ class UnloadFromJson // jsonHandler
 		foreach ($json as $key => $value) {
 			$filterToTime = $timeToStr - $value['time'];
 			if ($filterToTime < 3600) {
-				$newArray['user'] = $value['user'];
-				$newArray['message'] = $value['message'];
-				$newArray['time'] = date("H:i:s", $value['time']);
+				$count++;
+				$newArray[$count]['user'] = $value['user'];
+				$newArray[$count]['message'] = $value['message'];
+				$newArray[$count]['time'] = date("H:i:s", $value['time']);
 			}
 		}
 		if (!empty($newArray)) {
-			return $result;
+			return $newArray;
 		} 
 		return false;
 	}
