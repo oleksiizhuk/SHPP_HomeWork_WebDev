@@ -19,7 +19,10 @@
 	//print_r( $message );
 
 	$UnloadMsg = new UnloadFromJson;
-	$message = $UnloadMsg->unloadMessage();
+	$message = $UnloadMsg->unloadMessage(2);
+	print_r($message);
+	echo "</br>";
+	echo $message;
 class UnloadFromJson
 {
 	private $urlJson = __DIR__ . DIRECTORY_SEPARATOR . 'testJson' . DIRECTORY_SEPARATOR . 'message.json';
@@ -28,29 +31,42 @@ class UnloadFromJson
         return (file_exists($this->urlJson));
     }
 
-    public function unloadMessage()	{
+    public function unloadMessage($id)	{
 		$jsonData = file_get_contents($this->urlJson);
 		$json = json_decode($jsonData, true);
-		$filterToTime = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")));
-		$count = 0;
+		echo $id."   ".count($json);
+		if($id > count($json)) {
+			echo "test";
+			return;
+		}
+		$timeToStr = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")));
+		$arr = [];
+		for($i = $id, $k = count($json); $i < $k; $i++) {
+			$filterToTime = $timeToStr - $json[$i]['time'];
+			if ($filterToTime < 3600) {
+			$json[$i]['time'] = date("H:i:s", $json[$i]['time']); 
+				$arr[] = $json[$i];
+			}
+		}
+		print_r($arr);
+		return;
+
+
+
 		foreach ($json as $key => $value) {
 			$count++;
-			$result = $filterToTime - $value['time'];
-			if ($result > 3600) {
+			$filterToTime = $timeToStr - $value['time'];
+			if ($filterToTime < 3600) {
 				$newArray[$count]['user'] = $value['user'];
 				$newArray[$count]['message'] = $value['message'];
 				$newArray[$count]['time'] = date("H:i:s", $value['time']);
+
+				/*$newArray[$key]['user'] = $value['user'];
+				$newArray[$key]['message'] = $value['message'];
+				$newArray[$key]['time'] = date("H:i:s", $value['time']);*/
 			}
-		}
-		/*foreach ($newArray as $key => $value) {
-			//echo $key." ";
-			print_r($value);
-			echo "</br>";
-		}*/
-		
-		$result = json_encode($newArray, JSON_PRETTY_PRINT);
-		return $result;
-		/*return $newArray;*/
+		}	
+
 	}
 }
 

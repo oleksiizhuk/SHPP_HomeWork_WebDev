@@ -7,8 +7,7 @@ $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . '
 if (isset($_POST['test'])) {
 	require $config['ReloadMessage'];
 	$reloadMessage = new ReloadMessage($config['userJson']);
-	$id = 2;
-	$result = $reloadMessage->unloadMessage($id);
+	$result = $reloadMessage->unloadMessage();
 	echo $result;
 }
 
@@ -68,33 +67,22 @@ if (isset($_POST['addNewMsg'])) {
 	}
 }
 
-if (isset($_POST['updateMessage'])) {
-	$count = $_POST['updateMessage'];
+if (isset($_POST['checkNewMessage'])) {
+	$count = $_POST['checkNewMessage'];
 	require $config['UnloadFromJson'];
 	$UnloadMsg = new UnloadFromJson($config['messageJson']);
-	$message = $UnloadMsg->updateMessage($count);
-	$result = array();
-	//print_r(json_encode($message, JSON_PRETTY_PRINT));
-	//return;
-	//echo count($message)." - ".$count;
-
-
-	if (count($message) > $count ) {
-		for($i = $count + 1, $k = 0; $i < count($message); $i++, $k++) {
-			$result[$k] = $message[$i + 1];
-			/*$result[$k]['user'] = $message[$i]['user'];
-			$result[$k]['message'] = $message[$i]['message'];
-			$result[$k]['time'] = $message[$i]['time'];*/
-		}
-		print_r(json_encode($result, JSON_PRETTY_PRINT));
+	$message = $UnloadMsg->testArray($count);
+	if(!$message) {
+		echo false;
 		return;
-		if (!empty($result)) {
-			print_r( json_encode($result, JSON_PRETTY_PRINT));
-		} else {
-			return;
-		}
 	}
-	
+
+	if (!empty($message)) {
+		print_r(json_encode($message, JSON_PRETTY_PRINT));
+	} else {
+		echo false;
+	}
+
 }
 
 

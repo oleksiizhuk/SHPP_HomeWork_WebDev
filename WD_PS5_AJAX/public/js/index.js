@@ -1,24 +1,41 @@
 $(function() {
 	unloadMessageWithJson();
+	const smile = [
+		"img/smile(.png",
+		"img/smile).png"
+	];
+const emojiCodes = {
+	':)': 0x1f603,
+	':(': 0x1f603,
+};		
+	let maxId = 0;
+	//test();
 
-	let id = setTimeout(function tick() {
-		let i = 0;
-		i++;
-		console.log(i);
-		let time = $('.bubblechat:last-child p').children('.span__time').text();
-		let ress = time.substring(1, time.length-1);
-		let countBubble = $('.bubblechat').length;
-		updateMessageW(countBubble);
-		id = setTimeout(tick, 5000);
-	});
+	function test (){
+		let arr = "hello :), hi :(";
+		console.log(arr);
+		let ressult = 	$(`<div class="bubblechat right">
+						<p>
+							<span class="span__time">[qweqwe]</span> 
+							<span class="span__user">qwewqe:</span>
+							<span class="span__message">${arr
+																						.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
+																						.replace(':(', '<img class="image-smile" src="image/sad.png">')}
+							</span>				
+						</p>
+					</div>`)
+					.appendTo(".chatSection__container__chatWindow");
+		console.log(ressult)
+	}
 
-	$('#sendMsg').click(function() {
-		const message = $('#inputSend').val();
+		$('#sendMsg').click(function() {
+		const inputSend = $('#inputSend');
+		const message = inputSend.val();
 		if (message.length == 0) {
-			$('#inputSend').val('пустое сообщение'); // удалить перед сдачей
+			inputSend.val('пустое сообщение'); // удалить перед сдачей
 			return;
 		}
-		$('#inputSend').val('');
+		inputSend.val('');
 		$.ajax({
 			type : 'POST',
 			url : 'handler.php',
@@ -33,36 +50,24 @@ $(function() {
 		});
 	});
 
-	function updateMessageW(time) {
+	setInterval(checkNewMessage, 2000);
+
+	function checkNewMessage() {
 		$.ajax({
 			type : 'POST',
 			url : 'handler.php',
-			data : "updateMessage=" + time,
+			data : "checkNewMessage=" + maxId,
 			success: function (ressponce) {
-				let countBubble = $('.bubblechat').length;
-				console.log(countBubble + " - bubblechat");
-				console.log("ressponce - " + ressponce);
-
-				
+				console.log("maxId - " + maxId);
 				if (ressponce.length == 0) {	
 					console.log("не было обновленией");
 					return;
 				}
+				console.log("ressponce - " + ressponce);
 				let obj = $.parseJSON(ressponce);
-				//console.log(obj.time);
-				//console.log(obj[0].time);
-					for (let value in obj) {
-						const div = $(
-							`<div class="bubblechat left">
-								<p>
-									<span class="span__time">[${obj[value].time}]</span> 
-									<span class="span__user">:${obj[value].user}</span>
-									<span class="span__message">${obj[value].message}</span>	
-								</p>
-							</div>`)
-						.appendTo(".chatSection__container__chatWindow");
-					}
-				}
+				console.log(obj);
+				createUnloadedMessage(obj);
+			}
 		});
 	}
 
@@ -71,11 +76,14 @@ $(function() {
 			`<div class="bubblechat right">
 						<p>
 							<span class="span__time">[${time}]</span> 
-							<span class="span__user">:${user}</span>
-							<span class="span__message">${message}</span>				
+							<span class="span__user">${user}:</span>
+							<span class="span__message">${message
+																						.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
+																						.replace(':(', '<img class="image-smile" src="image/sad.png">')}</span>				
 						</p>
 					</div>`)
 		.appendTo(".chatSection__container__chatWindow");
+		maxId++;
 	}
 
 	function createUnloadedMessage(objMsg) {
@@ -84,11 +92,15 @@ $(function() {
 					`<div class="bubblechat left">
 						<p>
 							<span class="span__time">[${objMsg[value].time}]</span> 
-							<span class="span__user">:${objMsg[value].user}</span>
-							<span class="span__message">${objMsg[value].message}</span>	
+							<span class="span__user">${objMsg[value].user}:</span>
+							<span class="span__message">${objMsg[value].message
+																						.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
+																						.replace(':(', '<img class="image-smile" src="image/sad.png">')
+																					}</span>	
 						</p>
 					</div>`)
 				.appendTo(".chatSection__container__chatWindow");
+				maxId++;
 		}
 	}
 
@@ -108,5 +120,8 @@ $(function() {
 			}
 		});
 	}
+
+		
+
 
 });
