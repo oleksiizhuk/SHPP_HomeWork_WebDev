@@ -2,6 +2,10 @@
 //use User\UserCheck;
 session_start();
 
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' ) {
+    header("location:index.php"); 
+}
+
 $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 
 if (isset($_POST['test'])) {
@@ -15,14 +19,16 @@ if (isset($_POST['submit'])) {
 	require $config['Verification'];
 	$userCheck = new Verification($_POST['login'], $_POST['password'], $config['usersJson']);
 
-	if (!$userCheck->checkEmptyAndRegularLoginAndPassword()) {
-		header("Location:index.php");
+	try{ 
+		$userCheck->checkJsonUrl();
+	} catch (Exception $e) {
+		$_SESSION["error"] = $e->getMessage();
+		header("location:index.php");
 		exit;
 	}
 
-	if (!$userCheck->checkJsonUrl()) {
-		$_SESSION['error'] = "404";
-		header("Location:errorPage.php");
+	if (!$userCheck->checkEmptyAndRegularLoginAndPassword()) {
+		header("Location:index.php");
 		exit;
 	}
 

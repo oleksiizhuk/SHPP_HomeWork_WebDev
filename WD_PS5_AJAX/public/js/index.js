@@ -1,37 +1,12 @@
 $(function() {
 	unloadMessageWithJson();
-	const smile = [
-		"img/smile(.png",
-		"img/smile).png"
-	];
-const emojiCodes = {
-	':)': 0x1f603,
-	':(': 0x1f603,
-};		
+	setInterval(checkNewMessage, 2000);
 	let maxId = 0;
-	//test();
-
-	function test (){
-		let arr = "hello :), hi :(";
-		console.log(arr);
-		let ressult = 	$(`<div class="bubblechat right">
-						<p>
-							<span class="span__time">[qweqwe]</span> 
-							<span class="span__user">qwewqe:</span>
-							<span class="span__message">${arr
-																						.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
-																						.replace(':(', '<img class="image-smile" src="image/sad.png">')}
-							</span>				
-						</p>
-					</div>`)
-					.appendTo(".chatSection__container__chatWindow");
-		console.log(ressult)
-	}
 
 		$('#sendMsg').click(function() {
 		const inputSend = $('#inputSend');
 		const message = inputSend.val();
-		if (message.length == 0) {
+		if (!message) {
 			inputSend.val('пустое сообщение'); // удалить перед сдачей
 			return;
 		}
@@ -49,8 +24,6 @@ const emojiCodes = {
 			}
 		});
 	});
-
-	setInterval(checkNewMessage, 2000);
 
 	function checkNewMessage() {
 		$.ajax({
@@ -74,14 +47,14 @@ const emojiCodes = {
 	function createMsg(time,user,message) {
 		const blockMsg = $(
 			`<div class="bubblechat right">
-						<p>
-							<span class="span__time">[${time}]</span> 
-							<span class="span__user">${user}:</span>
-							<span class="span__message">${message
-																						.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
-																						.replace(':(', '<img class="image-smile" src="image/sad.png">')}</span>				
-						</p>
-					</div>`)
+				<p>
+					<span class="span__time">[${time}]</span> 
+					<span class="span__user">${user}:</span>
+					<span class="span__message">${message
+												.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
+												.replace(':(', '<img class="image-smile" src="image/sad.png">')}</span>				
+				</p>
+			</div>`)
 		.appendTo(".chatSection__container__chatWindow");
 		maxId++;
 	}
@@ -94,9 +67,9 @@ const emojiCodes = {
 							<span class="span__time">[${objMsg[value].time}]</span> 
 							<span class="span__user">${objMsg[value].user}:</span>
 							<span class="span__message">${objMsg[value].message
-																						.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
-																						.replace(':(', '<img class="image-smile" src="image/sad.png">')
-																					}</span>	
+																			.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
+																			.replace(':(', '<img class="image-smile" src="image/sad.png">')
+																			}</span>	
 						</p>
 					</div>`)
 				.appendTo(".chatSection__container__chatWindow");
@@ -122,6 +95,4 @@ const emojiCodes = {
 	}
 
 		
-
-
 });

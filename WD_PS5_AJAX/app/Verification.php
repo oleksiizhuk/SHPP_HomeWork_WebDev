@@ -7,19 +7,39 @@ class Verification
 {
 
   private const ERROR_MSG = [
-  	'wrongPassword' => 'введите пароль'
+	'wrongPassword' => 'введите пароль',
+	'wrongLogin' => 'введите логин'
   ];
-
-	private $userStatus = null; // пока не придумал что с ней делать
 
 	private $urlJson;
 	private $login;
 	private $password;
+	private $database; 
+	private $template = [];
 
 	public function __construct ($login, $password, $urlJson) {
 		$this->login = $login;
 		$this->password = $password;
 		$this->urlJson = $urlJson;
+
+	}
+
+	public function checkJsonUrl() {
+		if (!file_exists($this->urlJson)) {
+			$this->createNewJsonFile();
+		}
+		if (!is_file($this->urlJson) && !is_readable($this->urlJson) && !is_writable($this->urlJson)) {
+			throw new Exception('Incorrect db');
+		}	
+		$this->database = json_decode(file_get_contents($this->urlJson), true);
+		if (!$this->database && json_last_error()) {
+			throw new Exception("at An encoding/decoding error has occurred.");
+		}
+	}
+
+	private function createNewJsonFile() {
+		$result = json_encode($this->template, JSON_PRETTY_PRINT);
+		file_put_contents($this->urlJson, $result);
 	}
 
 	public function checkEmptyAndRegularLoginAndPassword() {
@@ -31,7 +51,7 @@ class Verification
 
 	private function checkIfEmpty() {
 		if (empty($this->login)) {
-			$_SESSION['error'] = "введите логин";
+			$_SESSION['error'] = self::ERROR_MSG['wrongLogin'];
 			return false;
 		}
 		if (empty($this->password)) {
@@ -40,6 +60,7 @@ class Verification
 		}
 		return true;
 	}
+
 	private function checkRegular() {
 		if (!preg_match('%^[a-zA-Z0-9_-]{1,16}$%', $this->login)) {
 			$_SESSION['error'] = "не прошла регулярка login";
@@ -50,10 +71,6 @@ class Verification
 			return false;
 		}
 		return true;
-	}
-
-	public function checkJsonUrl() {
-		return (file_exists($this->urlJson));
 	}
 
 	public function verification() {
@@ -85,7 +102,6 @@ class Verification
 		$result = json_encode($json, JSON_PRETTY_PRINT);
 
 		if(file_put_contents($this->urlJson, $result)) {
-			echo "create new user";
 			return true;
 		}
 	}
