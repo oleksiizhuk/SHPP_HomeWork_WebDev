@@ -23,7 +23,12 @@ class Verification
 		$this->urlJson = $urlJson;
 
 	}
-
+	/**
+	 * Определяет код КЛАДР по адресу
+	 * @param json $this->json
+	 * @throws Incorrect db    
+	 * @throws "at An encoding/decoding error has occurred. 
+	 */
 	public function checkJsonUrl() {
 		if (!file_exists($this->urlJson)) {
 			$this->createNewJsonFile();

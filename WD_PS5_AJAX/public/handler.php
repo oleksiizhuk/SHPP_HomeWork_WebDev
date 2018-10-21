@@ -46,9 +46,12 @@ if (isset($_POST['getMsg'])) {
 	require $config['UnloadFromJson'];
 	$UnloadMsg = new UnloadFromJson($config['messageJson']);
 
-	if (!$UnloadMsg->checkJsonUrl()) {
-		echo "not file";
-		return;
+	try{ 
+		$UnloadMsg->checkJsonUrl();
+	} catch (Exception $e) {
+		$_SESSION["error"] = $e->getMessage();
+		header("location:chat.php");
+		exit;
 	}
 	$message = $UnloadMsg->unloadMessage();
 	print_r( $message );

@@ -28,7 +28,6 @@ class AddMsgToJson
     	$result = json_encode($json, JSON_PRETTY_PRINT);
 
     	if(file_put_contents($this->urlJson, $result)) {
-    		/*echo "add new message";*/
     	}
 	}
 }

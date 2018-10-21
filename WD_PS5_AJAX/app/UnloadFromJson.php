@@ -5,14 +5,31 @@
 class UnloadFromJson // jsonHandler
 {
 	private $urlJson;
+	private $dataBase;
+	private $template = [];
 
 	public function __construct ($urlJson) {
 		$this->urlJson = $urlJson;
 	}
 
-	public function checkJsonUrl()	{
-        return (file_exists($this->urlJson));
-    }
+    public function checkJsonUrl() {
+		if (!file_exists($this->urlJson)) {
+			$this->createNewJsonFile();
+		}
+		if (!is_file($this->urlJson) && !is_readable($this->urlJson) && !is_writable($this->urlJson)) {
+			throw new Exception('Incorrect db');
+			return false;
+		}	
+		$this->database = json_decode(file_get_contents($this->urlJson), true);
+		if (!$this->database && json_last_error()) {
+			throw new Exception("at An encoding/decoding error has occurred.");
+		}
+	}
+
+	private function createNewJsonFile() {
+		$result = json_encode($this->template, JSON_PRETTY_PRINT);
+		file_put_contents($this->urlJson, $result);
+	}
 
     public function unloadMessage()	{
 		$jsonData = file_get_contents($this->urlJson);
@@ -51,8 +68,6 @@ class UnloadFromJson // jsonHandler
 				$newArray[$count]['time'] = date("H:i:s", $value['time']);
 			}
 		}
-
-
 
 		if (!empty($newArray)) {
 			return $newArray;
