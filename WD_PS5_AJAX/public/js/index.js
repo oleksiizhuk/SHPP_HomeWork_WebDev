@@ -3,11 +3,11 @@ $(function() {
 	setInterval(checkNewMessage, 2000);
 	let maxId = 0;
 
-		$('#sendMsg').click(function() {
+	$('#sendMsg').click(function(event) {
+		event.preventDefault();
 		const inputSend = $('#inputSend');
 		const message = inputSend.val();
 		if (!message) {
-			inputSend.val('пустое сообщение'); // удалить перед сдачей
 			return;
 		}
 		inputSend.val('');
@@ -16,10 +16,10 @@ $(function() {
 			url : 'handler.php',
 			data : 'addNewMsg=' + message,
 			success: function (ressponce) { 
-				const timeAndDate = ressponce.split(",");
+				const timeAndUser = ressponce.split(",");
 				console.log(ressponce);
-				const time = timeAndDate[0];
-				const user = timeAndDate[1];
+				const time = timeAndUser[0];
+				const user = timeAndUser[1];
 				createMsg(time,user,message);
 			}
 		});
@@ -32,7 +32,7 @@ $(function() {
 			data : "checkNewMessage=" + maxId,
 			success: function (ressponce) {
 				console.log("maxId - " + maxId);
-				if (ressponce.length == 0) {	
+				if (!ressponce.length) {	
 					console.log("не было обновленией");
 					return;
 				}
@@ -44,6 +44,21 @@ $(function() {
 		});
 	}
 
+	function unloadMessageWithJson() {
+		$.ajax({
+			type : "POST",
+			url : "handler.php",
+			data : "getMsg",
+			success: function(ressponce) {
+				if (!ressponce.length) {
+					return;
+				}
+				const objMsg = $.parseJSON(ressponce);
+				createUnloadedMessage(objMsg);
+			}
+		});
+	}
+
 	function createMsg(time,user,message) {
 		const blockMsg = $(
 			`<div class="bubblechat right">
@@ -51,8 +66,9 @@ $(function() {
 					<span class="span__time">[${time}]</span> 
 					<span class="span__user">${user}:</span>
 					<span class="span__message">${message
-												.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
-												.replace(':(', '<img class="image-smile" src="image/sad.png">')}</span>				
+						.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
+						.replace(':(', '<img class="image-smile" src="image/sad.png">')
+					}</span>				
 				</p>
 			</div>`)
 		.appendTo(".chatSection__container__chatWindow");
@@ -61,38 +77,19 @@ $(function() {
 
 	function createUnloadedMessage(objMsg) {
 		for (let value in objMsg) {
-				const div = $(
-					`<div class="bubblechat left">
-						<p>
-							<span class="span__time">[${objMsg[value].time}]</span> 
-							<span class="span__user">${objMsg[value].user}:</span>
-							<span class="span__message">${objMsg[value].message
-																			.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
-																			.replace(':(', '<img class="image-smile" src="image/sad.png">')
-																			}</span>	
-						</p>
-					</div>`)
-				.appendTo(".chatSection__container__chatWindow");
-				maxId++;
+			const div = $(
+				`<div class="bubblechat left">
+					<p>
+						<span class="span__time">[${objMsg[value].time}]</span> 
+						<span class="span__user">${objMsg[value].user}:</span>
+						<span class="span__message">${objMsg[value].message
+							.replace(':)', '<img class="image-smile" src="image/happySmile.png">')
+							.replace(':(', '<img class="image-smile" src="image/sad.png">')
+						}</span>	
+					</p>
+				</div>`)
+			.appendTo(".chatSection__container__chatWindow");
+			maxId++;
 		}
 	}
-
-	function unloadMessageWithJson() {
-		$.ajax({
-			type : "POST",
-			url : "handler.php",
-			data : "getMsg",
-			success: function(ressponce) {
-				if (ressponce.length == 0) {
-					console.log("за последний час не было сообщений");
-					return;
-				}
-				const objMsg = $.parseJSON(ressponce);
-				console.log(objMsg);
-				createUnloadedMessage(objMsg);
-			}
-		});
-	}
-
-		
 });

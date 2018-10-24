@@ -23,6 +23,24 @@
 	print_r($message);
 	echo "</br>";
 	echo $message;
+
+try{
+	echo "lesha 2";
+	if (test()) {
+
+	}
+	echo "lesha 1";
+} catch (Exception $e) {
+	echo $e->getMessage();
+}
+	
+	
+echo "lesha";
+function test () {
+	throw new Exception("test");
+	echo "lesha";
+}
+
 class UnloadFromJson
 {
 	private $urlJson = __DIR__ . DIRECTORY_SEPARATOR . 'testJson' . DIRECTORY_SEPARATOR . 'message.json';

@@ -1,98 +1,61 @@
 <?php
-//use User\UserCheck;
 session_start();
-
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' ) {
     header("location:index.php"); 
 }
-
 $config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
 
-if (isset($_POST['test'])) {
-	require $config['ReloadMessage'];
-	$reloadMessage = new ReloadMessage($config['userJson']);
-	$result = $reloadMessage->unloadMessage();
-	echo $result;
-}
-
 if (isset($_POST['submit'])) {
-	require $config['Verification'];
-	$userCheck = new Verification($_POST['login'], $_POST['password'], $config['usersJson']);
-
-	try{ 
-		$userCheck->checkJsonUrl();
-	} catch (Exception $e) {
-		$_SESSION["error"] = $e->getMessage();
-		header("location:index.php");
-		exit;
-	}
-
-	if (!$userCheck->checkEmptyAndRegularLoginAndPassword()) {
-		header("Location:index.php");
-		exit;
-	}
-
-	if (!$userCheck->verification()) {
-		header("Location:index.php");
-		exit;
-	} else {
+	require_once $config['Verification'];
+	$verification = new Verification($_POST['login'], $_POST['password'], $config['usersJson']);
+	try{
+		$verification->verification();
 		$_SESSION['login'] = $_POST['login'];
-		header("Location:chat.php");
-		exit;
+		header("location:chat.php");
+	} catch (Exception $exception) {
+		getError($exception->getMessage());
 	}
 }
 
 if (isset($_POST['getMsg'])) {
-	require $config['UnloadFromJson'];
+    require_once $config['UnloadFromJson'];
 	$UnloadMsg = new UnloadFromJson($config['messageJson']);
-
-	try{ 
-		$UnloadMsg->checkJsonUrl();
-	} catch (Exception $e) {
-		$_SESSION["error"] = $e->getMessage();
-		header("location:chat.php");
-		exit;
+	try{
+		$message = $UnloadMsg->getMassage();
+		print_r($message);
+	} catch(Exception $exception) {
+		getError($exception->getMessage());
 	}
-	$message = $UnloadMsg->unloadMessage();
-	print_r( $message );
-	return;
 }
 
 if (isset($_POST['addNewMsg'])) {
-	require $config['AddMsgToJson'];
-	$userCheck = new AddMsgToJson($config['messageJson']);
-
+	require_once $config['UnloadFromJson'];
+	$userCheck = new UnloadFromJson($config['messageJson']);
 	$message = $_POST['addNewMsg'];
 	$data = date("H:i:s");
 	$dateToSecond = strtotime(date("Y-m-d H:i:s"));
-
-	if ($userCheck->checkJsonUrl()) {
-		$userCheck->addNewMsg($dateToSecond, $message);
-		echo $data.','.$_SESSION['user'];
-		return;  // потом удалить - 
-	} else {
-		echo "err - no file";
-		return;  // потом удалить - 
+	try {
+		$userCheck->addNewMessageToJson($dateToSecond, $message);
+		echo $data.','.$_SESSION['login'];		
+	} catch(Exception $exception) {
+		getError($exception->getMessage());
 	}
 }
 
 if (isset($_POST['checkNewMessage'])) {
 	$count = $_POST['checkNewMessage'];
-	require $config['UnloadFromJson'];
+	require_once $config['UnloadFromJson'];
 	$UnloadMsg = new UnloadFromJson($config['messageJson']);
-	$message = $UnloadMsg->testArray($count);
-	if(!$message) {
-		echo false;
-		return;
-	}
 
-	if (!empty($message)) {
+	try{
+		$message = $UnloadMsg->unloadNewMessage($_POST['checkNewMessage']);
 		print_r(json_encode($message, JSON_PRETTY_PRINT));
-	} else {
-		echo false;
+	} catch(Exception $exception) {
+		getError($exception->getMessage());
 	}
-
 }
 
-
-
+function getError($error) {
+	$_SESSION["error"] = $error;
+	header("location:index.php");
+}

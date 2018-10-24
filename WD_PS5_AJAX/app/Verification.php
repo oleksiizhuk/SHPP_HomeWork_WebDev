@@ -1,11 +1,8 @@
 <?php
 // namespace User;
-/**
-* 
-*/
+
 class Verification
 {
-
   private const ERROR_MSG = [
 	'wrongPassword' => 'введите пароль',
 	'wrongLogin' => 'введите логин'
@@ -21,15 +18,15 @@ class Verification
 		$this->login = $login;
 		$this->password = $password;
 		$this->urlJson = $urlJson;
-
 	}
-	/**
-	 * Определяет код КЛАДР по адресу
-	 * @param json $this->json
-	 * @throws Incorrect db    
-	 * @throws "at An encoding/decoding error has occurred. 
-	 */
-	public function checkJsonUrl() {
+	
+	public function verification() {
+			$this->checkJsonFile();
+			$this->checkEmptyAndRegularLoginAndPassword();
+			$this->checkLoginAndPassword();
+	}
+
+	private function checkJsonFile() {
 		if (!file_exists($this->urlJson)) {
 			$this->createNewJsonFile();
 		}
@@ -47,55 +44,45 @@ class Verification
 		file_put_contents($this->urlJson, $result);
 	}
 
-	public function checkEmptyAndRegularLoginAndPassword() {
-		if (!$this->checkIfEmpty() || !$this->checkRegular()) {
-			return false;
-		}
-		return true;
+	private function checkEmptyAndRegularLoginAndPassword() {
+		$this->checkIfEmpty();
+		$this->checkRegular();
 	}
 
 	private function checkIfEmpty() {
 		if (empty($this->login)) {
-			$_SESSION['error'] = self::ERROR_MSG['wrongLogin'];
-			return false;
+			throw new Exception(self::ERROR_MSG['wrongLogin']);
 		}
 		if (empty($this->password)) {
-			 $_SESSION['error'] = self::ERROR_MSG['wrongPassword'];
-			 return false;
+			throw new Exception(self::ERROR_MSG['wrongPassword']);
 		}
-		return true;
 	}
 
 	private function checkRegular() {
 		if (!preg_match('%^[a-zA-Z0-9_-]{1,16}$%', $this->login)) {
-			$_SESSION['error'] = "не прошла регулярка login";
-			return false;
+			throw new Exception("не прошла регулярка login");
 		}
 		if (!preg_match('%^[a-zA-Z0-9_-]{1,16}$%', $this->password)) {
-			$_SESSION['error'] = "не прошла регулярка password";
-			return false;
+			throw new Exception("не прошла регулярка password");
 		}
-		return true;
 	}
 
-	public function verification() {
+	private function checkLoginAndPassword() {
 		$jsonData = file_get_contents($this->urlJson);
 		$json = json_decode($jsonData, true);
 		foreach ($json as $key => $value) {
 			if ($value['user'] == $this->login) {
 				if ($value['password'] == $this->password) {
-					$_SESSION['user'] = $this->login;
-					return true;
+					return;
 				} else {
-					$_SESSION['error'] = "не верный пароль";
-					return false;
+					throw new Exception("не верный пароль");
 				}
 			} 
 		}
-		return $this->createNewUser();
+		$this->createNewUser();
 	}
 
-	public function createNewUser() {
+	private function createNewUser() {
 		$_SESSION['user'] = $this->login;
 		$jsonData = file_get_contents($this->urlJson);
 		$json = json_decode($jsonData, true);
@@ -105,9 +92,7 @@ class Verification
 		);
 		$json[] = $user;
 		$result = json_encode($json, JSON_PRETTY_PRINT);
-
-		if(file_put_contents($this->urlJson, $result)) {
-			return true;
+		if (file_put_contents($this->urlJson, $result)) {
 		}
 	}
 

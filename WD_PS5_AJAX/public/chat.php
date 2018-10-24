@@ -16,14 +16,14 @@ session_start();
 		</div>
 	</header>
 	<section class="chatSection">
-<!-- 		<div class="chatSection__container"> -->
-			<h1>Easy Chat</h1>
-			<p class="user_block">
-			<?php
-				if(isset($_SESSION['login'])) {
-					echo $_SESSION['login'];
-				}
-			?>
+		<h1>Easy Chat</h1>
+		<p class="user_block">
+		<?php
+			if(isset($_SESSION['login'])) {
+				echo $_SESSION['login'];
+			} else
+				header("Location:index.php")
+		?>
 			</p>
 			<p class="exit">
 				<a href="index.php">выйти</a>
