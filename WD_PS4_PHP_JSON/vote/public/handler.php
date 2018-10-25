@@ -1,21 +1,23 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 session_start();
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' ) {
     header("location:index.php"); 
 }
+$config = require_once  dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR .  'config.php';
 
-$config = require_once __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR .  'config.php';
-
-require_once $config['dataBase'];
-$valueVote = require_once $config['valueVote'];
-$dataBase = new DataBase($config['urlJson'], $valueVote);
+require_once DataBase;
+$valueVote = require_once VALUE_VOTE;
+$dataBase = new DataBase(URL_JSON, $valueVote);
 
 
 if (isset($_POST['radio'])) {
 	try{
 		$dataBase->addVote($_POST['radio']);
-		header("Location:result.php");
+		header("Location:result.html");
 	} catch (Exception $e){
 		$_SESSION["error"] = $e->getMessage();
 		header("location:index.php");

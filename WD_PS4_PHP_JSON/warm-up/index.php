@@ -30,11 +30,7 @@
 
 				<form  method="POST" action="php/main.php">
 					<input type="hidden" value="task1" name="submit">
-					<input type="text" name="firstTask" 
-					class="hiddenInput" value="firstTask">
-
-					<input type="number" name="firstNumber">
-					<input type="number" name="secondNumber">
+					<input type="text" name="firstTask" class="hiddenInput" value="firstTask">
 					<input type="submit" name="enter" value="посчитать">
 				</form>
 
@@ -53,8 +49,6 @@
 				<p>2 посчитать сумму чисел от -1000 до 1000, суммируя только числа которые заканчиваются на 2,3, и 7</p>
 				<form action="php/main.php" method="POST">
 					<input type="hidden" value="task2" name="submit">
-					<input type = "number" name ="firstNumberSecondTask">
-					<input type = "number" name = "secondNumberSecondTask">
 					<input type = "submit" name = "enterSecondTask" value="посчитать">
 					<input type="hidden" value="task2" name="enter" >
 				</form>
@@ -149,5 +143,7 @@
 			<h2>cool</h2>
 		</div>
 	</footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+	<script src="js/index.js"></script>
 </body>
 </html>

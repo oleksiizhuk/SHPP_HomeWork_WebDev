@@ -26,14 +26,8 @@ switch ($_SESSION['task']) {
 header("Location:../index.php");
 
 function firstTask() {
-	$first = $_POST['firstNumber'];
-	$seconds = $_POST['secondNumber'];
-	if (!isNumeric($first) || !isNumeric($seconds)) {
-		return "ошибка";
-	}
-	if ($seconds < $first) {
-		[$first , $seconds] = [$seconds, $first];
-	}
+	$first = -1000;
+	$seconds = 1000;
 	$result = 0;
 	for ($i = $first; $i <= $seconds; $i++) {
 		$result += $i;
@@ -42,14 +36,8 @@ function firstTask() {
 }
 
 function secondTask() {
-	$firstNumber = $_POST['firstNumberSecondTask'];
-	$secondNumber = $_POST['secondNumberSecondTask'];
-	if (!isNumeric($firstNumber) || !isNumeric($secondNumber)) {
-			return "ошибка";
-	}
-	if ($secondNumber < $firstNumber) {
-		[$firstNumber , $secondNumber ] = [$secondNumber, $firstNumber];
-	}
+	$first = -1000;
+	$seconds = 1000;
 	$result = 0;
 	for ($i = $firstNumber; $i <= $secondNumber; $i++) {
 		$check = $i % 10;
@@ -99,10 +87,10 @@ function sixTask() {
 	for ($i = 0; $i < 100; $i++) {
 		$arr[$i] = rand(1,10);
 	}
-	$tempArr = array_unique($arr);
-	sort($tempArr);
-	$tempArr = array_reverse($tempArr);
-	return $tempArr;
+	$ressult = array_unique($arr);
+	sort($ressult);
+	$ressult = array_reverse($ressult);
+	return $ressult;
 }
 
 function isNumeric($val) {

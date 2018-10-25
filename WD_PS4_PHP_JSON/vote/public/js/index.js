@@ -5,6 +5,9 @@ $(function () {
 		type: "POST",
 		data: 'getJson=',
 		success(ressponce) {
+			if(!ressponce) {
+				return;
+			}
 			jsonToGoogleCharts($.parseJSON(ressponce));
 		}
 	});

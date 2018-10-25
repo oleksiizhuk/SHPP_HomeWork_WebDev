@@ -51,6 +51,7 @@
 					if (isset($_SESSION['error'])) {
 						echo $_SESSION['error'];
 					}
+					session_unset();
 					session_destroy();
 				?>
 		</div>   
