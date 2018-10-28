@@ -1,6 +1,8 @@
 <?php
-//use User\UserCheck;
 session_start();
+if(!isset($_SESSION['login'])) {
+	header("Location:index.php");			
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,10 +21,7 @@ session_start();
 		<h1>Easy Chat</h1>
 		<p class="user_block">
 		<?php
-			if(isset($_SESSION['login'])) {
-				echo $_SESSION['login'];
-			} else
-				header("Location:index.php")
+			echo $_SESSION['login'];
 		?>
 			</p>
 			<p class="exit">
@@ -30,13 +29,13 @@ session_start();
 			</p>
 			<div class="chatSection__container">
 				<div class="chatSection__container__chatWindow">
-<!-- 					<div class="bubblechat left">
+<!--                    <div class="bubblechat left">
 					<p><span>User: </span> Hey there! What's up?</p>
 				</div>
 				<div class="bubblechat right">
 					<p><span>User: </span> Hey there! What's up?</p>
 				</div>
-				 -->				</div>
+				 -->                </div>
 			</div class="chatSection__container">
 
 			<form action="#" class="chatSection__form">

@@ -1,11 +1,15 @@
 <?php
 
-return[
-	'Verification' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'app' .DIRECTORY_SEPARATOR. 'Verification.php',
-	
-	'UnloadFromJson' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'app' .DIRECTORY_SEPARATOR. 'UnloadFromJson.php',
-	
-	'messageJson' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR . 'message.json',
+define("DIR", dirname(__DIR__) . DIRECTORY_SEPARATOR);
 
-	'usersJson' => __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR . 'users.json'
+return[
+	'Verification' => DIR . 'app' .DIRECTORY_SEPARATOR. 'Verification.php',
+	
+	'JsonHandler' => DIR . 'app' .DIRECTORY_SEPARATOR. 'JsonHandler.php',
+
+	"CheckJsonFile" => DIR . 'app' . DIRECTORY_SEPARATOR . 'CheckJsonFile.PHP',
+	
+	'messageJson' => DIR . 'json_database' . DIRECTORY_SEPARATOR . 'message.json',
+
+	'usersJson' => DIR . 'json_database' . DIRECTORY_SEPARATOR . 'users.json'
 ];

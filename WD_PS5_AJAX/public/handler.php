@@ -1,9 +1,13 @@
 <?php
-session_start();
 if ($_SERVER['REQUEST_METHOD'] !== 'POST' ) {
     header("location:index.php"); 
 }
-$config = require __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$config = require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
+require_once $config['CheckJsonFile'];
 
 if (isset($_POST['submit'])) {
 	require_once $config['Verification'];
@@ -18,8 +22,8 @@ if (isset($_POST['submit'])) {
 }
 
 if (isset($_POST['getMsg'])) {
-    require_once $config['UnloadFromJson'];
-	$UnloadMsg = new UnloadFromJson($config['messageJson']);
+    require_once $config['JsonHandler'];
+	$UnloadMsg = new JsonHandler($config['messageJson']);
 	try{
 		$message = $UnloadMsg->getMassage();
 		print_r($message);
@@ -29,8 +33,8 @@ if (isset($_POST['getMsg'])) {
 }
 
 if (isset($_POST['addNewMsg'])) {
-	require_once $config['UnloadFromJson'];
-	$userCheck = new UnloadFromJson($config['messageJson']);
+	require_once $config['JsonHandler'];
+	$userCheck = new JsonHandler($config['messageJson']);
 	$message = $_POST['addNewMsg'];
 	$data = date("H:i:s");
 	$dateToSecond = strtotime(date("Y-m-d H:i:s"));
@@ -44,8 +48,8 @@ if (isset($_POST['addNewMsg'])) {
 
 if (isset($_POST['checkNewMessage'])) {
 	$count = $_POST['checkNewMessage'];
-	require_once $config['UnloadFromJson'];
-	$UnloadMsg = new UnloadFromJson($config['messageJson']);
+	require_once $config['JsonHandler'];
+	$UnloadMsg = new JsonHandler($config['messageJson']);
 
 	try{
 		$message = $UnloadMsg->unloadNewMessage($_POST['checkNewMessage']);

@@ -1,18 +1,17 @@
 <?php
-// namespace User;
-
 class Verification
 {
   private const ERROR_MSG = [
-	'wrongPassword' => 'введите пароль',
-	'wrongLogin' => 'введите логин'
+	'emptyPass' => 'введите пароль',
+	'emptyLogin' => 'введите логин',
+	'wrongRegularLoggin' => 'Длина имени пользователя должна быть от 1 до 16 символов',
+	'wrongRegularPass' => 'Длина пароля пользователя должна быть от 1 до 16 символов',
+	'wronngPass' => 'не верный пароль'
   ];
 
 	private $urlJson;
 	private $login;
 	private $password;
-	private $database; 
-	private $template = [];
 
 	public function __construct ($login, $password, $urlJson) {
 		$this->login = $login;
@@ -21,27 +20,9 @@ class Verification
 	}
 	
 	public function verification() {
-			$this->checkJsonFile();
-			$this->checkEmptyAndRegularLoginAndPassword();
-			$this->checkLoginAndPassword();
-	}
-
-	private function checkJsonFile() {
-		if (!file_exists($this->urlJson)) {
-			$this->createNewJsonFile();
-		}
-		if (!is_file($this->urlJson) && !is_readable($this->urlJson) && !is_writable($this->urlJson)) {
-			throw new Exception('Incorrect db');
-		}	
-		$this->database = json_decode(file_get_contents($this->urlJson), true);
-		if (!$this->database && json_last_error()) {
-			throw new Exception("at An encoding/decoding error has occurred.");
-		}
-	}
-
-	private function createNewJsonFile() {
-		$result = json_encode($this->template, JSON_PRETTY_PRINT);
-		file_put_contents($this->urlJson, $result);
+		CheckJsonFile::check($this->urlJson);
+		$this->checkEmptyAndRegularLoginAndPassword();
+		$this->checkLoginAndPassword();
 	}
 
 	private function checkEmptyAndRegularLoginAndPassword() {
@@ -51,19 +32,19 @@ class Verification
 
 	private function checkIfEmpty() {
 		if (empty($this->login)) {
-			throw new Exception(self::ERROR_MSG['wrongLogin']);
+			throw new Exception(self::ERROR_MSG['emptyLogin']);
 		}
 		if (empty($this->password)) {
-			throw new Exception(self::ERROR_MSG['wrongPassword']);
+			throw new Exception(self::ERROR_MSG['emptyPass']);
 		}
 	}
 
 	private function checkRegular() {
 		if (!preg_match('%^[a-zA-Z0-9_-]{1,16}$%', $this->login)) {
-			throw new Exception("не прошла регулярка login");
+			throw new Exception(self::ERROR_MSG['wrongRegularLoggin']);
 		}
 		if (!preg_match('%^[a-zA-Z0-9_-]{1,16}$%', $this->password)) {
-			throw new Exception("не прошла регулярка password");
+			throw new Exception(self::ERROR_MSG['wrongRegularPass']);
 		}
 	}
 
@@ -75,7 +56,7 @@ class Verification
 				if ($value['password'] == $this->password) {
 					return;
 				} else {
-					throw new Exception("не верный пароль");
+					throw new Exception(self::ERROR_MSG['wronngPass']);
 				}
 			} 
 		}
@@ -95,5 +76,4 @@ class Verification
 		if (file_put_contents($this->urlJson, $result)) {
 		}
 	}
-
 }
