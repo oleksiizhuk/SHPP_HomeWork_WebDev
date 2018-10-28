@@ -17,26 +17,20 @@ if(!isset($_SESSION['login'])) {
 		<div class="container__header">
 		</div>
 	</header>
+	<p class="exit">
+			<a href="index.php">выйти</a>
+		</p>
 	<section class="chatSection">
 		<h1>Easy Chat</h1>
 		<p class="user_block">
 		<?php
 			echo $_SESSION['login'];
 		?>
-			</p>
-			<p class="exit">
-				<a href="index.php">выйти</a>
-			</p>
-			<div class="chatSection__container">
-				<div class="chatSection__container__chatWindow">
-<!--                    <div class="bubblechat left">
-					<p><span>User: </span> Hey there! What's up?</p>
-				</div>
-				<div class="bubblechat right">
-					<p><span>User: </span> Hey there! What's up?</p>
-				</div>
-				 -->                </div>
-			</div class="chatSection__container">
+		</p>
+		<div class="chatSection__container">
+			<div class="chatSection__container__chatWindow">
+              </div>
+		</div class="chatSection__container">
 
 			<form action="#" class="chatSection__form">
 				<input type="text" class="inputSend" id="inputSend">
