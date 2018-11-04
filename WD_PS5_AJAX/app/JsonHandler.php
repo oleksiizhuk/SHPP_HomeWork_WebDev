@@ -18,17 +18,13 @@ class JsonHandler
 	}
 	public function addNewMessageToJson($data, $message) {
         $dataBase = CheckJsonFile::check($this->urlJson);
-		$this->addNewMsg($data, $message,$dataBase);
+		$this->addNewMsg($data, $message, $dataBase);
     }
     public function unloadNewMessage($maxId) {
         $dataBase = CheckJsonFile::check($this->urlJson);
     	return $this->getLastMessage($maxId, $dataBase);
     }
 
-    /**
-     * @param $dataBase
-     * @return bool|string
-     */
     public function unloadMessage($dataBase) {
 		$timeToStr = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")));
 		$newArray = array();
@@ -77,7 +73,6 @@ class JsonHandler
         $dataBase[] = $newMessage;
     	$result = json_encode($dataBase, JSON_PRETTY_PRINT);
         file_put_contents($this->urlJson, $result);
-        return $newMessage;
 	}
 
 }
