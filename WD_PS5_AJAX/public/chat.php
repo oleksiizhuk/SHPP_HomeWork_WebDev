@@ -18,7 +18,7 @@ if(!isset($_SESSION['login'])) {
 		</div>
 	</header>
 	<p class="exit">
-			<a href="index.php">выйти</a>
+			<a href="index.php" id="exit">выйти</a>
 		</p>
 	<section class="chatSection">
 		<h1>Easy Chat</h1>

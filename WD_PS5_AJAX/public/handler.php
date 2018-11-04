@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
 
 if (isset($_POST['getMsg'])) {
     require_once $config['JsonHandler'];
-	$UnloadMsg = new JsonHandler($config['messageJson']);
+	$UnloadMsg = new JsonHandler($config['messageBase']);
 	try{
 		$message = $UnloadMsg->getMassage();
 		print_r($message);
@@ -34,7 +34,7 @@ if (isset($_POST['getMsg'])) {
 
 if (isset($_POST['addNewMsg'])) {
 	require_once $config['JsonHandler'];
-	$userCheck = new JsonHandler($config['messageJson']);
+	$userCheck = new JsonHandler($config['messageBase']);
 	$message = $_POST['addNewMsg'];
 	$data = date("H:i:s");
 	$dateToSecond = strtotime(date("Y-m-d H:i:s"));
@@ -47,10 +47,8 @@ if (isset($_POST['addNewMsg'])) {
 }
 
 if (isset($_POST['checkNewMessage'])) {
-	$count = $_POST['checkNewMessage'];
 	require_once $config['JsonHandler'];
-	$UnloadMsg = new JsonHandler($config['messageJson']);
-
+	$UnloadMsg = new JsonHandler($config['messageBase']);
 	try{
 		$message = $UnloadMsg->unloadNewMessage($_POST['checkNewMessage']);
 		print_r(json_encode($message, JSON_PRETTY_PRINT));
@@ -58,7 +56,10 @@ if (isset($_POST['checkNewMessage'])) {
 		getError($exception->getMessage());
 	}
 }
-
+if(isset($_POST['logout'])) {
+    unset($_SESSION['login']);
+    header("location:index.php");
+}
 function getError($error) {
 	$_SESSION["error"] = $error;
 	header("location:index.php");

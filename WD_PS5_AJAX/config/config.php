@@ -9,7 +9,7 @@ return[
 
 	"CheckJsonFile" => DIR . 'app' . DIRECTORY_SEPARATOR . 'CheckJsonFile.PHP',
 	
-	'messageJson' => DIR . 'json_database' . DIRECTORY_SEPARATOR . 'message.json',
+	'messageBase' => DIR . 'json_database' . DIRECTORY_SEPARATOR . 'message.json',
 
 	'usersJson' => DIR . 'json_database' . DIRECTORY_SEPARATOR . 'users.json'
 ];

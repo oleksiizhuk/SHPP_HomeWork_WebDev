@@ -15,5 +15,6 @@ class CheckJsonFile
 		if (!$dataBase && json_last_error()) {
 			throw new Exception("at An encoding/decoding error has occurred.");
 		}
+		return $dataBase;
 	}
 }

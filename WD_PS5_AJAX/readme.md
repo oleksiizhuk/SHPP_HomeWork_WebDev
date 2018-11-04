@@ -8,6 +8,7 @@ Easy Chat
 	<li>XAMMP OR openServer
 		<p>how install XAMPP - https://www.youtube.com/watch?v=Z9PrUapDPlU</p>
 	</li>
+	<li>Operating system Windows</li>
 	<li>understand the basics of chat</li>
 </ul>
 

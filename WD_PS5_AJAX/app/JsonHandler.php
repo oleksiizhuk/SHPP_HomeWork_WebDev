@@ -13,31 +13,31 @@ class JsonHandler
 	}
 
 	public function getMassage() {
-		CheckJsonFile::check($this->urlJson);
-		return $this->unloadMessage();
+        $dataBase = CheckJsonFile::check($this->urlJson);
+		return $this->unloadMessage($dataBase);
 	}
 	public function addNewMessageToJson($data, $message) {
-		CheckJsonFile::check($this->urlJson);
-		$this->addNewMsg($data, $message);
+        $dataBase = CheckJsonFile::check($this->urlJson);
+		$this->addNewMsg($data, $message,$dataBase);
     }
     public function unloadNewMessage($maxId) {
-    	CheckJsonFile::check($this->urlJson);
-    	return $this->testArray($maxId);
+        $dataBase = CheckJsonFile::check($this->urlJson);
+    	return $this->getLastMessage($maxId, $dataBase);
     }
 
-    public function unloadMessage()	{
-		$jsonData = file_get_contents($this->urlJson);
-		$json = json_decode($jsonData, true);
+    /**
+     * @param $dataBase
+     * @return bool|string
+     */
+    public function unloadMessage($dataBase) {
 		$timeToStr = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")));
-		$count = 0;
 		$newArray = array();
-		foreach ($json as $key => $value) {
-			$count++;
+        foreach ($dataBase as $key => $value) {
 			$filterToTime = $timeToStr - $value['time'];
 			if ($filterToTime < $this->oneHour) {
-				$newArray[$count]['user'] = $value['user'];
-				$newArray[$count]['message'] = $value['message'];
-				$newArray[$count]['time'] = date("H:i:s", $value['time']);
+                $newArray['user'] = $value['user'];
+                $newArray['message'] = $value['message'];
+                $newArray['time'] = date("H:i:s", $value['time']);
 			}
 		}
 		if (!empty($newArray)) {
@@ -47,20 +47,18 @@ class JsonHandler
 		return false;
 	}
 
-	public function testArray($maxId) {
-		$jsonData = file_get_contents($this->urlJson);
-		$json = json_decode($jsonData, true);
+	public function getLastMessage($maxId, $dataBase) {
+        if ($maxId > count($dataBase)) {
+            return false;   // return;
+        }
 		$timeToStr = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")));
 		$arr = [];
-		for($i = 1, $k = count($json); $i < $k; $i++) {
-			$filterToTime = $timeToStr - $json[$i]['time'];
-			if ($filterToTime < $this->oneHour) { 
-				$json[$i]['time'] = date("H:i:s", $json[$i]['time']); 
-				$arr[] = $json[$i];
+		for($i = 1, $k = count($dataBase); $i < $k; $i++) {
+			$filterToTime = $timeToStr - $dataBase[$i]['time'];
+			if ($filterToTime < $this->oneHour) {
+                $dataBase[$i]['time'] = date("H:i:s", $dataBase[$i]['time']);
+				$arr[] = $dataBase[$i];
 			}
-		}
-		if ($maxId > count($json)) {
-			return;
 		}
 		$result = [];
 		for ($i = $maxId; $i < count($arr); $i++) { 
@@ -69,19 +67,17 @@ class JsonHandler
 		return $result;
 	}
 
-	public function addNewMsg($data, $message) {
-		$jsonData = file_get_contents($this->urlJson);
-		$json = json_decode($jsonData, true);
-		$user = array(
+    public function addNewMsg($data, $message, $dataBase) {
+        $message = htmlspecialchars($message,ENT_QUOTES);
+		$newMessage = array(
     		"user" => $_SESSION['login'],
     		"message" => $message,
     		"time" => $data
     	);
-    	$json[] = $user;
-    	$result = json_encode($json, JSON_PRETTY_PRINT);
-
-    	if(file_put_contents($this->urlJson, $result)) {
-    	}
+        $dataBase[] = $newMessage;
+    	$result = json_encode($dataBase, JSON_PRETTY_PRINT);
+        file_put_contents($this->urlJson, $result);
+        return $newMessage;
 	}
 
 }

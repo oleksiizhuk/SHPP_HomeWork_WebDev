@@ -3,6 +3,10 @@ $(function() {
 	setInterval(checkNewMessage, 2000);
 	let maxId = 0;
 
+    $('#exit').click(function(event){
+        $.post("handler.php", {logout: ""});
+    });
+
 	$('#sendMsg').click(function(event) {
 		event.preventDefault();
 		const inputSend = $('#inputSend');
@@ -92,4 +96,5 @@ $(function() {
 			maxId++;
 		}
 	}
+
 });

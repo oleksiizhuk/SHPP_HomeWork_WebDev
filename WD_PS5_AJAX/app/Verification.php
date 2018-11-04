@@ -1,7 +1,7 @@
 <?php
 class Verification
 {
-  private const ERROR_MSG = [
+   const ERROR_MSG = [
 	'emptyPass' => 'введите пароль',
 	'emptyLogin' => 'введите логин',
 	'wrongRegularLoggin' => 'Длина имени пользователя должна быть от 1 до 16 символов',
@@ -20,14 +20,10 @@ class Verification
 	}
 	
 	public function verification() {
-		CheckJsonFile::check($this->urlJson);
-		$this->checkEmptyAndRegularLoginAndPassword();
-		$this->checkLoginAndPassword();
-	}
-
-	private function checkEmptyAndRegularLoginAndPassword() {
+        $dataBase = CheckJsonFile::check($this->urlJson);
 		$this->checkIfEmpty();
 		$this->checkRegular();
+		$this->checkLoginAndPassword($dataBase);
 	}
 
 	private function checkIfEmpty() {
@@ -48,10 +44,8 @@ class Verification
 		}
 	}
 
-	private function checkLoginAndPassword() {
-		$jsonData = file_get_contents($this->urlJson);
-		$json = json_decode($jsonData, true);
-		foreach ($json as $key => $value) {
+	private function checkLoginAndPassword($dataBase) {
+		foreach ($dataBase as $key => $value) {
 			if ($value['user'] == $this->login) {
 				if ($value['password'] == $this->password) {
 					return;
@@ -60,19 +54,17 @@ class Verification
 				}
 			} 
 		}
-		$this->createNewUser();
+		$this->createNewUser($dataBase);
 	}
 
-	private function createNewUser() {
-		$_SESSION['user'] = $this->login;
-		$jsonData = file_get_contents($this->urlJson);
-		$json = json_decode($jsonData, true);
+    private function createNewUser($dataBase) {
+		$_SESSION['login'] = $this->login;
 		$user = array(
 			"user" => $this->login,
 			"password" => $this->password
 		);
-		$json[] = $user;
-		$result = json_encode($json, JSON_PRETTY_PRINT);
+        $dataBase[] = $user;
+		$result = json_encode($dataBase, JSON_PRETTY_PRINT);
 		if (file_put_contents($this->urlJson, $result)) {
 		}
 	}
