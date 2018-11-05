@@ -1,41 +1,43 @@
 $(function () {
-    unloadMessageWithJson();
     setInterval(checkNewMessage, 1000);
-    let maxId = 0;
+    let maxMessageId = 0;
 
-    $('#exit').click(function (event) {
+    $('#logout').click(function () {
         $.post("handler.php", {logout: ""});
     });
 
+
     $('#sendMsg').click(function (event) {
         event.preventDefault();
-        const inputSend = $('#inputSend');
-        const message = inputSend.val();
-        const checkMessage = message.replace(/ /g, '');
-        if (!checkMessage) {
-            inputSend.val('');
+        const $inputSend = $('#inputSend');
+        const message = $inputSend.val();
+        const checkMessage = message.replace(/\s+/g, '');
+        if (!checkMessage){
+            $inputSend.val('');
             return;
         }
-        inputSend.val('');
         $.ajax({
             type: 'POST',
             url: 'handler.php',
-            data: 'addNewMsg=' + message
+            data: 'addNewMsg=' + message,
+            success: function (){
+                $inputSend.val('');
+            }
         });
     });
+
 
     function checkNewMessage() {
         $.ajax({
             type: 'POST',
             url: 'handler.php',
-            data: "checkNewMessage=" + maxId,
+            data: "checkNewMessage=" + maxMessageId,
             success: function (ressponce) {
-                console.log("maxId - " + maxId);
-                if (!ressponce.length) {
+                 console.log("ressponce - " + ressponce);
+                if (!ressponce) {
                     console.log("не было обновленией");
                     return;
                 }
-                console.log("ressponce - " + ressponce);
                 let obj = $.parseJSON(ressponce);
                 console.log(obj);
                 createUnloadedMessage(obj);
@@ -43,23 +45,9 @@ $(function () {
         });
     }
 
-    function unloadMessageWithJson() {
-        $.ajax({
-            type: "POST",
-            url: "handler.php",
-            data: "getMsg",
-            success: function (ressponce) {
-                if (!ressponce.length) {
-                    return;
-                }
-                const objMsg = $.parseJSON(ressponce);
-                createUnloadedMessage(objMsg);
-            }
-        });
-    }
-
 
     function createUnloadedMessage(objMsg) {
+        const $chatSection = $('.chatSection__container');
         for (let value in objMsg) {
             $(`<div class="bubblechat left">
 					<p>
@@ -72,8 +60,10 @@ $(function () {
 					</p>
 				</div>`)
                 .appendTo(".chatSection__container__chatWindow");
-            maxId++;
+            maxMessageId++;
         }
+        $chatSection.scrollTop($chatSection.prop("scrollHeight"));
     }
+
 
 });

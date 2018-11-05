@@ -17,7 +17,7 @@ session_start();
 	<main>
 		<div class="main__container">
 			<h1>Easy Chat</h1>
-			
+		
 			<form action="handler.php" id="form" method="post">
 				<label for="login" class="label">Enter your name</label>
 				<input type="text" placeholder="John Doe" id="login" name="login">
@@ -28,14 +28,13 @@ session_start();
 		</div>
 		<div class="erBlock">
 			<?php
-              if(isset($_SESSION['login'])) {
-                header('location:chat.php');
-            }
-
+        if(isset($_SESSION['login'])) {
+          header('location:chat.php');
+        }
 			if (isset($_SESSION['error'])) {
 				echo $_SESSION['error'];
+        unset($_SESSION['error']);
 			}
-			//unset($_SESSION['error']);
 		?>
 		</div>
 		

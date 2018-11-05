@@ -1,0 +1,7 @@
+
+=font-face($family, $path)
+	@font-face
+		font-family: $family
+		src: url('#{$path}.eot')
+		src: url('#{$path}.woff') format('woff'), url('#{$path}.ttf') format('truetype')
++font-face("Pacifico", "../fonts/Pacifico/Pacifico")
