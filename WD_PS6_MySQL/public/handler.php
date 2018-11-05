@@ -6,37 +6,38 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-dirname('CONFIG_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
+define('CONFIG_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
+var_dump(CONFIG_PATH);
 $config = require_once CONFIG_PATH . 'config.php';
 $configDB = require_once CONFIG_PATH . 'configDataBase.php';
 
 require_once $config['dataBase'];
-//$login = $_POST['login'];
-//$password = $_POST['password'];
+require_once $config['HandlerMessage'];
+$login = $_POST['login'];
+$password = $_POST['password'];
 
-var_dump($config);
-
-function __autoload($className) {
+function __autoload($className)
+{
     $classPeices = explode("\\", $className);
 }
 
 try {
-    $DB = new Dbh(configDB['localhost'], configDB['root'], configDB['password'], configDB['dbName']);
-} catch(Exception $exception){
+    $DB = new Dbh($configDB['localhost'], $configDB['root'], $configDB['password'], $configDB['dbName']);
+} catch (Exception $exception) {
     getError($exception->getMessage());
 }
 
+$test = new HandlerMessage();
+
+$test->getOfMysql();
 
 
-
-function getError($error) {
+function getError($error)
+{
     $_SESSION["error"] = $error;
     header("location:index.php");
 }
-
-
 return;
-
 
 
 $link = mysqli_connect(LOCALHOST, USER, PASSWORD, DATABASE);
@@ -49,7 +50,7 @@ $sql_search = "SELECT name, password FROM user WHERE name = 'admin21'";
 $test = mysqli_query($link, $sql_search);
 $test = mysqli_query($link, $sql_search);
 $row = mysqli_fetch_array($test, MYSQLI_ASSOC);
-if ($row){
+if ($row) {
 
     //    $row = mysqli_fetch_all($test, MYSQLI_ASSOC);
     //    foreach ($row as $column => $value) {

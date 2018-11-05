@@ -23,6 +23,7 @@ class Dbh
             throw new Exception( 'ошибка подключению к базе данных
              ('.mysqli_connect_errno().'): '.mysqli_connect_error());
         }
+        $select_db = mysqli::select_db('chat');
         echo "подключенно";
     }
 

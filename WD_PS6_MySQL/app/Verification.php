@@ -9,14 +9,12 @@ class Verification
         'wronngPass' => 'не верный пароль'
     ];
 
-    private $urlJson;
     private $login;
     private $password;
 
-    public function __construct ($login, $password, $urlJson) {
+    public function __construct ($login, $password) {
         $this->login = $login;
         $this->password = $password;
-        $this->urlJson = $urlJson;
     }
 
     public function verification() {
