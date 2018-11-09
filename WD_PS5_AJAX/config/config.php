@@ -1,15 +1,16 @@
 <?php
 
-define("DIR", dirname(__DIR__) . DIRECTORY_SEPARATOR);
+define("APP_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR . 'app' . DIRECTORY_SEPARATOR);
+define("JSON_PATH", dirname(__DIR__) . DIRECTORY_SEPARATOR . 'json_database' . DIRECTORY_SEPARATOR);
 
-return[
-	'Verification' => DIR . 'app' .DIRECTORY_SEPARATOR. 'Verification.php',
-	
-	'JsonHandler' => DIR . 'app' .DIRECTORY_SEPARATOR. 'JsonHandler.php',
+return [
+    'Verification' => APP_PATH . 'Verification.php',
 
-	"CheckJsonFile" => DIR . 'app' . DIRECTORY_SEPARATOR . 'CheckJsonFile.PHP',
-	
-	'messageBase' => DIR . 'json_database' . DIRECTORY_SEPARATOR . 'message.json',
+    'JsonHandler' => APP_PATH . 'JsonHandler.php',
 
-	'usersJson' => DIR . 'json_database' . DIRECTORY_SEPARATOR . 'users.json'
+    "CheckJsonFile" => APP_PATH . 'CheckJsonFile.PHP',
+
+    'messageBase' => JSON_PATH . 'message.json',
+
+    'usersJson' => JSON_PATH . 'users.json'
 ];

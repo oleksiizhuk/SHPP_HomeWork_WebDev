@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection PhpUnhandledExceptionInspection */
 
 /**
  * check url json and unload msg with json.
@@ -14,57 +14,66 @@ class JsonHandler
         $this->oneHour = 3600;
     }
 
-    public function addNewMessageToJson($data, $message)
+    public function addNewMessageToJson($message)
     {
         $dataBase = CheckJsonFile::check($this->urlJson);
-        $this->addNewMsg($data, $message, $dataBase);
+        $this->addNewMsg($message, $dataBase);
     }
 
-    public function unloadNewMessage($maxId)
+    public function unloadNewMessage($lastId)
     {
         $dataBase = CheckJsonFile::check($this->urlJson);
-        return $this->getLastMessage($maxId, $dataBase);
+        return $this->getLastMessage($lastId, $dataBase);
     }
 
-    public function getLastMessage($maxId, $dataBase)
+    public function getLastMessage($lastId, $dataBase)
     {
-        if ($maxId > count($dataBase)) {
-            return false;   // return;
+        $lastIdMessage = $this->checkCount($dataBase);
+        if (!$lastIdMessage) {
+            http_response_code(201);
+            die();
         }
-        $timeToStr = time("Y-m-d H:i:s", strtotime(date("Y-m-d H:i:s")));
+
+        if ($lastId >= $lastIdMessage) {
+            http_response_code(202);
+            die();
+        }
+        $timeToStr = time("Y-m-d H:i:s", $this->timeMutatorToString());
         $arr = array();
         foreach ($dataBase as $key => $value) {
             $filterToTime = $timeToStr - $value['time'];
-            if ($filterToTime < $this->oneHour) {
+            $testId = $value['id'];
+
+            if ($filterToTime < $this->oneHour && $lastId < $testId) {
                 $value['time'] = date("H:i:s", $value['time']);
                 $arr [] = $value;
             }
         }
-        /*for($i = 1; $i < count($dataBase); $i++) {
-            $filterToTime = $timeToStr - $dataBase[$i]['time'];
-            if ($filterToTime < $this->oneHour) {
-                $dataBase[$i]['time'] = date("H:i:s", $dataBase[$i]['time']);
-                $arr[] = $dataBase[$i];
-            }
-        }*/
-
-        if (count($arr) === intval ($maxId)) {
-            return false;
-        }
-        $result = [];
-        for ($i = $maxId; $i < count($arr); $i++) {
-            $result[] = $arr[$i];
-        }
-        return json_encode($result);
+        return json_encode($arr);
     }
 
-    public function addNewMsg($data, $message, $dataBase)
+    private function addNewMsg($message, $dataBase)
     {
+        $dateToSecond = $this->timeMutatorToString();
         $message = htmlspecialchars($message, ENT_QUOTES);
-        $newMessage = array("user" => $_SESSION['login'], "message" => $message, "time" => $data);
+        $id = $this->checkCount($dataBase);
+        $newMessage = array("user" => $_SESSION['login'], "message" => $message, "time" => $dateToSecond, "id" => ++$id);
         $dataBase[] = $newMessage;
         $result = json_encode($dataBase, JSON_PRETTY_PRINT);
         file_put_contents($this->urlJson, $result);
+    }
+
+    private function timeMutatorToString()
+    {
+        return strtotime(date("Y-m-d H:i:s"));
+    }
+
+    private function checkCount($dataBase)
+    {
+        if (count($dataBase) == 0) {
+            return 0;
+        }
+        return $dataBase[count($dataBase) - 1]["id"];
     }
 
 }

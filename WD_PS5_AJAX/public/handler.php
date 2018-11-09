@@ -19,19 +19,19 @@ if (isset($_POST['submit'])) {
     } catch (Exception $exception) {
         getError($exception->getMessage());
     }
+    exit();
 }
 
 
 if (isset($_POST['addNewMsg'])) {
     require_once $config['JsonHandler'];
-    $userCheck = new JsonHandler($config['messageBase']);
-    $message = $_POST['addNewMsg'];
-    $dateToSecond = strtotime(date("Y-m-d H:i:s"));
+    $addMsg = new JsonHandler($config['messageBase']);
     try {
-        $userCheck->addNewMessageToJson($dateToSecond, $message);
+        $addMsg->addNewMessageToJson($_POST['addNewMsg']);
     } catch (Exception $exception) {
         getError($exception->getMessage());
     }
+    exit();
 }
 
 
@@ -43,6 +43,7 @@ if (isset($_POST['checkNewMessage'])) {
     } catch (Exception $exception) {
         getError($exception->getMessage());
     }
+    exit();
 }
 
 
@@ -50,7 +51,6 @@ if (isset($_POST['logout'])) {
     unset($_SESSION['login']);
     header("location:index.php");
 }
-
 
 function getError($error)
 {

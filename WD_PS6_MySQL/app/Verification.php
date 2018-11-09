@@ -1,5 +1,5 @@
 <?php
-class Verification
+class Verification extends Dbh
 {
     const ERROR_MSG = [
         'emptyPass' => 'введите пароль',
@@ -12,9 +12,10 @@ class Verification
     private $login;
     private $password;
 
-    public function __construct ($login, $password) {
+    public function __construct ($login, $passUser, $localhost, $root, $passwordDB, $dbName) {
         $this->login = $login;
-        $this->password = $password;
+        $this->password = $passUser;
+        parent::__construct($localhost, $root, $passwordDB, $dbName);
     }
 
     public function verification() {
@@ -23,6 +24,7 @@ class Verification
     private function checkEmptyAndRegularLoginAndPassword() {
         $this->checkIfEmpty();
         $this->checkRegular();
+        parent::checkLoginAndPassword($this->login, $this->password);
     }
     private function checkIfEmpty() {
         if (empty($this->login)) {

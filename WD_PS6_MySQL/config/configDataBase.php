@@ -9,5 +9,9 @@ return [
     'localhost' => 'localhost',
     'root' => 'root',
     'password' => '',
-    'dbName' => 'chat'
+    'dbName' => 'chat',
+    'charset' => 'utf8'
 ];
+
+
+

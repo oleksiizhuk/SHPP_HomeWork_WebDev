@@ -1,42 +1,54 @@
 <?php /** @noinspection PhpIncludeInspection */
-/*if ($_SERVER['REQUEST_METHOD'] !== 'POST' ) {
-    header("location:index.php"); 
-}*/
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("location:index.php");
+}
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 define('CONFIG_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
-var_dump(CONFIG_PATH);
+
 $config = require_once CONFIG_PATH . 'config.php';
 $configDB = require_once CONFIG_PATH . 'configDataBase.php';
 
 require_once $config['dataBase'];
 require_once $config['HandlerMessage'];
+require_once $config['Verification'];
+
+
 $login = $_POST['login'];
 $password = $_POST['password'];
+
+//$db = new Dbh($configDB['localhost'], $configDB['root'], $configDB['password'], $configDB['dbName'], $configDB['charset']);
+
+
+if (isset($_POST['submit'])) {
+    try {
+        $verification = new Verification($_POST['login'], $_POST['password'], $configDB['localhost'], $configDB['root'], $configDB['password'], $configDB['dbName'], $configDB['charset']);
+        $verification->verification();
+    } catch (Exception $exception) {
+        getError($exception);
+    }
+}
+
+
+//$db->execute("INSERT INTO `user` SET  `name` = $login, `password` = $password ");
+
+
+$test = new HandlerMessage();
+
 
 function __autoload($className)
 {
     $classPeices = explode("\\", $className);
 }
 
-try {
-    $DB = new Dbh($configDB['localhost'], $configDB['root'], $configDB['password'], $configDB['dbName']);
-} catch (Exception $exception) {
-    getError($exception->getMessage());
-}
-
-$test = new HandlerMessage();
-
-$test->getOfMysql();
-
-
 function getError($error)
 {
     $_SESSION["error"] = $error;
-    header("location:index.php");
+    //header("location:index.php");
 }
+
 return;
 
 
