@@ -25,6 +25,10 @@ $(function () {
         }).done(function (ressponce) {
             console.log(ressponce);
             $inputSend.val('');
+        }).fail(function (jqXHR) {
+            if (jqXHR.status === 400) {
+                window.location.href = "index.php";
+            }
         });
     });
 
@@ -41,7 +45,10 @@ $(function () {
             setTimeout(checkNewMessage, 1000);
         }).fail(function (jqXHR) {
             console.log(jqXHR.status);
-            setTimeout(checkNewMessage, 999);
+            if (jqXHR.status === 400) {
+                window.location.href = "index.php";
+            }
+            setTimeout(checkNewMessage, 1000);
         });
     }
 

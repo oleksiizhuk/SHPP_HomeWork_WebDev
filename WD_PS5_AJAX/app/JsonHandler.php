@@ -1,8 +1,6 @@
 <?php /** @noinspection PhpUnhandledExceptionInspection */
 
-/**
- * check url json and unload msg with json.
- */
+
 class JsonHandler
 {
     private $urlJson;
@@ -28,17 +26,17 @@ class JsonHandler
 
     public function getLastMessage($lastId, $dataBase)
     {
-        $lastIdMessage = $this->checkCount($dataBase);
-        if (!$lastIdMessage) {
-            http_response_code(201);
-            die();
-        }
+        $this->checkUser();
 
-        if ($lastId >= $lastIdMessage) {
+        $timeToStr = time("Y-m-d H:i:s", $this->timeMutatorToString());
+
+        $lastIdMessage = $this->checkCount($dataBase);
+
+        if (!$lastIdMessage || $lastId >= $lastIdMessage || ($dataBase[count($dataBase) - 1]["time"]) < $timeToStr - $this->oneHour) {
             http_response_code(202);
             die();
         }
-        $timeToStr = time("Y-m-d H:i:s", $this->timeMutatorToString());
+
         $arr = array();
         foreach ($dataBase as $key => $value) {
             $filterToTime = $timeToStr - $value['time'];
@@ -54,6 +52,7 @@ class JsonHandler
 
     private function addNewMsg($message, $dataBase)
     {
+        $this->checkUser();
         $dateToSecond = $this->timeMutatorToString();
         $message = htmlspecialchars($message, ENT_QUOTES);
         $id = $this->checkCount($dataBase);
@@ -74,6 +73,15 @@ class JsonHandler
             return 0;
         }
         return $dataBase[count($dataBase) - 1]["id"];
+    }
+
+    private function checkUser()
+    {
+        if (isset($_SESSION['login'])) {
+            return;
+        }
+        http_response_code(400);
+        die();
     }
 
 }
