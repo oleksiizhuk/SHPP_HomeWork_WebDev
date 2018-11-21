@@ -20,16 +20,16 @@ session_start();
 
         <form action="handler.php" id="form" method="post">
             <label for="login" class="label">Enter your name</label>
-            <input type="text" placeholder="John Doe" id="login" name="login" required>
+            <input type="text" placeholder="John Doe" id="login" name="login">
             <label for="password" class="label">Enter your password</label>
-            <input type="password" placeholder="" id="password" name="password" required>
-            <button id="submit" class="submit" name="submit" type="submit">Submit</button>
+            <input type="password" placeholder="" id="password" name="password">
+            <button id="submit" class="submit" name="submit">Submit</button>
         </form>
     </div>
     <div class="erBlock">
         <?php
         if (isset($_SESSION['login'])) {
-           // header('location:chat.php');
+            header('location:chat.php');
         }
         if (isset($_SESSION['error'])) {
             echo $_SESSION['error'];

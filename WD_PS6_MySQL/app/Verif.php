@@ -1,18 +1,17 @@
 <?php
 
-class Verification
+class Verif extends DataBase
 {
     const ERROR_MSG = ['emptyPass' => 'введите пароль', 'emptyLogin' => 'введите логин', 'wrongRegularLogin' => 'Длина имени пользователя должна быть от 1 до 16 символов', 'wrongRegularPass' => 'Длина пароля пользователя должна быть от 1 до 16 символов', 'wronngPass' => 'не верный пароль'];
 
     private $login;
     private $password;
-    private $link;
 
-    public function __construct($login, $pass, $link)
+    public function __construct($login, $pass, $localhost, $root, $passwordDB, $dbName)
     {
         $this->login = $login;
         $this->password = $pass;
-        $this->link = $link;
+        parent::__construct($localhost, $root, $passwordDB, $dbName);
     }
 
     public function verification()
@@ -22,9 +21,11 @@ class Verification
 
     private function checkEmptyAndRegularLoginAndPassword()
     {
+
         $this->checkIfEmpty();
         $this->checkRegular();
-        $this->checkLoginAndPassword();
+        parent::checkLoginAndPassword($this->login, $this->password);
+
     }
 
     private function checkIfEmpty()
@@ -47,33 +48,4 @@ class Verification
         }
     }
 
-    private function checkLoginAndPassword()
-    {
-        $sql = "SELECT * FROM `user` WHERE name='$this->login'";
-
-        $result = mysqli_query($this->link, $sql);
-        if (!$result) {
-            throw new Exception("Error description: ");
-        }
-
-        $pass = mysqli_fetch_all($result, MYSQLI_ASSOC);
-
-        if (empty($pass)) {
-            $this->createNewUser($this->login, $this->password);
-            return;
-        }
-
-        if ($pass[0]['password'] != $this->password) {
-            throw new Exception("Wrong password");
-        }
-    }
-
-    private function createNewUser($login, $password)
-    {
-        $sql = "INSERT INTO `user` (`id`, `name`, `password`) VALUES (NULL, '$login', '$password')";
-
-        if (!mysqli_query($this->link, $sql)) {
-            throw new Exception('wrongPass');
-        }
-    }
 }

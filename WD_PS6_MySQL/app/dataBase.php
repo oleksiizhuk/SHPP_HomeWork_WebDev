@@ -1,6 +1,6 @@
 <?php
 
-class Dbh
+class DataBase
 {
     private $localhost;
     private $root;
@@ -26,7 +26,6 @@ class Dbh
             throw new Exception('ошибка подключению к базе данных
              (' . mysqli_connect_errno() . '): ' . mysqli_connect_error());
         }
-        echo "connect <br>";
     }
 
 
@@ -44,7 +43,7 @@ class Dbh
         }
 
         if ($categories[0]['password'] != $password) {
-            throw new Exception('Wrong password');
+            throw new Exception("Wrong password");
         }
 
         foreach ($categories as $key => $mass) {
@@ -66,5 +65,45 @@ class Dbh
 
     }
 
+    public function addMessage($message)
+    {
+        if (!isset($_SESSION['user'])) {
+            return;
+        }
+        $login = $_SESSION['user'];
+        $dateToSecond = $this->timeMutatorToString();
+        $message = htmlspecialchars($message, ENT_QUOTES);
+        $sql = "INSERT INTO `message` (`id`, `user`, `message`, `date`) VALUES (NULL, '$login', '$message', '$dateToSecond')";
+
+        if (!mysqli_query($this->link, $sql)) {
+            throw new Exception('wrongPass');
+        }
+    }
+
+    public function checkNewMessage($lastId)
+    {
+        $sql = "SELECT * FROM `message` WHERE `date` > UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 HOUR)) AND id > $lastId";
+
+        $result = mysqli_query($this->link, $sql);
+
+        $numResults = mysqli_num_rows($result);
+        if ($numResults == 0) {
+            http_response_code(202);
+            die();
+        }
+
+        $arr = array();
+        while ($message = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $message['date'] = date('H:i:s', $message['date']);
+            $arr[] = $message;
+        }
+
+        print_r (json_encode($arr));
+    }
+
+    private function timeMutatorToString()
+    {
+        return strtotime(date("Y-m-d H:i:s"));
+    }
 
 }
