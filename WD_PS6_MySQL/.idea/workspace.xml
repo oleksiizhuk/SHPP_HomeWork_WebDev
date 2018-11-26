@@ -65,7 +65,53 @@
     <favorites_list name="WD_PS6_MySQL" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="handler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/handler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="211">
+              <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="chat.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/chat.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-312">
+              <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Просто тестирую - CreateDB.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Просто тестирую - CreateDB.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Verification.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Verification.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-772">
+              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -77,26 +123,30 @@
       <list>
         <option value="$PROJECT_DIR$/app/test.php" />
         <option value="$PROJECT_DIR$/../TEST/app/TestInheritance.php" />
-        <option value="$PROJECT_DIR$/config/configDataBase.php" />
         <option value="$PROJECT_DIR$/public/css/index.sass" />
         <option value="$PROJECT_DIR$/app/Singleton.php" />
         <option value="$PROJECT_DIR$/public/chat.php" />
         <option value="$PROJECT_DIR$/public/index.php" />
-        <option value="$PROJECT_DIR$/app/getErr.php" />
-        <option value="$PROJECT_DIR$/app/createDB.php" />
         <option value="$PROJECT_DIR$/app/dataBase.php" />
         <option value="$PROJECT_DIR$/app/SinglToneConnectToDB.php" />
         <option value="$PROJECT_DIR$/app/VerificationAndSingleTon.php" />
-        <option value="$PROJECT_DIR$/app/SingleTonConnectToDB.php" />
         <option value="$PROJECT_DIR$/testcomposer/composer.json" />
         <option value="$PROJECT_DIR$/testcomposer/app/DB.php" />
         <option value="$PROJECT_DIR$/testcomposer/index.php" />
         <option value="$PROJECT_DIR$/app/V.php" />
-        <option value="$PROJECT_DIR$/config/config.php" />
-        <option value="$PROJECT_DIR$/public/handler.php" />
-        <option value="$PROJECT_DIR$/public/js/index.js" />
+        <option value="$PROJECT_DIR$/public/test.php" />
+        <option value="$PROJECT_DIR$/app/createDB.php" />
+        <option value="$PROJECT_DIR$/app/CreateDB.php" />
+        <option value="$PROJECT_DIR$/app/getErr.php" />
         <option value="$PROJECT_DIR$/app/Verification.php" />
+        <option value="$PROJECT_DIR$/app/GetErrorMessage.php" />
+        <option value="$PROJECT_DIR$/public/js/index.js" />
         <option value="$PROJECT_DIR$/app/HandlerMessage.php" />
+        <option value="$PROJECT_DIR$/app/SingleTonConnectToDB.php" />
+        <option value="$PROJECT_DIR$/config/configDataBase.php" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/public/handler.php" />
+        <option value="$PROJECT_DIR$/config/config.php" />
       </list>
     </option>
   </component>
@@ -114,8 +164,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2" />
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-76" />
-    <option name="y" value="-27" />
+    <option name="x" value="-71" />
+    <option name="y" value="-18" />
     <option name="width" value="1386" />
     <option name="height" value="567" />
   </component>
@@ -124,6 +174,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -144,6 +195,11 @@
             <path>
               <item name="WD_PS6_MySQL" type="b2602c69:ProjectViewProjectNode" />
               <item name="WD_PS6_MySQL" type="462c0819:PsiDirectoryNode" />
+              <item name="dataBase" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="WD_PS6_MySQL" type="b2602c69:ProjectViewProjectNode" />
+              <item name="WD_PS6_MySQL" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -156,7 +212,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -224,11 +279,16 @@
       <workItem from="1542574092876" duration="26094000" />
       <workItem from="1542714869205" duration="6766000" />
       <workItem from="1542794105895" duration="6011000" />
+      <workItem from="1542835803235" duration="1336000" />
+      <workItem from="1542837791662" duration="8081000" />
+      <workItem from="1543054383704" duration="1382000" />
+      <workItem from="1543067791594" duration="4872000" />
+      <workItem from="1543170650265" duration="14663000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="128313000" />
+    <option name="totallyTimeSpent" value="158647000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -241,8 +301,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837664" visible="true" weight="0.15582451" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837664" visible="true" weight="0.16717096" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49926794" weight="0.31768388" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50073206" side_tool="true" weight="0.021103896" />
@@ -260,7 +321,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.0" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -268,12 +329,12 @@
       <window_info anchor="bottom" id="Run" order="2" weight="0.32954547" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837664" visible="true" weight="0.15582451" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49837664" visible="true" weight="0.16717096" />
       <window_info id="Structure" order="1" sideWeight="0.5016234" side_tool="true" weight="0.1354009" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49926794" weight="0.31768388" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.32954547" />
@@ -296,51 +357,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/handler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="48" column="37" selection-start-line="48" selection-start-column="37" selection-end-line="48" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/index.sass">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/dataBase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1860">
-          <caret line="93" column="70" lean-forward="true" selection-start-line="93" selection-start-column="70" selection-end-line="93" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Verification.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="19" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/HandlerMessage.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
@@ -348,13 +364,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dataBase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dataBase.php" />
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
@@ -393,13 +403,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/dataBase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1400">
-          <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/app/dataBase.php" />
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
@@ -418,8 +422,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/getError.php" />
-    <entry file="file://$PROJECT_DIR$/../TEST/app/testPublicPrivateProtectedStatic.php" />
-    <entry file="file://$PROJECT_DIR$/../TEST/app/TestInheritance.php" />
+    <entry file="file://$PROJECT_DIR$/../test/app/testPublicPrivateProtectedStatic.php" />
+    <entry file="file://$PROJECT_DIR$/../test/app/TestInheritance.php" />
     <entry file="file://$PROJECT_DIR$/app/test.php" />
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -437,149 +441,135 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Singleton.php" />
     <entry file="file://$PROJECT_DIR$/app/SinglToneConnectToDB.php" />
-    <entry file="file://$PROJECT_DIR$/app/createDB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/VerificationAndSingleTon.php" />
-    <entry file="file://$PROJECT_DIR$/config/configDataBase.php">
+    <entry file="file://$PROJECT_DIR$/testcomposer/composer.json" />
+    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/autoload.php" />
+    <entry file="file://$PROJECT_DIR$/testcomposer/app/DB.php" />
+    <entry file="file://$PROJECT_DIR$/testcomposer/.htaccess" />
+    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/composer/autoload_classmap.php" />
+    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/composer/autoload_namespaces.php" />
+    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/composer/autoload_psr4.php" />
+    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/composer/autoload_real.php" />
+    <entry file="file://$PROJECT_DIR$/testcomposer/index.php" />
+    <entry file="file://$PROJECT_DIR$/app/V.php" />
+    <entry file="file://$PROJECT_DIR$/app/Verif.php" />
+    <entry file="file://$PROJECT_DIR$/app/dataBase.php" />
+    <entry file="file://$PROJECT_DIR$/public/test.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="21" />
+        <state relative-caret-position="500">
+          <caret line="40" column="35" selection-start-line="40" selection-start-column="35" selection-end-line="40" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/SingleTonConnectToDB.php">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/Core/Core_c.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="980">
-          <caret line="54" column="29" selection-start-line="54" selection-start-column="29" selection-end-line="54" selection-end-column="29" />
+        <state relative-caret-position="197">
+          <caret line="258" column="38" lean-forward="true" selection-start-line="258" selection-start-column="38" selection-end-line="258" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testcomposer/composer.json">
+    <entry file="file://$PROJECT_DIR$/app/getErr.php" />
+    <entry file="file://$PROJECT_DIR$/app/GetErrorMessage.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/autoload.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcomposer/app/DB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcomposer/.htaccess">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/composer/autoload_classmap.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/composer/autoload_namespaces.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/composer/autoload_psr4.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcomposer/vendor/composer/autoload_real.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-635">
-          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/testcomposer/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/chat.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/V.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="2" column="18" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/dataBase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="96" column="63" lean-forward="true" selection-start-line="96" selection-start-column="63" selection-end-line="96" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="89" lean-forward="true" selection-start-line="3" selection-start-column="89" selection-end-line="3" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/getErr.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Verif.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="1" lean-forward="true" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/HandlerMessage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="6" column="44" lean-forward="true" selection-start-line="6" selection-start-column="44" selection-end-line="6" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        <state relative-caret-position="140">
+          <caret line="12" column="47" lean-forward="true" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="360">
+          <caret line="18" column="25" lean-forward="true" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/HandlerMessage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="36" column="32" selection-start-line="36" selection-start-column="32" selection-end-line="36" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/chat.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1430">
+          <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataBase/chat.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="80">
+            <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/SingleTonConnectToDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="12" column="36" lean-forward="true" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/configDataBase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/CreateDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Просто тестирую - CreateDB.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Verification.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="57" lean-forward="true" selection-start-line="57" selection-end-line="57" />
+        <state relative-caret-position="-772">
+          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="14" column="2" lean-forward="true" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/chat.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-312">
+          <caret line="8" column="6" lean-forward="true" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/handler.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
-          <caret line="26" column="41" lean-forward="true" selection-start-line="26" selection-start-column="41" selection-end-line="26" selection-end-column="41" />
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
         </state>
       </provider>
     </entry>

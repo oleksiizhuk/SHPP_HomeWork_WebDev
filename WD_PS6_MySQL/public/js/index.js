@@ -2,7 +2,6 @@ $(function () {
     let lastId = 0;
     checkNewMessage();
 
-
     $('#logout').click(function () {
         $.post("handler.php", {logout: ""});
     });
@@ -21,7 +20,6 @@ $(function () {
             url: 'handler.php',
             data: 'addNewMsg=' + message
         }).done(function (ressponce) {
-            console.log(ressponce); // удалить
             $inputSend.val('');
         }).fail(function (jqXHR) {
             if (jqXHR.status === 400) {
@@ -38,10 +36,6 @@ $(function () {
             dataType: "json",
             data: "checkNewMessage=" + lastId
         }).done(function (obj) {
-
-            console.log("test " + obj); // удалить
-            console.log(obj[0]); // удалить
-
             lastId = obj[obj.length - 1].id;
             createUnloadedMessage(obj);
             setTimeout(checkNewMessage, 1000);
@@ -57,7 +51,6 @@ $(function () {
 
     function createUnloadedMessage(objMsg) {
         const $chatSection = $('.chatSection__container');
-        console.log("createUnloadedMessage " + objMsg); // удалить
         for (let value in objMsg) {
             $(`<div class="bubblechat left">
 					<p>

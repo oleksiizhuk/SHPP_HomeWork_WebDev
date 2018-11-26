@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class HandlerMessage
 {
     private $connectToDataBase;
@@ -8,7 +10,6 @@ class HandlerMessage
     {
         $this->connectToDataBase = $connectToDataBase;
     }
-
 
     public function addMessage($message)
     {
@@ -33,7 +34,7 @@ class HandlerMessage
 
         $numResults = mysqli_num_rows($result);
 
-        if ($numResults == 0) {
+        if ($numResults === 0) {
             http_response_code(202);
             die();
         }

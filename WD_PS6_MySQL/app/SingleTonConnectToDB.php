@@ -6,11 +6,10 @@
  * Time: 13:33
  */
 
-//$config = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'configDataBase.php';
+namespace App;
 
 class SingleTonConnectToDB
 {
-    // Hold the class instance.
     private static $instance = null;
     private $conn;
 
@@ -18,13 +17,6 @@ class SingleTonConnectToDB
     private $user = 'root';
     private $pass = '';
     private $name = 'chat';
-
-    // The db connection is established in the private constructor.
-    //private function __construct()
-    //{
-    //    $this->conn = new PDO("mysql:host={$this->host};
-    // dbname={$this->name}", $this->user, $this->pass, array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
-    // }
 
     private function __construct()
     {

@@ -6,39 +6,32 @@
  * Time: 10:24
  */
 
-class createDB
+namespace App;
+
+class CreateDB
 {
-    private $localHost;
-    private $root;
-    private $password;
-    private $dbNmae;
+    private $link;
 
-    public function __construct($localhost, $root, $passwordDB, $dbName)
+    public function __construct($link)
     {
-        $this->localHost = $localhost;
-        $this->root = $root;
-        $this->password = $passwordDB;
-        $this->dbNmae = $dbName;
+        $this->link = $link;
         try {
-            $this->connectToDb();
-            $this->createTablseUser();
-        } catch (Exception $exaption) {
-        getErr::getError($exaption);
-    }
-
-    }
-
-    private function connectToDb()
-    {
-        $this->link = mysqli_connect($this->localhost, $this->root, $this->password, $this->dbName);
-        if (mysqli_connect_errno()) {
-            return;
-            throw new Exception('ошибка подключению к базе данных
-             (' . mysqli_connect_errno() . '): ' . mysqli_connect_error());
+            $this->createTableUser();
+            $this->createTableMessage();
+        } catch (Exception $exception) {
+            getErr::getError($exception);
         }
+
     }
 
-    private function createTablseUser()
+    private function checkavAilabilityTable()
+    {
+        $sql = "SHOW TABLES FROM `chat` LIKE 'нужная_таблица'";
+
+        $sql = "SELECT * FROM `user` WHERE name='$this->login'";
+    }
+
+    private function createTableUser()
     {
         $sql = "CREATE TABLE `chat`.`Users` ( `id` INT(11) NOT NULL AUTO_INCREMENT , `login` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , `password` VARCHAR(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL , PRIMARY KEY (`id`, `login`)) ENGINE = InnoDB";
         if (mysqli_query($sql)) {

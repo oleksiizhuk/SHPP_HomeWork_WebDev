@@ -9,48 +9,49 @@ ini_set('display_errors', 1);
 
 define('CONFIG_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR);
 $config = require_once CONFIG_PATH . 'config.php';
-$configDB = require_once CONFIG_PATH . 'configDataBase.php';
-
-
 
 require_once $config['SingleTonConnectToDB'];
+require_once $config['GetErrorMessage'];
 
-//отключить
-require_once $config['getErr'];
-require_once $config['dataBase'];
-
-$instance = SingleTonConnectToDB::getInstance();
+$instance = App\SingleTonConnectToDB::getInstance();
 $conn = $instance->getConnection();
 
 
 if (isset($_POST['submit'])) {
     require_once $config['Verification'];
+    $verification = new App\Verification($_POST['login'], $_POST['password'], $conn);
     try {
-        $verification = new Verification($_POST['login'], $_POST['password'], $conn);
         $verification->verification();
         $_SESSION['login'] = $_POST['login'];
         header('Location: chat.php');
     } catch (Exception $exception) {
-        getError($exception->getMessage());
+       GetErrorMessage::getError($exception->getMessage());
     }
+    die();
 }
 
 if (isset($_POST['addNewMsg'])) {
     require_once $config['HandlerMessage'];
-    $message = $_POST['addNewMsg'];
     try {
-        $handlerMessage = new HandlerMessage($conn);
-        $handlerMessage->addMessage($message);
+        GetErrorMessage::checkSession();
+        $handlerMessage = new App\HandlerMessage($conn);
+        $handlerMessage->addMessage($_POST['addNewMsg']);
     } catch (Exception $exception) {
-        getError($exception);
+        GetErrorMessage::getJsResponse($exception->getMessage());
     }
+    die();
 }
 
 if (isset($_POST['checkNewMessage'])) {
+    try {
+        GetErrorMessage::checkSession();
+    } catch (Exception $exception) {
+        GetErrorMessage::getJsResponse($exception->getMessage());
+        die();
+    }
     require_once $config['HandlerMessage'];
-    $lastId = $_POST['checkNewMessage'];
-    $handlerMessage = new HandlerMessage($conn);
-    $handlerMessage->checkNewMessage($lastId);
+    $handlerMessage = new  App\HandlerMessage($conn);
+    $handlerMessage->checkNewMessage($_POST['checkNewMessage']);
 }
 
 
@@ -60,14 +61,3 @@ if (isset($_POST['logout'])) {
 }
 
 
-function getError($error)
-{
-    $_SESSION["error"] = $error;
-    header("location:index.php");
-}
-
-/*
-function __autoload($className)
-{
-    $classPeices = explode("\\", $className);
-}*/

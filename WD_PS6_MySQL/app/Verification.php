@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Verification
 {
     const ERROR_MSG = ['emptyPass' => 'введите пароль', 'emptyLogin' => 'введите логин', 'wrongRegularLogin' => 'Длина имени пользователя должна быть от 1 до 16 символов', 'wrongRegularPass' => 'Длина пароля пользователя должна быть от 1 до 16 символов', 'wronngPass' => 'не верный пароль'];
@@ -8,19 +10,14 @@ class Verification
     private $password;
     private $link;
 
-    public function __construct($login, $pass, $link)
+    public function __construct($login, $password, $link)
     {
         $this->login = $login;
-        $this->password = $pass;
+        $this->password = $password;
         $this->link = $link;
     }
 
     public function verification()
-    {
-        $this->checkEmptyAndRegularLoginAndPassword();
-    }
-
-    private function checkEmptyAndRegularLoginAndPassword()
     {
         $this->checkIfEmpty();
         $this->checkRegular();
@@ -30,20 +27,20 @@ class Verification
     private function checkIfEmpty()
     {
         if (empty($this->login)) {
-            throw new Exception(self::ERROR_MSG['emptyLogin']);
+            throw new \Exception(self::ERROR_MSG['emptyLogin']);
         }
         if (empty($this->password)) {
-            throw new Exception(self::ERROR_MSG['emptyPass']);
+            throw new \Exception(self::ERROR_MSG['emptyPass']);
         }
     }
 
     private function checkRegular()
     {
         if (!preg_match('%^[a-zA-Z0-9_-]{1,16}$%', $this->login)) {
-            throw new Exception(self::ERROR_MSG['wrongRegularLogin']);
+            throw new \Exception(self::ERROR_MSG['wrongRegularLogin']);
         }
-        if (!preg_match('%^[a-zA-Z0-9_-]{1,16}$%', $this->password)) {
-            throw new Exception(self::ERROR_MSG['wrongRegularPass']);
+        if (!preg_match('%^[a-zA-Z0-9_-]{1,32}$%', $this->password)) {
+            throw new \Exception(self::ERROR_MSG['wrongRegularPass']);
         }
     }
 
@@ -53,7 +50,7 @@ class Verification
 
         $result = mysqli_query($this->link, $sql);
         if (!$result) {
-            throw new Exception("Error description: ");
+            throw new \Exception("Error description: ");
         }
 
         $pass = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -63,17 +60,18 @@ class Verification
             return;
         }
 
-        if ($pass[0]['password'] != $this->password) {
-            throw new Exception("Wrong password");
+        if (!password_verify($this->password, $pass[0]['password'])) {
+            throw new \Exception("Wrong password");
         }
     }
 
     private function createNewUser($login, $password)
     {
-        $sql = "INSERT INTO `user` (`id`, `name`, `password`) VALUES (NULL, '$login', '$password')";
+        $hashPass = password_hash($password, PASSWORD_DEFAULT);
+        $sql = "INSERT INTO `user` (`id`, `name`, `password`) VALUES (NULL, '$login', '$hashPass')";
 
         if (!mysqli_query($this->link, $sql)) {
-            throw new Exception('wrongPass');
+            throw new \Exception('wrongPass');
         }
     }
 }
