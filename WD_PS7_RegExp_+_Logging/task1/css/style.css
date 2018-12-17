@@ -1,0 +1,28 @@
+h1 {
+  margin: 1px;
+  padding: 1px; }
+
+.ok {
+  border-color: green; }
+
+.bad {
+  border-color: red; }
+
+.section {
+  margin: 0 auto;
+  background-color: #b9c783;
+  height: 100vh; }
+  .section .form {
+    color: red;
+    width: 40%;
+    margin: 0 auto; }
+    .section .form input {
+      margin: 5px; }
+    .section .form label {
+      margin: 5px;
+      display: block; }
+    .section .form .button {
+      text-align: center;
+      margin: 0 auto; }
+
+/*# sourceMappingURL=style.css.map */

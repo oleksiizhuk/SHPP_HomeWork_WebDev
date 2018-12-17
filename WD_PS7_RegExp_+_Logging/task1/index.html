@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/normalize/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <h1>1) Провалидировать форму с помощью регулярных выражений (все это провернуть на php и js)</h1>
+                <form action="#" class="form" id="form">
+                    <div class="form-group">
+                        <input type="text" class="inputGetId form-control" id="ip" placeholder="91.226.56.143" name="ip" value="1">
+                        <label for="ip" class="label"> 91.226.56.143</label>
+                        <input type="text" id="url" class="form-control" name="url" value="2">
+                        <label for="url" class="label"> https://www.google.com/</label>
+                        <input type="text" id="email" class="form-control" name="email" value="3">
+                        <label for="Email" class="label">test@gmail.com</label>
+                        <input type="text" id="date" class="form-control" name="date" value="4">
+                        <label for="date" class="label">26.01.1993</label>
+                        <input type="text" id="time" class="form-control" name="time" value="5">
+                        <label for="time" class="label">13:24:40</label>
+                        <button id="JS" class="submit getIp button btn btn-primary" name="submit">JS</button>
+                        <button id="PHP" class="submit getIp button btn btn-primary" name="submit">PHP</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+</section>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
