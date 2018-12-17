@@ -1,5 +1,6 @@
 <?php /** @noinspection PhpUnhandledExceptionInspection */
 
+namespace app;
 class Verification
 {
     const ERROR_MSG = ['emptyPass' => 'введите пароль', 'emptyLogin' => 'введите логин', 'wrongRegularLoggin' => 'Длина имени пользователя должна быть от 1 до 16 символов', 'wrongRegularPass' => 'Длина пароля пользователя должна быть от 1 до 16 символов', 'wrongPass' => 'не верный пароль'];

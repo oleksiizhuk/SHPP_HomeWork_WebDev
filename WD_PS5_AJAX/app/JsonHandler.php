@@ -1,6 +1,6 @@
 <?php /** @noinspection PhpUnhandledExceptionInspection */
 
-
+namespace app;
 class JsonHandler
 {
     private $urlJson;
@@ -69,7 +69,7 @@ class JsonHandler
 
     private function checkCount($dataBase)
     {
-        if (count($dataBase) == 0) {
+        if (count($dataBase) === 0) {
             return 0;
         }
         return $dataBase[count($dataBase) - 1]["id"];

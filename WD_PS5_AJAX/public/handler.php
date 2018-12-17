@@ -11,7 +11,7 @@ require_once $config['CheckJsonFile'];
 
 if (isset($_POST['submit'])) {
     require_once $config['Verification'];
-    $verification = new Verification($_POST['login'], $_POST['password'], $config['usersJson']);
+    $verification = new app\Verification($_POST['login'], $_POST['password'], $config['usersJson']);
     try {
         $verification->verification();
         $_SESSION['login'] = $_POST['login'];
@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
 
 if (isset($_POST['addNewMsg'])) {
     require_once $config['JsonHandler'];
-    $addMsg = new JsonHandler($config['messageBase']);
+    $addMsg = new app\JsonHandler($config['messageBase']);
     try {
         $addMsg->addNewMessageToJson($_POST['addNewMsg']);
     } catch (Exception $exception) {
@@ -37,7 +37,7 @@ if (isset($_POST['addNewMsg'])) {
 
 if (isset($_POST['checkNewMessage'])) {
     require_once $config['JsonHandler'];
-    $UnloadMsg = new JsonHandler($config['messageBase']);
+    $UnloadMsg = new app\JsonHandler($config['messageBase']);
     try {
         echo $UnloadMsg->unloadNewMessage($_POST['checkNewMessage']);
     } catch (Exception $exception) {

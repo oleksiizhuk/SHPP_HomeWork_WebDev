@@ -2,11 +2,9 @@ $(function () {
     let lastId = 0;
     checkNewMessage();
 
-
     $('#logout').click(function () {
         $.post("handler.php", {logout: ""});
     });
-
 
     $('#sendMsg').click(function (event) {
         event.preventDefault();
@@ -52,7 +50,6 @@ $(function () {
         });
     }
 
-
     function createUnloadedMessage(objMsg) {
         const $chatSection = $('.chatSection__container');
         for (let value in objMsg) {
@@ -70,6 +67,5 @@ $(function () {
         }
         $chatSection.scrollTop($chatSection.prop("scrollHeight"));
     }
-
 
 });
