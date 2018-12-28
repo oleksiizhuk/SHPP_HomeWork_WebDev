@@ -24,4 +24,4 @@ oleksiizhuk.att@gmail.com
 
 <h2>License</h2>
 </br>
-<a href="https://www.privat24.ua/">🍺 Buy me a beer!</a>
+<a href="http://www.savewalterwhite.com/">🍺 Buy me a beer!</a>
