@@ -1,6 +1,7 @@
 <?php /** @noinspection PhpUnhandledExceptionInspection */
 
 namespace app;
+
 class JsonHandler
 {
     private $urlJson;

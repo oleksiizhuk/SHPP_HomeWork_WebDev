@@ -1,6 +1,7 @@
 <?php /** @noinspection PhpUnhandledExceptionInspection */
 
 namespace app;
+
 class Verification
 {
     const ERROR_MSG = ['emptyPass' => 'введите пароль', 'emptyLogin' => 'введите логин', 'wrongRegularLoggin' => 'Длина имени пользователя должна быть от 1 до 16 символов', 'wrongRegularPass' => 'Длина пароля пользователя должна быть от 1 до 16 символов', 'wrongPass' => 'не верный пароль'];
@@ -27,20 +28,20 @@ class Verification
     private function checkIfEmpty()
     {
         if (empty($this->login)) {
-            throw new Exception(self::ERROR_MSG['emptyLogin']);
+            throw new \Exception(self::ERROR_MSG['emptyLogin']);
         }
         if (empty($this->password)) {
-            throw new Exception(self::ERROR_MSG['emptyPass']);
+            throw new \Exception(self::ERROR_MSG['emptyPass']);
         }
     }
 
     private function checkRegular()
     {
         if (!preg_match('%^[a-zA-Z0-9_-]{1,16}$%', $this->login)) {
-            throw new Exception(self::ERROR_MSG['wrongRegularLoggin']);
+            throw new \Exception(self::ERROR_MSG['wrongRegularLoggin']);
         }
         if (!preg_match('%^[a-zA-Z0-9_-]{1,16}$%', $this->password)) {
-            throw new Exception(self::ERROR_MSG['wrongRegularPass']);
+            throw new \Exception(self::ERROR_MSG['wrongRegularPass']);
         }
     }
 
@@ -51,7 +52,7 @@ class Verification
                 if ($value['password'] == $this->password) {
                     return;
                 } else {
-                    throw new Exception(self::ERROR_MSG['wrongPass']);
+                    throw new \Exception(self::ERROR_MSG['wrongPass']);
                 }
             }
         }

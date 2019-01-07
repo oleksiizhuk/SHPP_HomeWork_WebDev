@@ -3,14 +3,18 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     header("location:index.php");
 }
 session_start();
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 
 $config = require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
-require_once $config['CheckJsonFile'];
+
+define('APP_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR);
+spl_autoload_register(function ($class) {
+    $file = APP_PATH . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
+    if (isset($file) && file_exists($file)) {
+        require_once $file;
+    }
+});
 
 if (isset($_POST['submit'])) {
-    require_once $config['Verification'];
     $verification = new app\Verification($_POST['login'], $_POST['password'], $config['usersJson']);
     try {
         $verification->verification();
@@ -22,10 +26,8 @@ if (isset($_POST['submit'])) {
     exit();
 }
 
-
 if (isset($_POST['addNewMsg'])) {
-    require_once $config['JsonHandler'];
-    $addMsg = new app\JsonHandler($config['messageBase']);
+    $addMsg = new app\JsonHandler($config['message']);
     try {
         $addMsg->addNewMessageToJson($_POST['addNewMsg']);
     } catch (Exception $exception) {
@@ -34,10 +36,8 @@ if (isset($_POST['addNewMsg'])) {
     exit();
 }
 
-
 if (isset($_POST['checkNewMessage'])) {
-    require_once $config['JsonHandler'];
-    $UnloadMsg = new app\JsonHandler($config['messageBase']);
+    $UnloadMsg = new app\JsonHandler($config['message']);
     try {
         echo $UnloadMsg->unloadNewMessage($_POST['checkNewMessage']);
     } catch (Exception $exception) {
@@ -45,7 +45,6 @@ if (isset($_POST['checkNewMessage'])) {
     }
     exit();
 }
-
 
 if (isset($_POST['logout'])) {
     unset($_SESSION['login']);
