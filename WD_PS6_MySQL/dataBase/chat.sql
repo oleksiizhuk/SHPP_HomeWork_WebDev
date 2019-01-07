@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 26, 2018 at 11:33 AM
--- Server version: 10.1.32-MariaDB
--- PHP Version: 7.2.5
+-- Хост: 127.0.0.1
+-- Время создания: Янв 07 2019 г., 13:19
+-- Версия сервера: 10.1.31-MariaDB
+-- Версия PHP: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `chat`
+-- База данных: `chat`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- Структура таблицы `message`
 --
 
 CREATE TABLE `message` (
@@ -35,18 +35,10 @@ CREATE TABLE `message` (
   `date` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
---
--- Dumping data for table `message`
---
-
-INSERT INTO `message` (`id`, `user`, `message`, `date`) VALUES
-(43, 'test', 'Hello', 1543228360),
-(44, 'test1', 'hello:)', 1543228375);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Структура таблицы `user`
 --
 
 CREATE TABLE `user` (
@@ -56,44 +48,36 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`id`, `name`, `password`) VALUES
-(27, 'test', '$2y$10$rIXG.AeheyzoCaMREI8NPOR7bWzg2iBQBlXHD0wsXViMkqHcEHQXO'),
-(28, 'test1', '$2y$10$2njlKeoRLNMWkTN2b1qolOxOlwwk6H6.e3fyYe2x5UT8mOY3Nd4xe');
-
---
--- Indexes for dumped tables
+-- Индексы сохранённых таблиц
 --
 
 --
--- Indexes for table `message`
+-- Индексы таблицы `message`
 --
 ALTER TABLE `message`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
+-- Индексы таблицы `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT для сохранённых таблиц
 --
 
 --
--- AUTO_INCREMENT for table `message`
+-- AUTO_INCREMENT для таблицы `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

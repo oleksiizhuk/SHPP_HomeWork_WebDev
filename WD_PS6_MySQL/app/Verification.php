@@ -8,20 +8,27 @@ class Verification
 
     private $login;
     private $password;
-    private $link;
+    private $connect;
 
-    public function __construct($login, $password, $link)
+    public function __construct($login, $password, $connect)
     {
         $this->login = $login;
         $this->password = $password;
-        $this->link = $link;
+        $this->connect = $connect;
     }
 
     public function verification()
     {
+        $this->deleteSpace();
         $this->checkIfEmpty();
         $this->checkRegular();
         $this->checkLoginAndPassword();
+    }
+
+    private function deleteSpace()
+    {
+        $this->login = trim($this->login);
+        $this->password = trim($this->password);
     }
 
     private function checkIfEmpty()
@@ -46,32 +53,43 @@ class Verification
 
     private function checkLoginAndPassword()
     {
-        $sql = "SELECT * FROM `user` WHERE name='$this->login'";
 
-        $result = mysqli_query($this->link, $sql);
-        if (!$result) {
-            throw new \Exception("Error description: ");
-        }
+        $sql = 'SELECT * FROM user WHERE name = :login';
 
-        $pass = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $sth = $this->connect->prepare($sql);
 
-        if (empty($pass)) {
-            $this->createNewUser($this->login, $this->password);
+        $params = [':login' => $this->login];
+
+        $sth->execute($params);
+
+        $result = $sth->fetchAll();
+
+        if (empty($result)) {
+            $this->createNewUser();
             return;
         }
 
-        if (!password_verify($this->password, $pass[0]['password'])) {
+        if (!password_verify($this->password, $result[0]['password'])) {
             throw new \Exception("Wrong password");
         }
     }
 
-    private function createNewUser($login, $password)
+    private function createNewUser()
     {
-        $hashPass = password_hash($password, PASSWORD_DEFAULT);
-        $sql = "INSERT INTO `user` (`id`, `name`, `password`) VALUES (NULL, '$login', '$hashPass')";
 
-        if (!mysqli_query($this->link, $sql)) {
-            throw new \Exception('wrongPass');
-        }
+        $hashPass = password_hash($this->password, PASSWORD_DEFAULT);
+
+        $sql = 'INSERT INTO user (id, name, password) VALUES (NULL, :login, :hashPass)';
+
+        $params = [
+            ':login' => $this->login,
+            ':hashPass' => $hashPass
+        ];
+
+        $sth = $this->connect->prepare($sql);
+
+        $sth->execute($params);
     }
 }
+
+

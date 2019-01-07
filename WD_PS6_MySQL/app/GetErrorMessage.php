@@ -6,6 +6,7 @@
  * Time: 2:14
  */
 
+namespace App;
 
 class GetErrorMessage
 {
@@ -19,7 +20,7 @@ class GetErrorMessage
     public static function checkSession()
     {
         if (!isset($_SESSION['login'])) {
-            throw new Exception('your session outdated');
+            throw new \Exception('your session outdated');
         }
     }
 

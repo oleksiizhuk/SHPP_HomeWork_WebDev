@@ -4,47 +4,53 @@ namespace App;
 
 class HandlerMessage
 {
-    private $connectToDataBase;
+    private $connect;
 
-    function __construct($connectToDataBase)
+    public function __construct($connect)
     {
-        $this->connectToDataBase = $connectToDataBase;
+        $this->connect = $connect;
     }
 
     public function addMessage($message)
     {
-        if (!isset($_SESSION['login'])) {
-            return;
-        }
+        $sql = 'INSERT INTO message (id, user, message, date) VALUES (NULL, :login, :message, :dateToSecond)';
+        $sth = $this->connect->prepare($sql);
+
         $login = $_SESSION['login'];
         $dateToSecond = $this->timeMutatorToString();
         $message = htmlspecialchars($message, ENT_QUOTES);
-        $sql = "INSERT INTO `message` (`id`, `user`, `message`, `date`) VALUES (NULL, '$login', '$message', '$dateToSecond')";
 
-        if (!mysqli_query($this->connectToDataBase, $sql)) {
-            throw new Exception('wrongPass');
-        }
+        $params = [
+            ':login' => $login,
+            ':message' => $message,
+            ':dateToSecond' => $dateToSecond
+        ];
+        $sth->execute($params);
     }
 
     public function checkNewMessage($lastId)
     {
-        $sql = "SELECT * FROM `message` WHERE `date` > UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 HOUR)) AND id > $lastId";
+        $sql = 'SELECT * FROM message WHERE date > UNIX_TIMESTAMP(DATE_SUB(NOW(), INTERVAL 1 HOUR)) AND id > :lastId';
 
-        $result = mysqli_query($this->connectToDataBase, $sql);
+        $params = [
+            ':lastId' => $lastId,
+        ];
+        $sth = $this->connect->prepare($sql);
 
-        $numResults = mysqli_num_rows($result);
+        $sth->execute($params);
 
-        if ($numResults === 0) {
+        $numResults = $sth->fetchAll();
+
+        if (!$numResults) {
             http_response_code(202);
             die();
         }
-
         $arr = array();
-        while ($message = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
-            $message['date'] = date('H:i:s', $message['date']);
-            $arr[] = $message;
-        }
 
+        foreach ($numResults as $value) {
+            $value['date'] = date('H:i:s', $value['date']);
+            $arr[] = $value;
+        }
         print_r(json_encode($arr));
     }
 
