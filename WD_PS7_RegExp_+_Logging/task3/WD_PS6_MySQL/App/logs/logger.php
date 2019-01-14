@@ -1,6 +1,6 @@
 <?php
 
-namespace App\classes;
+namespace App\logs;
 
 class Logging
 {
@@ -52,6 +52,7 @@ class Logging
             "ip" => "123",
             "exceptions" => $exceptions
         );
+
         $dataBase[] = $message;
         $result = json_encode($dataBase, JSON_PRETTY_PRINT);
         file_put_contents($this->pathLog, $result);
