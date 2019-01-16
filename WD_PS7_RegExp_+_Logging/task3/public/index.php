@@ -5,7 +5,7 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>chat</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/normalize/normalize.css">
 </head>
@@ -26,7 +26,7 @@ session_start();
             <button id="submit" class="submit" name="submit">Submit</button>
         </form>
     </div>
-    <div class="erBlock">
+    <div class="erBlock" id="erBlock">
         <?php
         if (isset($_SESSION['login'])) {
             header('location:chat.php');
@@ -37,10 +37,13 @@ session_start();
         }
         ?>
     </div>
+    <p class="user_block" id="user_block"></p>
 
 </main>
 <footer>
 
 </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="js/index.js"></script>
 </body>
 </html>

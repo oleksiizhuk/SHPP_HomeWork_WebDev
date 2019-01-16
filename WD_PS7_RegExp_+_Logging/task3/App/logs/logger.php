@@ -2,7 +2,7 @@
 
 namespace App\logs;
 
-class loggerTest
+class logger
 {
 
     private $filePath;

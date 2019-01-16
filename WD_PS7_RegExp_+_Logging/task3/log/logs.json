@@ -1,0 +1,23 @@
+[
+    {
+        "date": "2019-01-16 11:16:02",
+        "level": "success",
+        "info": "logout",
+        "user": "1",
+        "ip": "127.0.0.1"
+    },
+    {
+        "date": "2019-01-16 11:16:04",
+        "level": "success",
+        "info": "verification",
+        "user": "1",
+        "ip": "127.0.0.1"
+    },
+    {
+        "date": "2019-01-16 11:22:56",
+        "level": "success",
+        "info": "logout",
+        "user": "1",
+        "ip": "127.0.0.1"
+    }
+]

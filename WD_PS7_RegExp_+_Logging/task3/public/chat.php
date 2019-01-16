@@ -8,7 +8,7 @@ if (!isset($_SESSION['login'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>chat</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/normalize/normalize.css">
 </head>
@@ -22,7 +22,7 @@ if (!isset($_SESSION['login'])) {
 </p>
 <section class="chatSection">
     <h1>Easy Chat</h1>
-    <p class="user_block">
+    <p class="user_block" id="user_block">
         <?php
         echo $_SESSION['login'];
         ?>

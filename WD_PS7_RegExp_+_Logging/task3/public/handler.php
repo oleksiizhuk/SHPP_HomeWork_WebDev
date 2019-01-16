@@ -17,12 +17,11 @@ spl_autoload_register(function ($class) {
     }
 });
 $config = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
-$logger = new App\logs\loggerTest($config['logs']);
 
 $instance = App\classes\SingleTonConnectToDB::getInstance();
 $conn = $instance->getConnection();
 
-$log = new App\logs\loggerTest($config['logs']);
+$log = new App\logs\logger($config['logs']);
 
 if (isset($_POST['submit'])) {
     $verification = new App\classes\Verification($_POST['login'], $_POST['password'], $conn);
@@ -68,5 +67,3 @@ if (isset($_POST['logout'])) {
     unset($_SESSION['login']);
     header("location:index.php");
 }
-
-
