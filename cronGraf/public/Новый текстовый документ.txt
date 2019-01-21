@@ -1,0 +1,7 @@
+[{symbol: "BTCUSD", bid: 3620.99, ask: 3620.99, price: 3620.99, timestamp: 1547723309},…]
+0: {symbol: "BTCUSD", bid: 3620.99, ask: 3620.99, price: 3620.99, timestamp: 1547723309}
+1: {symbol: "DSHUSD", bid: 70.8753, ask: 71.1859, price: 71.0306, timestamp: 1547723309}
+2: {symbol: "LTCUSD", bid: 30.93, ask: 30.93, price: 30.93, timestamp: 1547723309}
+3: {symbol: "ETHUSD", bid: 121.61, ask: 121.61, price: 121.61, timestamp: 1547723309}
+4: {symbol: "XRPUSD", bid: 0.32599, ask: 0.32599, price: 0.32599, timestamp: 1547723309}
+5: {symbol: "BCHUSD", bid: 128.158, ask: 128.158, price: 128.158, timestamp: 1547723309}

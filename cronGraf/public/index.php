@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -10,11 +11,35 @@
 </head>
 <body>
 
-<div>
+<div class="content">
+    <button id="createTable">createTable</button>
+    <div class="here_table">
 
+    </div>
+    <div id="curve_chart" style="width: 550px; height: 300px"></div>
 </div>
 
-<table>
+
+<form id="getContent">
+    <input type="submit">
+    <input type="range" min="0" max="60" step="1" name="time">
+    <select name="value">
+        <option>BTCUSD</option>
+        <option>DSHUSD</option>
+        <option>LTCUSD</option>
+        <option>ETHUSD</option>
+        <option>XRPUSD</option>
+        <option>BCHUSD</option>
+    </select>
+</form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
+
+<!--<table>
     <tbody>
     <tr class="BTCUSD">
         <td class="symbol">BTCUSD</td>
@@ -53,10 +78,4 @@
         <td class="price"></td>
     </tr>
     </tbody>
-</table>
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="js/index.js"></script>
-</body>
-</html>
+</table>-->
