@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -33,9 +32,21 @@
     </select>
 </form>
 
+<div class="tocuh" style="width: 30px;height: 30px;background: yellow"></div>
+
+<table id="currencyTable">
+    <tr>
+        <th>Sumbol</th>
+        <th>Bid</th>
+        <th>Ask</th>
+        <th>Price</th>
+    </tr>
+</table>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script src="js/index.js"></script>
+<!--<script src="js/index.js"></script>-->
+<script src="js/common.js"></script>
 </body>
 </html>
 
