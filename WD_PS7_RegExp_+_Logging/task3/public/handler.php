@@ -9,14 +9,14 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 define('APP_PATH', dirname(__DIR__) . DIRECTORY_SEPARATOR);
-
-spl_autoload_register(function ($class) {
+require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'autoloader.php';
+$config = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
+/*spl_autoload_register(function ($class) {
     $file = APP_PATH . str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
     if (isset($file) && file_exists($file)) {
         require_once $file;
     }
-});
-$config = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
+});*/
 
 $instance = App\classes\SingleTonConnectToDB::getInstance();
 $conn = $instance->getConnection();
