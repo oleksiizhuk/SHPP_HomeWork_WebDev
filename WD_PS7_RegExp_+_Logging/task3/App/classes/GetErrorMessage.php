@@ -6,7 +6,7 @@
  * Time: 2:14
  */
 
-namespace App\classes;
+namespace app\classes;
 
 class GetErrorMessage
 {

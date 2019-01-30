@@ -6,16 +6,16 @@
  * Time: 13:33
  */
 
-namespace App\classes;
+namespace core;
 
-class SingleTonConnectToDB
+class ConnectToDB
 {
     private static $instance = null;
     private $conn;
 
     private function __construct()
     {
-        $config = require_once dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR
+        $config = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR
             . 'configMysql.php';
         $dsn = 'mysql:host=' . $config['db_Host'] . ';dbname=' . $config['db_Name'] . ';charset=' . $config['charset'];
         $options = [
@@ -42,7 +42,7 @@ class SingleTonConnectToDB
     public static function getInstance()
     {
         if (!self::$instance) {
-            self::$instance = new SingleTonConnectToDB();
+            self::$instance = new ConnectToDB();
         }
         return self::$instance;
     }

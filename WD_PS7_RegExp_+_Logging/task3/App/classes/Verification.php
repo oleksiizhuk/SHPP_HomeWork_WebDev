@@ -1,6 +1,6 @@
 <?php
 
-namespace App\classes;
+namespace app\classes;
 
 class Verification
 {
