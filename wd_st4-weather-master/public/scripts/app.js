@@ -12,17 +12,6 @@ $(function () {
         loadWeather(test);
     });
 
-    function loadApi() {
-        $.ajax({
-            type: 'GET',
-            url: 'http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/324291?apikey=tc9cdAvLYnDUhK3Whr5Tt2vxQK9BRRCG'
-        }).done(function (res) {
-            console.log(res);
-        }).fail(function (res) {
-            console.log(res);
-        });
-    }
-
     function loadWeather(argument) {
         $.ajax({
             type: 'GET',
@@ -33,14 +22,25 @@ $(function () {
             }
         }).done(function (res) {
             console.log("done" + res);
-            testApi(res);
+            switch (argument) {
+                case 'API':
+                    constructorApi(res);
+                    break;
+                case 'Database':
+                    alert( 'В Database!' );
+                    break;
+                case 'JSON':
+                    alert( 'JSON' );
+                    break;
+                default:
+                    console.error("ERR CHOICE");
+            }
         }).fail(function (res) {
             console.log("fail" + res);
-
         });
     }
 
-    function loadDb() {
+    /*function loadDb() {
         $.ajax({
             type: 'GET',
             dataType: 'Json',
@@ -56,27 +56,35 @@ $(function () {
             console.log("fail" + res);
 
         });
+    }*/
+    function constructorDataBase() {
+
     }
 
-    function testApi(argument) {
-
+    function constructorApi(argument) {
+        const day = getDay(argument[0].DateTime);
+        const temperature = temperatureConverterFToC(argument[0].Temperature.Value);
+        createHeaderWeather(day, temperature);
+        forecast.empty();
         for (let value in argument) {
-            console.log(argument);
-            console.log(argument[value]);
-            console.log(argument[value].DateTime);
-            console.log(argument[value].Temperature);
-            console.log(argument[value].Temperature.Value);
-
-
-            console.log(argument[value].EpochDateTime);
-            const processedTime = converTime(argument[value].DateTime);
+             const processedTime = convertTime(argument[value].DateTime);
             const temperature = temperatureConverterFToC(argument[value].Temperature.Value);
-            console.log(processedTime);
-            console.log(temperature);
+            createTable(temperature, processedTime);
         }
     }
 
-    function createTable(argument) {
+    /*function loadApi() {
+    $.ajax({
+        type: 'GET',
+        url: 'http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/324291?apikey=tc9cdAvLYnDUhK3Whr5Tt2vxQK9BRRCG'
+    }).done(function (res) {
+        console.log(res);
+    }).fail(function (res) {
+        console.log(res);
+    });
+}*/
+
+    function createTableTest(argument) {
         let obj = $('.forecast-weather');
         //forecast.empty();
 
@@ -115,7 +123,7 @@ $(function () {
         }
     }
 
-    function createTableTest(temperature, processedTime, svgPath) {
+    function createTable(temperature, processedTime, svgPath) {
         const divForecast = $(`
                       <div class="hourly-forecast clearfix" </div>;
             `)
@@ -144,21 +152,17 @@ $(function () {
             .appendTo(forecast);
     }
 
-    function createCurrentWeather(day, temperature) {
+    function createHeaderWeather(currentDay, currentTemperature) {
         divCurrentWeather.empty();
-        const currentTemperature = temperature;
-        const currentDay = day;
-
-        const divForecast =
             $(`
-                      <div class="date"> ${currentDay} </div>;
+                      <div class="date"> ${currentDay} </div>
                       <div class="current-temperature"> ${currentTemperature}°</div>;
                       
             `).appendTo(divCurrentWeather);
     }
 
     function temperatureConverterFToC(value) {
-        return (value - 32) / 1.8;
+        return Math.round((value - 32) / 1.8);
     }
 
     //можно удалить
@@ -167,10 +171,10 @@ $(function () {
         const hours = date.getHours();
         const minutes = "0" + date.getMinutes();
         const formattedTime = hours + ':' + minutes;
-        return Math.round(formattedTime);
+        return formattedTime;
     }
 
-    function converTime(argument) {
+    function convertTime(argument) {
         const options = {
             hour12: false,
             hour: "numeric",
@@ -185,4 +189,14 @@ $(function () {
         return processedTime
     }
 
+    function getDay(arg) {
+        const objDate = new Date(arg);
+        const ressult = objDate.toLocaleString('en', {
+            weekday: 'short',
+            day: 'numeric',
+            month: 'numeric'
+        });
+        return ressult;
+
+    }
 });
