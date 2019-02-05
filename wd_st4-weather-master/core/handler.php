@@ -11,9 +11,11 @@ use app\WeatherAPI;
 if (isset($_GET['function'])) {
     if ($_GET['function'] === 'Database') {
         $weatherDB = new WeatherDB();
-        $arg = 'forecast';
-        //$arg = 'cities';
+        $arg = 'cities';
         $weatherDB->getValueWeather($arg);
+        /*$arg = 'forecast';
+        $weatherDB->getValueWeather($arg);*/
+
     }
 
     if ($_GET['function'] === 'JSON') {

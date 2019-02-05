@@ -27,10 +27,12 @@ $(function () {
                     constructorApi(res);
                     break;
                 case 'Database':
-                    alert( 'В Database!' );
+                    alert('В Database!');
+                    constructorDataBase(res);
                     break;
                 case 'JSON':
-                    alert( 'JSON' );
+                    constructorJson(res);
+                    alert('JSON');
                     break;
                 default:
                     console.error("ERR CHOICE");
@@ -57,8 +59,20 @@ $(function () {
 
         });
     }*/
-    function constructorDataBase() {
 
+    function constructorJson(argument) {
+        console.log(argument);
+    }
+
+    function constructorDataBase(argument) {
+        console.log(argument);
+        const day = getDay(argument[0].timestamp);
+        const temperature = argument[0].temperature;
+        createHeaderWeather(day, temperature);
+        forecast.empty();
+        for (let value in argument) {
+            createTable(argument[value].temperature, convertTime(argument[value].timestamp));
+        }
     }
 
     function constructorApi(argument) {
@@ -67,7 +81,7 @@ $(function () {
         createHeaderWeather(day, temperature);
         forecast.empty();
         for (let value in argument) {
-             const processedTime = convertTime(argument[value].DateTime);
+            const processedTime = convertTime(argument[value].DateTime);
             const temperature = temperatureConverterFToC(argument[value].Temperature.Value);
             createTable(temperature, processedTime);
         }
@@ -154,7 +168,7 @@ $(function () {
 
     function createHeaderWeather(currentDay, currentTemperature) {
         divCurrentWeather.empty();
-            $(`
+        $(`
                       <div class="date"> ${currentDay} </div>
                       <div class="current-temperature"> ${currentTemperature}°</div>;
                       
@@ -163,6 +177,10 @@ $(function () {
 
     function temperatureConverterFToC(value) {
         return Math.round((value - 32) / 1.8);
+    }
+    
+    function temaperatureConverterKTOC() {
+        
     }
 
     //можно удалить
@@ -197,6 +215,7 @@ $(function () {
             month: 'numeric'
         });
         return ressult;
-
     }
+    
+    
 });

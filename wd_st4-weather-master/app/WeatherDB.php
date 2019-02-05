@@ -33,13 +33,13 @@ class WeatherDB
 
     public function getValueWeather($argument)
     {
-        if ($argument == 'forecast') {
+        /*if ($argument == 'forecast') {
             $sql = 'SELECT * FROM forecast';
         }
         if ($argument == 'cities') {
             $sql = 'SELECT * FROM cities';
-        }
-
+        }*/
+        $sql = 'SELECT * FROM cities,forecast';
 
         $sth = $this->connection->prepare($sql);
         $sth->execute();

@@ -22,7 +22,16 @@ class WeatherJSON
     public function test()
     {
         $get = $this->check($this->jsonPath);
-        print_r($get);
+        $keys = [];
+        /*foreach ($get['list'] as $key => $value) {
+            $keys[$key]['date'] = $value['dt_txt'];
+            $keys[$key]['temperature'] = $value['main']['temp'];
+            $keys[$key]['icon'] = $value['weather'][0]['description'];
+        }*/
+        foreach ($get['list'] as $key => $value) {
+            $keys[$key] = $value;
+        }
+        echo json_encode($keys);
     }
 
     private function check($urlJson)
