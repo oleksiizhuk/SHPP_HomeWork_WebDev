@@ -8,8 +8,6 @@
 
 namespace app;
 
-use core\Database;
-
 class WeatherDB
 {
     private $connection;
@@ -31,24 +29,15 @@ class WeatherDB
         $this->connection = $conn;
     }
 
-    public function getValueWeather($argument)
+    public function getValueWeather()
     {
-        /*if ($argument == 'forecast') {
-            $sql = 'SELECT * FROM forecast';
-        }
-        if ($argument == 'cities') {
-            $sql = 'SELECT * FROM cities';
-        }*/
-        $sql = 'SELECT * FROM cities,forecast';
-
+        $sql = 'SELECT * FROM cities, forecast';
         $sth = $this->connection->prepare($sql);
         $sth->execute();
-
         $numResults = $sth->fetchAll();
-
-        echo(json_encode($numResults));
+        if (!empty($numResults)) {
+            echo(json_encode($numResults));
+        } else
+            throw new \Exception("db is empty");
     }
 }
-
-//$arg = 'forecast';
-//$arg = 'cities';

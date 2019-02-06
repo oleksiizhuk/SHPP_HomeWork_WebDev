@@ -19,22 +19,25 @@ class WeatherJSON
         $this->jsonPath = $jsonPath;
     }
 
-    public function test()
+    public function getValue()
     {
-        $get = $this->check($this->jsonPath);
-        $keys = [];
-        /*foreach ($get['list'] as $key => $value) {
-            $keys[$key]['date'] = $value['dt_txt'];
-            $keys[$key]['temperature'] = $value['main']['temp'];
-            $keys[$key]['icon'] = $value['weather'][0]['description'];
-        }*/
+        $get = $this->checkJson($this->jsonPath);
+        $arr = [];
         foreach ($get['list'] as $key => $value) {
-            $keys[$key] = $value;
+            $arr[$key]['date'] = $value['dt_txt'];
+            $arr[$key]['temperature'] = $value['main']['temp'];
+            $arr[$key]['icon'] = $value['weather'][0]['description'];
+            if ($key == 6) {
+                break;
+            }
         }
-        echo json_encode($keys);
+        /*foreach ($get['list'] as $key => $value) {
+            $arr[$key] = $value;
+        }*/
+        echo json_encode($arr);
     }
 
-    private function check($urlJson)
+    private function checkJson($urlJson)
     {
         if (!file_exists($urlJson)) {
             throw new Exception("File is nit found");
