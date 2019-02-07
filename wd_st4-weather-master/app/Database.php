@@ -8,7 +8,9 @@
 
 namespace app;
 
-class WeatherDB
+use core\WeatherInterface;
+
+class Database implements WeatherInterface
 {
     private $connection;
 
@@ -29,7 +31,7 @@ class WeatherDB
         $this->connection = $conn;
     }
 
-    public function getValueWeather()
+    public function getValue()
     {
         $sql = 'SELECT * FROM cities, forecast';
         $sth = $this->connection->prepare($sql);

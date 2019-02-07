@@ -8,8 +8,9 @@
 
 namespace app;
 
+use core\WeatherInterface;
 
-class WeatherJSON
+class WeatherJSON implements WeatherInterface
 {
 
     private $jsonPath;
@@ -27,7 +28,7 @@ class WeatherJSON
             $arr[$key]['date'] = $value['dt_txt'];
             $arr[$key]['temperature'] = $value['main']['temp'];
             $arr[$key]['icon'] = $value['weather'][0]['description'];
-            if ($key == 6) {
+            if ($key == 7) {
                 break;
             }
         }

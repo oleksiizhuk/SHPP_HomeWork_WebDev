@@ -65,12 +65,12 @@ $(function () {
 
     function constructorApi(argument) {
         const day = getDay(argument[0].DateTime);
-        const temperature = ConverterFahrenheitToCelsius(argument[0].Temperature.Value);
+        const temperature = сonverterFahrenheitToCelsius(argument[0].Temperature.Value);
         createHeaderWeather(day, temperature);
         forecast.empty();
         for (let value in argument) {
             const processedTime = convertTime(argument[value].DateTime);
-            const temperature = ConverterFahrenheitToCelsius(argument[value].Temperature.Value);
+            const temperature = сonverterFahrenheitToCelsius(argument[value].Temperature.Value);
             createTable(temperature, processedTime);
         }
     }
@@ -112,7 +112,7 @@ $(function () {
         `).appendTo(divCurrentWeather);
     }
 
-    function ConverterFahrenheitToCelsius(Fahrenheit) {
+    function сonverterFahrenheitToCelsius(Fahrenheit) {
         return Math.round((Fahrenheit - 32) / 1.8);
     }
 
