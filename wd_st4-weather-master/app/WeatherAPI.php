@@ -9,7 +9,7 @@
 namespace app;
 
 
-use mysql_xdevapi\Exception;
+/*use mysql_xdevapi\Exception;*/
 
 class WeatherAPI
 {
@@ -27,7 +27,7 @@ class WeatherAPI
         $weather = json_decode(@file_get_contents($this->pathApi));
 
         if (empty($weather)) {
-            throw new Exception("empty api");
+            throw new \Exception("empty api");
         }
 
         echo json_encode($weather);

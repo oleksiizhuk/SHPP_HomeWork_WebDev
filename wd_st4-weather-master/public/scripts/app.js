@@ -30,7 +30,7 @@ $(function () {
                 case 'Database':
                     constructorDataBase(res);
                     break;
-                case 'JSON':
+                case 'Json':
                     constructorJson(res);
                     break;
                 default:
@@ -42,7 +42,7 @@ $(function () {
     }
 
     function constructorJson(argument) {
-        console.log(argument);
+        //console.log(argument);
         const day = getDay(argument[0].date);
         const temperature = convertKelvinToCelsius(argument[0].temperature);
         createHeaderWeather(day, temperature);
@@ -53,7 +53,7 @@ $(function () {
     }
 
     function constructorDataBase(argument) {
-        console.log(argument);
+        //console.log(argument);
         const day = getDay(argument[0].timestamp);
         const temperature = argument[0].temperature;
         createHeaderWeather(day, temperature);

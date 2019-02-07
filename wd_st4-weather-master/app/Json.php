@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Oleks
- * Date: 30.01.2019
- * Time: 19:12
- */
 
 namespace app;
 
 use core\WeatherInterface;
 
-class WeatherJSON implements WeatherInterface
+class Json implements WeatherInterface
 {
 
     private $jsonPath;
@@ -18,11 +12,12 @@ class WeatherJSON implements WeatherInterface
     public function __construct($jsonPath)
     {
         $this->jsonPath = $jsonPath;
+        //$this->jsonPath = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'today.json';
     }
 
     public function getValue()
     {
-        $get = $this->checkJson($this->jsonPath);
+        $get = $this->checkJson();
         $arr = [];
         foreach ($get['list'] as $key => $value) {
             $arr[$key]['date'] = $value['dt_txt'];
@@ -38,17 +33,17 @@ class WeatherJSON implements WeatherInterface
         echo json_encode($arr);
     }
 
-    private function checkJson($urlJson)
+    public function checkJson()
     {
-        if (!file_exists($urlJson)) {
-            throw new Exception("File is nit found");
+        if (!file_exists($this->jsonPath)) {
+            throw new \Exception("File is nit found");
         }
-        if (!is_file($urlJson) && !is_readable($urlJson) && !is_writable($urlJson)) {
-            throw new Exception('Incorrect db');
+        if (!is_file($this->jsonPath) && !is_readable($this->jsonPath) && !is_writable($this->jsonPath)) {
+            throw new \Exception('Incorrect db');
         }
-        $jsonContent = json_decode(file_get_contents($urlJson), true);
+        $jsonContent = json_decode(file_get_contents($this->jsonPath), true);
         if (!$jsonContent && json_last_error()) {
-            throw new Exception("at An encoding/decoding error has occurred.");
+            throw new \Exception("at An encoding/decoding error has occurred.");
         }
         return $jsonContent;
     }

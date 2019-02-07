@@ -8,14 +8,16 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'autoloader.php';
+
 $config = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
+require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'WeatherInterface.php';
 
 use app\Database;
-use app\WeatherJSON;
+use app\Json;
 use app\WeatherAPI;
 use core\WeatherInterface;
 
-$err = [];
+
 if (isset($_GET['function'])) {
     if ($_GET['function'] === 'Database') {
         try {
@@ -27,12 +29,12 @@ if (isset($_GET['function'])) {
         exit;
     }
 
-    if ($_GET['function'] === 'JSON') {
+    if ($_GET['function'] === 'Json') {
         try {
-            $weatherJSON = new WeatherJSON($config['json']);
+            $weatherJSON = new Json($config['json']);
             $weatherJSON->getValue();
         } catch (Exception $exception) {
-            echo $exception->getMessage();
+            die($exception->getMessage());
         }
         exit;
     }
