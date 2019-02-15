@@ -38,8 +38,27 @@ class Database implements WeatherInterface
         $sth->execute();
         $numResults = $sth->fetchAll();
         if (!empty($numResults)) {
-            echo(json_encode($numResults));
+            $arr = [];
+            foreach ($numResults as $key => $value) {
+                $arr[$key]['date'] = $value['timestamp'];
+                $arr[$key]['temperature'] = $value['temperature'];
+                $arr[$key]['degree'] = "Celsius";
+                $arr[$key]['icon'] = $this->convertIcon($value['clouds'], $value['rain_possibility']);
+            }
+            //echo(json_encode($numResults));
+            echo(json_encode($arr));
         } else
             throw new \Exception("db is empty");
+    }
+
+    private function convertIcon($clouds, $rainPossibility)
+    {
+        if ($rainPossibility >= 0.8) {
+            return 'rain';
+        }
+        if ($clouds > 15) {
+            return 'sky-1';
+        }
+        return 'sun';
     }
 }

@@ -102,7 +102,27 @@ nav a.active {
     max-width: 40px;
 }
 
+.forecast-icon object svg {
+    fill: #ffffff;
+}
+
 .forecast-icon svg {
     width: 35px;
     transform: translateY(31%);
+    fill: #fff
+
+}
+
+.forecast-icon object {
+    width: 35px;
+    transform: translateY(31%);
+    fill: #ffffff
+}
+
+.forecast-icon object svg {
+    fill: #fff
+}
+
+#Capa_1{
+    fill: #fff
 }

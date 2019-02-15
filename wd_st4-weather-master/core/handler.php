@@ -10,13 +10,10 @@ ini_set('display_errors', 1);
 require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'autoloader.php';
 
 $config = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'config.php';
-require dirname(__DIR__) . DIRECTORY_SEPARATOR . 'core' . DIRECTORY_SEPARATOR . 'WeatherInterface.php';
 
 use app\Database;
 use app\Json;
-use app\WeatherAPI;
-use core\WeatherInterface;
-
+use app\Api;
 
 if (isset($_GET['function'])) {
     if ($_GET['function'] === 'Database') {
@@ -39,12 +36,12 @@ if (isset($_GET['function'])) {
         exit;
     }
 
-    if ($_GET['function'] === 'API') {
+    if ($_GET['function'] === 'Api') {
         try {
-            $weatherApi = new WeatherAPI();
+            $weatherApi = new Api();
             $weatherApi->getValue();
         } catch (Exception $exception) {
-            echo $exception->getMessage();
+            die($exception->getMessage());
         }
         exit;
     }

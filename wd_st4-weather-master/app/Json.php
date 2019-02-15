@@ -21,8 +21,8 @@ class Json implements WeatherInterface
         $arr = [];
         foreach ($get['list'] as $key => $value) {
             $arr[$key]['date'] = $value['dt_txt'];
-            $arr[$key]['temperature'] = $value['main']['temp'];
-            $arr[$key]['icon'] = $value['weather'][0]['description'];
+            $arr[$key]['temperature'] = $this->convertKelvinToCelsius($value['main']['temp']);
+            $arr[$key]['icon'] = $this->convertIcon($value['weather'][0]['description']);
             if ($key == 7) {
                 break;
             }
@@ -31,6 +31,28 @@ class Json implements WeatherInterface
             $arr[$key] = $value;
         }*/
         echo json_encode($arr);
+    }
+
+    private function convertKelvinToCelsius($kelvin)
+    {
+        return round(($kelvin - 273.15));
+    }
+
+    private function convertIcon($icon)
+    {
+        if ($icon === "clear sky") {
+            return "sun";
+        }
+        if ($icon === "light rain") {
+            return "rain";
+        }
+        if ($icon === "broken clouds") {
+            return "sky";
+        }
+        if ($icon === "moderate rain") {
+            return "rain";
+        }
+        return $icon;
     }
 
     public function checkJson()
