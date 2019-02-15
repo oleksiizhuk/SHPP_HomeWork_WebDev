@@ -118,11 +118,3 @@ nav a.active {
     transform: translateY(31%);
     fill: #ffffff
 }
-
-.forecast-icon object svg {
-    fill: #fff
-}
-
-#Capa_1{
-    fill: #fff
-}

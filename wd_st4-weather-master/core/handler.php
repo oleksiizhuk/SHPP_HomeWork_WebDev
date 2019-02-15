@@ -47,8 +47,3 @@ if (isset($_GET['function'])) {
     }
 
 }
-
-function test($a)
-{
-    return new $a;
-}

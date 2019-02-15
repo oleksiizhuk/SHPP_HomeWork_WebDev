@@ -12,7 +12,6 @@ class Json implements WeatherInterface
     public function __construct($jsonPath)
     {
         $this->jsonPath = $jsonPath;
-        //$this->jsonPath = require_once dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'today.json';
     }
 
     public function getValue()
@@ -27,9 +26,6 @@ class Json implements WeatherInterface
                 break;
             }
         }
-        /*foreach ($get['list'] as $key => $value) {
-            $arr[$key] = $value;
-        }*/
         echo json_encode($arr);
     }
 
@@ -55,7 +51,7 @@ class Json implements WeatherInterface
         return $icon;
     }
 
-    public function checkJson()
+    private function checkJson()
     {
         if (!file_exists($this->jsonPath)) {
             throw new \Exception("File is nit found");

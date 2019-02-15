@@ -13,8 +13,11 @@ use core\WeatherInterface;
 class Api implements WeatherInterface
 {
     private $pathApi;
-    //запасной вариант
-    //private $pathApi = 'http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/324291?apikey=SMpssiVeGI6nviTozNlzGg335eeZHhUt';
+
+    /**
+     * /запасной вариант
+     * //private $pathApi = 'http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/324291?apikey=SMpssiVeGI6nviTozNlzGg335eeZHhUt';
+     */
 
     public function __construct()
     {
@@ -34,13 +37,11 @@ class Api implements WeatherInterface
         foreach ($weather as $key => $value) {
             $arr[$key]['date'] = $value['DateTime'];
             $arr[$key]['temperature'] = $this->convertFahrenheitToCelsius($value['Temperature']['Value']);
-            //$arr[$key]['degree'] = $value['Temperature']['Unit'];
             $arr[$key]['icon'] = $this->convertIcon($value['IconPhrase']);
             if ($key == 7) {
                 break;
             }
         }
-        // echo json_encode($weather);
         echo json_encode($arr);
     }
 

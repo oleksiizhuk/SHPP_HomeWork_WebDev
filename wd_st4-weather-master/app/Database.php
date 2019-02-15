@@ -45,7 +45,6 @@ class Database implements WeatherInterface
                 $arr[$key]['degree'] = "Celsius";
                 $arr[$key]['icon'] = $this->convertIcon($value['clouds'], $value['rain_possibility']);
             }
-            //echo(json_encode($numResults));
             echo(json_encode($arr));
         } else
             throw new \Exception("db is empty");

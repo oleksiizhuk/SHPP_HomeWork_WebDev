@@ -93,7 +93,6 @@ $(function () {
             day: 'numeric',
             month: 'numeric'
         };
-        const ressult = objDate.toLocaleString('en', options);
-        return ressult;
+        return ressult = objDate.toLocaleString('en', options);
     }
 });
