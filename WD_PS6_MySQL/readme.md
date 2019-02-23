@@ -1,4 +1,4 @@
-<h1>WD_PS5 AJAX</h1>
+<h1>WD_PS6_MySQL</h1>
 Easy Chat
 
 <h2>you must have</h2>
